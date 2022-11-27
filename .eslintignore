@@ -1,2 +1,4 @@
 /**/*.js
 jest.config.ts
+gatsby-config.ts
+pnpm-lock.yaml

@@ -12,6 +12,9 @@ node_modules/
 
 # Transpiled files
 build/
+.cache/
+public
+src/gatsby-types.d.ts
 
 # dotenv environment variable files
 .env

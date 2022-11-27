@@ -1,13 +1,15 @@
 {
-  "singleQuote": true,
-  "trailingComma": "none",
-  "overrides": [
-    {
-      "files": ["*.ts"],
-      "options": {
-        "parser": "typescript"
-      }
-    }
-  ],
-  "semi": false
+	"singleQuote": true,
+	"trailingComma": "none",
+	"overrides": [
+		{
+			"files": ["*.ts, *.tsx"],
+			"options": {
+				"parser": "typescript"
+			}
+		}
+	],
+	"semi": false,
+	"useTabs": true,
+	"tabWidth": 4
 }
