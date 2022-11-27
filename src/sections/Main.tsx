@@ -2,14 +2,13 @@ import React from 'react'
 
 const Main: React.FC = () => {
     return (
-        <section id="main" className="h-screen bg-red-700">
-            <div className="min-h-screen hero" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
-            <div className="hero-overlay bg-opacity-60"></div>
-            <div className="text-center hero-content text-neutral-content">
-                <div className="max-w-md">
-                <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                <button className="btn btn-primary">Get Started</button>
+        <section id="main" className="min-h-screen bg-base-200">
+            <div className="pt-20 hero">
+            <div className="flex-col justify-between my-auto mt-40 hero-content lg:flex-row">
+                <div>
+                <h1 className="text-5xl font-bold text-primary">Hello, Im Witold Zawada</h1>
+                <p className="py-6 mb-10">Beginner TypeScript developer</p>
+                <a href="/#projects" className="btn btn-primary">Check projects</a>
                 </div>
             </div>
             </div>
