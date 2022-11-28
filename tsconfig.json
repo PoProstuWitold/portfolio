@@ -23,5 +23,5 @@
 		"noImplicitThis": false,
 		"strictNullChecks": false
 	},
-	"include": ["src/**/*", "gatsby-node.ts", "gatsby-config.ts", "plugins/**/*", "__tests__/**/*"]
+	"include": ["src/**/*", "gatsby-node.ts", "gatsby-config.ts", "gatsby-browser.ts", "gatsby-ssr.ts", "plugins/**/*", "__tests__/**/*"]
 }

@@ -31,7 +31,7 @@ const About: React.FC = () => {
                         </p>
                         <br />
                     <div className="flex mx-10">
-                    <a href="/#contact" className="btn btn-lg">Contact</a>
+                    <a href="/#contact" className="btn btn-lg btn-outline w-60">Contact</a>
                     </div>
                 </div>
                 <div className="flex-grow mt-10 lg:mt-0 lg:max-w-[50%] mx-10">

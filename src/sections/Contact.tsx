@@ -1,11 +1,50 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 
 const Contact: React.FC = () => {
     return (
-        <section id="contact" className="min-h-screen">
+        <section id="contact" className="min-h-screen mb-20">
             <br />
             <br />
             <h1 className="text-4xl font-bold" >Contact me</h1>
+            <br />
+            <div className="w-4/5 mx-auto shadow-2xl">
+                <div className="p-6 border sm:rounded-md">
+                    <form>
+                    <div className="flex flex-col justify-between mx-auto my-5 lg:flex-row">
+                        <div className="w-full max-w-lg mb-5 form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                                <span className="italic label-text-alt">eg. Witold</span>
+                            </label>
+                            <input type="text" placeholder="Type here" className="w-full max-w-lg input input-bordered" />
+                        </div>
+                        <div className="w-full max-w-lg mb-5 form-control">
+                            <label className="label">
+                                <span className="label-text">Email</span>
+                                <span className="italic label-text-alt">eg. witold@email.com</span>
+                            </label>
+                            <input type="text" placeholder="Type here" className="w-full max-w-lg input input-bordered" />
+                        </div>
+                    </div>
+                    <div className="my-10 form-control">
+                        <label className="label">
+                            <span className="label-text">Message</span>
+                            <span className="italic label-text-alt">eg. Hello, I'm writing to talk about...</span>
+                        </label> 
+                        <textarea className="h-24 textarea textarea-bordered" placeholder="Bio"></textarea>
+                    </div>
+                    <div>
+                        <button
+                        type="submit"
+                        className="btn btn-lg btn-outline w-60"
+                        >
+                        Contact
+                        </button>
+                    </div>
+                    </form>
+                </div>
+                </div>
         </section>
     )
 }

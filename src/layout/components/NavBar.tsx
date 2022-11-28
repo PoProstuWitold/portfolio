@@ -14,8 +14,6 @@ const Navbar: FC<NavbarProps> = () => {
         themeChange(false)
     }, [])
 
-    themeChange()
-
     return (
         <nav className="fixed z-50 bg-base-300 navbar">
             <div className="navbar-start">
