@@ -8,7 +8,7 @@ const Contact: React.FC = () => {
             <br />
             <h1 className="text-4xl font-bold" >Contact me</h1>
             <br />
-            <div className="w-4/5 mx-auto shadow-2xl">
+            <div className="w-4/5 mx-auto border-[1px] shadow-2xl rounded-2xl" style={{ borderColor: 'hsl(var(--n)' }}>
                 <div className="p-6 sm:rounded-md">
                     <form>
                     <div className="flex flex-col justify-between mx-auto my-5 lg:flex-row">

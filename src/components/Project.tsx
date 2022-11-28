@@ -17,7 +17,7 @@ const Project: React.FC<ProjectProps> = ({ name, description, repo, skills }) =>
                     <h2 className="mx-auto my-4 text-3xl font-bold">
                         <a className="underline" target="blank" href={repo}>{name}</a>
                     </h2>
-                    <img src="https://images8.alphacoders.com/380/380534.png" alt="image" className="h-48 mx-auto rounded-xl w-96" />
+                    <img src="https://images8.alphacoders.com/380/380534.png" alt="image" className="h-48 mx-auto shadow-2xl rounded-xl w-96" />
                 </div>
                 <div className="flex-grow lg:max-w-[50%]">
                     
