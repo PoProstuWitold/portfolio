@@ -2,10 +2,10 @@ import React from 'react'
 
 const Contact: React.FC = () => {
     return (
-        <section id="contact" className="h-screen">
+        <section id="contact" className="min-h-screen">
             <br />
             <br />
-            Contact me
+            <h1 className="text-4xl font-bold" >Contact me</h1>
         </section>
     )
 }

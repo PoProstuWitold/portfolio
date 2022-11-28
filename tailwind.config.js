@@ -16,7 +16,7 @@ module.exports = {
         logs: true,
         rtl: false,
         themes: [
-			"light", "dark", "emerald", "corporate"
+			"light", "dark", "emerald", "synthwave", "retro", "halloween", "forest", "winter"
 		]
     }
 }
