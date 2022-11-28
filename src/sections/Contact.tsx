@@ -9,7 +9,7 @@ const Contact: React.FC = () => {
             <h1 className="text-4xl font-bold" >Contact me</h1>
             <br />
             <div className="w-4/5 mx-auto shadow-2xl">
-                <div className="p-6 border sm:rounded-md">
+                <div className="p-6 sm:rounded-md">
                     <form>
                     <div className="flex flex-col justify-between mx-auto my-5 lg:flex-row">
                         <div className="w-full max-w-lg mb-5 form-control">
