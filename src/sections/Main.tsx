@@ -1,19 +1,52 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const Main: React.FC = () => {
     return (
-        <section id="main" className="min-h-screen bg-base-200">
+        <motion.section id="main" className="min-h-screen bg-base-200"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+        >
             <div className="pt-20 hero">
             <div className="flex-col justify-between my-auto mt-40 hero-content lg:flex-row">
                 <div>
-                <h1 className="text-5xl font-bold text-primary">Hello, I'm Witold Zawada</h1>
-                <p className="py-6 mb-10">Beginner TypeScript developer</p>
-                <a href="/#projects" className="btn btn-primary">Check projects</a>
+                <motion.h1 className="text-5xl font-bold text-primary"
+                    initial={{ opacity: 0, scale: 0.2 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                        duration: 0.3,
+                        ease: [0, 0.71, 0.2, 1.01]
+                    }}
+                >
+                    Hello, I'm Witold Zawada
+                </motion.h1>
+                <motion.p className="py-6 mb-10"
+                    initial={{ opacity: 0, scale: 0.2 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                        duration: 0.3,
+                        delay: 0.7,
+                        ease: [0, 0.71, 0.2, 1.01]
+                    }}
+                >
+                    Beginner TypeScript developer
+                </motion.p>
+                <motion.a href="/#projects" className="btn btn-primary"
+                    initial={{ opacity: 0, scale: 0.0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      duration: 0.2,
+                      delay: 1.2,
+                      ease: [0, 0.71, 0.2, 1.01]
+                    }}
+                >
+                    Check projects
+                </motion.a>
                 </div>
             </div>
             </div>
-        </section>
+        </motion.section>
     )
 }
 
