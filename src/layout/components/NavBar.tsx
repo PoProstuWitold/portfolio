@@ -15,7 +15,7 @@ const Navbar: FC<NavbarProps> = () => {
     }, [])
 
     return (
-        <nav className="fixed z-50 py-4 shadow-2xl bg-base-300 navbar">
+        <nav className="fixed z-50 shadow-2xl bg-base-300 navbar">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
