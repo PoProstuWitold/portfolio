@@ -12,5 +12,10 @@ const RootElement = ({element}) => {
     return element
 }
 
+const renderBody = ({ setHtmlAttributes }) => {
+    setHtmlAttributes({ lang: "en" })
+}
+
 export const wrapPageElement = PageElement
 export const wrapRootElement = RootElement
+export const onRenderBody = renderBody

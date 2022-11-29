@@ -23,4 +23,9 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Witold Zawada</title>
+export const Head: HeadFC = () => (
+	<>
+		<title>Witold Zawada</title>
+		<meta name="description" content="Hello, I'm Witold Zawada. Beginner TypeScript developer" />
+	</>
+)

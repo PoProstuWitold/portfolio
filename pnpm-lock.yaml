@@ -18,7 +18,9 @@ specifiers:
   eslint-plugin-react: ^7.31.11
   framer-motion: ^7.6.12
   gatsby: ^5.1.0
+  gatsby-plugin-html-attributes: ^1.0.5
   gatsby-plugin-image: ^3.2.0
+  gatsby-plugin-manifest: ^5.2.0
   gatsby-plugin-pnpm: ^1.2.10
   gatsby-plugin-postcss: ^6.1.0
   gatsby-plugin-sharp: ^5.2.0
@@ -46,7 +48,9 @@ dependencies:
   daisyui: 2.42.0_l5bzpxvjbqhurjfyo5fybuhvfy
   framer-motion: 7.6.12_biqbaboplfbrettd7655fr4n2y
   gatsby: 5.1.0_3nxwfeo5xvah3bsjrcu5nqmksu
+  gatsby-plugin-html-attributes: 1.0.5
   gatsby-plugin-image: 3.2.0_5x3bod3a5fe6n54vpqdxyguzda
+  gatsby-plugin-manifest: 5.2.0_gatsby@5.1.0
   gatsby-plugin-postcss: 6.1.0_jaujc32lrqntxvewd4vysvlray
   gatsby-plugin-sharp: 5.2.0_gatsby@5.1.0
   gatsby-source-filesystem: 5.2.0_gatsby@5.1.0
@@ -3683,6 +3687,13 @@ packages:
       babel-plugin-jest-hoist: 29.2.0
       babel-preset-current-node-syntax: 1.0.1_@babel+core@7.20.2
 
+  /babel-runtime/6.26.0:
+    resolution: {integrity: sha512-ITKNuq2wKlW1fJg9sSW52eepoYgZBggvOAHC0u/CYu/qxQ9EVzThCgR69BnSXLHjy2f7SY5zaQ4yt7H9ZVxY2g==}
+    dependencies:
+      core-js: 2.6.12
+      regenerator-runtime: 0.11.1
+    dev: false
+
   /backo2/1.0.2:
     resolution: {integrity: sha512-zj6Z6M7Eq+PBZ7PQxl5NT665MvJdAkzp0f60nAJ+sLaSCBPMwVak5ZegFbgVCzFcCJTKFoMizvM5Ld7+JrRJHA==}
 
@@ -4246,6 +4257,12 @@ packages:
   /core-js-pure/3.26.1:
     resolution: {integrity: sha512-VVXcDpp/xJ21KdULRq/lXdLzQAtX7+37LzpyfFM973il0tWSsDEoyzG38G14AjTpK9VTfiNM9jnFauq/CpaWGQ==}
     requiresBuild: true
+
+  /core-js/2.6.12:
+    resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
+    deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+    requiresBuild: true
+    dev: false
 
   /core-js/3.26.1:
     resolution: {integrity: sha512-21491RRQVzUn0GGM9Z1Jrpr6PNPxPi+Za8OM9q4tksTSnlbXXGKK1nXNg/QvwFYettXvSX6zWKCtHHfjN4puyA==}
@@ -5955,6 +5972,12 @@ packages:
       '@parcel/transformer-js': 2.6.2_@parcel+core@2.6.2
       '@parcel/transformer-json': 2.6.2_@parcel+core@2.6.2
 
+  /gatsby-plugin-html-attributes/1.0.5:
+    resolution: {integrity: sha512-5u9AHfwxYuhl/QT+cI/r0+1oCKba/LPB6PHUaJN65swPOPrsAiNAj++hTSCs3CG3fITcR8Oorcn6hm6rN+uVAg==}
+    dependencies:
+      babel-runtime: 6.26.0
+    dev: false
+
   /gatsby-plugin-image/3.2.0_5x3bod3a5fe6n54vpqdxyguzda:
     resolution: {integrity: sha512-gmEnRiClpkeGskTGaHYlZIZDrGIJVM1TFKTg6gwva9Es4eLX8LN/eEgZh7DADL1KugseE304rd1pTcTP6SpyLA==}
     peerDependencies:
@@ -5992,6 +6015,22 @@ packages:
     transitivePeerDependencies:
       - graphql
       - supports-color
+    dev: false
+
+  /gatsby-plugin-manifest/5.2.0_gatsby@5.1.0:
+    resolution: {integrity: sha512-epiBVvWg81n1zRezeVC1ZXQR2vBqrp+122ptK71uEQ61d4hoLqguJbcr8SvJYnMC2NSx4za8tO44kGtxQZkdaQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      gatsby: ^5.0.0-next
+    dependencies:
+      '@babel/runtime': 7.20.1
+      gatsby: 5.1.0_3nxwfeo5xvah3bsjrcu5nqmksu
+      gatsby-core-utils: 4.2.0
+      gatsby-plugin-utils: 4.2.0_gatsby@5.1.0
+      semver: 7.3.8
+      sharp: 0.30.7
+    transitivePeerDependencies:
+      - graphql
     dev: false
 
   /gatsby-plugin-page-creator/5.1.0_af4znw7cbsnrjadwroonrv7754:
@@ -9271,6 +9310,10 @@ packages:
 
   /regenerate/1.4.2:
     resolution: {integrity: sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==}
+
+  /regenerator-runtime/0.11.1:
+    resolution: {integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==}
+    dev: false
 
   /regenerator-runtime/0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}

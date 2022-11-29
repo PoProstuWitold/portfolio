@@ -30,9 +30,9 @@ const Contact: React.FC = () => {
                     <div className="my-10 form-control">
                         <label className="label">
                             <span className="label-text">Message</span>
-                            <span className="italic label-text-alt">eg. Hello, I'm writing to talk about...</span>
+                            <span className="italic label-text-alt">eg. Hello...</span>
                         </label> 
-                        <textarea className="h-24 textarea textarea-bordered" placeholder="Bio"></textarea>
+                        <textarea className="h-24 textarea textarea-bordered" placeholder="Write your messages"></textarea>
                     </div>
                     <div>
                         <button

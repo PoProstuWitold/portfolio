@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import { StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
 import Skill from './Skill'
 
@@ -16,8 +17,8 @@ const Project: React.FC<ProjectProps> = ({ name, description, repo, skills }) =>
                 <div className="flex flex-col flex-grow lg:max-w-[50%]">
                     <h2 className="mx-auto my-4 text-3xl font-bold">
                         <a className="underline" target="blank" href={repo}>{name}</a>
-                    </h2>
-                    <img src="https://images8.alphacoders.com/380/380534.png" alt="image" className="h-48 mx-auto shadow-2xl rounded-xl w-96" />
+                    </h2>   
+                    <StaticImage src="../images/Node.js_logo.svg" alt="node" className="mx-auto shadow-2xl rounded-xl w-96"/>
                 </div>
                 <div className="flex-grow lg:max-w-[50%]">
                     
