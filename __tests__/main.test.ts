@@ -1,7 +1,19 @@
-import { Themes } from '../src/utils/constans'
+import { Themes, mySkills, projects } from '../src/utils/constans'
 
-describe('Basic tests', () => {
-    it('should return array of length 2', async () => {
-        expect(Themes).toHaveLength(4)
+describe('Constans length tests', () => {
+    describe('Themes', () => { 
+        it('should return array of length 8', async () => {
+            expect(Themes).toHaveLength(8)
+        })
+    })
+    describe('mySkills', () => { 
+        it('should be defined', async () => {
+            expect(mySkills).toBeDefined()
+        })
+    })
+    describe('projects', () => { 
+        it('should return array of length 4', async () => {
+            expect(projects).toHaveLength(4)
+        })
     })
 })
