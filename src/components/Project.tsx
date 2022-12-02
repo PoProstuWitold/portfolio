@@ -1,7 +1,8 @@
-/* eslint-disable react/no-unescaped-entities */
-import { StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
+
 import Skill from './Skill'
+
 
 interface ProjectProps {
     name: string

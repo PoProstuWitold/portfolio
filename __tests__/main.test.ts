@@ -1,9 +1,9 @@
-import { Themes, mySkills, projects } from '../src/utils/constans'
+import { themes, mySkills, projects } from '../src/utils/constans'
 
 describe('Constans length tests', () => {
     describe('Themes', () => { 
         it('should return array of length 8', async () => {
-            expect(Themes).toHaveLength(8)
+            expect(themes).toHaveLength(8)
         })
     })
     describe('mySkills', () => { 

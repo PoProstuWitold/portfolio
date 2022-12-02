@@ -1,14 +1,10 @@
-import React, { FC, useEffect } from 'react'
-
+import React, { useEffect } from 'react'
 import { themeChange } from 'theme-change'
-import { Themes } from '../../utils/constans'
 
-interface NavbarProps {
-    children?: React.ReactNode
-    start?: React.ReactNode
-}
+import { themes } from '../../utils/constans'
 
-const Navbar: FC<NavbarProps> = () => {
+
+const Navbar: React.FC = () => {
 
     useEffect(() => {
         themeChange(false)
@@ -41,7 +37,7 @@ const Navbar: FC<NavbarProps> = () => {
             <div className="navbar-end">
                 <select data-choose-theme className="max-w-xs select select-ghost">
                     {
-                        Themes.map((theme, index) => (
+                        themes.map((theme, index) => (
                             <option key={index} value={theme.name.toLowerCase()}>{theme.name}</option>
                         ))
                     }

@@ -1,7 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
+
 import Skill from '../components/Skill'
 import { mySkills } from '../utils/constans'
+
 
 const {
     tools,

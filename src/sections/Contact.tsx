@@ -1,5 +1,5 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
+
 
 const Contact: React.FC = () => {
     return (

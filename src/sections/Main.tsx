@@ -2,6 +2,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
+
 const Main: React.FC = () => {
     return (
         <motion.section id="main" className="min-h-screen bg-base-200"

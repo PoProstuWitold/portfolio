@@ -1,15 +1,16 @@
-import React, { FC } from 'react'
+import React from 'react'
+import { motion } from 'framer-motion'
+
+import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/NavBar'
 import Footer from './components/Footer'
-import ScrollProgress from './components/ScrollProgress'
-import { motion } from 'framer-motion'
+
 
 interface MainLayoutProps {
     children: React.ReactNode
 }
 
-const MainLayout: FC<MainLayoutProps> = (props) => {
-    const { children } = props
+const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     return (
         <motion.main layout className="flex flex-col h-screen">
             <ScrollProgress />

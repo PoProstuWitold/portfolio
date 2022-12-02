@@ -1,10 +1,12 @@
 import React from 'react'
 import type { HeadFC, PageProps } from 'gatsby'
+
+import Main from '../sections/Main'
 import About from '../sections/About'
 import Projects from '../sections/Projects'
 import Contact from '../sections/Contact'
 import Education from '../sections/Education'
-import Main from '../sections/Main'
+
 
 const IndexPage: React.FC<PageProps> = () => {
 
