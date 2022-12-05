@@ -17,7 +17,7 @@ const Project: React.FC<ProjectProps> = ({ name, description, repo, skills }) =>
             <div className="flex flex-col my-10 lg:flex-row">
                 <div className="flex flex-col flex-grow lg:max-w-[50%]">
                     <h2 className="mx-auto my-4 text-3xl font-bold">
-                        <a className="underline" target="blank" href={repo}>{name}</a>
+                        <a className="underline" target="_blank" rel="noreferrer" href={repo}>{name}</a>
                     </h2>   
                     <StaticImage src="../images/Node.js_logo.svg" alt="node" className="mx-auto rounded-xl w-72"/>
                 </div>

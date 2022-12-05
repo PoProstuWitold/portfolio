@@ -29,6 +29,9 @@ const About: React.FC = () => {
                         After short time trying different languages and different fields of coding I fell in love with web dev, especially Node.js and TypeScript and that why I'm here today.
                         </p>
                         <p className="mx-10 my-5 text-2xl text-justify">
+                        Want to see more? Be sure to visit my <a className="underline" href="https://github.com/PoProstuWitold" target="_blank" rel="noreferrer">GitHub</a>
+                        </p>
+                        <p className="mx-10 my-5 text-2xl text-justify">
                         Besides programming, I also like video games, skiing, history and playing with my pets.
                         </p>
                         <br />
