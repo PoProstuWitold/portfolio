@@ -44,19 +44,19 @@ export const projects = [
         repo: 'https://github.com/PoProstuWitold/nest-next-boilerplate'
     },
     {
-        name: 'nest-next-reddit',
+        name: 'reddit-clone',
         description: `Fullstack Nest, Next Reddit-like app with API for auth, subredits, commenting, 
         posting and voting for posts`,
         skills: [
             'Node.js', 'TypeScript', 'Nest.js','Redis', 'PostgreSQL', 'Docker', 'Next.js', 'TailwindCSS', 'File upload'
         ],
-        repo: 'https://github.com/PoProstuWitold/nest-next-reddit'
+        repo: 'https://github.com/PoProstuWitold/reddit-clone'
     },
     {
         name: 'Lireddit',
         description: `Fullstack TypeScript training project w/GraphQL`,
         skills: [
-            'Node.js', 'TypeScript', 'Express', 'GraphQL', 'Redis', 'Nodemailer', 'ChakraUI'
+            'Node.js', 'TypeScript', 'Express', 'GraphQL', 'Redis', 'Nodemailer', 'React', 'ChakraUI'
         ],
         repo: 'https://github.com/PoProstuWitold/Lireddit'
     },
