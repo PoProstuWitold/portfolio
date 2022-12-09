@@ -10,7 +10,7 @@ const Main: React.FC = () => {
 			initial={{ opacity: 0 }}
 			whileInView={{ opacity: 1 }}
 		>
-			<div className="pt-20 hero">
+			<div className="pt-10 lg:pt-20 hero">
 				<div className="flex-col justify-between my-auto mt-40 hero-content lg:flex-row">
 					<div>
 						<motion.h1

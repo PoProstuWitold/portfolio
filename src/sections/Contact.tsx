@@ -13,7 +13,7 @@ const Contact: React.FC = () => {
 			>
 				<div className="p-6 sm:rounded-md">
 					<form>
-						<div className="flex flex-col justify-between mx-auto my-5 lg:flex-row">
+						<div className="flex flex-col justify-between mx-auto lg:flex-row">
 							<div className="w-full max-w-lg mb-5 form-control">
 								<label className="label">
 									<span className="label-text">Name</span>
@@ -41,7 +41,20 @@ const Contact: React.FC = () => {
 								/>
 							</div>
 						</div>
-						<div className="my-10 form-control">
+						<div className="mt-5 mb-10 form-control">
+							<label className="label">
+								<span className="label-text">Title</span>
+								<span className="italic label-text-alt">
+									eg. Hello...
+								</span>
+							</label>
+							<input
+									type="text"
+									placeholder="Type here"
+									className="w-full input input-bordered"
+								/>
+						</div>
+						<div className="mb-10 form-control">
 							<label className="label">
 								<span className="label-text">Message</span>
 								<span className="italic label-text-alt">

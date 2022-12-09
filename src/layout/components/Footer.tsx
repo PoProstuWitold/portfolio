@@ -11,11 +11,11 @@ const Footer: React.FC<FooterProps> = () => {
 			<footer className="p-10 bg-neutral text-neutral-content">
 				<div className="footer">
 					<div>
-						<span className="footer-title">Witold Zawada</span>
+						<span className="mb-1 font-bold uppercase">Witold Zawada</span>
 						<p>Beginner TypeScript Developer</p>
 					</div>
 					<div>
-						<span className="footer-title">Social</span>
+						<span className="mb-1 font-bold uppercase">Social</span>
 						<div className="grid grid-flow-col gap-4">
 							<a
 								href="https://github.com/PoProstuWitold"
