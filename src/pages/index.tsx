@@ -7,9 +7,7 @@ import Projects from '../sections/Projects'
 import Contact from '../sections/Contact'
 import Education from '../sections/Education'
 
-
 const IndexPage: React.FC<PageProps> = () => {
-
 	return (
 		<>
 			<div className="text-3xl text-center">
@@ -28,6 +26,9 @@ export default IndexPage
 export const Head: HeadFC = () => (
 	<>
 		<title>Witold Zawada</title>
-		<meta name="description" content="Hello, I'm Witold Zawada. Beginner TypeScript developer" />
+		<meta
+			name="description"
+			content="Hello, I'm Witold Zawada. Beginner TypeScript developer"
+		/>
 	</>
 )

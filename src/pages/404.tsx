@@ -1,14 +1,13 @@
 import React from 'react'
 import { HeadFC, PageProps } from 'gatsby'
 
-
 const NotFoundPage: React.FC<PageProps> = () => {
 	return (
 		<>
 			<main className="flex flex-col items-center justify-center w-full h-screen">
 				<h1 className="font-extrabold tracking-widest text-9xl">404</h1>
 				<div className="absolute px-2 text-sm rounded bg-error rotate-12">
-				Page Not Found
+					Page Not Found
 				</div>
 				<button className="mt-5">
 					<a className="relative inline-block text-sm font-medium text-error group active:text-error-500 focus:outline-none focus:ring">
@@ -31,4 +30,3 @@ export const Head: HeadFC = () => (
 		<meta name="description" content="Page doesn't exist" />
 	</>
 )
-

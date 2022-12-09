@@ -4,7 +4,7 @@ const config: GatsbyConfig = {
 	siteMetadata: {
 		title: 'Witold Zawada',
 		description: 'Developer portfolio of Witold Zawada (PoProstuWitold)',
-		siteUrl: `https://www.witoldzawada.dev`,
+		siteUrl: `https://www.witoldzawada.dev`
 	},
 	graphqlTypegen: true,
 	plugins: [
