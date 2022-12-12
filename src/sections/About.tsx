@@ -8,7 +8,7 @@ const { tools, libsAndFrameworks, languages, learning } = mySkills
 
 const About: React.FC = () => {
 	return (
-		<section id="about" className="min-h-screen">
+		<section id="about" className="min-h-screen bg-base-100">
 			<br />
 			<br />
 			<h1 className="text-4xl font-bold">About me</h1>
