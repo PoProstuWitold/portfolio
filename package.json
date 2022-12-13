@@ -5,7 +5,8 @@
 	"description": "My personal portfolio website to sumarize most important informations",
 	"homepage": "https://github.com/PoProstuWitold/portfolio",
 	"engines": {
-		"node": ">=18.x"
+		"node": ">=18.x",
+		"pnpm": ">=7.x"
 	},
 	"scripts": {
 		"develop": "gatsby develop",
