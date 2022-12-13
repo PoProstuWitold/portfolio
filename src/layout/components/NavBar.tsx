@@ -1,15 +1,26 @@
-import React, { useEffect } from 'react'
+import { useScroll } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
 import { themeChange } from 'theme-change'
 
 import { themes } from '../../utils/constans'
 
 const Navbar: React.FC = () => {
+	const [Y, setY] = useState<number>(0)
+	const { scrollY } = useScroll()
+
+	scrollY.onChange(y => {
+		if(y > 100) setY(y)
+		else setY(0)
+	})
+
 	useEffect(() => {
 		themeChange(false)
 	}, [])
 
 	return (
-		<nav className="fixed z-50 shadow-2xl bg-base-300 navbar">
+		<nav 
+			className={`fixed z-50 navbar transition ease-in-out delay-[50ms] ${Y > 99 ? 'shadow-2xl bg-base-300' : ''}`}
+		>
 			<div className="navbar-start">
 				<div className="dropdown">
 					<label tabIndex={0} className="btn btn-ghost lg:hidden">
