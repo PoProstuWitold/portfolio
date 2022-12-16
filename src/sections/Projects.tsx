@@ -10,7 +10,7 @@ const Projects: React.FC = () => {
 			<br />
 			<br />
 			<h1 className="text-4xl font-bold">Projects</h1>
-			<div className="flex flex-col justify-start flex-grow mx-10 mt-10 lg:mt-0 lg:mx-20">
+			<div className="flex flex-col justify-start flex-grow mx-5 mt-10 lg:mt-0 lg:mx-20">
 				{projects.map((project, index) => {
 					return (
 						<Project

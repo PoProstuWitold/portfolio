@@ -6,8 +6,8 @@ const Education: React.FC = () => {
 			<br />
 			<br />
 			<h1 className="text-4xl font-bold">Education</h1>
-			<ul className="flex mx-auto my-10 text-2xl">
-				<li className="mx-auto">
+			<ul className="flex mx-5 my-10 text-2xl">
+				<li className="mx-0">
 					<div className="flex flex-col lg:flex-row">
 						<span className="pr-5 italic font-bold">
 							1st October 2022 - now

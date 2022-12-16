@@ -7,7 +7,7 @@ interface SkillProps {
 const Skill: React.FC<SkillProps> = ({ title }) => {
 	return (
 		<>
-			<span className="p-3 m-2 text-base font-bold rounded shadow-2xl bg-primary text-primary-content">
+			<span className="px-3 py-1 m-1 text-base font-bold rounded shadow-2xl bg-primary text-primary-content">
 				{title}
 			</span>
 		</>

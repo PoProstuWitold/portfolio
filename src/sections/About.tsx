@@ -13,22 +13,22 @@ const About: React.FC = () => {
 			<br />
 			<h1 className="text-4xl font-bold">About me</h1>
 			<br />
-			<div className="flex flex-col justify-start lg:mx-20 lg:flex-row">
-				<div className="flex-grow lg:max-w-[50%]">
-					<h2 className="mx-10 text-3xl font-bold text-left">
+			<div className="flex flex-col justify-start mx-6 lg:mx-20 lg:flex-row">
+				<div className="flex-grow lg:max-w-[50%] lg:mr-10">
+					<h2 className="text-3xl font-bold text-left">
 						Short story
 					</h2>
 					<br />
-					<p className="mx-10 text-2xl text-justify">
+					<p className="text-2xl text-justify">
 						I'm Witold Zawada. Self-taught web developer. I started
 						my coding journey in 2020 with C++ in high school. Then
 						I realised I wanna dive deeper into programming and make
 						amazing things. After short time trying different
 						languages and different fields of coding I fell in love
-						with web dev, especially Node.js and TypeScript and that
+						with web dev, especially Node.js and TypeScript and that's
 						why I'm here today.
 					</p>
-					<p className="mx-10 my-5 text-2xl text-justify">
+					<p className="my-5 text-2xl text-justify">
 						Want to see more? Be sure to visit my{' '}
 						<a
 							className="underline"
@@ -39,31 +39,31 @@ const About: React.FC = () => {
 							GitHub
 						</a>
 					</p>
-					<p className="mx-10 my-5 text-2xl text-justify">
+					<p className="my-5 text-2xl text-justify">
 						Besides programming, I also like video games, skiing,
 						history and playing with my pets.
 					</p>
 					<br />
-					<div className="flex mx-10">
+					<div className="flex">
 						<a
 							href="/#contact"
-							className="btn btn-lg btn-outline w-60"
+							className="mx-[1px] btn btn-lg btn-outline w-60"
 						>
 							Contact
 						</a>
 					</div>
 				</div>
-				<div className="flex-grow mt-10 lg:mt-0 lg:max-w-[50%] mx-10">
-					<h2 className="text-3xl font-bold text-left">Skills</h2>
+				<div className="flex-grow mt-10 lg:mt-0 lg:max-w-[50%] mx-0">
+					<h2 className="mx-1 text-3xl font-bold text-left">Skills</h2>
 					<br />
-					<h2 className="text-2xl font-bold text-left">Languages</h2>
+					<h2 className="mx-1 text-2xl font-bold text-left">Languages</h2>
 					<div className="flex flex-wrap">
 						{languages.map((skill, index) => {
 							return <Skill key={index} title={skill} />
 						})}
 					</div>
 					<br />
-					<h2 className="text-2xl font-bold text-left">
+					<h2 className="mx-1 text-2xl font-bold text-left">
 						Frameworks & Libraries
 					</h2>
 					<div className="flex flex-wrap">
@@ -72,7 +72,7 @@ const About: React.FC = () => {
 						})}
 					</div>
 					<br />
-					<h2 className="text-2xl font-bold text-left">
+					<h2 className="mx-1 text-2xl font-bold text-left">
 						Tools & Databases
 					</h2>
 					<div className="flex flex-wrap">
@@ -81,7 +81,7 @@ const About: React.FC = () => {
 						})}
 					</div>
 					<br />
-					<h2 className="text-2xl font-bold text-left">
+					<h2 className="mx-1 text-2xl font-bold text-left">
 						Currently learning
 					</h2>
 					<div className="flex flex-wrap">

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 
 const Contact: React.FC = () => {
@@ -8,62 +9,62 @@ const Contact: React.FC = () => {
 			<h1 className="text-4xl font-bold">Contact me</h1>
 			<br />
 			<div
-				className="w-4/5 mx-auto border-[1px] shadow-2xl rounded-2xl"
+				className="mx-auto lg:shadow-2xl sm:w-full md:w-4/5 lg:rounded-2xl"
 				style={{ borderColor: 'hsl(var(--n)' }}
 			>
 				<div className="p-6 sm:rounded-md">
 					<form>
 						<div className="flex flex-col justify-between mx-auto lg:flex-row">
-							<div className="w-full max-w-lg mb-5 form-control">
+							<div className="w-full mb-5 mr-10 form-control">
 								<label className="label">
 									<span className="label-text">Name</span>
 									<span className="italic label-text-alt">
-										eg. Witold
+										e.g. Witold
 									</span>
 								</label>
 								<input
 									type="text"
-									placeholder="Type here"
-									className="w-full max-w-lg input input-bordered"
+									placeholder="Your name"
+									className="w-full input input-bordered"
 								/>
 							</div>
-							<div className="w-full max-w-lg mb-5 form-control">
+							<div className="w-full mb-5 form-control">
 								<label className="label">
 									<span className="label-text">Email</span>
 									<span className="italic label-text-alt">
-										eg. witold@email.com
+										e.g. witold@email.com
 									</span>
 								</label>
 								<input
 									type="text"
-									placeholder="Type here"
-									className="w-full max-w-lg input input-bordered"
+									placeholder="Your email"
+									className="w-full input input-bordered"
 								/>
 							</div>
 						</div>
-						<div className="mt-5 mb-10 form-control">
+						<div className="mb-5 form-control">
 							<label className="label">
 								<span className="label-text">Title</span>
 								<span className="italic label-text-alt">
-									eg. Hello...
+									e.g. New amazing project..
 								</span>
 							</label>
 							<input
 									type="text"
-									placeholder="Type here"
+									placeholder="Title of your message"
 									className="w-full input input-bordered"
 								/>
 						</div>
 						<div className="mb-10 form-control">
 							<label className="label">
-								<span className="label-text">Message</span>
+								<span className="label-text">Content</span>
 								<span className="italic label-text-alt">
-									eg. Hello...
+									e.g. Hello Witold, I'm writing to ask...
 								</span>
 							</label>
 							<textarea
 								className="h-24 textarea textarea-bordered"
-								placeholder="Write your messages"
+								placeholder="Content of your message"
 							></textarea>
 						</div>
 						<div>

@@ -10,7 +10,7 @@ const Main: React.FC = () => {
 			initial={{ opacity: 0 }}
 			whileInView={{ opacity: 1 }}
 		>
-			<div className="pt-6 lg:pt-20 hero">
+			<div className="pt-4 lg:pt-20 hero">
 				<div className="flex-col justify-between my-auto mt-40 hero-content lg:flex-row">
 					<div>
 						<motion.h1
@@ -30,7 +30,7 @@ const Main: React.FC = () => {
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{
 								duration: 0.3,
-								delay: 0.7,
+								delay: 0.6,
 								ease: [0, 0.71, 0.2, 1.01]
 							}}
 						>
@@ -42,8 +42,8 @@ const Main: React.FC = () => {
 							initial={{ opacity: 0, scale: 0.0 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{
-								duration: 0.2,
-								delay: 1.2,
+								duration: 0.3,
+								delay: 1.0,
 								ease: [0, 0.71, 0.2, 1.01]
 							}}
 						>

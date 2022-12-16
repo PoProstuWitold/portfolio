@@ -16,28 +16,29 @@ const Footer: React.FC<FooterProps> = () => {
 					</div>
 					<div>
 						<span className="mb-1 font-bold uppercase">Social</span>
-						<div className="grid grid-flow-col gap-4">
-							<a
-								href="https://github.com/PoProstuWitold"
-								target="_blank"
-								rel="noreferrer"
-							>
-								<AiFillGithub className="w-10 h-10" />
-							</a>
+						<div className="grid grid-flow-col">
+							<div className="flex gap-5">
+								<a
+									href="https://github.com/PoProstuWitold"
+									target="_blank"
+									rel="noreferrer"
+									className="flex flex-row"
+								>
+									<div className="flex flex-col">
+										<AiFillGithub className="w-10 h-10" /><span className="self-center mx-auto mt-1 text-xs font-semibold">GitHub</span>
+									</div>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div
-					className="my-10 border-t"
-					style={{
-						backgroundColor:
-							'hsl(var(--b3, var(--b2)) / var(--tw-bg-opacity))'
-					}}
+					className="my-10 border-t border-neutral-content"
 				/>
 				<div className="justify-center mx-auto footer">
 					<p>
 						Copyright © {new Date().getFullYear()} Witold Zawada -
-						All right reserved
+						All rights reserved
 					</p>
 				</div>
 			</footer>

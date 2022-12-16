@@ -20,7 +20,7 @@ const Project: React.FC<ProjectProps> = ({
 		<>
 			<div className="flex flex-col my-10 lg:flex-row">
 				<div className="flex flex-col flex-grow lg:max-w-[50%]">
-					<h2 className="mx-auto my-4 text-3xl font-bold">
+					<h2 className="mx-10 my-4 text-3xl font-bold">
 						<a
 							className="underline"
 							target="_blank"
@@ -38,13 +38,13 @@ const Project: React.FC<ProjectProps> = ({
 				</div>
 				<div className="flex-grow lg:max-w-[50%]">
 					<br />
-					<p className="mx-3 text-2xl text-justify">{description}</p>
-					<div className="flex flex-wrap mx-1">
+					<p className="mx-1 text-2xl text-justify">{description}</p>
+					<div className="flex flex-wrap">
 						{skills.map((skill, index) => {
 							return <Skill key={index} title={skill} />
 						})}
 					</div>
-					<div className="flex mx-10"></div>
+					<div className="flex"></div>
 				</div>
 			</div>
 		</>
