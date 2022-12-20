@@ -4,11 +4,11 @@ import React from 'react'
 import Skill from '../components/Skill'
 import { mySkills } from '../utils/constans'
 
-const { tools, libsAndFrameworks, languages, learning } = mySkills
+const { dbsAndDevOps, libsAndFrameworks, languages, learning, others } = mySkills
 
 const About: React.FC = () => {
 	return (
-		<section id="about" className="min-h-screen bg-base-100">
+		<section id="about" className="min-h-screen pb-10 bg-base-100">
 			<br />
 			<br />
 			<h1 className="text-4xl font-bold">About me</h1>
@@ -40,14 +40,16 @@ const About: React.FC = () => {
 						</a>
 					</p>
 					<p className="my-5 text-2xl text-justify">
+						I daily use WSL2 with Arch Linux distro, Beekeeper Studio, Insomnia and Visual Studio Code.
+					</p>
+					<p className="my-5 text-2xl text-justify">
 						Besides programming, I also like video games, skiing,
 						history and playing with my pets.
 					</p>
-					<br />
 					<div className="flex">
 						<a
 							href="/#contact"
-							className="mx-[1px] btn btn-lg btn-outline w-60"
+							className="lg:mx-[1px] btn btn-lg btn-outline w-60 mx-auto"
 						>
 							Contact
 						</a>
@@ -56,40 +58,44 @@ const About: React.FC = () => {
 				<div className="flex-grow mt-10 lg:mt-0 lg:max-w-[50%] mx-0">
 					<h2 className="mx-1 text-3xl font-bold text-left">Skills</h2>
 					<br />
-					<h2 className="mx-1 text-2xl font-bold text-left">Languages</h2>
-					<div className="flex flex-wrap">
+					<h2 className="mx-1 text-2xl font-bold text-left">Languages & Runtimes</h2>
+					<div className="flex flex-wrap mb-4">
 						{languages.map((skill, index) => {
 							return <Skill key={index} title={skill} />
 						})}
 					</div>
-					<br />
 					<h2 className="mx-1 text-2xl font-bold text-left">
 						Frameworks & Libraries
 					</h2>
-					<div className="flex flex-wrap">
+					<div className="flex flex-wrap mb-4">
 						{libsAndFrameworks.map((skill, index) => {
 							return <Skill key={index} title={skill} />
 						})}
 					</div>
-					<br />
 					<h2 className="mx-1 text-2xl font-bold text-left">
-						Tools & Databases
+						Databases & DevOps
 					</h2>
-					<div className="flex flex-wrap">
-						{tools.map((skill, index) => {
+					<div className="flex flex-wrap mb-4">
+						{dbsAndDevOps.map((skill, index) => {
 							return <Skill key={index} title={skill} />
 						})}
 					</div>
-					<br />
+					<h2 className="mx-1 text-2xl font-bold text-left">
+						Others
+					</h2>
+					<div className="flex flex-wrap mb-4">
+						{others.map((skill, index) => {
+							return <Skill key={index} title={skill} />
+						})}
+					</div>
 					<h2 className="mx-1 text-2xl font-bold text-left">
 						Currently learning
 					</h2>
-					<div className="flex flex-wrap">
+					<div className="flex flex-wrap mb-4">
 						{learning.map((skill, index) => {
 							return <Skill key={index} title={skill} />
 						})}
 					</div>
-					<br />
 				</div>
 			</div>
 		</section>

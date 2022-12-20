@@ -27,19 +27,15 @@ export const themes = [
 
 export const mySkills = {
 	languages: ['Node', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3'],
-	tools: [
+	dbsAndDevOps: [
 		'PostgreSQL',
 		'MongoDB',
 		'Redis',
-		'Jest',
 		'Docker',
-		'Beekeeper Studio',
-		'Insomnia',
-		'WSL2',
-		'Visual Studio Code'
 	],
-	libsAndFrameworks: ['Express', 'Nest', 'React', 'Next', 'TailwindCSS'],
-	learning: ['C/C++', 'Rust', 'Python', 'Deno']
+	libsAndFrameworks: ['Express', 'Fastify', 'Nest', 'React', 'Next', 'TailwindCSS'],
+	learning: ['C', 'C++', 'Rust', 'Python', 'Deno', 'Solid.js'],
+	others: ['GraphQL', 'Jest']
 }
 
 export const projects = [
