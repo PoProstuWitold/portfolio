@@ -38,7 +38,7 @@ const Main: React.FC = () => {
 						</motion.p>
 						<motion.a
 							href="/#projects"
-							className="btn btn-primary"
+							className="btn btn-primary btn-lg"
 							initial={{ opacity: 0, scale: 0.0 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{

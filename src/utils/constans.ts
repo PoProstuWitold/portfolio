@@ -90,17 +90,16 @@ export const projects = [
 		repo: 'https://github.com/PoProstuWitold/Lireddit'
 	},
 	{
-		name: 'Liscia',
-		description: `Discord music bot with dashboard`,
+		name: 'Sayuna',
+		description: `Easily extensible and customizable all-in-one Discord bot. Moderation, music & fun!`,
 		skills: [
 			'Node.js',
 			'TypeScript',
 			'Discord.js',
+			'Discordx',
 			'Distube',
-			'Express',
-			'Handlebars',
-			'TailwindCSS'
+			'ESM'
 		],
-		repo: 'https://github.com/PoProstuWitold/Liscia'
+		repo: 'https://github.com/PoProstuWitold/Sayuna'
 	}
 ]
