@@ -41,9 +41,7 @@ export const mySkills = {
 export const projects = [
 	{
 		name: 'nest-next-boilerplate',
-		description: `Boilerplate for NestJS, 
-        NextJS, TypeScript stack with GitHub actions, 
-        social logins, realtime group chats, tests and more`,
+		description: `Boilerplate for Nest.js, Next.js, TypeScript stack. Includes social logins, account verification, password change & recover, real-time chats and more`,
 		skills: [
 			'Node.js',
 			'TypeScript',
