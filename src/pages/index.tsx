@@ -5,7 +5,6 @@ import Main from '../sections/Main'
 import About from '../sections/About'
 import Projects from '../sections/Projects'
 import Contact from '../sections/Contact'
-import Education from '../sections/Education'
 
 const IndexPage: React.FC<PageProps> = () => {
 	return (
@@ -15,7 +14,6 @@ const IndexPage: React.FC<PageProps> = () => {
 				<About />
 				<Projects />
 				<Contact />
-				<Education />
 			</div>
 		</>
 	)

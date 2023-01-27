@@ -8,10 +8,17 @@ const Navbar: React.FC = () => {
 	const [Y, setY] = useState<number>(0)
 	const { scrollY } = useScroll()
 
-	scrollY.onChange(y => {
-		if(y > 100) setY(y)
-		else setY(0)
-	})
+	useEffect(() => {
+		const unsubscribeScroll = scrollY.on('change', (y) => {
+			if(y > 100) setY(y)
+			else setY(0)
+		})
+
+		return () => {
+			unsubscribeScroll()
+		}
+	}, [])
+	
 
 	useEffect(() => {
 		themeChange(false)
@@ -52,9 +59,6 @@ const Navbar: React.FC = () => {
 						<li>
 							<a href="/#contact">CONTACT</a>
 						</li>
-						<li>
-							<a href="/#education">EDUCATION</a>
-						</li>
 					</ul>
 				</div>
 				<a href="/#main" className="text-xl normal-case btn btn-ghost">
@@ -71,9 +75,6 @@ const Navbar: React.FC = () => {
 					</li>
 					<li>
 						<a href="/#contact">CONTACT</a>
-					</li>
-					<li>
-						<a href="/#education">EDUCATION</a>
 					</li>
 				</ul>
 			</div>
