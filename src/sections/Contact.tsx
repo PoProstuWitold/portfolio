@@ -12,7 +12,7 @@ const Contact: React.FC = () => {
 			<br />
 			<div className="flex flex-col lg:flex-row lg:mx-14">
 			<div className="m-5 text-left lg:w-1/3">
-				<h3 className="mb-4 text-4xl font-semibold">Get in touch</h3>
+				<h2 className="mb-4 text-4xl font-semibold">Get in touch</h2>
 				<p className="text-2xl text-justify">
 					If you have any questions feel free to contact me using informations below or contact form
 				</p>
