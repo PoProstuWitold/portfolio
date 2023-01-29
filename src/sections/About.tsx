@@ -11,7 +11,7 @@ const About: React.FC = () => {
 		<section id="about" className="min-h-screen pb-10 bg-base-100">
 			<br />
 			<br />
-			<h1 className="text-4xl font-bold">About me</h1>
+			<h1 className="text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary">About me</h1>
 			<br />
 			<div className="flex flex-col justify-start mx-6 lg:mx-20 lg:flex-row">
 				<div className="flex-grow lg:max-w-[50%] lg:mr-10">

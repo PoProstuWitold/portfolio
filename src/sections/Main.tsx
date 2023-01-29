@@ -34,7 +34,7 @@ const Main: React.FC = () => {
 								ease: [0, 0.71, 0.2, 1.01]
 							}}
 						>
-							Beginner TypeScript developer
+							TypeScript developer
 						</motion.p>
 						<motion.a
 							href="/#projects"

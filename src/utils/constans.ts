@@ -34,7 +34,7 @@ export const mySkills = {
 		'Docker',
 	],
 	libsAndFrameworks: ['Express', 'Fastify', 'Nest', 'React', 'Next', 'TailwindCSS'],
-	learning: ['C', 'C++', 'Rust', 'Python', 'Deno', 'Solid.js'],
+	learning: ['C', 'Rust', 'Python'],
 	others: ['GraphQL', 'Jest']
 }
 

@@ -9,8 +9,13 @@ const Projects: React.FC = () => {
 		<section id="projects" className="min-h-screen bg-base-200">
 			<br />
 			<br />
-			<h1 className="text-4xl font-bold">Projects</h1>
-			<div className="flex flex-col justify-start flex-grow mx-5 mt-10 lg:mt-0 lg:mx-20">
+			<h1 className="text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary">Projects</h1>
+			<p className="lg:mx-[5rem] text-justify my-5 mx-6">
+				There are some of my projects. I created each of them with passion and certain goals behind each of them. 
+				In each of them I tried to understand the technologies behind them by reading documentation, articles, 
+				watching videos or doing courses.
+			</p>
+			<div className="flex flex-col justify-start flex-grow mx-5 my-10 lg:mt-0 lg:mx-20">
 				{projects.map((project, index) => {
 					return (
 						<Project

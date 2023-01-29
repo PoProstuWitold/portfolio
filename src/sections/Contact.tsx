@@ -1,15 +1,52 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
+import { AiOutlineMail } from 'react-icons/ai'
+import { RxDiscordLogo } from 'react-icons/rx'
 
 const Contact: React.FC = () => {
 	return (
 		<section id="contact" className="min-h-screen pb-20 bg-base-100">
 			<br />
 			<br />
-			<h1 className="text-4xl font-bold">Contact me</h1>
+			<h1 className="text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary">Contact me</h1>
 			<br />
+			<div className="flex flex-col lg:flex-row lg:mx-14">
+			<div className="m-5 text-left lg:w-1/3">
+				<h3 className="mb-4 text-4xl font-semibold">Get in touch</h3>
+				<p className="text-2xl text-justify">
+					If you have any questions feel free to contact me using informations below or contact form
+				</p>
+				<div className="flex flex-col my-10 text-2xl">
+					<div className="flex flex-row items-center font-semibold">
+						<RxDiscordLogo /><span className="ml-2">Want to call me?</span>
+					</div>
+					<span>
+						<a
+							className="underline"
+							target="_blank"
+							rel="noreferrer"
+							href={'https://discord.com/'}
+						>
+							Shedule call with me
+						</a>
+					</span>
+					<div className="flex flex-row items-center mt-5 font-semibold">
+						<AiOutlineMail /><span className="ml-2">Want to mail me?</span>
+					</div>
+					<span>
+						<a
+							className="underline"
+							target="_blank"
+							rel="noreferrer"
+							href={'mailto:witek@dev.com'}
+						>
+							witek@dev.com
+						</a>
+					</span>
+				</div>
+			</div>
 			<div
-				className="mx-auto lg:shadow-2xl sm:w-full md:w-4/5 lg:rounded-2xl"
+				className="m-5 lg:w-2/3 rounded-2xl bg-base-200 border-primary"
 				style={{ borderColor: 'hsl(var(--n)' }}
 			>
 				<div className="p-6 sm:rounded-md">
@@ -77,6 +114,7 @@ const Contact: React.FC = () => {
 						</div>
 					</form>
 				</div>
+			</div>
 			</div>
 		</section>
 	)
