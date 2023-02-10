@@ -15,7 +15,7 @@ const Projects: React.FC = () => {
 				In each of them I tried to understand the technologies behind them by reading documentation, articles, 
 				watching videos or doing courses.
 			</p>
-			<div className="flex flex-col justify-start flex-grow mx-5 my-10 lg:mt-0 lg:mx-20">
+			<div className="flex flex-col flex-wrap justify-around mx-5 my-10 lg:flex-row lg:mt-0 lg:mx-20">
 				{projects.map((project, index) => {
 					return (
 						<Project

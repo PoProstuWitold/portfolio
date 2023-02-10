@@ -41,7 +41,7 @@ export const mySkills = {
 export const projects = [
 	{
 		name: 'nest-next-boilerplate',
-		description: `Boilerplate for Nest.js, Next.js, TypeScript stack. Includes social logins, account verification, password change & recover, real-time chats and more`,
+		description: `Boilerplate for Nest.js, Next.js, TypeScript stack. Includes social logins, account verification, password change & recover, real-time chats and more.`,
 		skills: [
 			'Node.js',
 			'TypeScript',
@@ -57,8 +57,8 @@ export const projects = [
 	},
 	{
 		name: 'reddit-clone',
-		description: `Fullstack Nest, Next Reddit-like app with API for auth, subredits, commenting, 
-        posting and voting for posts`,
+		description: `Fullstack Nest, Next Reddit-like app with RESTful API for auth, subredits, commenting, 
+        posting and voting for posts.`,
 		skills: [
 			'Node.js',
 			'TypeScript',
@@ -73,23 +73,23 @@ export const projects = [
 		repo: 'https://github.com/PoProstuWitold/reddit-clone'
 	},
 	{
-		name: 'Lireddit',
-		description: `Fullstack TypeScript training project w/GraphQL`,
+		name: 'Homster',
+		description: `Fullstack game library app written in GraphQL that let you buy and browse games and engage in many communities in similar way like Steam.`,
 		skills: [
 			'Node.js',
 			'TypeScript',
-			'Express',
+			'Nest.js (Fastify)',
+			'PostgreSQL',
+			'Next.js',
 			'GraphQL',
-			'Redis',
-			'Nodemailer',
-			'React',
-			'ChakraUI'
+			'TailwindCSS',
+			'Strapi',
 		],
-		repo: 'https://github.com/PoProstuWitold/Lireddit'
+		repo: 'https://github.com/PoProstuWitold/homster'
 	},
 	{
 		name: 'Sayuna',
-		description: `Easily extensible and customizable all-in-one Discord bot. Moderation, music & fun!`,
+		description: `Easily extensible and customizable all-in-one Discord bot. Moderation, music & fun! Built around dependency injection pattern.`,
 		skills: [
 			'Node.js',
 			'TypeScript',
