@@ -1,28 +1,26 @@
 import { useScroll } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
-import { themeChange } from 'theme-change'
 
-import { themes } from '../../utils/constans'
+import { themes } from '../utils/constans'
 
-const Navbar: React.FC = () => {
+import { useTheme } from 'next-themes'
+export const Navbar: React.FC = () => {
+	const [mounted, setMounted] = useState<boolean>(false)
 	const [Y, setY] = useState<number>(0)
 	const { scrollY } = useScroll()
+	const { theme, setTheme } = useTheme()
 
 	useEffect(() => {
 		const unsubscribeScroll = scrollY.on('change', (y) => {
 			if(y > 100) setY(y)
 			else setY(0)
 		})
-
+		setMounted(true)
 		return () => {
 			unsubscribeScroll()
 		}
 	}, [])
-	
 
-	useEffect(() => {
-		themeChange(false)
-	}, [])
 
 	return (
 		<nav 
@@ -79,9 +77,11 @@ const Navbar: React.FC = () => {
 				</ul>
 			</div>
 			<div className="navbar-end">
+				{mounted &&
 				<select
-					data-choose-theme
+					value={theme}
 					className="max-w-xs select select-ghost"
+					onChange={(e): void => setTheme(e.currentTarget.value)}
 				>
 					{themes.map((theme, index) => (
 						<option key={index} value={theme.name.toLowerCase()}>
@@ -89,9 +89,9 @@ const Navbar: React.FC = () => {
 						</option>
 					))}
 				</select>
+
+				}
 			</div>
 		</nav>
 	)
 }
-
-export default Navbar

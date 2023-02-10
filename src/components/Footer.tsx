@@ -6,7 +6,7 @@ interface FooterProps {
 	children?: React.ReactNode
 }
 
-const Footer: React.FC<FooterProps> = () => {
+export const Footer: React.FC<FooterProps> = () => {
 	return (
 		<>
 			<footer className="p-10 bg-neutral text-neutral-content">
@@ -70,5 +70,3 @@ const Footer: React.FC<FooterProps> = () => {
 		</>
 	)
 }
-
-export default Footer

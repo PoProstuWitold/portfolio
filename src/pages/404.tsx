@@ -1,21 +1,23 @@
 import React from 'react'
-import { HeadFC, PageProps } from 'gatsby'
+import Link from 'next/link'
+import { SEO } from '@/components/Seo'
 
-const NotFoundPage: React.FC<PageProps> = () => {
+const NotFoundPage: React.FC = () => {
 	return (
 		<>
+			<SEO title="Not found" description="Page doesn't exist"/>
 			<main className="flex flex-col items-center justify-center w-full h-screen">
 				<h1 className="font-extrabold tracking-widest text-9xl">404</h1>
 				<div className="absolute px-2 text-sm rounded bg-error rotate-12">
 					Page Not Found
 				</div>
 				<button className="mt-5">
-					<a className="relative inline-block text-sm font-medium text-error group active:text-error-500 focus:outline-none focus:ring">
+					<span className="relative inline-block text-sm font-medium text-error group active:text-error-500 focus:outline-none focus:ring">
 						<span className="absolute inset-0 transition-transform translate-x-0.5 translate-y-0.5 group-hover:translate-y-0 group-hover:translate-x-0" />
 						<span className="relative block px-8 py-3 border border-current">
-							<a href="/">Go home</a>
+							<Link href="/">Go home</Link>
 						</span>
-					</a>
+					</span>
 				</button>
 			</main>
 		</>
@@ -23,10 +25,3 @@ const NotFoundPage: React.FC<PageProps> = () => {
 }
 
 export default NotFoundPage
-
-export const Head: HeadFC = () => (
-	<>
-		<title>Not found</title>
-		<meta name="description" content="Page doesn't exist" />
-	</>
-)

@@ -1,4 +1,4 @@
-.cache
+.next
 node_modules
 public
 pnpm-lock.yaml

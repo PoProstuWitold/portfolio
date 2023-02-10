@@ -1,35 +1,24 @@
 {
 	"compilerOptions": {
-		"target": "esnext",
-		"lib": ["dom", "esnext"],
-		"jsx": "react-jsx",
-		"module": "Node16",
-		"moduleResolution": "node",
-		"rootDir": ".",
-		"outDir": "build",
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"strict": true,
+		"target": "es5",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
 		"skipLibCheck": true,
-		"allowSyntheticDefaultImports": true,
-		"importHelpers": true,
-		"alwaysStrict": true,
-		"sourceMap": true,
-		"noFallthroughCasesInSwitch": true,
-		"noImplicitReturns": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"noImplicitAny": false,
-		"noImplicitThis": false,
-		"strictNullChecks": false
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"incremental": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		}
 	},
-	"include": [
-		"src/**/*",
-		"gatsby-node.ts",
-		"gatsby-config.ts",
-		"gatsby-browser.ts",
-		"gatsby-ssr.ts",
-		"plugins/**/*",
-		"__tests__/**/*"
-	]
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"exclude": ["node_modules"]
 }

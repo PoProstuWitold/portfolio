@@ -1,9 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-import ScrollProgress from './components/ScrollProgress'
-import Navbar from './components/NavBar'
-import Footer from './components/Footer'
+import ScrollProgress from '../components/ScrollProgress'
+import Navbar from '../components/NavBar'
+import Footer from '../components/Footer'
 
 interface MainLayoutProps {
 	children: React.ReactNode

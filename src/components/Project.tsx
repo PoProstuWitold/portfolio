@@ -1,5 +1,4 @@
 import React from 'react'
-import { StaticImage } from 'gatsby-plugin-image'
 
 import Skill from './Skill'
 
@@ -20,7 +19,7 @@ const Project: React.FC<ProjectProps> = ({
 		<>
 			<div className="flex flex-col my-10 lg:flex-row">
 				<div className="flex flex-col flex-grow lg:max-w-[50%]">
-					<h2 className="mx-10 my-4 text-3xl font-bold">
+					<h2 className="mx-auto my-4 text-3xl font-bold">
 						<a
 							className="underline"
 							target="_blank"
@@ -30,11 +29,6 @@ const Project: React.FC<ProjectProps> = ({
 							{name}
 						</a>
 					</h2>
-					<StaticImage
-						src="../images/Node.js_logo.svg"
-						alt="node"
-						className="mx-auto rounded-xl w-72"
-					/>
 				</div>
 				<div className="flex-grow lg:max-w-[50%]">
 					<br />

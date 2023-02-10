@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion, useScroll } from 'framer-motion'
 
-const ScrollProgress: React.FC = () => {
+export const ScrollProgress: React.FC = () => {
 	const { scrollYProgress } = useScroll()
 
 	return (
@@ -11,5 +11,3 @@ const ScrollProgress: React.FC = () => {
 		/>
 	)
 }
-
-export default ScrollProgress

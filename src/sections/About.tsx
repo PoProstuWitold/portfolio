@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 
-import Skill from '../components/Skill'
-import { mySkills } from '../utils/constans'
+import Skill from '@/components/Skill'
+import { mySkills } from '@/utils/constans'
 
 const { dbsAndDevOps, libsAndFrameworks, languages, learning, others } = mySkills
 
@@ -21,9 +21,8 @@ const About: React.FC = () => {
 					<br />
 					<p className="text-2xl text-justify">
 						I'm Witold Zawada. Self-taught web developer. I started
-						my coding journey in 2020 with C++ in high school. Then
-						I realised I wanna dive deeper into programming and make
-						amazing things. After short time trying different
+						my coding journey in 2020 in high school. I realised I wanna dive deeper into it. 
+						After short time trying different
 						languages and different fields of coding I fell in love
 						with web dev, especially Node.js and TypeScript and that's
 						why I'm here today.
@@ -38,9 +37,6 @@ const About: React.FC = () => {
 						>
 							GitHub
 						</a>
-					</p>
-					<p className="my-5 text-2xl text-justify">
-						I daily use WSL2 with Arch Linux distro, Beekeeper Studio, Insomnia and Visual Studio Code.
 					</p>
 					<p className="my-5 text-2xl text-justify">
 						Besides programming, I also like video games, skiing,

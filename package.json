@@ -9,12 +9,10 @@
 		"pnpm": ">=7.x"
 	},
 	"scripts": {
-		"develop": "gatsby develop",
-		"start": "gatsby develop",
-		"build": "gatsby build",
-		"serve": "gatsby serve",
-		"clean": "gatsby clean",
-		"lint": "eslint . --ext=.ts,.tsx",
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
 		"prettier": "prettier --config .prettierrc --write .",
 		"test": "jest",
 		"test:watch": "jest --watch"
@@ -57,18 +55,11 @@
 		"classnames": "^2.3.2",
 		"daisyui": "^2.50.0",
 		"framer-motion": "^9.0.2",
-		"gatsby": "^5.6.0",
-		"gatsby-plugin-html-attributes": "^1.0.5",
-		"gatsby-plugin-image": "^3.6.0",
-		"gatsby-plugin-manifest": "^5.6.0",
-		"gatsby-plugin-postcss": "^6.6.0",
-		"gatsby-plugin-sharp": "^5.6.0",
-		"gatsby-source-filesystem": "^5.6.0",
-		"gatsby-transformer-sharp": "^5.6.0",
+		"next": "^13.1.6",
+		"next-themes": "^0.2.1",
 		"postcss": "^8.4.21",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"react-icons": "^4.7.1",
-		"theme-change": "^2.3.0"
+		"react-icons": "^4.7.1"
 	}
 }

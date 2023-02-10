@@ -1,32 +1,21 @@
 import React from 'react'
-import type { HeadFC, PageProps } from 'gatsby'
 
-import Main from '../sections/Main'
-import About from '../sections/About'
-import Projects from '../sections/Projects'
-import Contact from '../sections/Contact'
+import Main from '@/sections/Main'
+import About from '@/sections/About'
+import Projects from '@/sections/Projects'
+import Contact from '@/sections/Contact'
+import { SEO } from '@/components/Seo'
 
-const IndexPage: React.FC<PageProps> = () => {
+const IndexPage: React.FC = () => {
 	return (
 		<>
-			<div className="text-3xl text-center">
-				<Main />
-				<About />
-				<Projects />
-				<Contact />
-			</div>
+			<SEO title="Witold Zawada" description="Developer portfolio Website of Witold Zawada (PoProstuWitold)"/>
+			<Main />
+			<About />
+			<Projects />
+			<Contact />
 		</>
 	)
 }
 
 export default IndexPage
-
-export const Head: HeadFC = () => (
-	<>
-		<title>Witold Zawada</title>
-		<meta
-			name="description"
-			content="Hello, I'm Witold Zawada. Beginner TypeScript developer"
-		/>
-	</>
-)
