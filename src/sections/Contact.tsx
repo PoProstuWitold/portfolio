@@ -5,7 +5,7 @@ import { RxDiscordLogo } from 'react-icons/rx'
 
 const Contact: React.FC = () => {
 	return (
-		<section id="contact" className="min-h-screen pb-20 bg-base-100">
+		<section id="contact" className="min-h-screen pb-20 cursor-default bg-base-100">
 			<br />
 			<br />
 			<h1 className="text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary">Contact me</h1>
@@ -104,7 +104,7 @@ const Contact: React.FC = () => {
 								placeholder="Content of your message"
 							></textarea>
 						</div>
-						<div>
+						<div className="flex justify-center">
 							<button
 								type="submit"
 								className="btn btn-lg btn-outline w-60"

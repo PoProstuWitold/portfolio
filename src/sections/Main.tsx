@@ -6,7 +6,7 @@ const Main: React.FC = () => {
 	return (
 		<motion.section
 			id="main"
-			className="min-h-screen text-3xl text-center bg-base-200"
+			className="min-h-screen text-3xl text-center cursor-default bg-base-200"
 			initial={{ opacity: 0 }}
 			whileInView={{ opacity: 1 }}
 		>
