@@ -8,7 +8,7 @@ const { dbsAndDevOps, libsAndFrameworks, languages, learning, others } = mySkill
 
 const About: React.FC = () => {
 	return (
-		<section id="about" className="min-h-screen pb-10 cursor-default bg-base-100">
+		<section id="about" className="min-h-screen py-10 cursor-default bg-base-100">
 			<br />
 			<br />
 			<h1 className="text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary">About me</h1>
