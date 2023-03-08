@@ -38,9 +38,9 @@ const Contact: React.FC = () => {
 							className="underline"
 							target="_blank"
 							rel="noreferrer"
-							href={'mailto:witek@dev.com'}
+							href={'mailto:witold@dev.com'}
 						>
-							witek@dev.com
+							witold@dev.com
 						</a>
 					</span>
 				</div>
@@ -108,8 +108,9 @@ const Contact: React.FC = () => {
 							<button
 								type="submit"
 								className="btn btn-lg btn-outline w-60"
+								disabled
 							>
-								Contact
+								Work in progress
 							</button>
 						</div>
 					</form>

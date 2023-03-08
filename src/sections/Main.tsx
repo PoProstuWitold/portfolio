@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import { motion } from 'framer-motion'
+import { BsArrowDownCircleFill } from 'react-icons/bs'
 
 const Main: React.FC = () => {
 	return (
@@ -37,8 +38,8 @@ const Main: React.FC = () => {
 							TypeScript developer
 						</motion.p>
 						<motion.a
+							className="flex items-center self-center justify-center text-center hover:cursor-pointer"
 							href="/#projects"
-							className="btn btn-primary btn-lg"
 							initial={{ opacity: 0, scale: 0.0 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{
@@ -47,7 +48,12 @@ const Main: React.FC = () => {
 								ease: [0, 0.71, 0.2, 1.01]
 							}}
 						>
-							Check projects
+							<motion.span
+								animate={{ y: 10 }}
+								transition={{ delay: 1.5, duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+							>
+								<BsArrowDownCircleFill className="w-14 h-14 text-secondary"/>
+							</motion.span>
 						</motion.a>
 					</div>
 				</div>

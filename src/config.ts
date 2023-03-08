@@ -11,7 +11,10 @@ export default {
             link: 'https://github.com/PoProstuWitold',
             title: 'PoProstuWitold'
         },
-        linkedin: 'TO DO',
+        linkedin: {
+            link: 'https://www.linkedin.com/in/witold-zawada/',
+            title: 'Witold Zawada'
+        },
         discord: 'TO DO'
     },
 }

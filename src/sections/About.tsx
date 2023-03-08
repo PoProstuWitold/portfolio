@@ -27,7 +27,7 @@ const About: React.FC = () => {
 						with web dev, especially Node.js and TypeScript and that's
 						why I'm here today.
 					</p>
-					<p className="my-5 text-2xl text-justify">
+					<p className="flex gap-2 my-5 text-2xl text-justify">
 						Want to see more? Be sure to visit my{' '}
 						<a
 							className="underline"
@@ -36,6 +36,15 @@ const About: React.FC = () => {
 							rel="noreferrer"
 						>
 							GitHub
+						</a>
+						<span>&</span>
+						<a
+							className="underline"
+							href="https://www.linkedin.com/in/witold-zawada/"
+							target="_blank"
+							rel="noreferrer"
+						>
+							Linkedin
 						</a>
 					</p>
 					<p className="my-5 text-2xl text-justify">
@@ -54,44 +63,54 @@ const About: React.FC = () => {
 				<div className="flex-grow mt-10 lg:mt-0 lg:max-w-[50%] mx-0">
 					<h2 className="mx-1 text-3xl font-bold text-left">Skills</h2>
 					<br />
-					<h2 className="mx-1 text-2xl font-bold text-left">Languages & Runtimes</h2>
-					<div className="flex flex-wrap mb-4">
-						{languages.map((skill, index) => {
-							return <Skill key={index} title={skill} />
-						})}
-					</div>
-					<h2 className="mx-1 text-2xl font-bold text-left">
-						Frameworks & Libraries
-					</h2>
-					<div className="flex flex-wrap mb-4">
-						{libsAndFrameworks.map((skill, index) => {
-							return <Skill key={index} title={skill} />
-						})}
-					</div>
-					<h2 className="mx-1 text-2xl font-bold text-left">
-						Databases & DevOps
-					</h2>
-					<div className="flex flex-wrap mb-4">
-						{dbsAndDevOps.map((skill, index) => {
-							return <Skill key={index} title={skill} />
-						})}
-					</div>
-					<h2 className="mx-1 text-2xl font-bold text-left">
-						Others
-					</h2>
-					<div className="flex flex-wrap mb-4">
-						{others.map((skill, index) => {
-							return <Skill key={index} title={skill} />
-						})}
-					</div>
-					<h2 className="mx-1 text-2xl font-bold text-left">
-						Currently learning
-					</h2>
-					<div className="flex flex-wrap mb-4">
-						{learning.map((skill, index) => {
-							return <Skill key={index} title={skill} />
-						})}
-					</div>
+					{languages && languages.length > 0 && <>
+						<h2 className="mx-1 text-2xl font-bold text-left">Languages & Runtimes</h2>
+						<div className="flex flex-wrap mb-4">
+							{languages.map((skill, index) => {
+								return <Skill key={index} title={skill} />
+							})}
+						</div>
+					</>}
+					{libsAndFrameworks && libsAndFrameworks.length > 0 && <>
+						<h2 className="mx-1 text-2xl font-bold text-left">
+							Frameworks & Libraries
+						</h2>
+						<div className="flex flex-wrap mb-4">
+							{libsAndFrameworks.map((skill, index) => {
+								return <Skill key={index} title={skill} />
+							})}
+						</div>
+					</>}
+					{dbsAndDevOps && dbsAndDevOps.length > 0 && <>
+						<h2 className="mx-1 text-2xl font-bold text-left">
+							Databases & DevOps
+						</h2>
+						<div className="flex flex-wrap mb-4">
+							{dbsAndDevOps.map((skill, index) => {
+								return <Skill key={index} title={skill} />
+							})}
+						</div>
+					</>}
+					{others && others.length > 0 && <>
+						<h2 className="mx-1 text-2xl font-bold text-left">
+							Others
+						</h2>
+						<div className="flex flex-wrap mb-4">
+							{others.map((skill, index) => {
+								return <Skill key={index} title={skill} />
+							})}
+						</div>
+					</>}
+					{learning && learning.length > 0 && <>
+						<h2 className="mx-1 text-2xl font-bold text-left">
+							Currently learning
+						</h2>
+						<div className="flex flex-wrap mb-4">
+							{learning.map((skill, index) => {
+								return <Skill key={index} title={skill} />
+							})}
+						</div>
+					</>}
 				</div>
 			</div>
 		</section>

@@ -17,7 +17,7 @@ const Project: React.FC<ProjectProps> = ({
 }) => {
 	return (
 		<>
-			<div className="flex flex-col my-10 bg-base-300 p-6 lg:w-[40%] rounded-2xl">
+			<div className="flex flex-col my-10 bg-base-300 p-6 lg:w-[40%] rounded-2xl hover:shadow-2xl hover:cursor-pointer transition-all">
 				<div className="flex flex-col">
 					<h2 className="mx-auto my-4 text-3xl font-bold">
 						<a

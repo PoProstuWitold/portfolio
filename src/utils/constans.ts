@@ -1,5 +1,8 @@
 export const themes = [
 	{
+		name: 'System'
+	},
+	{
 		name: 'Light'
 	},
 	{
@@ -26,7 +29,7 @@ export const themes = [
 ]
 
 export const mySkills = {
-	languages: ['Node', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3'],
+	languages: ['Node', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'C', 'Python'],
 	dbsAndDevOps: [
 		'PostgreSQL',
 		'MongoDB',
@@ -34,7 +37,7 @@ export const mySkills = {
 		'Docker',
 	],
 	libsAndFrameworks: ['Express', 'Fastify', 'Nest', 'React', 'Next', 'TailwindCSS'],
-	learning: ['C', 'Rust', 'Python'],
+	learning: [],
 	others: ['GraphQL', 'Jest']
 }
 
@@ -83,7 +86,7 @@ export const projects = [
 			'Next.js',
 			'GraphQL',
 			'TailwindCSS',
-			'Strapi',
+			'Stripe',
 		],
 		repo: 'https://github.com/PoProstuWitold/homster'
 	},
