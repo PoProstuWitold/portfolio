@@ -27,8 +27,8 @@ const About: React.FC = () => {
 						with web dev, especially Node.js and TypeScript and that's
 						why I'm here today.
 					</p>
-					<p className="flex gap-2 my-5 text-2xl text-justify">
-						Want to see more? Be sure to visit my{' '}
+					<p className="gap-2 my-5 text-2xl text-justify">
+						Want to see more? Be sure to visit my{" "}
 						<a
 							className="underline"
 							href="https://github.com/PoProstuWitold"
@@ -37,7 +37,7 @@ const About: React.FC = () => {
 						>
 							GitHub
 						</a>
-						<span>&</span>
+						<span> & </span>
 						<a
 							className="underline"
 							href="https://www.linkedin.com/in/witold-zawada/"
