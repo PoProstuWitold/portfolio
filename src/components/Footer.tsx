@@ -64,14 +64,14 @@ export const Footer: React.FC<FooterProps> = () => {
 					<p>
 						Copyright © {new Date().getFullYear()} Witold Zawada -
 						All rights reserved.
-						Page source code is available 
+						Check the website 
 						<a
 							href="https://github.com/PoProstuWitold/portfolio"
 							target="_blank"
 							rel="noreferrer"
 							className="mx-1 link"
 						>
-							here
+							source code
 						</a>
 					</p>
 				</div>

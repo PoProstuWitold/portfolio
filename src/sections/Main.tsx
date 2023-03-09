@@ -40,17 +40,18 @@ const Main: React.FC = () => {
 						<motion.a
 							className="flex items-center self-center justify-center text-center hover:cursor-pointer"
 							href="/#projects"
+							title="scroll to projects"
 							initial={{ opacity: 0, scale: 0.0 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{
 								duration: 0.3,
-								delay: 1.0,
+								delay: 0.9,
 								ease: [0, 0.71, 0.2, 1.01]
 							}}
 						>
 							<motion.span
 								animate={{ y: 10 }}
-								transition={{ delay: 1.5, duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+								transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
 							>
 								<BsArrowDownCircleFill className="w-14 h-14 text-secondary"/>
 							</motion.span>
