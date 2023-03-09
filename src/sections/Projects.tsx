@@ -11,9 +11,9 @@ const Projects: React.FC = () => {
 			<br />
 			<h1 className="text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary">Projects</h1>
 			<p className="lg:mx-[5rem] text-justify my-5 mx-6">
-				There are some of my projects. I created each of them with passion and certain goals behind each of them. 
-				In each of them I tried to understand the technologies behind them by reading documentation, articles, 
-				watching videos or doing courses.
+				Below are some of my projects that I have developed with great fervor and motivation. 
+				With every endeavor, I have strived to gain a comprehensive understanding of the underlying 
+				technologies by thoroughly researching documentation, articles, videos, and engaging in various courses.
 			</p>
 			<div className="flex flex-col flex-wrap justify-around mx-5 my-10 lg:flex-row lg:mt-0 lg:mx-20">
 				{projects.map((project, index) => {
