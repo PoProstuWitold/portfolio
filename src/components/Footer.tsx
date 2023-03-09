@@ -60,10 +60,19 @@ export const Footer: React.FC<FooterProps> = () => {
 				<div
 					className="my-10 border-t border-neutral-content"
 				/>
-				<div className="justify-center mx-auto footer">
+				<div className="justify-center mx-auto md:text-center">
 					<p>
 						Copyright © {new Date().getFullYear()} Witold Zawada -
-						All rights reserved
+						All rights reserved.
+						Page source code is available 
+						<a
+							href="https://github.com/PoProstuWitold/portfolio"
+							target="_blank"
+							rel="noreferrer"
+							className="mx-1 link"
+						>
+							here
+						</a>
 					</p>
 				</div>
 			</footer>

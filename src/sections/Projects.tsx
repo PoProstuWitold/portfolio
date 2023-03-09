@@ -20,10 +20,7 @@ const Projects: React.FC = () => {
 					return (
 						<Project
 							key={index}
-							name={project.name}
-							description={project.description}
-							repo={project.repo}
-							skills={project.skills}
+							project={project}
 						/>
 					)
 				})}

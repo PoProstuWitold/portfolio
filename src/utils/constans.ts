@@ -45,6 +45,7 @@ export const projects = [
 	{
 		name: 'nest-next-boilerplate',
 		description: `Boilerplate for Nest.js, Next.js, TypeScript stack. Includes social logins, account verification, password change & recover, real-time chats and more.`,
+		application: 'Fullstack REST app',
 		skills: [
 			'Node.js',
 			'TypeScript',
@@ -62,6 +63,7 @@ export const projects = [
 		name: 'reddit-clone',
 		description: `Fullstack Nest, Next Reddit-like app with RESTful API for auth, subredits, commenting, 
         posting and voting for posts.`,
+		application: 'Fullstack REST app',
 		skills: [
 			'Node.js',
 			'TypeScript',
@@ -78,6 +80,7 @@ export const projects = [
 	{
 		name: 'Homster',
 		description: `Fullstack game library app written in GraphQL that let you buy and browse games and engage in many communities in similar way like Steam.`,
+		application: 'Fullstack GraphQL app',
 		skills: [
 			'Node.js',
 			'TypeScript',
@@ -93,6 +96,7 @@ export const projects = [
 	{
 		name: 'Sayuna',
 		description: `Easily extensible and customizable all-in-one Discord bot. Moderation, music & fun! Built around dependency injection pattern.`,
+		application: 'Discord bot',
 		skills: [
 			'Node.js',
 			'TypeScript',

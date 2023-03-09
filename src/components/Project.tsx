@@ -3,38 +3,38 @@ import React from 'react'
 import Skill from './Skill'
 
 interface ProjectProps {
-	name: string
-	description: string
-	repo: string
-	skills: Array<string>
+	project: {
+		name: string
+		description: string
+		application: string
+		repo: string
+		skills: Array<string>
+	}
 }
 
 const Project: React.FC<ProjectProps> = ({
-	name,
-	description,
-	repo,
-	skills
+	project
 }) => {
 	return (
 		<>
 			<div className="flex flex-col my-10 bg-base-300 p-6 lg:w-[40%] rounded-2xl hover:shadow-2xl hover:cursor-pointer transition-all">
 				<div className="flex flex-col">
-					<h2 className="mx-auto my-4 text-3xl font-bold">
+					<h2 className="mx-auto my-3 text-3xl font-bold">
 						<a
 							className="underline"
 							target="_blank"
 							rel="noreferrer"
-							href={repo}
+							href={project.repo}
 						>
-							{name}
+							{project.name}
 						</a>
 					</h2>
+					<span className="pl-2 mx-1 my-3 font-mono font-bold border-l-4 text-secondary border-secondary">{project.application}</span>
 				</div>
 				<div>
-					<br />
-					<p className="mx-1 text-xl text-justify">{description}</p>
+					<p className="mx-1 my-3 text-xl text-justify">{project.description}</p>
 					<div className="flex flex-wrap">
-						{skills.map((skill, index) => {
+						{project.skills.map((skill, index) => {
 							return <Skill key={index} title={skill} />
 						})}
 					</div>
