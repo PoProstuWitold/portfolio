@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { BsArrowDownCircleFill } from 'react-icons/bs'
 
 const Main: React.FC = () => {
+	  
 	return (
 		<motion.section
 			id="main"
@@ -15,7 +16,7 @@ const Main: React.FC = () => {
 				<div className="flex-col justify-between my-auto mt-40 hero-content lg:flex-row">
 					<div>
 						<motion.h1
-							className="text-5xl font-bold text-primary"
+							className="text-5xl font-bold text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text"
 							initial={{ opacity: 0, scale: 0.2 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{
@@ -26,7 +27,7 @@ const Main: React.FC = () => {
 							Hello, I'm Witold Zawada
 						</motion.h1>
 						<motion.p
-							className="py-6 mb-10"
+							className="py-6 mb-10 font-semibold"
 							initial={{ opacity: 0, scale: 0.2 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{
@@ -49,12 +50,11 @@ const Main: React.FC = () => {
 								ease: [0, 0.71, 0.2, 1.01]
 							}}
 						>
-							<motion.span
-								animate={{ y: 10 }}
-								transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+							<span
+								className="animate-bounce"
 							>
 								<BsArrowDownCircleFill className="w-14 h-14 text-secondary"/>
-							</motion.span>
+							</span>
 						</motion.a>
 					</div>
 				</div>
