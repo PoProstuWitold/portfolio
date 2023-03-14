@@ -26,6 +26,21 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
 						description: 'Developer portfolio Website of Witold Zawada (PoProstuWitold)',
 						siteName: 'Witold Zawada Developer Portfolio'
 					}}
+					additionalLinkTags={[
+						{
+							rel: 'manifest',
+							href: '/site.webmanifest'
+						},
+						{
+							rel: 'icon',
+							href: '/favicon.ico'
+						},
+						{
+							rel: 'apple-touch-icon',
+							href: '/apple-touch-icon.png',
+							sizes: '76x76'
+						},
+					]}
 				/>
 				<ScrollProgress/>
 				<Navbar />
