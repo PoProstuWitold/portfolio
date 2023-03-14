@@ -23,7 +23,7 @@ const Project: React.FC<ProjectProps> = ({
 						<a
 							className="underline"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							href={project.repo}
 						>
 							{project.name}
@@ -38,7 +38,6 @@ const Project: React.FC<ProjectProps> = ({
 							return <Skill key={index} title={skill} />
 						})}
 					</div>
-					<div className="flex"></div>
 				</div>
 			</div>
 		</>

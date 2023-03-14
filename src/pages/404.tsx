@@ -1,11 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
-import { SEO } from '@/components/Seo'
+import { NextSeo } from 'next-seo'
 
 const NotFoundPage: React.FC = () => {
 	return (
 		<>
-			<SEO title="Not found" description="Page doesn't exist"/>
+			<NextSeo 
+				title="Not found" 
+				description="Page you are looking for doesn't exist"
+			/>
 			<main className="flex flex-col items-center justify-center w-full h-screen">
 				<h1 className="font-extrabold tracking-widest text-9xl">404</h1>
 				<div className="absolute px-2 text-sm rounded bg-error rotate-12">
