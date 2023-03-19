@@ -32,7 +32,7 @@ export const Footer: React.FC<FooterProps> = () => {
 							</div>
 							<div className="flex">
 								<a
-									href="https://www.linkedin.com/in/witold-zawada/"
+									href="https://www.linkedin.com/in/witoldzawada/"
 									target="_blank"
 									rel="noreferrer"
 									className="flex flex-row"

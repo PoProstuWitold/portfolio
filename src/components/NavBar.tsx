@@ -1,11 +1,15 @@
 import { useScroll } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
-
-import { themes } from '../utils/constans'
-
 import { useTheme } from 'next-themes'
 import { AiOutlineMenu } from 'react-icons/ai'
+import { useRouter } from 'next/router'
+
+import { themes } from '@/utils/constans'
+
 export const Navbar: React.FC = () => {
+	const router = useRouter()
+	const { pathname } = router
+
 	const [mounted, setMounted] = useState<boolean>(false)
 	const [Y, setY] = useState<number>(0)
 	const { scrollY } = useScroll()
@@ -47,7 +51,7 @@ export const Navbar: React.FC = () => {
 						</li>
 					</ul>
 				</div>
-				<a href="/#main" className={`text-xl normal-case transition-all ease-in-out delay-[50ms] btn btn-ghost ${Y > 650 ? '' : 'hidden'}`}>
+				<a href="/#main" className={`text-xl normal-case transition-all ease-in-out delay-[50ms] btn btn-ghost ${(Y > 650 || pathname !== '/') ? '' : 'hidden'}`}>
 					Witold Zawada
 				</a>
 			</div>
