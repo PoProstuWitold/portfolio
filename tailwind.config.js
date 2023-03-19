@@ -20,28 +20,30 @@ module.exports = {
 		themes: [
 			{
                 light: {
-                    "primary": "#66cc8a",
-                    "secondary": "#377cfb",
-                    "accent": "#ea5234", 
-                    "neutral": "#333c4d",
-                    "base-100": "#ffffff", 
-                    "info": "#1c92f2",  
-                    "success": "#009485", 
-                    "warning": "#ff9900",   
-                    "error": "#ff5724",
+                    "primary": "#2ecc71",
+                    "secondary": "#377DFB",
+                    "accent": "#3498db",
+                    'neutral' : '#333c4d',
+                    'neutral-focus' : '#1f242e',
+                    'neutral-content' : '#f9fafb',
+                    "base-100": "#e6e6e6",
+                    "info": "#2980b9",
+                    "success": "#27ae60",
+                    "warning": "#f39c12",
+                    "error": "#c0392b"
                 }
             },
             {
                 dark: {
-                    "primary": "#66cc8a",
-                    "secondary": "#377cfb",
-                    "accent": "#ea5234", 
-                    "neutral": "#2a2e37",
-                    "base-100": "#3b424e", 
-                    "info": "#1c92f2",  
-                    "success": "#009485", 
-                    "warning": "#ff9900",   
-                    "error": "#ff5724",
+                    "primary": "#2ecc71",
+                    "secondary": "#377DFB",
+                    "accent": "#3498db",
+                    "neutral": "#1f2229",
+                    "base-100": "#2A303C",
+                    "info": "#2980b9",
+                    "success": "#27ae60",
+                    "warning": "#f39c12",
+                    "error": "#c0392b"
                 }
             },
 			'synthwave',

@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
 				className="m-5 lg:w-2/3 rounded-2xl bg-base-200 border-primary"
 				style={{ borderColor: 'hsl(var(--n)' }}
 			>
-				<div className="p-6 sm:rounded-md">
+				<div className="p-6 rounded-2xl shadow-md">
 					<form>
 						<div className="flex flex-col justify-between mx-auto lg:flex-row">
 							<div className="w-full mb-5 mr-10 form-control">

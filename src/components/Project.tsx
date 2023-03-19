@@ -18,7 +18,7 @@ const Project: React.FC<ProjectProps> = ({
 }) => {
 	return (
 		<>
-			<div className="flex flex-col my-10 bg-base-300 p-6 lg:w-[40%] rounded-2xl hover:shadow-2xl hover:cursor-pointer transition-all">
+			<div className="flex flex-col my-10 bg-base-300 p-6 lg:w-[40%] rounded-2xl shadow-md hover:shadow-2xl hover:cursor-pointer transition-all">
 				<div className="flex flex-col">
 					<h2 className="my-3 text-3xl font-bold text-center">
 						{project.name}
@@ -39,7 +39,7 @@ const Project: React.FC<ProjectProps> = ({
 							href={project.repo}
 							target="_blank"
 							rel="noreferrer"
-							className="flex flex-row"
+							className="flex flex-row btn btn-ghost p-0 m-0"
 							title={`${project.name} GitHub link`}
 						>
 							<AiFillGithub className="w-10 h-10" />
@@ -48,7 +48,7 @@ const Project: React.FC<ProjectProps> = ({
 					<div className='flex'>
 						<a 
 							href={`/projects/${project.name}`}
-							className='btn btn-secondary btn-outline font-bold'
+							className='btn btn-ghost font-bold'
 							rel="noopener noreferrer"
 						>
 							Case study <AiOutlineArrowRight className='ml-3 w-5 h-5 font-bold' />

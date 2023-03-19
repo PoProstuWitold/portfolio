@@ -51,7 +51,7 @@ export const Navbar: React.FC = () => {
 						</li>
 					</ul>
 				</div>
-				<a href="/#main" className={`text-xl normal-case transition-all ease-in-out delay-[50ms] btn btn-ghost ${(Y > 650 || pathname !== '/') ? '' : 'hidden'}`}>
+				<a href="/" className={`text-xl normal-case transition-all ease-in-out delay-[50ms] btn btn-ghost ${(Y > 650 || pathname !== '/') ? '' : 'hidden'}`}>
 					Witold Zawada
 				</a>
 			</div>
