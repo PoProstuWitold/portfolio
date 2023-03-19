@@ -20,6 +20,7 @@ export default function Project({ repository }: { repository: Repository }) {
             <NextSeo 
 				title={`${repository.name}`}
 				description={`${repository.description}`}
+                canonical={`https://witoldzawada.dev/projects/${repository.name}`}
 			/>
             <section className='min-h-screen flex flex-col gap-20'>
                 <br />
