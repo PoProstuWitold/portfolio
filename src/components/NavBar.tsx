@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { themes } from '../utils/constans'
 
 import { useTheme } from 'next-themes'
+import { AiOutlineMenu } from 'react-icons/ai'
 export const Navbar: React.FC = () => {
 	const [mounted, setMounted] = useState<boolean>(false)
 	const [Y, setY] = useState<number>(0)
@@ -29,20 +30,7 @@ export const Navbar: React.FC = () => {
 			<div className="navbar-start">
 				<div className="dropdown">
 					<label tabIndex={0} className="btn btn-ghost lg:hidden">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							className="w-5 h-5"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="M4 6h16M4 12h8m-8 6h16"
-							/>
-						</svg>
+						<AiOutlineMenu className='w-5 h-5 font-bold'/>
 					</label>
 					<ul
 						tabIndex={0}
@@ -59,7 +47,7 @@ export const Navbar: React.FC = () => {
 						</li>
 					</ul>
 				</div>
-				<a href="/#main" className="text-xl normal-case btn btn-ghost">
+				<a href="/#main" className={`text-xl normal-case transition-all ease-in-out delay-[50ms] btn btn-ghost ${Y > 650 ? '' : 'hidden'}`}>
 					Witold Zawada
 				</a>
 			</div>

@@ -40,9 +40,7 @@ module.exports = {
                     "error": "#ff5724",
                 }
             },
-			'emerald',
 			'synthwave',
-			'retro',
 			'halloween',
 			'forest',
 			'winter'

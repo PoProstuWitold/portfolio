@@ -19,7 +19,7 @@ const Project: React.FC<ProjectProps> = ({
 		<>
 			<div className="flex flex-col my-10 bg-base-300 p-6 lg:w-[40%] rounded-2xl hover:shadow-2xl hover:cursor-pointer transition-all">
 				<div className="flex flex-col">
-					<h2 className="mx-auto my-3 text-3xl font-bold">
+					<h2 className="my-3 text-3xl font-bold text-center">
 						<a
 							className="underline"
 							target="_blank"

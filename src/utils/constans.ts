@@ -9,13 +9,7 @@ export const themes = [
 		name: 'Dark'
 	},
 	{
-		name: 'Emerald'
-	},
-	{
 		name: 'Synthwave'
-	},
-	{
-		name: 'Retro'
 	},
 	{
 		name: 'Halloween'
