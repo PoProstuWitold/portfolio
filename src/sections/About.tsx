@@ -20,11 +20,11 @@ const About: React.FC = () => {
 					</h2>
 					<br />
 					<p className="text-2xl text-justify">
-						I'm Witold Zawada. Self-taught web developer. I started
-						my coding journey in 2020 in high school. I realised I wanna dive deeper into it. 
-						After short time trying different
-						languages and different fields of coding I fell in love
-						with web dev, especially Node.js and TypeScript and that's
+						I'm Witold Zawada. Self-taught web developer. 
+						My coding journey began in 2020 when I was in high shool. 
+						Through exploring various languages and fields of coding, 
+						I found myself captivated by the world of web development, 
+						especially Node.js and TypeScript and that's
 						why I'm here today.
 					</p>
 					<p className="gap-2 my-5 text-2xl text-justify">
@@ -48,8 +48,8 @@ const About: React.FC = () => {
 						</a>
 					</p>
 					<p className="my-5 text-2xl text-justify">
-						Besides programming, I also like video games, skiing,
-						history and playing with my pets.
+						In addition to programming, I enjoy video games, skiing, history, 
+						and spending time with my beloved pets.
 					</p>
 					<div className="flex">
 						<a
