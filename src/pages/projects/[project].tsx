@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo'
 import { graphql } from '@octokit/graphql'
-import { AiOutlineStar } from 'react-icons/ai'
-import { TbGitFork } from 'react-icons/tb'
+import { AiFillGithub, AiOutlineStar } from 'react-icons/ai'
+import { TbGitFork, TbLicense, TbLicenseOff } from 'react-icons/tb'
 
 
 import { caseStudies, repoQuery, owner } from '@/utils/constans'
@@ -28,18 +28,20 @@ export default function Project({ repository }: { repository: Repository }) {
                 <div className="flex flex-col lg:flex-row justify-start mx-6 lg:mx-20 gap-6">
                     <div className="flex flex-col flex-grow lg:w-[50%] lg:mr-10 gap-8 bg-base-200 p-5 rounded-2xl shadow-xl">
                         <div className='flex flex-col gap-3'>
-                            <h2 className="text-3xl font-bold text-left">
-                                {repository.name}
-                            </h2>
-                            <a 
-                                className='link'
-                                target="_blank"
-							    rel="noreferrer"
-                                title={`${repository.name} GitHub link`}
-                                href={`https://github.com/${repository.owner.login}/${repository.name}`}
-                            >
-                                {`https://github.com/${repository.owner.login}/${repository.name}`}
-                            </a>
+                            <div className='flex flex-col md:flex-row gap-3 md:items-center'>
+                                <h2 className="text-3xl font-bold text-left">
+                                    {repository.name}
+                                </h2>
+                                <a 
+                                    className='link'
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    title={`${repository.name} GitHub link`}
+                                    href={`https://github.com/${repository.owner.login}/${repository.name}`}
+                                >
+                                    <AiFillGithub className="w-10 h-10" />
+                                </a>
+                            </div>
                             <p>
                                 {repository.description}
                             </p>
@@ -51,10 +53,10 @@ export default function Project({ repository }: { repository: Repository }) {
                     <div className="flex flex-col flex-grow lg:w-[50%] mx-0 gap-8 bg-base-200 p-5 rounded-2xl shadow-xl">
                         <div className="flex flex-col gap-3">
                             <h3 className='text-2xl font-bold'>Stats</h3>
-                            <div className='flex lg:flex-row justify-between text-lg flex-col gap-3'>
-                                <p>{repository.licenseInfo && repository.licenseInfo.name || 'No licence'}</p>
-                                <span className='flex items-center text-center'><AiOutlineStar className='w-5 h-5'/><p>{repository.stargazers.totalCount} stars</p></span>
-                                <span className='flex items-center text-center'><TbGitFork /><p>{repository.forks.totalCount} forks</p></span>
+                            <div className='flex lg:flex-row justify-between text-lg flex-col gap-4'>
+                                <span className='flex items-center text-center gap-2'>{repository.licenseInfo && <><TbLicense/> {` ${repository.licenseInfo.name}`}</> || <><TbLicenseOff/>{' No licence'}</>}</span>
+                                <span className='flex items-center text-center gap-2'><AiOutlineStar className='w-5 h-5'/><p>{repository.stargazers.totalCount} stars</p></span>
+                                <span className='flex items-center text-center gap-2'><TbGitFork /><p>{repository.forks.totalCount} forks</p></span>
                             </div>
                         </div>
                         <div className="flex flex-col gap-3">
