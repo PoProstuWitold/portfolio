@@ -21,7 +21,7 @@ const About: React.FC = () => {
 					<br />
 					<p className="text-2xl text-justify">
 						I'm Witold Zawada. Self-taught web developer. 
-						My coding journey began in 2020 when I was in high shool. 
+						My coding journey began in 2020 when I was in high school. 
 						Through exploring various languages and fields of coding, 
 						I found myself captivated by the world of web development, 
 						especially Node.js and TypeScript and that's
