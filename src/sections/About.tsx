@@ -3,29 +3,23 @@ import React from 'react'
 
 import Skill from '@/components/Skill'
 import { mySkills } from '@/utils/constans'
+import Image from 'next/image'
 
 const { dbsAndDevOps, libsAndFrameworks, languages, learning, others } = mySkills
 
 const About: React.FC = () => {
 	return (
-		<section id="about" className="min-h-screen py-10 cursor-default bg-base-100">
-			<br />
-			<br />
+		<section id="about" className="min-h-screen pt-20 flex flex-col gap-8 py-10 cursor-default bg-base-100">
 			<h1 className="text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary">About me</h1>
-			<br />
 			<div className="flex flex-col justify-start mx-6 lg:mx-20 lg:flex-row">
 				<div className="flex-grow lg:max-w-[50%] lg:mr-10">
+					<div className='flex flex-col'>
 					<h2 className="text-3xl font-bold text-left">
 						Short story
 					</h2>
 					<br />
 					<p className="text-2xl text-justify">
-						I'm Witold Zawada. Self-taught web developer. 
-						My coding journey began in 2020 when I was in high school. 
-						Through exploring various languages and fields of coding, 
-						I found myself captivated by the world of web development, 
-						especially Node.js and TypeScript and that's
-						why I'm here today.
+						I'm Witold Zawada. Self-taught web developer. I'm constantly expanding my skills in both backend and frontend development to understand both domains and create complete, secure, and user-friendly applications using technologies such as TypeScript, Node.js and React.
 					</p>
 					<p className="gap-2 my-5 text-2xl text-justify">
 						Want to see more? Be sure to visit my{" "}
@@ -40,7 +34,7 @@ const About: React.FC = () => {
 						<span> & </span>
 						<a
 							className="underline"
-							href="https://www.linkedin.com/in/witold-zawada/"
+							href="https://www.linkedin.com/in/witoldzawada/"
 							target="_blank"
 							rel="noreferrer"
 						>
@@ -58,6 +52,7 @@ const About: React.FC = () => {
 						>
 							Contact
 						</a>
+					</div>
 					</div>
 				</div>
 				<div className="flex-grow mt-10 lg:mt-0 lg:max-w-[50%] mx-0">

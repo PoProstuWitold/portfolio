@@ -42,13 +42,13 @@ export const Navbar: React.FC = () => {
 						className="p-2 mt-3 font-semibold shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
 					>
 						<li>
-							<Link href="/#about">ABOUT</Link>
+							<a href="/#about">ABOUT</a>
 						</li>
 						<li>
-							<Link href="/#projects">PROJECTS</Link>
+							<a href="/#projects">PROJECTS</a>
 						</li>
 						<li>
-							<Link href="/#contact">CONTACT</Link>
+							<a href="/#contact">CONTACT</a>
 						</li>
 					</ul>
 				</div>

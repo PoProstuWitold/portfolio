@@ -5,11 +5,8 @@ import { RxDiscordLogo } from 'react-icons/rx'
 
 const Contact: React.FC = () => {
 	return (
-		<section id="contact" className="min-h-screen py-8 cursor-default bg-base-100">
-			<br />
-			<br />
+		<section id="contact" className="min-h-screen pt-20 flex flex-col gap-8 py-10 cursor-default bg-base-100">
 			<h1 className="text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary">Contact me</h1>
-			<br />
 			<div className="flex flex-col lg:flex-row lg:mx-14">
 			<div className="m-5 text-left lg:w-1/3">
 				<h2 className="mb-4 text-4xl font-semibold">Get in touch</h2>

@@ -38,10 +38,8 @@ const Main: React.FC = () => {
 						>
 							TypeScript developer
 						</motion.p>
-						<motion.a
-							className="flex items-center self-center justify-center text-center hover:cursor-pointer"
-							href="/#projects"
-							title="scroll to projects"
+						<motion.span
+							className="flex items-center self-center justify-center text-center"
 							initial={{ opacity: 0, scale: 0.0 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{
@@ -50,12 +48,14 @@ const Main: React.FC = () => {
 								ease: [0, 0.71, 0.2, 1.01]
 							}}
 						>
-							<span
+							<a
 								className="animate-bounce"
+								href="/#projects"
+								title="scroll to projects"
 							>
 								<BsArrowDownCircleFill className="w-14 h-14 text-secondary"/>
-							</span>
-						</motion.a>
+							</a>
+						</motion.span>
 					</div>
 				</div>
 			</div>
