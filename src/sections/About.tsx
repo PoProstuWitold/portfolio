@@ -4,6 +4,7 @@ import React from 'react'
 import Skill from '@/components/Skill'
 import { mySkills } from '@/utils/constans'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const { dbsAndDevOps, libsAndFrameworks, languages, learning, others } = mySkills
 
@@ -55,7 +56,8 @@ const About: React.FC = () => {
 					</div>
 					</div>
 				</div>
-				<div className="flex-grow mt-10 lg:mt-0 lg:max-w-[50%] mx-0">
+				{/* SKILLS */}
+				{/* <div className="flex-grow mt-10 lg:mt-0 lg:max-w-[50%] mx-0">
 					<h2 className="mx-1 text-3xl font-bold text-left">Skills</h2>
 					<br />
 					{languages && languages.length > 0 && <>
@@ -106,6 +108,26 @@ const About: React.FC = () => {
 							})}
 						</div>
 					</>}
+				</div> */} 
+				{/* MY PHOTO & CVs */}
+				<div className="flex flex-col flex-grow mt-10 lg:mt-0 lg:max-w-[50%] mx-0 items-center gap-6">
+					<Image 
+						src={`/images/witold-512.png`} alt="" width={512} height={512}  
+						className="w-[22rem] mask mask-squircle m-0"
+					/> 
+					<div className='flex flex-col items-center gap-2'>
+						<span className='gap-4 font-bold text-3xl'>Witold Zawada</span>
+						<span className='gap-4 italic'>
+							Download my CV in 
+							<Link href="/resources/Witold_Zawada_CV-en-public.pdf" target="_blank" rel="noopener noreferrer" >
+								<button className='underline mx-1 font-semibold italic'>English</button>
+							</Link>
+							or 
+							<Link href="/resources/Witold_Zawada_CV-pl-public.pdf" target="_blank" rel="noopener noreferrer" >
+								<button className='underline mx-1 font-semibold italic'>Polish</button>
+							</Link> 
+						</span>
+					</div>
 				</div>
 			</div>
 		</section>
