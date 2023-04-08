@@ -5,6 +5,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import { useRouter } from 'next/router'
 
 import { themes } from '@/utils/constans'
+import Link from 'next/link'
 
 export const Navbar: React.FC = () => {
 	const router = useRouter()
@@ -29,7 +30,7 @@ export const Navbar: React.FC = () => {
 
 	return (
 		<nav 
-			className={`fixed z-50 navbar transition ease-in-out delay-[50ms] ${Y > 99 ? 'shadow-2xl bg-base-300' : ''}`}
+			className={`fixed z-50 navbar transition ease-in-out delay-[50ms] ${Y > 5 ? 'shadow-2xl bg-base-300' : ''}`}
 		>
 			<div className="navbar-start">
 				<div className="dropdown">
@@ -41,19 +42,19 @@ export const Navbar: React.FC = () => {
 						className="p-2 mt-3 font-semibold shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
 					>
 						<li>
-							<a href="/#about">ABOUT</a>
+							<Link href="/#about">ABOUT</Link>
 						</li>
 						<li>
-							<a href="/#projects">PROJECTS</a>
+							<Link href="/#projects">PROJECTS</Link>
 						</li>
 						<li>
-							<a href="/#contact">CONTACT</a>
+							<Link href="/#contact">CONTACT</Link>
 						</li>
 					</ul>
 				</div>
-				<a href="/" className={`text-xl normal-case transition-all ease-in-out delay-[50ms] btn btn-ghost ${(Y > 650 || pathname !== '/') ? '' : 'hidden'}`}>
+				<Link href="/" className={`text-xl normal-case transition-all ease-in-out delay-[50ms] btn btn-ghost ${(Y > 650 || pathname !== '/') ? '' : 'hidden'}`}>
 					Witold Zawada
-				</a>
+				</Link>
 			</div>
 			<div className="hidden navbar-center lg:flex">
 				<ul className="p-0 font-semibold menu menu-horizontal">
