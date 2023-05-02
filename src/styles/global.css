@@ -7,3 +7,23 @@
 		scroll-behavior: smooth;
 	}
 }
+
+@layer utilities {
+	::-webkit-scrollbar {
+		width: 14px;
+	}
+
+	::-webkit-scrollbar-track {
+		border-radius: 100vh;
+	}
+
+	::-webkit-scrollbar-thumb {
+		--tw-bg-opacity: 1;
+		background-color: hsl(var(--p) / var(--tw-bg-opacity))
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		--tw-bg-opacity: 1;
+		background-color: hsl(var(--s) / var(--tw-bg-opacity))
+	}
+}

@@ -2,6 +2,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { BsArrowDownCircleFill } from 'react-icons/bs'
+import { Socials } from '@/components/Socials'
 
 const Main: React.FC = () => {
 	  
@@ -13,22 +14,25 @@ const Main: React.FC = () => {
 			whileInView={{ opacity: 1 }}
 		>
 			<div className="pt-4 lg:pt-20 hero">
-				<div className="flex-col justify-between my-auto mt-40 hero-content lg:flex-row">
-					<div>
+				<div className="justify-between my-auto mt-40 hero-content">
+					<div className='flex flex-col gap-4'>
 						<motion.h1
-							className="text-5xl font-bold text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text"
-							initial={{ opacity: 0, scale: 0.2 }}
+							className="text-5xl font-bold flex md:flex-row flex-col"
+							initial={{ opacity: 0, scale: 0.7 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{
 								duration: 0.3,
 								ease: [0, 0.71, 0.2, 1.01]
 							}}
 						>
-							Hello, I'm Witold Zawada
+							<span className='mr-3'>Hello, I'm </span>
+							<span>
+								<span className='text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text'>Witold Zawada</span>.
+							</span>
 						</motion.h1>
 						<motion.p
-							className="py-6 mb-10 font-semibold"
-							initial={{ opacity: 0, scale: 0.2 }}
+							className="font-semibold text-2xl"
+							initial={{ opacity: 0, scale: 0 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{
 								duration: 0.3,
@@ -36,15 +40,27 @@ const Main: React.FC = () => {
 								ease: [0, 0.71, 0.2, 1.01]
 							}}
 						>
-							TypeScript developer
+							Node.js TypeScript developer
 						</motion.p>
-						<motion.span
-							className="flex items-center self-center justify-center text-center"
-							initial={{ opacity: 0, scale: 0.0 }}
+						<motion.span 
+							className='flex flex-row items-center justify-center ml-2 gap-2 mb-10'
+							initial={{ opacity: 0, scale: 0 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{
 								duration: 0.3,
 								delay: 0.9,
+								ease: [0, 0.71, 0.2, 1.01]
+							}}
+						>
+						<Socials size="small"/>
+						</motion.span>
+						<motion.span
+							className="flex items-center self-center justify-center text-center"
+							initial={{ opacity: 0, scale: 0 }}
+							animate={{ opacity: 1, scale: 1 }}
+							transition={{
+								duration: 0.3,
+								delay: 1.2,
 								ease: [0, 0.71, 0.2, 1.01]
 							}}
 						>

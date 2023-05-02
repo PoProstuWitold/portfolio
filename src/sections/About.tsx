@@ -16,11 +16,11 @@ const About: React.FC = () => {
 				<div className="flex-grow lg:max-w-[50%] lg:mr-10">
 					<div className='flex flex-col'>
 					<h2 className="text-3xl font-bold text-left">
-						Short story
+						Who am I?
 					</h2>
 					<br />
 					<p className="text-2xl text-justify">
-						I'm Witold Zawada. Self-taught web developer. I'm constantly expanding my skills in both backend and frontend development to understand both domains and create complete, secure, and user-friendly applications using technologies such as TypeScript, Node.js and React.
+						I'm Witold Zawada. Self-taught web developer from Poland. I'm constantly expanding my skills in both backend and frontend development to understand both domains and create complete, secure, and user-friendly applications using technologies such as TypeScript, Node.js and React.
 					</p>
 					<p className="gap-2 my-5 text-2xl text-justify">
 						Want to see more? Be sure to visit my{" "}
