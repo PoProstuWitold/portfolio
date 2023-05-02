@@ -4,6 +4,7 @@ import { ReactElement } from 'react'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { DefaultSeo } from 'next-seo'
+import { LazyMotion, domAnimation } from 'framer-motion'
 
 import { Navbar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
@@ -42,10 +43,12 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
 						},
 					]}
 				/>
+				<LazyMotion features={domAnimation}>
 				<ScrollProgress/>
 				<Navbar />
 				<Component {...pageProps} />
 				<Footer />
+				</LazyMotion>
 			</ThemeProvider>
 		</>
 	)

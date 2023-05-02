@@ -1,3 +1,5 @@
+import { ReactElement } from 'react'
+import { GetServerSideProps } from 'next'
 import { NextSeo } from 'next-seo'
 import { graphql } from '@octokit/graphql'
 import { AiFillGithub, AiOutlineStar } from 'react-icons/ai'
@@ -6,8 +8,6 @@ import { TbGitFork, TbLicense, TbLicenseOff } from 'react-icons/tb'
 
 import { caseStudies, repoQuery, owner } from '@/utils/constans'
 import { Repository } from '@/types' 
-import { ReactElement } from 'react'
-import { GetServerSideProps } from 'next'
 
 const graphqlWithAuth = graphql.defaults({
     headers: {

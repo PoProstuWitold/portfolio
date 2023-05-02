@@ -17,11 +17,13 @@
 		"plugin:jest/recommended",
 		"plugin:react/recommended",
 		"plugin:react/jsx-runtime",
+		"plugin:@next/next/recommended",
 		"prettier"
 	],
 	"rules": {
 		"@typescript-eslint/explicit-function-return-type": "warn",
-		"react/prop-types": "off"
+		"react/prop-types": "off",
+		"@next/next/no-html-link-for-pages": "off"
 	},
 	"settings": {
 		"react": {

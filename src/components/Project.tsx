@@ -1,4 +1,3 @@
-import React from 'react'
 import { AiFillGithub, AiOutlineArrowRight } from 'react-icons/ai'
 
 import Skill from './Skill'

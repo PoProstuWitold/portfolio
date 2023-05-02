@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react'
 import { AiOutlineMail } from 'react-icons/ai'
 import { RxDiscordLogo } from 'react-icons/rx'
 

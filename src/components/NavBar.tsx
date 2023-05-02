@@ -1,11 +1,11 @@
-import { useScroll } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
-import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
+import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
+import { useScroll } from 'framer-motion'
 
 import { themes } from '@/utils/constans'
-import Link from 'next/link'
 
 export const Navbar: React.FC = () => {
 	const router = useRouter()

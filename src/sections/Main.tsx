@@ -1,13 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react'
-import { motion } from 'framer-motion'
 import { BsArrowDownCircleFill } from 'react-icons/bs'
+import { m } from 'framer-motion'
 import { Socials } from '@/components/Socials'
 
 const Main: React.FC = () => {
 	  
 	return (
-		<motion.section
+		<m.section
 			id="main"
 			className="min-h-screen text-3xl text-center cursor-default bg-base-200"
 			initial={{ opacity: 0 }}
@@ -16,7 +15,7 @@ const Main: React.FC = () => {
 			<div className="pt-4 lg:pt-20 hero">
 				<div className="justify-between my-auto mt-40 hero-content">
 					<div className='flex flex-col gap-4'>
-						<motion.h1
+						<m.h1
 							className="text-5xl font-bold flex md:flex-row flex-col"
 							initial={{ opacity: 0, scale: 0.7 }}
 							animate={{ opacity: 1, scale: 1 }}
@@ -29,8 +28,8 @@ const Main: React.FC = () => {
 							<span>
 								<span className='text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text'>Witold Zawada</span>.
 							</span>
-						</motion.h1>
-						<motion.p
+						</m.h1>
+						<m.p
 							className="font-semibold text-2xl"
 							initial={{ opacity: 0, scale: 0 }}
 							animate={{ opacity: 1, scale: 1 }}
@@ -41,8 +40,8 @@ const Main: React.FC = () => {
 							}}
 						>
 							Node.js TypeScript developer
-						</motion.p>
-						<motion.span 
+						</m.p>
+						<m.span 
 							className='flex flex-row items-center justify-center ml-2 gap-2 mb-10'
 							initial={{ opacity: 0, scale: 0 }}
 							animate={{ opacity: 1, scale: 1 }}
@@ -53,8 +52,8 @@ const Main: React.FC = () => {
 							}}
 						>
 						<Socials size="small"/>
-						</motion.span>
-						<motion.span
+						</m.span>
+						<m.span
 							className="flex items-center self-center justify-center text-center"
 							initial={{ opacity: 0, scale: 0 }}
 							animate={{ opacity: 1, scale: 1 }}
@@ -71,11 +70,11 @@ const Main: React.FC = () => {
 							>
 								<BsArrowDownCircleFill className="w-14 h-14 text-secondary"/>
 							</a>
-						</motion.span>
+						</m.span>
 					</div>
 				</div>
 			</div>
-		</motion.section>
+		</m.section>
 	)
 }
 
