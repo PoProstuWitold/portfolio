@@ -1,12 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 
-import Skill from '@/components/Skill'
-import { mySkills } from '@/utils/constans'
 import Image from 'next/image'
 import Link from 'next/link'
-
-const { dbsAndDevOps, libsAndFrameworks, languages, learning, others } = mySkills
 
 const About: React.FC = () => {
 	return (

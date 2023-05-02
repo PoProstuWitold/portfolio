@@ -6,6 +6,8 @@ import { TbGitFork, TbLicense, TbLicenseOff } from 'react-icons/tb'
 
 import { caseStudies, repoQuery, owner } from '@/utils/constans'
 import { Repository } from '@/types' 
+import { ReactElement } from 'react'
+import { GetServerSideProps } from 'next'
 
 const graphqlWithAuth = graphql.defaults({
     headers: {
@@ -13,7 +15,7 @@ const graphqlWithAuth = graphql.defaults({
     }
 })
 
-export default function Project({ repository }: { repository: Repository }) {
+export default function Project({ repository }: { repository: Repository }): ReactElement {
 
     return (
         <>
@@ -93,7 +95,7 @@ export default function Project({ repository }: { repository: Repository }) {
     )
 }
 
-export async function getServerSideProps(context: any) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
     const { project } = context.query
 
     try {

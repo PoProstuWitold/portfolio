@@ -7,8 +7,7 @@ module.exports = {
 	},
 	plugins: [
         require('@tailwindcss/typography'), 
-        require('daisyui'),
-        require('@tailwindcss/line-clamp')
+        require('daisyui')
     ],
 	daisyui: {
 		styled: true,
