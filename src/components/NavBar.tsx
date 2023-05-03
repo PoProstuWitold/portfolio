@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { AiOutlineMenu } from 'react-icons/ai'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useScroll } from 'framer-motion'
 
 import { themes } from '@/utils/constans'
+import MobileMenu from './MobileMenu'
 
 export const Navbar: React.FC = () => {
 	const router = useRouter()
@@ -30,27 +30,11 @@ export const Navbar: React.FC = () => {
 
 	return (
 		<nav 
-			className={`fixed z-50 navbar transition ease-in-out delay-[50ms] ${Y > 5 ? 'shadow-2xl bg-base-300' : ''}`}
+			className={`fixed z-50 navbar transition ease-in-out delay-[50ms] bg-base-200 ${Y > 5 ? 'shadow-2xl bg-base-300' : ''}`}
 		>
 			<div className="navbar-start">
-				<div className="dropdown">
-					<label tabIndex={0} className="btn btn-ghost lg:hidden">
-						<AiOutlineMenu className='w-5 h-5 font-bold'/>
-					</label>
-					<ul
-						tabIndex={0}
-						className="p-2 mt-3 font-semibold shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-					>
-						<li>
-							<a href="/#about">ABOUT</a>
-						</li>
-						<li>
-							<a href="/#projects">PROJECTS</a>
-						</li>
-						<li>
-							<a href="/#contact">CONTACT</a>
-						</li>
-					</ul>
+				<div className='lg:hidden'>
+					<MobileMenu />
 				</div>
 				<Link href="/" className={`text-xl normal-case transition-all ease-in-out delay-[50ms] btn btn-ghost ${(Y > 650 || pathname !== '/') ? '' : 'hidden'}`}>
 					Witold Zawada
