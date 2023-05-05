@@ -17,15 +17,15 @@ export const Socials: React.FC<SocialsProps> = ({
 					href="https://github.com/PoProstuWitold"
 					target="_blank"
 					rel="noreferrer"
-					className="flex flex-row"
+					className="flex flex-row group"
                     title='My GitHub Profile'
 				>
 				    <div className="flex flex-col items-center mr-2">
 						<AiFillGithub 
-                            className={`transition-all duration-300 ease-in-out ${size === "big" ? 'w-10 h-10' : 'w-8 h-8 hover:text-primary'}`}
+                            className={`transition-all group-hover:scale-125 duration-300 group-hover:text-primary ease-in-out ${size === "big" ? 'w-10 h-10' : 'w-8 h-8'}`}
                         />
                         {text &&
-                            <span className="self-center mx-auto mt-1 text-xs font-semibold">
+                            <span className="transition-all duration-300 group-hover:text-primary ease-in-out self-center mx-auto mt-1 text-xs font-semibold">
                                 GitHub
                             </span>
                         }
@@ -37,15 +37,15 @@ export const Socials: React.FC<SocialsProps> = ({
 					href="https://www.linkedin.com/in/witoldzawada/"
 					target="_blank"
 					rel="noreferrer"
-					className="flex flex-row"
+					className="flex flex-row group"
                     title='My Linkedin Profile'
 				>
 				    <div className="flex flex-col items-center mx-2">
 						<AiFillLinkedin 
-                            className={`transition-all duration-300 ease-in-out ${size === "big" ? 'w-10 h-10' : 'w-8 h-8 hover:text-primary'}`} 
+                            className={`transition-all group-hover:scale-125 duration-300 group-hover:text-primary ease-in-out ${size === "big" ? 'w-10 h-10' : 'w-8 h-8'}`} 
                         />
                         {text &&
-                            <span className="self-center mx-auto mt-1 text-xs font-semibold">
+                            <span className="transition-all duration-300 group-hover:text-primary ease-in-out self-center mx-auto mt-1 text-xs font-semibold">
                                 Linkedin
                             </span>
                         }
@@ -57,15 +57,15 @@ export const Socials: React.FC<SocialsProps> = ({
 					href="https://discord.com/"
 					target="_blank"
 					rel="noreferrer"
-					className="flex flex-row"
+					className="flex flex-row group"
                     title='My Discord Profile'
 				>
 				    <div className="flex flex-col items-center mx-2">
 						<FaDiscord 
-                            className={`transition-all duration-300 ease-in-out ${size === "big" ? 'w-10 h-10' : 'w-8 h-8 hover:text-primary'}`}
+                            className={`transition-all group-hover:scale-125 duration-300 group-hover:text-primary ease-in-out ${size === "big" ? 'w-10 h-10' : 'w-8 h-8'}`}
                         />
                         {text &&
-                            <span className="self-center mx-auto mt-1 text-xs font-semibold">
+                            <span className="transition-all duration-300 group-hover:text-primary ease-in-out self-center mx-auto mt-1 text-xs font-semibold">
                                 Discord
                             </span>
                         }

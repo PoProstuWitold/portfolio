@@ -24,11 +24,11 @@ export default function Project({ repository }: { repository: Repository }): Rea
 				description={`${repository.description}`}
                 canonical={`https://witoldzawada.dev/projects/${repository.name}`}
 			/>
-            <section className='min-h-screen flex flex-col gap-16'>
+            <section className='min-h-screen flex flex-col gap-12 pt-8'>
                 <br />
                 <br />
-                <div className="flex flex-col lg:flex-row justify-start mx-6 lg:mx-20 gap-6">
-                    <div className="flex flex-col flex-grow lg:w-[50%] lg:mr-10 gap-8 bg-base-200 p-5 rounded-2xl shadow-xl">
+                <div className="flex flex-col lg:flex-row justify-start mx-2 lg:mx-20 gap-12">
+                    <div className="flex flex-col flex-grow lg:w-[50%] gap-8 lg:bg-base-200 p-5 rounded-2xl">
                         <div className='flex flex-col gap-3'>
                             <div className='flex flex-col md:flex-row gap-3 md:items-center'>
                                 <h2 className="text-3xl font-bold text-left">
@@ -41,7 +41,7 @@ export default function Project({ repository }: { repository: Repository }): Rea
                                     title={`${repository.name} GitHub link`}
                                     href={`https://github.com/${repository.owner.login}/${repository.name}`}
                                 >
-                                    <AiFillGithub className="w-10 h-10" />
+                                    <AiFillGithub className="transition-all duration-300 ease-in-out w-10 h-10 hover:text-primary" />
                                 </a>
                             </div>
                             <p>
@@ -52,10 +52,10 @@ export default function Project({ repository }: { repository: Repository }): Rea
                             
                         </div>
                     </div>
-                    <div className="flex flex-col flex-grow lg:w-[50%] mx-0 gap-8 bg-base-200 p-5 rounded-2xl shadow-xl">
+                    <div className="flex flex-col flex-grow lg:w-[50%] mx-0 gap-8 lg:bg-base-200 p-5 rounded-2xl">
                         <div className="flex flex-col gap-3">
                             <h3 className='text-2xl font-bold'>Stats</h3>
-                            <div className='flex lg:flex-row justify-between text-lg flex-col gap-4'>
+                            <div className='flex md:flex-row gap-10 lg:justify-between text-lg flex-col lg:gap-4'>
                                 <span className='flex items-center text-center gap-2'>{repository.licenseInfo && <><TbLicense/> {` ${repository.licenseInfo.name}`}</> || <><TbLicenseOff/>{' No licence'}</>}</span>
                                 <span className='flex items-center text-center gap-2'><AiOutlineStar className='w-5 h-5'/><p>{repository.stargazers.totalCount} stars</p></span>
                                 <span className='flex items-center text-center gap-2'><TbGitFork /><p>{repository.forks.totalCount} forks</p></span>
@@ -82,7 +82,7 @@ export default function Project({ repository }: { repository: Repository }): Rea
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col text-justify mx-6 lg:mx-20 gap-6 mb-20 bg-base-200 p-5 rounded-2xl shadow-md">
+                <div className="flex flex-col text-justify mx-2 lg:mx-20 gap-6 mb-20 lg:bg-base-200 p-5 rounded-2xl">
                     <h2 className="text-3xl font-bold text-left">
                         Case study
                     </h2>

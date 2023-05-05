@@ -4,7 +4,7 @@ import { projects } from '@/utils/constans'
 
 const Projects: React.FC = () => {
 	return (
-		<section id="projects" className="min-h-screen pt-20 flex flex-col gap-8 py-10 text-2xl cursor-default bg-base-200">
+		<section id="projects" className="min-h-screen pt-20 flex flex-col gap-8 py-10 text-xl cursor-default bg-base-200">
 			<h1 className="text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary">Projects</h1>
 			<p className="lg:mx-[5rem] text-justify mx-6">
 				Below are some of my projects that I have developed with great fervor and motivation. 

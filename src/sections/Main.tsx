@@ -51,7 +51,7 @@ const Main: React.FC = () => {
 								ease: [0, 0.71, 0.2, 1.01]
 							}}
 						>
-						<Socials size="small"/>
+						<Socials size="big"/>
 						</m.span>
 						<m.span
 							className="flex items-center self-center justify-center text-center"

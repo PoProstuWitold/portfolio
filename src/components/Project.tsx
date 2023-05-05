@@ -25,7 +25,7 @@ const Project: React.FC<ProjectProps> = ({
 					<span className="pl-2 mx-1 my-3 font-mono font-bold border-l-4 text-secondary border-secondary">{project.application}</span>
 				</div>
 				<div>
-					<p className="mx-1 my-3 text-xl text-justify lg:line-clamp-3">{project.description}</p>
+					<p className="mx-1 my-3 text-lg text-justify lg:line-clamp-3">{project.description}</p>
 					<div className="flex flex-wrap">
 						{project.skills.map((skill, index) => {
 							return <Skill key={index} title={skill} />
@@ -38,19 +38,18 @@ const Project: React.FC<ProjectProps> = ({
 							href={project.repo}
 							target="_blank"
 							rel="noreferrer"
-							className="flex flex-row btn btn-ghost p-0 m-0"
 							title={`${project.name} GitHub link`}
 						>
-							<AiFillGithub className="w-10 h-10" />
+							<AiFillGithub className="transition-all duration-300 ease-in-out w-10 h-10 hover:text-primary" />
 						</a>
 					</div>
-					<div className='flex'>
+					<div className='flex group'>
 						<a 
 							href={`/projects/${project.name}`}
-							className='btn btn-ghost font-bold'
+							className='btn btn-ghost font-extrabold hover:text-primary hover:bg-transparent'
 							rel="noopener noreferrer"
 						>
-							Case study <AiOutlineArrowRight className='ml-3 w-5 h-5 font-bold' />
+							Case study <AiOutlineArrowRight className='ml-3 w-6 h-6 font-extrabold group-hover:animate-bounce-right' />
 						</a>
 					</div>
 				</div>

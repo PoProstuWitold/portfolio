@@ -7,16 +7,15 @@ const About: React.FC = () => {
 		<section id="about" className="min-h-screen pt-20 flex flex-col gap-8 py-10 cursor-default bg-base-100">
 			<h1 className="text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary">About me</h1>
 			<div className="flex flex-col justify-start mx-6 lg:mx-20 lg:flex-row">
-				<div className="flex-grow lg:max-w-[50%] lg:mr-10">
-					<div className='flex flex-col'>
+				<div className="flex-grow lg:max-w-[50%] lg:mr-10 text-xl flex flex-col justify-between">
+					<div className='flex flex-col gap-6'>
 					<h2 className="text-3xl font-bold text-left">
 						Who am I?
 					</h2>
-					<br />
-					<p className="text-2xl text-justify">
+					<p className="text-justify">
 						I'm Witold Zawada. Self-taught web developer from Poland. I'm constantly expanding my skills in both backend and frontend development to understand both domains and create complete, secure, and user-friendly applications using technologies such as TypeScript, Node.js and React.
 					</p>
-					<p className="gap-2 my-5 text-2xl text-justify">
+					<p className="gap-2 text-justify">
 						Want to see more? Be sure to visit my{" "}
 						<a
 							className="underline"
@@ -36,18 +35,18 @@ const About: React.FC = () => {
 							Linkedin
 						</a>
 					</p>
-					<p className="my-5 text-2xl text-justify">
+					<p className="text-justify">
 						In addition to programming, I enjoy video games, skiing, history, 
 						and spending time with my beloved pets.
 					</p>
+					</div>
 					<div className="flex">
 						<a
 							href="/#contact"
-							className="lg:mx-[1px] btn btn-lg btn-outline w-60 mx-auto"
+							className="lg:mx-[1px] btn btn-lg btn-outline w-60 mx-auto mt-10 xl:mt-0"
 						>
 							Contact
 						</a>
-					</div>
 					</div>
 				</div>
 				{/* SKILLS */}
