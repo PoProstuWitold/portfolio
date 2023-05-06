@@ -102,7 +102,7 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                 canonical={`https://witoldzawada.dev/blog/${slug}`}
             />
             <main className='min-h-screen flex lg:flex-row flex-col justify-center gap-10'>
-                <div className='lg:w-[50%] flex flex-col mt-20 lg:mt-48 mx-4 gap-14'>
+                <div className='lg:w-[50%] flex flex-col mt-20 lg:mt-48 mx-4 gap-14 pb-20'>
                     <div className="text-sm breadcrumbs">
                         <ul>
                             <li><Link href={`/`}>Home</Link></li> 
