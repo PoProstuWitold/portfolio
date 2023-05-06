@@ -51,6 +51,9 @@ export const Navbar: React.FC = () => {
 					<li>
 						<a href="/#contact">CONTACT</a>
 					</li>
+					<li>
+						<a href="/blog">BLOG</a>
+					</li>
 				</ul>
 			</div>
 			<div className="navbar-end">

@@ -1,7 +1,7 @@
 import { Menu } from '@headlessui/react'
 import { useScroll } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { AiOutlineMenu } from 'react-icons/ai'
+import { AiFillBook, AiOutlineMenu } from 'react-icons/ai'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { MdComputer } from 'react-icons/md'
 import { AiOutlineMail, AiOutlineClose } from 'react-icons/ai'
@@ -55,6 +55,13 @@ export default function MobileMenu() {
                             <li className='hover:text-secondary transition-all duration-150'>
                                 <a href="/#contact">
                                     <AiOutlineMail className='w-7 h-7' /> Contact
+                                </a>
+                            </li>
+                        </Menu.Item>
+                        <Menu.Item>
+                            <li className='hover:text-secondary transition-all duration-150'>
+                                <a href="/blog">
+                                    <AiFillBook className='w-7 h-7' /> Blog
                                 </a>
                             </li>
                         </Menu.Item>
