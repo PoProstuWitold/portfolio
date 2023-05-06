@@ -125,13 +125,12 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                 <div className='lg:w-[25%] py-14 lg:pt-48 p-5 lg:bg-base-300'>
                     <div className='sticky top-24'>
                         <div className='flex flex-row gap-4 items-center'>
-                            <div className='h-56 relative'>
-                                <Image
-                                    src={`/images/witold-512.png`} alt=""
-                                    className="h-56 mask mask-circle m-0" fill
-                                    placeholder='blur' blurDataURL={`/images/witold-512.png`}
-                                />
-                            </div>
+                            <Image
+                                className='min-h-32 min-w-32 rounded-full'
+                                placeholder='blur'
+                                blurDataURL={`/images/witold-512.png`}
+                                src={`/images/witold-512.png`} alt="" width={128} height={128}
+                            />
                             <div className="flex flex-col justify-stretch gap-2">
                                 {data.authors.length >= 2 ?
                                     <>
