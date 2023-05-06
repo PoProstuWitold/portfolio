@@ -11,7 +11,7 @@ const Projects: React.FC = () => {
 				With every endeavor, I have strived to gain a comprehensive understanding of the underlying 
 				technologies by thoroughly researching documentation, articles, videos, and engaging in various courses.
 			</p>
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 justify-items-scretch">
+			<div className="flex flex-col flex-wrap justify-between mx-5 my-10 lg:flex-row lg:mt-0 lg:mx-20">
 				{projects.map((project, index) => {
 					return (
 						<Project
