@@ -21,7 +21,7 @@
 		"prettier"
 	],
 	"rules": {
-		"@typescript-eslint/explicit-function-return-type": "warn",
+		"@typescript-eslint/explicit-function-return-type": "off",
 		"react/prop-types": "off",
 		"@next/next/no-html-link-for-pages": "off"
 	},

@@ -14,7 +14,9 @@ export const BlogInfo: React.FC<BlogInfoProps> = ({ data, readingTime }) => {
     return (
         <>
             <div className='flex flex-row gap-4 items-center'>
-                <Image className='h-16 w-16 mask mask-circle' src={`/images/witold-512.png`} alt="" width={48} height={48} />
+                <div className='h-16 relative'>
+                    <Image className='rounded-t-xl' placeholder='blur' blurDataURL={`/images/witold-512.png`} src={`/images/witold-512.png`} style={{objectFit: 'cover'}} alt="" fill />
+                </div>
                 <div className="flex flex-col">
                     {data.authors.length >= 2 ?
                         <>

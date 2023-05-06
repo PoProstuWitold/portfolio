@@ -5,8 +5,7 @@ import { AiFillBook, AiOutlineMenu } from 'react-icons/ai'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { MdComputer } from 'react-icons/md'
 import { AiOutlineMail, AiOutlineClose } from 'react-icons/ai'
-import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
-import { FaDiscord } from 'react-icons/fa'
+import { Socials } from './Socials'
 
 export default function MobileMenu() {
     const [Y, setY] = useState<number>(0)
@@ -69,43 +68,9 @@ export default function MobileMenu() {
                             <h2 className='font-bold cursor-pointer text-xl'>Links</h2>
                         </Menu.Item>
                         <Menu.Item>
-                            <li className='hover:text-secondary transition-all duration-150'>
-                                <a
-                                    href="https://github.com/PoProstuWitold"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="flex flex-row"
-                                    title='My GitHub Profile'
-                                >
-                                    <AiFillGithub className='w-7 h-7'/> Github
-                                </a>
-                            </li>
-                        </Menu.Item>
-                        <Menu.Item>
-                            <li className='hover:text-secondary transition-all duration-150'>
-                                <a
-                                    href="https://www.linkedin.com/in/witoldzawada/"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="flex flex-row"
-                                    title='My Linkedin Profile'
-                                >
-                                    <AiFillLinkedin className='w-7 h-7'/> Linkedin
-                                </a>
-                            </li>
-                        </Menu.Item>
-                        <Menu.Item>
-                            <li className='hover:text-secondary transition-all duration-150'>
-                                <a
-                                    href="https://discord.com/"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="flex flex-row"
-                                    title='My Discord Profile'
-                                >
-                                    <FaDiscord className='w-7 h-7'/> Discord
-                                </a>
-                            </li>
+                            <div className='flex mx-4'>
+                                <Socials text size='big'/>
+                            </div>
                         </Menu.Item>
                     </Menu.Items>
                 </>

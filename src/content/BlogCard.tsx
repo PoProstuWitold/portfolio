@@ -14,8 +14,8 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
             <article
                 className='rounded-xl bg-base-300 max-w-[24rem]'
             >
-                <div className='relative'>
-                    <Image src={`/${post.data.socialImage}`} className='w-[24rem] h-52 rounded-t-xl' alt="" height={640} width={360} />
+                <div className='h-56 relative'>
+                    <Image className='rounded-t-xl' placeholder='blur' blurDataURL={`/${post.data.socialImage}`} src={`/${post.data.socialImage}`} style={{objectFit: 'cover'}} alt="" fill />
                 </div>
                 <div className='px-3 py-2 justify-evenly flex flex-col gap-2'>
                     <div className='flex flex-row flex-wrap gap-1'>
@@ -45,7 +45,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
                     <span
                         className='text-lg transition-all duration-100 ease-in-out group-hover:text-neutral-content tracking-widest font-semibold'
                     >
-                        Read more
+                        Full article
                     </span>
                     <FaArrowAltCircleRight className='text-lg font-semibold w-5 h-5 mt-1 transition-all duration-100 ease-in-out group-hover:text-neutral-content' />
                 </a>

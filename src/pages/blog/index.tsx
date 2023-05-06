@@ -21,7 +21,7 @@ interface BlogProps {
     tags: string[]
 }
 
-export default function Blog({ posts, tags }: BlogProps) {
+export default function Blog({ posts }: BlogProps) {
     return (
         <>
             <NextSeo
@@ -36,7 +36,7 @@ export default function Blog({ posts, tags }: BlogProps) {
                         Here is my small blog where I publish some articles in easy yet technical English for (in my opinion at least) interesting topics.
                     </p>
                 </section>
-                <section className='flex lg:flex-row flex-col justify-center gap-10 items-center'>
+                <section className='flex lg:flex-row flex-col justify-center gap-10 items-center mx-6'>
                     {posts && posts.map((post: IPost, index: number) => {
                         return (
                             <BlogCard post={post} key={`${post.slug}:${index}`} />

@@ -12,7 +12,7 @@ export const getPost = async (slug: string) => {
     }
 }
 
-export const getPosts = async (path: string) => {
+export const getPosts = async (path: string): Promise<IPost[]> => {
     const postsDir = readdirSync(path)
 
     let allTags: string[] = []
@@ -34,10 +34,10 @@ export const getPosts = async (path: string) => {
 		return new Date(b.data.date).getTime() - new Date(a.data.date).getTime() 
 	})
 
-    return posts
+    return posts as IPost[]
 }
 
-export const getTags = (posts: any[]) => {
+export const getTags = (posts: IPost[]) => {
     return Array.from(new Set(posts.flatMap((post) => post.data.tags)))
 }
 
