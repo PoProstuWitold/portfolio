@@ -13,6 +13,7 @@ import { getFiles, getPost, IPost } from '@/content/blog-utils'
 import useCopyToClipboard from '@/hooks/useCopyToClipboard'
 import { BlogInfo } from '@/content/BlogInfo'
 import { Socials } from '@/components/Socials'
+import Link from 'next/link'
 
 export async function getStaticPaths() {
     const paths = await getFiles('src/content/posts')
@@ -101,7 +102,14 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                 canonical={`https://witoldzawada.dev/blog/${slug}`}
             />
             <main className='min-h-screen flex lg:flex-row flex-col justify-center gap-10'>
-                <div className='lg:w-[50%] flex flex-col mt-20 lg:mt-48 mx-4 gap-14 mb-10'>
+                <div className='lg:w-[50%] flex flex-col mt-20 lg:mt-48 mx-4 gap-14'>
+                    <div className="text-sm breadcrumbs">
+                        <ul>
+                            <li><Link href={`/`}>Home</Link></li> 
+                            <li><Link href={`/blog`}>Blog</Link></li> 
+                            <li className='text-primary cursor-default'>{data.title}</li> 
+                        </ul>
+                    </div>
                     <div className='flex flex-col gap-10'>
                         <BlogInfo data={data} readingTime={text} />
                         <div className='flex'>

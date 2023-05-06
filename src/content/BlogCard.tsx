@@ -2,7 +2,6 @@ import React from 'react'
 import { IPost } from './blog-utils'
 import Image from 'next/image'
 import { BlogInfo } from './BlogInfo'
-import { FaArrowAltCircleRight } from 'react-icons/fa'
 
 interface BlogCardProps {
     post: IPost
@@ -12,9 +11,10 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
     return (
         <>
             <article
-                className='rounded-xl bg-base-300 max-w-[24rem]'
+                className='rounded-xl bg-base-300 max-w-[24rem] group'
             >
-                <div className='h-56 relative'>
+                <a href={`/blog/${post.slug}`} title={`${post.data.title} full article`}>
+                <div className='h-56 relative opacity-80 group-hover:opacity-100 transition-all duration-300 ease-in-out'>
                     <Image className='rounded-t-xl' placeholder='blur' blurDataURL={`/${post.data.socialImage}`} src={`/${post.data.socialImage}`} style={{objectFit: 'cover'}} alt="" fill />
                 </div>
                 <div className='px-3 py-2 justify-evenly flex flex-col gap-2'>
@@ -31,8 +31,8 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
                         })}
                     </div>
                     <div className='prose gap-2 flex flex-col'>
-                        <h1 className='p-0 m-0 line-clamp-1 h-12'>{post.data.title}</h1>
-                        <p className='p-0 m-0 line-clamp-2'>
+                        <h1 className='p-0 m-0 line-clamp-1 h-12' title={`${post.data.title}`}>{post.data.title}</h1>
+                        <p className='p-0 m-0 line-clamp-2' title={`${post.data.description}`}>
                             {post.data.description}
                         </p>
                     </div>
@@ -41,13 +41,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
 
                     </div>
                 </div>
-                <a className='py-1 flex flex-row items-center gap-2 group justify-center hover:bg-neutral rounded-xl transition-all duration-100 ease-in-out' href={`/blog/${post.slug}`}>
-                    <span
-                        className='text-lg transition-all duration-100 ease-in-out group-hover:text-neutral-content tracking-widest font-semibold'
-                    >
-                        Full article
-                    </span>
-                    <FaArrowAltCircleRight className='text-lg font-semibold w-5 h-5 mt-1 transition-all duration-100 ease-in-out group-hover:text-neutral-content' />
                 </a>
             </article>
         </>
