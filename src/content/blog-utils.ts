@@ -31,8 +31,7 @@ export const getPosts = async (path: string) => {
 			readingTime: text
 		}
 	}).sort((a, b) => {
-		//@ts-ignore
-		return new Date(b.data.date) - new Date(a.data.date) 
+		return new Date(b.data.date).getTime() - new Date(a.data.date).getTime() 
 	})
 
     return posts

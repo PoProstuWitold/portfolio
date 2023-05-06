@@ -1,10 +1,8 @@
-import dayjs from 'dayjs'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import remarkGfm from 'remark-gfm'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
-import { RxDotFilled } from 'react-icons/rx'
 import readingTime from 'reading-time'
 import darkSyntax from 'react-syntax-highlighter/dist/cjs/styles/prism/coldark-dark'
 
@@ -46,12 +44,10 @@ const CodeBlock = (_props: any) => {
 
     const { node, inline, className, children, ...props } = _props
     const match = /language-(\w+)/.exec(className || '')
-    console.log(children)
     return !inline && match ? (
         <section className='relative'>
             <SyntaxHighlighter
                 {...props}
-                children={String(children).replace(/\n$/, '')}
                 style={darkSyntax}
                 language={match[1]}
                 PreTag="div"
@@ -63,7 +59,8 @@ const CodeBlock = (_props: any) => {
                 }}
                 showInlineLineNumbers
                 showLineNumbers
-            />
+            >
+                {String(children).replace(/\n$/, '')}
             <button className='absolute top-0 right-0 group' onClick={() => copy(children)}>
                 <AiOutlineCopy className='absolute top-0 right-0 transition-all group-hover:opacity-0 duration-300 ease-in-out w-5 h-5' />
                 <AiFillCopy className='absolute top-0 right-0 transition-all opacity-0 group-hover:scale-125 group-hover:opacity-100 duration-300 hover:text-primary ease-in-out w-5 h-5 group-active:scale-75' />
@@ -71,6 +68,7 @@ const CodeBlock = (_props: any) => {
                     <span>Copied</span><AiOutlineCheck />
                 </span>
             </button>
+            </SyntaxHighlighter>
         </section>
     ) : (
         <code {...props} className={className}>
@@ -103,12 +101,12 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                     <div className='prose prose-pre:leading-none lg:max-w-[100ch] md:max-w-[90ch]'>
                         <ReactMarkdown
                             remarkPlugins={[remarkGfm]}
-                            children={content}
                             components={{
                                 code: (props) => <CodeBlock {...props} />
                             }}
-
-                        />
+                        >
+                            {content}
+                        </ReactMarkdown>
                     </div>
                 </div>
                 <div className='lg:w-[25%] py-14 lg:pt-48 p-5 lg:bg-base-300'>
