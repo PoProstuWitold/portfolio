@@ -97,7 +97,7 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
     return (
         <>
             <NextSeo
-                title={data.title}
+                title={`Blog | ${data.title}`}
                 description={data.description}
                 canonical={`https://witoldzawada.dev/blog/${slug}`}
             />

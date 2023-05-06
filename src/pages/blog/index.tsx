@@ -25,7 +25,7 @@ export default function Blog({ posts }: BlogProps) {
     return (
         <>
             <NextSeo
-                title={`My blog`}
+                title={`Blog | Witold Zawda`}
                 description={`Here is my small blog where I publish some articles in easy yet technical English for (in my opinion at least) interesting topics.`}
                 canonical={`https://witoldzawada.dev/blog`}
             />
