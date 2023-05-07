@@ -28,7 +28,7 @@ export const BlogInfo: React.FC<BlogInfoProps> = ({ data, readingTime }) => {
                     <div className='flex items-center flex-wrap'>
                         <span>{`${dayjs(data.date).format('DD MMMM YYYY, HH:mm')}`}</span>
                         <RxDotFilled className='w-5 h-5' />
-                        <span>{readingTime}</span>
+                        <span className='text-xs'>{readingTime}</span>
                     </div>
                 </div>
             </div>

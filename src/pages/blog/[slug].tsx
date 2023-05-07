@@ -14,6 +14,7 @@ import useCopyToClipboard from '@/hooks/useCopyToClipboard'
 import { BlogInfo } from '@/content/BlogInfo'
 import { Socials } from '@/components/Socials'
 import Link from 'next/link'
+import { FaShare } from 'react-icons/fa'
 
 export async function getStaticPaths() {
     const paths = await getFiles('src/content/posts')
@@ -103,11 +104,11 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
             />
             <main className='min-h-screen flex lg:flex-row flex-col justify-center gap-10'>
                 <div className='lg:w-[50%] flex flex-col mt-20 lg:mt-48 mx-4 gap-14 pb-20'>
-                    <div className="text-sm breadcrumbs">
+                    <div className="md:text-sm text-xs breadcrumbs">
                         <ul>
-                            <li><Link href={`/`}>Home</Link></li> 
-                            <li><Link href={`/blog`}>Blog</Link></li> 
-                            <li className='text-primary cursor-default'>{data.title}</li> 
+                            <li><Link href={`/`}>Home</Link></li>
+                            <li><Link href={`/blog`}>Blog</Link></li>
+                            <li className='text-primary cursor-default font-semibold'>{data.title}</li>
                         </ul>
                     </div>
                     <div className='flex flex-col gap-10'>

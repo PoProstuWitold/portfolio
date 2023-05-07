@@ -32,7 +32,7 @@ const Project: React.FC<ProjectProps> = ({
 						})}
 					</div>
 				</div>
-				<div className='flex flex-row justify-between items-center mt-5 mx-1'>
+				<div className='flex flex-row justify-between items-center mt-5'>
 					<div className="flex">
 						<a
 							href={project.repo}
