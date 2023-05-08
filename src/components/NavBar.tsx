@@ -30,7 +30,7 @@ export const Navbar: React.FC = () => {
 
 	return (
 		<nav 
-			className={`fixed z-50 navbar transition ease-in-out delay-[50ms] bg-base-200 ${Y > 5 ? 'shadow-2xl bg-base-300' : ''}`}
+			className={`bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-90 fixed z-50 navbar transition ease-in-out delay-[50ms] bg-base-200 ${Y > 5 ? 'shadow-2xl bg-base-300' : ''}`}
 		>
 			<div className="navbar-start">
 				<div className='lg:hidden'>

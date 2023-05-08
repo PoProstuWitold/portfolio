@@ -14,7 +14,6 @@ import useCopyToClipboard from '@/hooks/useCopyToClipboard'
 import { BlogInfo } from '@/content/BlogInfo'
 import { Socials } from '@/components/Socials'
 import Link from 'next/link'
-import { FaShare } from 'react-icons/fa'
 
 export async function getStaticPaths() {
     const paths = await getFiles('src/content/posts')
@@ -80,7 +79,7 @@ const CodeBlock = (_props: CodeProps) => {
             <button className='absolute top-0 right-0 group' onClick={copyAndConfirm}>
                 <AiOutlineCopy className='absolute top-0 right-0 transition-all group-hover:opacity-0 duration-300 ease-in-out w-5 h-5' />
                 <AiFillCopy className='absolute top-0 right-0 transition-all opacity-0 group-hover:scale-125 group-hover:opacity-100 duration-300 hover:text-primary ease-in-out w-5 h-5 group-active:scale-75' />
-                <span className={`bg-transparent absolute top-1 right-7 flex gap-2 transition-all ${value && visible ? 'opacity-100' : 'opacity-0'}`}>
+                <span className={`absolute top-1 right-7 flex gap-2 transition-all px-2 bg-neutral opacity-0 ${value && visible ? 'group-hover:opacity-100' : ''}`}>
                     <span>Copied</span><AiOutlineCheck />
                 </span>
             </button>

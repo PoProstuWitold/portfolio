@@ -40,7 +40,7 @@ const Project: React.FC<ProjectProps> = ({
 							rel="noreferrer"
 							title={`${project.name} GitHub link`}
 						>
-							<AiFillGithub className="transition-all duration-300 ease-in-out w-10 h-10 hover:text-primary" />
+							<AiFillGithub className="transition-all active:scale-90 hover:scale-125 duration-300 hover:text-primary ease-in-out w-10 h-10" />
 						</a>
 					</div>
 					<div className='flex group'>

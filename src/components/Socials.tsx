@@ -22,7 +22,7 @@ export const Socials: React.FC<SocialsProps> = ({
 				>
 				    <div className="flex flex-col items-center mr-2">
 						<AiFillGithub 
-                            className={`transition-all group-hover:scale-125 duration-300 group-hover:text-primary ease-in-out ${size === "big" ? 'w-10 h-10' : 'w-8 h-8'}`}
+                            className={`transition-all group-active:scale-90 group-hover:scale-125 duration-300 group-hover:text-primary ease-in-out ${size === "big" ? 'w-10 h-10' : 'w-8 h-8'}`}
                         />
                         {text &&
                             <span className="transition-all duration-300 group-hover:text-primary ease-in-out self-center mx-auto mt-1 text-xs font-semibold">
@@ -42,7 +42,7 @@ export const Socials: React.FC<SocialsProps> = ({
 				>
 				    <div className="flex flex-col items-center mx-2">
 						<AiFillLinkedin 
-                            className={`transition-all group-hover:scale-125 duration-300 group-hover:text-primary ease-in-out ${size === "big" ? 'w-10 h-10' : 'w-8 h-8'}`} 
+                            className={`transition-all group-active:scale-90 group-hover:scale-125 duration-300 group-hover:text-primary ease-in-out ${size === "big" ? 'w-10 h-10' : 'w-8 h-8'}`} 
                         />
                         {text &&
                             <span className="transition-all duration-300 group-hover:text-primary ease-in-out self-center mx-auto mt-1 text-xs font-semibold">
@@ -62,7 +62,7 @@ export const Socials: React.FC<SocialsProps> = ({
 				>
 				    <div className="flex flex-col items-center mx-2">
 						<FaDiscord 
-                            className={`transition-all group-hover:scale-125 duration-300 group-hover:text-primary ease-in-out ${size === "big" ? 'w-10 h-10' : 'w-8 h-8'}`}
+                            className={`transition-all group-active:scale-90 group-hover:scale-125 duration-300 group-hover:text-primary ease-in-out ${size === "big" ? 'w-10 h-10' : 'w-8 h-8'}`}
                         />
                         {text &&
                             <span className="transition-all duration-300 group-hover:text-primary ease-in-out self-center mx-auto mt-1 text-xs font-semibold">
