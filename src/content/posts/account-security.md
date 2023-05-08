@@ -1,7 +1,7 @@
 ---
 title: 'How to Secure Your Online Accounts'
 description: 'Learn about common online account security threats and how to protect yourself. Most important stuff to do here'
-socialImage: images/blog/cryptography.webp
+socialImage: images/blog/cybersecurity.webp
 authors: 
   - Witold Zawada
 date: '2023-05-06 17:00'
