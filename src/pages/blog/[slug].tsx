@@ -79,7 +79,7 @@ const CodeBlock = (_props: CodeProps) => {
             <button className='absolute top-0 right-0 group' onClick={copyAndConfirm}>
                 <AiOutlineCopy className='absolute top-0 right-0 transition-all group-hover:opacity-0 duration-300 ease-in-out w-5 h-5' />
                 <AiFillCopy className='absolute top-0 right-0 transition-all opacity-0 group-hover:scale-125 group-hover:opacity-100 duration-300 hover:text-primary ease-in-out w-5 h-5 group-active:scale-75' />
-                <span className={`absolute top-1 right-7 flex gap-2 transition-all px-2 bg-neutral opacity-0 ${value && visible ? 'group-hover:opacity-100' : ''}`}>
+                <span className={`absolute top-1 right-7 flex gap-2 transition-all px-2 bg-neutral opacity-0 ${value && visible ? 'opacity-100' : ''}`}>
                     <span>Copied</span><AiOutlineCheck />
                 </span>
             </button>
@@ -132,29 +132,30 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                 </div>
                 <div className='lg:w-[25%] py-14 lg:pt-48 p-5 lg:bg-base-300'>
                     <div className='sticky top-24'>
-                        <div className='flex flex-row gap-4 items-center'>
-                            <Image
-                                className='min-h-32 min-w-32 rounded-full'
-                                placeholder='blur'
-                                blurDataURL={`/images/witold-512.png`}
-                                src={`/images/witold-512.png`} alt="" width={128} height={128}
-                            />
-                            <div className="flex flex-col justify-stretch gap-2">
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex flex-row items-center'>
+                                <Image
+                                    className='min-h-32 min-w-32 rounded-full'
+                                    placeholder='blur'
+                                    blurDataURL={`/images/witold-512.png`}
+                                    src={`/images/witold-512.png`} alt="" width={128} height={128}
+                                />
+                            </div>
+                            <div className='flex flex-row items-center w-full md:justify-between'>
                                 {data.authors.length >= 2 ?
-                                    <>
-                                        <p className="font-bold text-md">{`${data.authors.join(', ')}`}</p>
-                                    </>
+                                    <p className="font-bold text-xl">{`${data.authors.join(', ')}`}</p>
                                     :
-                                    <>
-                                        <p className="font-bold text-sm">{`${data.authors}`}</p>
-                                    </>
+                                    <p className="font-bold text-xl">{`${data.authors}`}</p>
                                 }
-                                <p className='text-xs text-justify'>
-                                    Self-taugh Node.js web developer from Poland with passion for IT and new technologies. In free time also likes video games and history.
-                                </p>
-                                <span className='flex w-full justify-evenly bg-neutral text-neutral-content p-2 rounded-full'>
+                                <div className='divider divider-horizontal'></div>
+                                <span className='flex'>
                                     <Socials size='small' />
                                 </span>
+                            </div>
+                            <div className="flex flex-col justify-stretch gap-2">
+                                <p className='text-sm text-justify'>
+                                    Self-taugh Node.js web developer from Poland with passion for IT and new technologies. In free time also likes video games and history.
+                                </p>
                             </div>
                         </div>
                     </div>
