@@ -38,9 +38,9 @@ const Contact: React.FC = () => {
 								className="underline"
 								target="_blank"
 								rel="noreferrer"
-								href={'mailto:witold@dev.com'}
+								href={'mailto:witoldzawada.dev@gmail.com'}
 							>
-								witold@dev.com
+								witoldzawada.dev@gmail.com
 							</a>
 						</span>
 					</div>

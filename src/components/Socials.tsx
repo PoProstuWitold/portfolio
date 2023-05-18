@@ -54,7 +54,7 @@ export const Socials: React.FC<SocialsProps> = ({
 			</div>	
 			<div className="flex">
 				<a
-					href="https://discord.com/"
+					href="https://discord.com/users/460167435471945748"
 					target="_blank"
 					rel="noreferrer"
 					className="flex flex-row group"
