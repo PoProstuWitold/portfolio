@@ -1,7 +1,8 @@
 import React from 'react'
-import { IPost } from './blog-utils'
 import Image from 'next/image'
 import { BlogInfo } from './BlogInfo'
+import { IPost } from './blog-utils'
+import { shimmer, toBase64 } from '@/utils/functions'
 
 interface BlogCardProps {
     post: IPost
@@ -15,7 +16,18 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
             >
                 <a href={`/blog/${post.slug}`} title={`${post.data.title} full article`}>
                 <div className='h-56 relative opacity-80 group-hover:opacity-100 transition-all duration-300 ease-in-out'>
-                    <Image className='rounded-t-xl' placeholder='blur' blurDataURL={`/${post.data.socialImage}`} src={`/${post.data.socialImage}`} style={{objectFit: 'cover'}} alt="" fill />
+                    <Image 
+                        src={`/${post.data.socialImage}`} 
+                        className='rounded-t-xl' 
+                        placeholder='blur' 
+                        alt="blog cover image"
+                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(600, 300))}`}
+                        fill
+                        style={{
+                            width: '100%',
+                            objectFit: 'cover'
+                        }}
+                    />
                 </div>
                 <div className='px-3 py-2 justify-evenly flex flex-col gap-2'>
                     <div className='flex flex-row flex-wrap gap-1'>

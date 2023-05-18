@@ -4,6 +4,8 @@ import React from 'react'
 import { RxDotFilled } from 'react-icons/rx'
 import { IPost } from './blog-utils'
 
+import Witold from '../../public/images/witold-512.png'
+
 interface BlogInfoProps {
     data: IPost['data']
     readingTime: IPost['readingTime']
@@ -14,7 +16,15 @@ export const BlogInfo: React.FC<BlogInfoProps> = ({ data, readingTime }) => {
     return (
         <>
             <div className='flex flex-row gap-4 items-center'>
-                <Image className='min-h-16 min-w-16 rounded-full' placeholder='blur' blurDataURL={`/images/witold-512.png`} src={`/images/witold-512.png`} style={{objectFit: 'cover'}} alt="" width={64} height={64} />
+                <Image
+                    className='rounded-full'
+                    placeholder='blur'
+                    style={{
+                        maxWidth: '100%',
+                        height: 'auto',
+                    }}
+                    src={Witold} alt="Witold Zawada" width={64} height={64}
+                />
                 <div className="flex flex-col">
                     {data.authors.length >= 2 ?
                         <>

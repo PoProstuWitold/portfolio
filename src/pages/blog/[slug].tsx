@@ -8,12 +8,15 @@ import Image from 'next/image'
 import readingTime from 'reading-time'
 import darkSyntax from 'react-syntax-highlighter/dist/cjs/styles/prism/coldark-dark'
 import { AiFillCopy, AiOutlineCheck, AiOutlineCopy } from 'react-icons/ai'
+import Link from 'next/link'
 
 import { getFiles, getPost, IPost } from '@/content/blog-utils'
 import useCopyToClipboard from '@/hooks/useCopyToClipboard'
 import { BlogInfo } from '@/content/BlogInfo'
 import { Socials } from '@/components/Socials'
-import Link from 'next/link'
+
+import Witold from '../../../public/images/witold-512.png'
+import { shimmer, toBase64 } from '@/utils/functions'
 
 export async function getStaticPaths() {
     const paths = await getFiles('src/content/posts')
@@ -91,6 +94,49 @@ const CodeBlock = (_props: CodeProps) => {
     )
 }
 
+const ParagraphBlock = ({ paragraph }: { paragraph: any }) => {
+    const { node } = paragraph
+
+    if (node.children[0].tagName === "img") {
+        const image = node.children[0]
+        const metastring = image.properties.alt
+        const alt = metastring?.replace(/ *\{[^)]*\} */g, "")
+        const metaWidth = metastring.match(/{([^}]+)x/)
+        const metaHeight = metastring.match(/x([^}]+)}/)
+        const width = metaWidth ? metaWidth[1] : "768"
+        const height = metaHeight ? metaHeight[1] : "432"
+        const isPriority = metastring?.toLowerCase().match('{priority}')
+        const hasCaption = metastring?.toLowerCase().includes('{caption:')
+        const caption = metastring?.match(/{caption: (.*?)}/)?.pop()
+        const hasUrl = metastring?.toLowerCase().includes('{url:')
+        const url = metastring?.match(/{url: (.*?)}/)?.pop()
+        return (
+            <div className='flex flex-col '>
+                <Image
+                    src={image.properties.src}
+                    width={width}
+                    height={height}
+                    className="m-0 p-0 rounded-t-2xl"
+                    alt={alt}
+                    priority={isPriority}
+                    placeholder='blur' 
+                    blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(600, 300))}`}
+                    style={{
+                        width: '100%',
+                        objectFit: 'cover'
+                    }}
+                />
+                {hasCaption ? 
+                <div className="font-bold px-5 py-3 bg-neutral text-neutral-content italic rounded-b-2xl" aria-label={caption}>
+                    {hasUrl ? <a rel="noreferrer" target='_blank' className='font-bold text-neutral-content' href={url}>{caption}</a> : caption}
+                </div> 
+                : null}
+            </div>
+        )
+    }
+    return <p>{paragraph.children}</p>
+}
+
 export default function PostPage({ data, content, slug }: PostPageProps) {
     const { text } = readingTime(content)
 
@@ -123,7 +169,9 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                         <ReactMarkdown
                             remarkPlugins={[remarkGfm]}
                             components={{
-                                code: (props) => <CodeBlock {...props} />
+                                code: (props) => <CodeBlock {...props} />,
+                                // img: image => <ImageBlock image={image} />
+                                p: paragraph => <ParagraphBlock paragraph={paragraph} />
                             }}
                         >
                             {content}
@@ -135,10 +183,14 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-row items-center'>
                                 <Image
-                                    className='min-h-32 min-w-32 rounded-full'
+                                    priority
+                                    className='rounded-full'
                                     placeholder='blur'
-                                    blurDataURL={`/images/witold-512.png`}
-                                    src={`/images/witold-512.png`} alt="" width={128} height={128}
+                                    style={{
+                                        maxWidth: '100%',
+                                        height: 'auto',
+                                    }}
+                                    src={Witold} alt="Witold Zawada" width={128} height={128}
                                 />
                             </div>
                             <div className='flex flex-row items-center w-full md:justify-between'>
