@@ -119,18 +119,18 @@ const ParagraphBlock = ({ paragraph }: { paragraph: any }) => {
                     className="m-0 p-0 rounded-t-2xl"
                     alt={alt}
                     priority={isPriority}
-                    placeholder='blur' 
+                    placeholder='blur'
                     blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(600, 300))}`}
                     style={{
                         width: '100%',
                         objectFit: 'cover'
                     }}
                 />
-                {hasCaption ? 
-                <div className="font-bold px-5 py-3 bg-neutral text-neutral-content italic rounded-b-2xl" aria-label={caption}>
-                    {hasUrl ? <a rel="noreferrer" target='_blank' className='font-bold text-neutral-content' href={url}>{caption}</a> : caption}
-                </div> 
-                : null}
+                {hasCaption ?
+                    <div className="font-bold px-5 py-3 bg-neutral text-neutral-content italic rounded-b-2xl" aria-label={caption}>
+                        {hasUrl ? <a rel="noreferrer" target='_blank' className='font-bold text-neutral-content' href={url}>{caption}</a> : caption}
+                    </div>
+                    : null}
             </div>
         )
     }
@@ -156,16 +156,14 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                             <li className='text-primary cursor-default font-semibold'>{data.title}</li>
                         </ul>
                     </div>
-                    <div className='flex flex-col gap-10'>
+                    <div className='flex flex-col gap-6'>
                         <BlogInfo data={data} readingTime={text} />
                         <div className='flex'>
                             <Socials size='big' />
                         </div>
-                        <div className='prose'>
-                            <h1>{data.title}</h1>
-                        </div>
                     </div>
                     <div className='prose prose-pre:leading-none lg:max-w-[100ch] md:max-w-[90ch]'>
+                        <h1 className='m-0 p-0'>{data.title}</h1>
                         <ReactMarkdown
                             remarkPlugins={[remarkGfm]}
                             components={{
@@ -206,7 +204,7 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                             </div>
                             <div className="flex flex-col justify-stretch gap-2">
                                 <p className='text-sm text-justify'>
-                                    Self-taugh Node.js web developer from Poland with passion for IT and new technologies. In free time also likes video games and history.
+                                    I'm a self-taught Node.js web developer from Poland with a strong interest in IT and new technologies. In my spare time, I enjoy playing video games and learning about history.
                                 </p>
                             </div>
                         </div>
