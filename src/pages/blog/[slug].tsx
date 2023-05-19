@@ -94,6 +94,8 @@ const CodeBlock = (_props: CodeProps) => {
     )
 }
 
+// react-markdown package is very loosely typed, so it's hard getting right type
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ParagraphBlock = ({ paragraph }: { paragraph: any }) => {
     const { node } = paragraph
 
@@ -204,7 +206,7 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                             </div>
                             <div className="flex flex-col justify-stretch gap-2">
                                 <p className='text-sm text-justify'>
-                                    I'm a self-taught Node.js web developer from Poland with a strong interest in IT and new technologies. In my spare time, I enjoy playing video games and learning about history.
+                                    I&apos;m a self-taught Node.js web developer from Poland with a strong interest in IT and new technologies. In my spare time, I enjoy playing video games and learning about history.
                                 </p>
                             </div>
                         </div>
