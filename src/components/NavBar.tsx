@@ -40,18 +40,18 @@ export const Navbar: React.FC = () => {
 					Witold Zawada
 				</Link>
 			</div>
-			<div className="hidden navbar-center lg:flex">
-				<ul className="p-0 font-semibold menu menu-horizontal">
-					<li>
-						<a href="/#about">ABOUT</a>
+			<div className="hidden navbar-center lg:flex h-full">
+				<ul className="p-0 font-semibold menu menu-horizontal menu-lg">
+					<li className='active:bg-primary rounded-lg active:text-neutral-content'>
+						<a  href="/#about">ABOUT</a>
 					</li>
-					<li>
+					<li className='active:bg-primary rounded-lg active:text-neutral-content'>
 						<a href="/#projects">PROJECTS</a>
 					</li>
-					<li>
+					<li className='active:bg-primary rounded-lg active:text-neutral-content'>
 						<a href="/#contact">CONTACT</a>
 					</li>
-					<li>
+					<li className='active:bg-primary rounded-lg active:text-neutral-content'>
 						<a href="/blog">BLOG</a>
 					</li>
 				</ul>
