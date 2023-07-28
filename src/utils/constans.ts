@@ -78,12 +78,13 @@ export const projects = [
 		skills: [
 			'Node.js',
 			'TypeScript',
-			'Nest.js (Fastify)',
+			'Nest.js',
 			'PostgreSQL',
 			'Next.js',
 			'GraphQL',
 			'TailwindCSS',
-			'Stripe',
+			'Stripe payments',
+			'File upload'
 		],
 		repo: 'https://github.com/PoProstuWitold/homster'
 	},

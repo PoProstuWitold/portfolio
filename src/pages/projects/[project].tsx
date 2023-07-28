@@ -24,13 +24,13 @@ export default function Project({ repository }: { repository: Repository }): Rea
 				description={`${repository.description}`}
                 canonical={`https://witoldzawada.dev/projects/${repository.name}`}
 			/>
-            <section className='min-h-screen flex flex-col gap-12 pt-8'>
+            <section className='min-h-screen flex flex-col gap-2 md:gap-12 pt-4'>
                 <br />
                 <br />
-                <div className="flex flex-col lg:flex-row justify-start mx-2 lg:mx-20 gap-12">
+                <div className="flex flex-col lg:flex-row justify-start mx-2 lg:mx-20 md:gap-12">
                     <div className="flex flex-col flex-grow lg:w-[50%] gap-8 lg:bg-base-200 p-5 rounded-2xl">
-                        <div className='flex flex-col gap-3'>
-                            <div className='flex flex-col md:flex-row gap-3 md:items-center'>
+                        <div className='flex flex-col gap-[0.5rem]'>
+                            <div className='flex flex-row gap-3 items-center'>
                                 <h2 className="text-3xl font-bold text-left">
                                     {repository.name}
                                 </h2>
@@ -53,24 +53,24 @@ export default function Project({ repository }: { repository: Repository }): Rea
                         </div>
                     </div>
                     <div className="flex flex-col flex-grow lg:w-[50%] mx-0 gap-8 lg:bg-base-200 p-5 rounded-2xl">
-                        <div className="flex flex-col gap-3">
+                        <div className="flex flex-col gap-1">
                             <h3 className='text-2xl font-bold'>Stats</h3>
-                            <div className='flex md:flex-row gap-10 lg:justify-between text-lg flex-col lg:gap-4'>
-                                <span className='flex items-center text-center gap-2'>{repository.licenseInfo && <><TbLicense/> {` ${repository.licenseInfo.name}`}</> || <><TbLicenseOff/>{' No licence'}</>}</span>
-                                <span className='flex items-center text-center gap-2'><AiOutlineStar className='w-5 h-5'/><p>{repository.stargazers.totalCount} stars</p></span>
-                                <span className='flex items-center text-center gap-2'><TbGitFork /><p>{repository.forks.totalCount} forks</p></span>
+                            <div className='flex flex-row gap-10 justify-between text-lg lg:gap-4'>
+                                <span className='flex items-center text-center gap-1'>{repository.licenseInfo && <><TbLicense/> {` ${repository.licenseInfo.name}`}</> || <><TbLicenseOff/>{' No licence'}</>}</span>
+                                <span className='flex items-center text-center gap-1'><AiOutlineStar className='w-5 h-5'/><p>{repository.stargazers.totalCount} stars</p></span>
+                                <span className='flex items-center text-center gap-1'><TbGitFork /><p>{repository.forks.totalCount} forks</p></span>
                             </div>
                         </div>
-                        <div className="flex flex-col gap-3">
+                        <div className="flex flex-col">
                             <h3 className='text-2xl font-bold'>Languages</h3>
                             <div className='flex flex-row gap-2 flex-wrap'>
                                 {repository.languages.nodes.map((lang) => {
                                     return (
                                         <span 
-                                            className={`p-1 max-w-fit border-4 font-bold border-transparent`} 
+                                            className={`px-1 max-w-fit border-4 font-semibold border-transparent`} 
                                             key={`${repository.name}:${lang.name}`}
                                             style={{ 
-                                                borderBottomColor: `${lang.color}`,
+                                                borderBottomColor: `${lang.color}`
                                             }} 
                                         >
                                             {lang.name}
@@ -82,7 +82,7 @@ export default function Project({ repository }: { repository: Repository }): Rea
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col text-justify mx-2 lg:mx-20 gap-6 mb-20 lg:bg-base-200 p-5 rounded-2xl">
+                <div className="flex flex-col text-justify mx-2 lg:mx-20 gap-2 mb-20 lg:bg-base-200 p-5 rounded-2xl">
                     <h2 className="text-3xl font-bold text-left">
                         Case study
                     </h2>
