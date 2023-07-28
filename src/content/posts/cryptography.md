@@ -45,6 +45,7 @@ Process that takes an input value of any length and outputs a fixed length value
 ```ts
 const hash1 = await cryptoService.createHash('chomik123!')
 const hash2 = await cryptoService.createHash('chomik123!')
+
 console.log(hash1 === hash2) // true
 ```
 
@@ -64,8 +65,8 @@ Keyed hash of data that allows you to verify both the authenticity and originato
 ```ts
 const hmac1 = await cryptoService.createHmac('chomcio123!', 'secret_hamster')
 const hmac2 = await cryptoService.createHmac('chomcio123!', 'secret_hamster')
-console.log(hmac1 === hmac2) // true
 
+console.log(hmac1 === hmac2) // true
 ```
 
 ## 4. Symmetric Encryption
@@ -75,6 +76,7 @@ const message = 'Homster'
 
 const encryptedMessage = await cryptoService.symmetricEncrypt(message)
 const decryptedMessage = await cryptoService.symmetricDecrypt(encryptedMessage)
+
 console.log(message === decryptedMessage) // true
 ```
 
@@ -91,8 +93,8 @@ const {
 
 ## 6. Asymmetric Encryption
 Encryption that depends on two keys. Encrypt a message with the public key and decrypt it with the private key
-```ts
 
+```ts
 const { 
     privateKey, 
     publicKey  
@@ -117,5 +119,6 @@ const {
 const data = 'homster to be signed'
 const signature = await cryptoService.sign(data, privateKey)
 const verified = await cryptoService.verify(data, publicKey, signature)
+
 console.log(verified) // true
 ```
