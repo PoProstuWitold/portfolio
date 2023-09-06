@@ -18,7 +18,7 @@ const About: React.FC = () => {
 					<p className="gap-2 text-justify">
 						Want to see more? Be sure to visit my{" "}
 						<a
-							className="underline"
+							className="underline font-semibold"
 							href="https://github.com/PoProstuWitold"
 							target="_blank"
 							rel="noreferrer"
@@ -27,7 +27,7 @@ const About: React.FC = () => {
 						</a>
 						<span> & </span>
 						<a
-							className="underline"
+							className="underline font-semibold"
 							href="https://www.linkedin.com/in/witoldzawada/"
 							target="_blank"
 							rel="noreferrer"

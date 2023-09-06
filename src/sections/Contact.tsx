@@ -23,7 +23,7 @@ const Contact: React.FC = () => {
 								className="underline"
 								target="_blank"
 								rel="noreferrer"
-								href={'https://discord.com/'}
+								href={'https://discord.com/users/460167435471945748'}
 							>
 								Shedule call with me
 							</a>

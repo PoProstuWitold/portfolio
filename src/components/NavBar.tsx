@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
 				{mounted &&
 				<select
 					value={theme}
-					className="max-w-xs select select-ghost"
+					className="max-w-xs select select-ghost font-semibold"
 					onChange={(e): void => setTheme(e.currentTarget.value)}
 				>
 					{themes.map((theme, index) => (

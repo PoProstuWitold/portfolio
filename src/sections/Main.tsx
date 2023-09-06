@@ -16,7 +16,7 @@ const Main: React.FC = () => {
 				<div className="justify-between my-auto mt-40 hero-content">
 					<div className='flex flex-col gap-4'>
 						<m.h1
-							className="md:text-5xl text-4xl font-bold flex md:flex-row flex-col"
+							className="md:text-6xl text-5xl font-bold flex md:flex-row flex-col"
 							initial={{ opacity: 0, scale: 0.7 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{

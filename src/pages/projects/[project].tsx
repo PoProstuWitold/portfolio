@@ -55,7 +55,7 @@ export default function Project({ repository }: { repository: Repository }): Rea
                     <div className="flex flex-col flex-grow lg:w-[50%] mx-0 gap-8 lg:bg-base-200 p-5 rounded-2xl">
                         <div className="flex flex-col gap-1">
                             <h3 className='text-2xl font-bold'>Stats</h3>
-                            <div className='flex flex-row gap-10 justify-between text-lg lg:gap-4'>
+                            <div className='flex flex-row gap-10 justify-between md:text-lg text-md lg:gap-4'>
                                 <span className='flex items-center text-center gap-1'>{repository.licenseInfo && <><TbLicense/> {` ${repository.licenseInfo.name}`}</> || <><TbLicenseOff/>{' No licence'}</>}</span>
                                 <span className='flex items-center text-center gap-1'><AiOutlineStar className='w-5 h-5'/><p>{repository.stargazers.totalCount} stars</p></span>
                                 <span className='flex items-center text-center gap-1'><TbGitFork /><p>{repository.forks.totalCount} forks</p></span>
