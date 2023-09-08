@@ -1,3 +1,9 @@
+export const myInfo = {
+	email: 'witoldzawada.dev@gmail.com',
+	randomStringEmail: '34893320013ab23ed74d6d8c8b6552c4',
+	url: 'https://witoldzawada.dev'
+}
+
 export const themes = [
 	{
 		name: 'System'

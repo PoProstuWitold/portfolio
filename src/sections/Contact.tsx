@@ -2,6 +2,8 @@
 import { Socials } from '@/components/Socials'
 import { AiOutlineMail } from 'react-icons/ai'
 import { RxDiscordLogo } from 'react-icons/rx'
+import { myInfo } from '@/utils/constans'
+import { FormSettings } from '@/components/FormSettings'
 
 const Contact: React.FC = () => {
 	return (
@@ -55,7 +57,12 @@ const Contact: React.FC = () => {
 				className="lg:w-2/3 rounded-2xl bg-base-200"
 			>
 				<div className="p-6 rounded-2xl shadow-md">
-					<form className='flex flex-col gap-6'>
+					<form 
+						className='flex flex-col gap-6'
+						method='POST'
+						action={`https://formsubmit.co/${myInfo.randomStringEmail}`}
+					>
+						<FormSettings/>
 						<div className="flex flex-col justify-between gap-6 lg:flex-row">
 							<div className="w-full form-control">
 								<label className="label">
@@ -65,9 +72,11 @@ const Contact: React.FC = () => {
 									</span>
 								</label>
 								<input
-									type="text"
 									placeholder="Your name"
 									className="w-full input input-bordered"
+									type="text"
+									name="name"
+									required
 								/>
 							</div>
 							<div className="w-full form-control">
@@ -78,9 +87,11 @@ const Contact: React.FC = () => {
 									</span>
 								</label>
 								<input
-									type="text"
 									placeholder="Your email"
 									className="w-full input input-bordered"
+									type="email"
+									name="email"
+									required
 								/>
 							</div>
 						</div>
@@ -92,9 +103,11 @@ const Contact: React.FC = () => {
 								</span>
 							</label>
 							<input
-									type="text"
 									placeholder="Title of your message"
 									className="w-full input input-bordered"
+									type="text"
+									name="title"
+									required
 								/>
 						</div>
 						<div className="form-control mb-6">
@@ -105,17 +118,18 @@ const Contact: React.FC = () => {
 								</span>
 							</label>
 							<textarea
-								className="textarea textarea-md textarea-bordered"
 								placeholder="Content of your message"
+								className="textarea textarea-md textarea-bordered"
+								name="content"
+								required
 							></textarea>
 						</div>
 						<div className="flex justify-center">
 							<button
 								type="submit"
 								className="btn btn-lg btn-outline md:w-full"
-								disabled
 							>
-								Work in progress
+								Send
 							</button>
 						</div>
 					</form>
