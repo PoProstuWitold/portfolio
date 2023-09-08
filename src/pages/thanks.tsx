@@ -10,7 +10,7 @@ const ThanksPage: React.FC = () => {
 			/>
 			<main className="flex flex-col items-center justify-center w-full h-screen gap-2">
 				<h1 className="font-extrabold tracking-widest text-5xl text-primary">Thanks!</h1>
-				<p>I received your message and I will respond as fast as possible.</p>
+				<p className='mx-auto text-center'>I received your message and I will respond as fast as possible.</p>
 				<div className="flex justify-center">
 					<Link
 						className="btn btn-secondary btn-md btn-outline md:w-full my-10 px-14"

@@ -127,7 +127,7 @@ const Contact: React.FC = () => {
 						<div className="flex justify-center">
 							<button
 								type="submit"
-								className="btn btn-lg btn-outline md:w-full"
+								className="btn btn-lg btn-outline md:w-full w-60"
 							>
 								Send
 							</button>
