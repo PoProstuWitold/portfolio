@@ -1,6 +1,5 @@
 import ReactMarkdown from 'react-markdown'
 import { useState } from 'react'
-import { CodeProps } from 'react-markdown/lib/ast-to-react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import remarkGfm from 'remark-gfm'
 import { NextSeo } from 'next-seo'
@@ -45,7 +44,8 @@ interface PostPageProps {
     slug: string
 }
 
-const CodeBlock = (_props: CodeProps) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const CodeBlock = (_props: any) => {
     const [visible, setVisible] = useState<boolean>(false)
     const [value, copy] = useCopyToClipboard()
 
