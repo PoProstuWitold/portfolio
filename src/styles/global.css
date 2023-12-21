@@ -19,11 +19,6 @@
 
 	::-webkit-scrollbar-thumb {
 		--tw-bg-opacity: 1;
-		background-color: hsl(var(--p) / var(--tw-bg-opacity))
-	}
-
-	::-webkit-scrollbar-thumb:hover {
-		--tw-bg-opacity: 1;
-		background-color: hsl(var(--s) / var(--tw-bg-opacity))
+		background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
 	}
 }
