@@ -15,15 +15,15 @@ interface BlogInfoProps {
 export const BlogInfo: React.FC<BlogInfoProps> = ({ data, readingTime }) => {
     return (
         <>
-            <div className='flex flex-row gap-4 items-center'>
+            <div className='flex flex-row gap-4 items-center px-1'>
                 <Image
                     className='rounded-full'
                     placeholder='blur'
                     style={{
-                        maxWidth: '100%',
-                        height: 'auto',
+                        width: '64px',
+                        height: '64px',
                     }}
-                    src={Witold} alt="Witold Zawada" width={64} height={64}
+                    src={Witold} alt="Witold Zawada"
                 />
                 <div className="flex flex-col">
                     {data.authors.length >= 2 ?

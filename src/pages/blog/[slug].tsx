@@ -187,10 +187,10 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                                     className='rounded-full'
                                     placeholder='blur'
                                     style={{
-                                        maxWidth: '100%',
-                                        height: 'auto',
+                                        maxWidth: '128px',
+                                        height: '128px',
                                     }}
-                                    src={Witold} alt="Witold Zawada" width={128} height={128}
+                                    src={Witold} alt="Witold Zawada"
                                 />
                             </div>
                             <div className='flex flex-row items-center w-full md:justify-between'>

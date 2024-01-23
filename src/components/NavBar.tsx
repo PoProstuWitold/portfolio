@@ -58,18 +58,20 @@ export const Navbar: React.FC = () => {
 			</div>
 			<div className="navbar-end">
 				{mounted &&
-				<select
-					value={theme}
-					className="max-w-xs select select-ghost font-semibold"
-					onChange={(e): void => setTheme(e.currentTarget.value)}
-				>
-					{themes.map((theme, index) => (
-						<option key={index} value={theme.name.toLowerCase()}>
-							{theme.name}
-						</option>
-					))}
-				</select>
-
+				<label htmlFor="Themes">
+					<select
+						id="Themes"
+						value={theme}
+						className="max-w-xs select select-ghost font-semibold"
+						onChange={(e): void => setTheme(e.currentTarget.value)}
+					>
+						{themes.map((theme, index) => (
+							<option key={index} value={theme.name.toLowerCase()}>
+								{theme.name}
+							</option>
+						))}
+					</select>
+				</label>
 				}
 			</div>
 		</nav>

@@ -27,6 +27,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
                             width: '100%',
                             objectFit: 'cover'
                         }}
+						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                 </div>
                 <div className='px-3 py-2 justify-evenly flex flex-col gap-2'>
