@@ -58,7 +58,10 @@ export const Navbar: React.FC = () => {
 			</div>
 			<div className="navbar-end">
 				{mounted &&
-				<label htmlFor="Themes">
+				<>
+					<label htmlFor="Themes" className="sr-only">
+						Choose a theme
+					</label>
 					<select
 						id="Themes"
 						value={theme}
@@ -71,7 +74,7 @@ export const Navbar: React.FC = () => {
 							</option>
 						))}
 					</select>
-				</label>
+				</>
 				}
 			</div>
 		</nav>
