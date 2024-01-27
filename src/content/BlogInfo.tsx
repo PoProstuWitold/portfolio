@@ -20,8 +20,7 @@ export const BlogInfo: React.FC<BlogInfoProps> = ({ data, readingTime }) => {
                     className='rounded-full'
                     placeholder='blur'
                     style={{
-                        width: '64px',
-                        height: '64px',
+                        width: '64px'
                     }}
                     src={Witold} alt="Witold Zawada"
                 />

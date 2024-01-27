@@ -1,9 +1,9 @@
-import { readFileSync, readdirSync } from 'node:fs'
+import { readFile, readdir } from 'node:fs/promises'
 import matter from 'gray-matter'
 import readingTime from 'reading-time'
 
 export const getPost = async (slug: string) => {
-    const fileName = readFileSync(`src/content/posts/${slug}.md`, 'utf-8')
+    const fileName = await readFile(`src/content/posts/${slug}.md`, 'utf-8')
 
     const { data, content } = matter(fileName)
 
@@ -13,14 +13,14 @@ export const getPost = async (slug: string) => {
 }
 
 export const getPosts = async (path: string): Promise<IPost[]> => {
-    const postsDir = readdirSync(path)
+    const postsDir = await readdir(path)
 
     let allTags: string[] = []
 
-	const posts = postsDir.map((fileName: string) => {
+	const posts = postsDir.map(async (fileName: string) => {
 		const slug = fileName.replace('.md', '')
-		const readFile = readFileSync(`${path}/${fileName}`, 'utf-8')
-		const { data, content } = matter(readFile)
+		const file = await readFile(`${path}/${fileName}`, 'utf-8')
+		const { data, content } = matter(file)
 		
 		const { text } = readingTime(content)
 
@@ -30,11 +30,15 @@ export const getPosts = async (path: string): Promise<IPost[]> => {
 			data,
 			readingTime: text
 		}
-	}).sort((a, b) => {
+	})
+
+	const resolved = await Promise.all(posts)
+
+	resolved.sort((a, b) => {
 		return new Date(b.data.date).getTime() - new Date(a.data.date).getTime() 
 	})
 
-    return posts as IPost[]
+    return resolved as IPost[]
 }
 
 export const getTags = (posts: IPost[]) => {
@@ -42,7 +46,7 @@ export const getTags = (posts: IPost[]) => {
 }
 
 export const getFiles = async (path: string) => {
-    const files = readdirSync(path)
+    const files = await readdir(path)
 
     const paths = files.map((fileName) => ({
         params: {
