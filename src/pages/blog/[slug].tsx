@@ -8,13 +8,15 @@ import readingTime from 'reading-time'
 import darkSyntax from 'react-syntax-highlighter/dist/cjs/styles/prism/coldark-dark'
 import { AiFillCopy, AiOutlineCheck, AiOutlineCopy } from 'react-icons/ai'
 import Link from 'next/link'
+import { RWebShare } from 'react-web-share'
+import { usePathname } from 'next/navigation'
 
 import { getFiles, getPost, IPost } from '@/content/blog-utils'
 import useCopyToClipboard from '@/hooks/useCopyToClipboard'
 import { BlogInfo } from '@/content/BlogInfo'
 import { Socials } from '@/components/Socials'
 
-import Witold from '../../../public/images/witold-512.png'
+// import Witold from '../../../public/images/witold-512.png'
 import { shimmer, toBase64 } from '@/utils/functions'
 
 export async function getStaticPaths() {
@@ -141,6 +143,7 @@ const ParagraphBlock = ({ paragraph }: { paragraph: any }) => {
 
 export default function PostPage({ data, content, slug }: PostPageProps) {
     const { text } = readingTime(content)
+	const pathname = usePathname()
 
     return (
         <>
@@ -150,7 +153,7 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                 canonical={`https://witoldzawada.dev/blog/${slug}`}
             />
             <main className='min-h-screen flex lg:flex-row flex-col justify-center gap-10'>
-                <div className='lg:w-[50%] flex flex-col mt-20 lg:mt-48 mx-4 gap-14 pb-20'>
+                <div className='lg:w-[50%] flex flex-col md:my-28 my-24 mx-4 gap-10'>
                     <div className="md:text-sm text-xs breadcrumbs">
                         <ul>
                             <li><Link href={`/`}>Home</Link></li>
@@ -158,12 +161,29 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                             <li className='text-primary cursor-default font-semibold'>{data.title}</li>
                         </ul>
                     </div>
-                    <div className='flex flex-col gap-6'>
-                        <BlogInfo data={data} readingTime={text} />
-                        <div className='flex'>
-                            <Socials size='big' />
-                        </div>
+                    <div className='flex flex-col w-full lg:flex-row'>
+						<div className="grid h-24 flex-grow bg-base-300 rounded-box place-items-center">
+                        	<BlogInfo data={data} readingTime={text}/>
+						</div>
+						<div className="divider lg:divider-horizontal"></div>
+						<div className="grid h-16 lg:h-24 flex-grow bg-base-300 rounded-box place-items-center">
+                        	<Socials size='big' />
+						</div>
                     </div>
+					<RWebShare
+						data={{
+							text: data.description,
+							url: pathname,
+							title: `Blog | ${data.title}`
+						}}
+						sites={[
+							'facebook', 'twitter', 'linkedin', 'reddit', 'whatsapp', 'copy', 'mail'
+						]}
+						// disableNative
+						onClick={() => console.log('shared successfully!')}
+					>
+						<button className='btn btn-outline'>Share this article 🔗</button>
+					</RWebShare>
                     <div className='prose prose-pre:leading-none lg:max-w-[100ch] md:max-w-[90ch]'>
                         <h1 className='m-0 p-0'>{data.title}</h1>
                         <ReactMarkdown
@@ -178,7 +198,7 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                         </ReactMarkdown>
                     </div>
                 </div>
-                <div className='lg:w-[25%] py-14 lg:pt-48 p-5 lg:bg-base-300'>
+                {/* <div className='lg:w-[25%] py-14 lg:pt-48 p-5 lg:bg-base-300'>
                     <div className='sticky top-24'>
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-row items-center'>
@@ -211,7 +231,7 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
             </main>
         </>

@@ -11,7 +11,7 @@ export const Socials: React.FC<SocialsProps> = ({
 }) => {
     
     return (
-        <>
+        <div className="flex items-center gap-2">
             <div className="flex">
 				<a
 					href="https://github.com/PoProstuWitold"
@@ -72,6 +72,6 @@ export const Socials: React.FC<SocialsProps> = ({
 					</div>
 				</a>
 			</div>
-        </>
+        </div>
     )
 }
