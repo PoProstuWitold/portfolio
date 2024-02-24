@@ -16,7 +16,12 @@ tags:
 
 > All of code used in this article is availabe on my ***[GitHub](https://github.com/PoProstuWitold/cryptography)***.
 
-Small program to demonstrate most important cryptography concepts. Written using Node.js native `crypto` module and TypeScript.
+# What is cryptography?
+Cryptography is the field of knowledge, with branches both in IT and mathematics, about transmiting information in a way that is protected against unauthorized access.
+
+This is obviously very short and simple definition but I guess it gives you the most important concept about cryptography - it is used for **secure communication**.
+
+Let's dive deeper into it. Here is my simple program to demonstrate most important cryptography concepts. Written using Node.js native `crypto` module and TypeScript.
 
 You can create `CryptographyService` like this:
 ```ts
@@ -95,6 +100,8 @@ const {
 Encryption that depends on two keys. Encrypt a message with the public key and decrypt it with the private key
 
 ```ts
+const message = 'Homster'
+
 const { 
     privateKey, 
     publicKey  
@@ -122,3 +129,7 @@ const verified = await cryptoService.verify(data, publicKey, signature)
 
 console.log(verified) // true
 ```
+
+
+# Conclusion
+Cryptography is really important, especially nowadays. As developers we need to know how to use these concepts especially desiging vulnerable software such as banking apps, chat apps and many more.
