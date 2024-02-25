@@ -170,6 +170,19 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
                         	<Socials size='big' />
 						</div>
                     </div>
+					<div className='flex flex-col gap-2'>
+						<span className='font-semibold'>tags:</span>
+						<div className="flex gap-2 flex-wrap">
+							{data.tags.map((tag) => (
+								<span
+									key={tag}
+									className={`bg-secondary text-neutral-content font-semibold px-3 py-1 rounded-md`}
+								>
+									{tag}
+								</span>
+							))}
+						</div>
+					</div>
 					<RWebShare
 						data={{
 							text: data.description,
