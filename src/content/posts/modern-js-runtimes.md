@@ -7,7 +7,7 @@ authors:
 date: '2024-02-25 16:00'
 tags:
   - TypeScript
-  - JS Runtime
+  - Runtimes
 ---
 
 The JavaScript world has always been kind of chaotic due to a lack of standardization since the first days of Node.js, which was created on 27th May 2009 by *Ryan Dahl*. Many features that we take for granted nowadays did not exist back then, so JavaScript developers had to do everything they could to make Node.js more functional.
@@ -79,7 +79,7 @@ Let’s examine the number of questions on Stack Overflow for each technology.
 |   deno  |         983         |
 |   bun   |         166         |
 
-At the time of writing this article (24th February 2024), Node.js has nearly 480 times more questions than Deno and more than 2800 times more questions than Bun.js. So, there is a much bigger chance that if you encounter a problem in Node.js, you will find a solution relatively easily compared to other runtimes.
+At the time of writing this article (25th February 2024), Node.js has nearly 480 times more questions than Deno and more than 2800 times more questions than Bun.js. So, there is a much bigger chance that if you encounter a problem in Node.js, you will find a solution relatively easily compared to other runtimes.
 
 
 # Conclusion

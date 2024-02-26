@@ -34,7 +34,8 @@ export default function Blog({ posts, tags }: BlogProps) {
     }
 
 	const handleTagClick = (tag: string) => {
-		if(tag === '') {
+		console.log('tag', tag)
+		if(tag === '' || (selectedTags.includes(tag) && selectedTags.length === 1)) {
 			setSelectedTags([])
 			return router.push({
 				pathname: '/blog',
