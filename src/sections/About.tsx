@@ -13,7 +13,9 @@ const About: React.FC = () => {
 						Who am I?
 					</h2>
 					<p className="text-justify">
-						I'm Witold Zawada. Self-taught web developer from Poland. I'm constantly expanding my skills in both backend and frontend development to understand both domains and create complete, secure, and user-friendly applications using technologies such as TypeScript, Node.js and React.
+						I'm Witold Zawada. Self-taught software developer from Poland. I'm constantly expanding my skills in both backend and frontend development to understand both domains and create complete, secure, and user-friendly applications using technologies such as TypeScript, React, Go and PostgreSQL.
+
+						In my free time I like to do so-called "selfhosting" and learn how do enterprise servers operate.
 					</p>
 					<p className="gap-2 text-justify">
 						Want to see more? Be sure to visit my{" "}
@@ -36,7 +38,7 @@ const About: React.FC = () => {
 						</a>
 					</p>
 					<p className="text-justify">
-						In addition to programming, I enjoy video games, skiing, history, 
+						In addition to programming, Computer Science and other IT stuff, I enjoy video games, skiing, history, 
 						and spending time with my beloved pets.
 					</p>
 					</div>

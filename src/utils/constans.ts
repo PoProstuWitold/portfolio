@@ -60,22 +60,20 @@ export const projects = [
 		repo: 'https://github.com/PoProstuWitold/nest-next-boilerplate'
 	},
 	{
-		name: 'reddit-clone',
-		description: `Fullstack Nest, Next Reddit-like app with RESTful API for auth, subredits, commenting, 
-        posting and voting for posts.`,
-		application: 'Fullstack REST app',
+		name: 'homeserver',
+		description: `My two personal, opinionated home server setups. One using Port Forwarding and the other using Cloudflare Tunnels. Both with detailed "to-do like" instructions, explanations as well as links to various resources.`,
+		application: 'Guide/Tutorial',
 		skills: [
-			'Node.js',
-			'TypeScript',
-			'Nest.js',
-			'Redis',
-			'PostgreSQL',
+			'Linux',
 			'Docker',
-			'Next.js',
-			'TailwindCSS',
-			'File upload'
+			'Networking',
+			'Cloudflare',
+			'Port Forwarding',
+			'Security',
+			'Caddy',
+			'VPN'
 		],
-		repo: 'https://github.com/PoProstuWitold/reddit-clone'
+		repo: 'https://github.com/PoProstuWitold/homeserver'
 	},
 	{
 		name: 'Homster',
@@ -96,7 +94,7 @@ export const projects = [
 	},
 	{
 		name: 'Sayuna',
-		description: `Easily extensible and customizable all-in-one Discord bot. Moderation, music & fun! Built around dependency injection pattern.`,
+		description: `Easily extensible and customizable all-in-one Discord bot. Moderation, music & fun! Built around dependency injection pattern. Includes real-time dashboard with controls and Docker image for easy deployment and monitoring`,
 		application: 'Discord bot',
 		skills: [
 			'Node.js',
@@ -149,8 +147,10 @@ export const caseStudies = new Map<string, string>([
 		`This is a full-stack web application boilerplate developed using Nest.js and Next.js, both of which are using TypeScript. It was my first major attempt to build a complete full-stack app. The project includes a RESTful API, real-time chat functionality with rooms, conversation for two users, local, Google, and Facebook authentication, password change and recovery, updating user profile, account confirmation, and more. The entire project is dockerized for development, which means instead of running api, web client, workers, databases separately, you just need to run the docker-compose file. The project has received positive feedback, gaining plenty of stars and forks on GitHub.`
 	],
 	[
-		'reddit-clone', 
-		`The development of this project was motivated by my desire to deepen my understanding of RESTful API architecture and Nest.js framework. This Reddit-like application enables users to create subreddits, posts, and vote on them. Through this project, I gained valuable knowledge and experience which I have since utilized in other development projects.`
+		'homeserver', 
+		`After a quick chat with my friend from university, during which I learned about their private server, I became very excited and decided to set up my own. Initially, I struggled to find a comprehensive guide on where to begin. I had to gather information from various sources, including official documentation, YouTube videos, platforms like Reddit and StackOverflow, and blog posts.
+		
+		After some time, I decided to create a guide on how to set up a home server using two different methods: Port Forwarding and Cloudflare Tunnels. The guide provides detailed instructions on setting up a server, installing Docker, configuring Caddy, and establishing a VPN. I developed this project to assist people who want to create their own home servers but lack guidance. The community has responded positively, with many users finding the guide helpful. I've received feedback from individuals and my colleagues who successfully set up their own home servers using my instructions.`
 	],
 	[
 		'Homster', 

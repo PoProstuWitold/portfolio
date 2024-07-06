@@ -39,7 +39,7 @@ const Main: React.FC = () => {
 								ease: [0, 0.71, 0.2, 1.01]
 							}}
 						>
-							Node.js TypeScript developer
+							Junior TypeScript & Go developer
 						</m.p>
 						<m.span 
 							className='flex flex-row items-center justify-center ml-2 gap-2 mb-10'

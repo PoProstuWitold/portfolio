@@ -77,7 +77,7 @@ export default function Project({ repository }: { repository: Repository }): Rea
                                         </span>
                                     )
                                 })}
-                                {!repository.languages.nodes.length && 'No languages, huh? Maybe you got my README?'}
+                                {!repository.languages.nodes.length && 'No languages, huh?'}
                             </div>
                         </div>
                     </div>
