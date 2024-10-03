@@ -35,21 +35,14 @@ export const getPosts = async (path: string): Promise<IPost[]> => {
 	const resolved = await Promise.all(posts)
 
 	resolved.sort((a, b) => {
-		// Check if both posts have an 'updated' date
-		const aUpdated = a.data.updated ? new Date(a.data.updated).getTime() : null
-		const bUpdated = b.data.updated ? new Date(b.data.updated).getTime() : null
+		const aDate = new Date(a.data.date).getTime()
+		const bDate = new Date(b.data.date).getTime()
 	
-		// If both posts have updated dates, compare them
-		if (aUpdated && bUpdated) {
-			return bUpdated - aUpdated
-		}
+		const aUpdated = a.data.updated ? new Date(a.data.updated).getTime() : aDate
+		const bUpdated = b.data.updated ? new Date(b.data.updated).getTime() : bDate
 	
-		// If only one post has an updated date, prioritize it
-		if (aUpdated) return -1
-		if (bUpdated) return 1
-	
-		// Otherwise, compare by the original date
-		return new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+		// Prioritize posts by the latest of either 'updated' or 'date'
+		return bUpdated - aUpdated
 	})
 
     return resolved as IPost[]
