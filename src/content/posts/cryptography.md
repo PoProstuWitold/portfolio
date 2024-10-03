@@ -5,6 +5,7 @@ authors:
   - Witold Zawada
 socialImage: images/blog/cryptography.webp
 date: '2023-05-06 11:00'
+updated: '2024-10-03 17:15'
 tags:
   - Node.js
   - TypeScript
@@ -26,15 +27,15 @@ Let's dive deeper into it. Here is my simple program to demonstrate most importa
 You can create `CryptographyService` like this:
 ```ts
 const cryptoService = new CryptographyService({
-	algorithm: Algorithms.AES_192_CBC,
-	hash: Hashes.SHA256,
+	encryption: Encryptions.AES_192_CBC,
+	hash: Hashes.SHA256
 })
 ```
 ```ts
-export enum Algorithms {
-    AES_256_CBC = 'aes-256-cbc',
-    AES_192_CBC = 'aes-192-cbc',
-    AES_128_CBC = 'aes-128-cbc'
+export enum Encryptions {
+	AES_256_CBC = 'aes-256-cbc',
+	AES_192_CBC = 'aes-192-cbc',
+	AES_128_CBC = 'aes-128-cbc'
 }
 
 export enum Hashes {
@@ -56,7 +57,7 @@ console.log(hash1 === hash2) // true
 
 
 ## 2. Salt 
-Random string added to the input before hashing to make the hash more unique and harder to guess
+Random string added to the input before hashing to make the hash more unique and harder to guess.
 ```ts
 const text = 'Chomcio'
 const saltedText = await cryptoService.generateSalt(16, text)
@@ -75,7 +76,7 @@ console.log(hmac1 === hmac2) // true
 ```
 
 ## 4. Symmetric Encryption
-Ping a message confidential while allowing it to be reversible with the proper key. In symmetric encryption, the same key is used to encrypt and decrypt the message
+Ping a message confidential while allowing it to be reversible with the proper key. In symmetric encryption, the same key is used to encrypt and decrypt the message.
 ```ts
 const message = 'Homster'
 
@@ -86,7 +87,7 @@ console.log(message === decryptedMessage) // true
 ```
 
 ## 5. Keypairs
-An algorithm like RSA that generates a keypair containing a public and private key. The private key should be kept secret, while the public key can be shared freely.
+An algorithm like RSA that generates a keypair containing a public and private key. **The private key should be kept secret**, while the public key can be shared freely.
 ```ts
 const modulusLength = 2048
 
@@ -97,7 +98,7 @@ const {
 ```
 
 ## 6. Asymmetric Encryption
-Encryption that depends on two keys. Encrypt a message with the public key and decrypt it with the private key
+Encryption that depends on two keys. Encrypt a message with the public key and decrypt it with the private key.
 
 ```ts
 const message = 'Homster'
@@ -117,7 +118,7 @@ console.log(decryptedMessage.toString() === message) // true
 ```
 
 ## 7. Signing
-Process of creating a digital signature of a message. A signature is a hash of the original message which is then encrypted with the sender’s private key. The signature can be verified by the recipient using the public key of the sender, which guarantees the original message is authentic and unmodified
+Process of creating a digital signature of a message. A signature is a hash of the original message which is then encrypted with the sender’s private key. The signature can be verified by the recipient using the public key of the sender, which guarantees the original message is authentic and unmodified.
 ```ts
 const {
 	privateKey, publicKey
