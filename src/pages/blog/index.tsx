@@ -83,7 +83,7 @@ export default function Blog({ posts, tags }: BlogProps) {
                         Here is my small blog where I publish some articles in easy yet technical English for (in my opinion at least) interesting topics.
                     </p>
                 </section>
-				<section className="flex gap-2 flex-wrap mx-4 justify-center">
+				<section className="flex gap-2 flex-wrap mx-4">
 					<button
 							className={`bg-base-300 font-semibold px-3 py-1 rounded-md ${selectedTags.length === 0 && 'bg-secondary text-neutral-content'}`}
 							onClick={() => handleTagClick('')}
@@ -100,7 +100,9 @@ export default function Blog({ posts, tags }: BlogProps) {
 						</button>
 					))}
 				</section>
-				<section className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10`}>
+				{/* Firefox-based browser display 4 cols even on small screens because scroll is smaller */}
+				{/* <section className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-14`}> */}
+				<section className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14`}>
 					{filteredPosts.slice(0, visiblePosts).map((post: IPost, index: number) => (
 						<BlogCard post={post} key={`${post.slug}:${index}`} />
 					))}
