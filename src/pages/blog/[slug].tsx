@@ -9,7 +9,6 @@ import darkSyntax from 'react-syntax-highlighter/dist/cjs/styles/prism/coldark-d
 import { AiFillCopy, AiOutlineCheck, AiOutlineCopy } from 'react-icons/ai'
 import Link from 'next/link'
 import { RWebShare } from 'react-web-share'
-import { usePathname } from 'next/navigation'
 
 import { getFiles, getPost, IPost } from '@/content/blog-utils'
 import useCopyToClipboard from '@/hooks/useCopyToClipboard'
@@ -143,7 +142,7 @@ const ParagraphBlock = ({ paragraph }: { paragraph: any }) => {
 
 export default function PostPage({ data, content, slug }: PostPageProps) {
     const { text } = readingTime(content)
-	const pathname = usePathname()
+	const url = typeof window !== 'undefined' ? window.location.href : ''
 
     return (
         <>
@@ -186,7 +185,7 @@ export default function PostPage({ data, content, slug }: PostPageProps) {
 					<RWebShare
 						data={{
 							text: data.description,
-							url: pathname,
+							url,
 							title: `Blog | ${data.title}`
 						}}
 						sites={[

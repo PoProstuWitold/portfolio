@@ -11,7 +11,7 @@ export const Footer: React.FC<FooterProps> = () => {
 				<div className="footer">
 					<div>
 						<span className="mb-1 font-bold uppercase">Witold Zawada</span>
-						<p>Node.js TypeScript Developer</p>
+						<p>Junior TypeScript & Go developer</p>
 					</div>
 					<div>
 						<span className="mb-1 font-bold uppercase">Social</span>
