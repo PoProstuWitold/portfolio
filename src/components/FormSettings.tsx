@@ -1,11 +1,7 @@
 import React from 'react'
 import { myInfo } from '@/utils/constans'
 
-interface FormSettingsProps {
-
-}
-
-export const FormSettings: React.FC<FormSettingsProps> = () => {
+export const FormSettings: React.FC = () => {
 	const url = process.env.NODE_ENV === 'production' ? myInfo.url : 'http://localhost:3000'
 	
 	return (
