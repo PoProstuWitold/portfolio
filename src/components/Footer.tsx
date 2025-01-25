@@ -8,8 +8,8 @@ export const Footer: React.FC<FooterProps> = () => {
 	return (
 		<>
 			<footer className="p-10 bg-neutral text-neutral-content">
-				<div className="footer">
-					<div>
+				<div className="footer grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div className='mb-6'>
 						<span className="mb-1 font-bold uppercase">Witold Zawada</span>
 						<p>Junior TypeScript & Go developer</p>
 					</div>

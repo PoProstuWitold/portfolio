@@ -15,31 +15,27 @@ export const themes = [
 		name: 'Dark'
 	},
 	{
-		name: 'Synthwave'
+		name: 'Emerald'
+	},
+	{
+		name: 'Cyberpunk'
+	},
+	{
+		name: 'Valentine'
 	},
 	{
 		name: 'Halloween'
 	},
 	{
-		name: 'Forest'
+		name: 'Winter'
 	},
 	{
-		name: 'Winter'
+		name: 'Business'
+	},
+	{
+		name: 'Nord'
 	}
 ]
-
-export const mySkills = {
-	languages: ['Node', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'C', 'Python'],
-	dbsAndDevOps: [
-		'PostgreSQL',
-		'MongoDB',
-		'Redis',
-		'Docker',
-	],
-	libsAndFrameworks: ['Express', 'Fastify', 'Nest', 'React', 'Next', 'TailwindCSS'],
-	learning: [],
-	others: ['GraphQL', 'Jest']
-}
 
 export const projects = [
 	{

@@ -44,8 +44,8 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
                         })}
                     </div>
                     <div className='prose gap-2 flex flex-col'>
-                        <h1 className='p-0 m-0 line-clamp-1 h-[2.7rem]' title={`${post.data.title}`}>{post.data.title}</h1>
-                        <p className='p-0 m-0 line-clamp-2' title={`${post.data.description}`}>
+                        <h1 className='p-0 line-clamp-1 h-[2.7rem] mb-0 mt-0' title={`${post.data.title}`}>{post.data.title}</h1>
+                        <p className='p-0 line-clamp-2 mb-0 mt-0' title={`${post.data.description}`}>
                             {post.data.description}
                         </p>
                     </div>

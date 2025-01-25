@@ -85,7 +85,7 @@ export default function Blog({ posts, tags }: BlogProps) {
                 </section>
 				<section className="flex gap-2 flex-wrap mx-4">
 					<button
-							className={`bg-base-300 font-semibold px-3 py-1 rounded-md ${selectedTags.length === 0 && 'bg-secondary text-neutral-content'}`}
+							className={`bg-base-300 cursor-pointer font-semibold px-3 py-1 rounded-md ${selectedTags.length === 0 && 'bg-secondary text-neutral-content'}`}
 							onClick={() => handleTagClick('')}
 						>
 							All
@@ -93,7 +93,7 @@ export default function Blog({ posts, tags }: BlogProps) {
 					{tags.map((tag) => (
 						<button
 							key={tag}
-							className={`bg-base-300 font-semibold px-3 py-1 rounded-md ${selectedTags.includes(tag) && 'bg-secondary text-neutral-content'}`}
+							className={`bg-base-300 cursor-pointer hover:shadown-primary-lg font-semibold px-3 py-1 rounded-md ${selectedTags.includes(tag) && 'bg-secondary text-neutral-content'}`}
 							onClick={() => handleTagClick(tag)}
 						>
 							{tag}

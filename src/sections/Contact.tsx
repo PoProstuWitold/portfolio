@@ -65,7 +65,7 @@ const Contact: React.FC = () => {
 						<FormSettings/>
 						<div className="flex flex-col justify-between gap-6 lg:flex-row">
 							<div className="w-full form-control">
-								<label className="label">
+								<label className="label py-1">
 									<span className="label-text font-semibold">Name</span>
 									<span className="italic label-text-alt">
 										e.g. Witold
@@ -80,7 +80,7 @@ const Contact: React.FC = () => {
 								/>
 							</div>
 							<div className="w-full form-control">
-								<label className="label">
+								<label className="label py-1">
 									<span className="label-text font-semibold">Email</span>
 									<span className="italic label-text-alt">
 										e.g. witold@email.com
@@ -96,7 +96,7 @@ const Contact: React.FC = () => {
 							</div>
 						</div>
 						<div className="form-control">
-							<label className="label">
+							<label className="label py-1">
 								<span className="label-text font-semibold">Title</span>
 								<span className="italic label-text-alt">
 									e.g. New amazing project..
@@ -111,7 +111,7 @@ const Contact: React.FC = () => {
 								/>
 						</div>
 						<div className="form-control mb-6">
-							<label className="label">
+							<label className="label py-1">
 								<span className="label-text font-semibold">Content</span>
 								<span className="italic label-text-alt">
 									e.g. Hello Witold, I'm writing to ask...
@@ -119,7 +119,7 @@ const Contact: React.FC = () => {
 							</label>
 							<textarea
 								placeholder="Content of your message"
-								className="textarea textarea-md textarea-bordered"
+								className="textarea textarea-md textarea-bordered w-full"
 								name="content"
 								required
 							></textarea>

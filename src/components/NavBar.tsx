@@ -58,7 +58,7 @@ export const Navbar: React.FC = () => {
 			</div>
 			<div className="navbar-end">
 				{mounted &&
-				<>
+				<div className='max-w-[40rem]'>
 					<label htmlFor="Themes" className="sr-only">
 						Choose a theme
 					</label>
@@ -74,7 +74,7 @@ export const Navbar: React.FC = () => {
 							</option>
 						))}
 					</select>
-				</>
+				</div>
 				}
 			</div>
 		</nav>

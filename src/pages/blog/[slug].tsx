@@ -80,7 +80,7 @@ const CodeBlock = (_props: any) => {
             >
                 {String(children).replace(/\n$/, '')}
             </SyntaxHighlighter>
-            <button className='absolute top-0 right-0 group' onClick={copyAndConfirm}>
+            <button className='absolute top-0 right-0 group cursor-pointer' onClick={copyAndConfirm}>
                 <AiOutlineCopy className='absolute top-0 right-0 transition-all group-hover:opacity-0 duration-300 ease-in-out w-5 h-5' />
                 <AiFillCopy className='absolute top-0 right-0 transition-all opacity-0 group-hover:scale-125 group-hover:opacity-100 duration-300 hover:text-primary ease-in-out w-5 h-5 group-active:scale-75' />
                 <span className={`absolute top-1 right-7 flex gap-2 transition-all px-2 bg-neutral opacity-0 ${value && visible ? 'opacity-100' : ''}`}>
@@ -114,12 +114,12 @@ const ParagraphBlock = ({ paragraph }: { paragraph: any }) => {
         const hasUrl = metastring?.toLowerCase().includes('{url:')
         const url = metastring?.match(/{url: (.*?)}/)?.pop()
         return (
-            <div className='flex flex-col '>
+            <div className='flex flex-col'>
                 <Image
                     src={image.properties.src}
                     width={width}
                     height={height}
-                    className="m-0 p-0 rounded-t-2xl"
+                    className="mb-0 mt-0 p-0 rounded-t-2xl"
                     alt={alt}
                     priority={isPriority}
                     placeholder='blur'
@@ -130,7 +130,7 @@ const ParagraphBlock = ({ paragraph }: { paragraph: any }) => {
                     }}
                 />
                 {hasCaption ?
-                    <div className="font-bold px-5 py-3 bg-neutral text-neutral-content italic rounded-b-2xl" aria-label={caption}>
+                    <div className="font-bold px-5 py-3 mb-10 bg-neutral text-neutral-content italic rounded-b-2xl" aria-label={caption}>
                         {hasUrl ? <a rel="noreferrer" target='_blank' className='font-bold text-neutral-content' href={url}>{caption}</a> : caption}
                     </div>
                     : null}
