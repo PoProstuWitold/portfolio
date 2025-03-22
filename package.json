@@ -6,7 +6,7 @@
 	"homepage": "https://github.com/PoProstuWitold/portfolio",
 	"engines": {
 		"node": ">=20.x",
-		"pnpm": ">=10.x"
+		"pnpm": ">=9.x"
 	},
 	"scripts": {
 		"dev": "next dev",
