@@ -65,3 +65,9 @@
 		background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
 	}
 }
+
+.code-block code {
+	border: none;
+	margin: 0;
+	padding: 0;
+}

@@ -63,7 +63,7 @@ const CodeBlock = (_props: any) => {
     }
 
     return !inline && match ? (
-        <section className='relative'>
+        <section className='relative code-block'>
             <SyntaxHighlighter
                 {...props}
                 style={darkSyntax}
@@ -89,7 +89,7 @@ const CodeBlock = (_props: any) => {
             </button>
         </section>
     ) : (
-        <code {...props} className={className}>
+        <code {...props} className={`${className} code-block`}>
             {children}
         </code>
     )
