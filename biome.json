@@ -37,5 +37,12 @@
 			"indentWidth": 4,
 			"indentStyle": "tab"
 		}
+	},
+	"files": {
+		"ignore": [
+			"BlogPost.tsx",
+			"global.css",
+			"NavBar.tsx"
+		]
 	}
 }

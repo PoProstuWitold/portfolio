@@ -1,6 +1,6 @@
-import { describe, it } from 'node:test'
 import { strictEqual } from 'node:assert'
-import { themes, projects } from '../src/utils/constans'
+import { describe, it } from 'node:test'
+import { projects, themes } from '../app/utils/constans'
 
 describe('Constans length tests', () => {
 	describe('Themes', () => {
