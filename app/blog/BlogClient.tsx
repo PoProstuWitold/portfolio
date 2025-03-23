@@ -54,9 +54,7 @@ export default function BlogClient({ posts, tags }: Props) {
 					Blog
 				</h1>
 				<p className='lg:mx-[5rem] text-justify mx-6'>
-					Here is my small blog where I publish some articles in easy
-					yet technical English for (in my opinion at least)
-					interesting topics.
+					Technical and beginner-friendly articles about programming, especially modern web development, tech and selfhosting. Written by Witold Zawada.
 				</p>
 			</section>
 
