@@ -4,7 +4,7 @@ description: 'In-depth comparison of two most popular auth methods in web apps.'
 authors: 
   - Witold Zawada
 socialImage: images/blog/jwt-vs-session.webp
-date: '2025-03-23 15:00'
+date: '2025-03-23 22:00'
 tags:
   - Auth
   - Web
@@ -14,7 +14,7 @@ tags:
 
 Keeping users logged in is a key part of almost every web app. But how exactly does that work behind the scenes? Two of the most common approaches are session-based authentication and token-based authentication using JWT (JSON Web Tokens). 
 
-In this post, I will break down how they work, compare their pros and cons, and help you decide which one fits your project best.
+In this post, I will break down how they work, compare their pros and cons and help you decide which one fits your project best.
 
 ---
 
@@ -32,7 +32,7 @@ Well, there are two popular ways to handle that:
 ---
 
 # What is session-based authentication?
-When a user logs in, the server creates a session in a database or in memory, and sends back a small cookie with a session ID. That ID is used on each request to find the session data on the server.
+When a user logs in, the server creates a session in a database or in memory and sends back a small cookie with a session ID. That ID is used on each request to find the session data on the server.
 
 ## How session-based authentication works step-by-step?
 ### **1. User sends login request** 
@@ -47,30 +47,40 @@ The backend checks if the user is legitimate.
 
 ### **3. Server creates session**
 
-If the credentials are valid, the server creates a ``session object`` - usually a unique ID mapped to some user data (like user ID). This session is stored **on the server** (in memory, Redis, or a database).
+If the credentials are valid, the server creates a ``session object`` - usually a unique ID mapped to some user data (like user ID). This session is stored **on the server** (in memory or database such as Redis or PostgreSQL).
 
 ### **4. Server sets a session cookie**
 
 The server responds by sending a ``cookie`` containing the session ID. This cookie is automatically stored in the user's browser.
 
-Typical cookie settings include:
-- ``HttpOnly``, ``Secure``, and ``SameSite`` flags for safety,
+> **Cookies** are small pieces of data stored by the browser that can be configured to improve security and control how they're shared between the client and the server.
 
-The actual cookie only holds the session ID, not the user's data.
+Typical cookie settings include these flags for safety:
+- **``HttpOnly``**: makes the cookie inaccessible to JavaScript (e.g., ``document.cookie``), protecting against XSS attacks.
+- **``Secure``**: ensures the cookie is only sent over HTTPS connections.
+- **``SameSite``**: controls whether cookies are sent with cross-site requests, helping prevent CSRF attacks. It can be set to ``Strict``, ``Lax``, or ``None``.
+
+The actual cookie **only holds the session ID** without the user's data.
 
 ### **5. User makes a request with the cookie**
 
 On each subsequent request, the browser automatically includes the cookie in the request headers - **but only if everything is configured properly**.
 
 To make this work:
-- The **server** must respond with the cookie and set the proper options (e.g., ``HttpOnly``, ``Secure``, and ``SameSite``) and ``credentials: true``, if using CORS.
+- The **server** must respond with the cookie and set the proper options (e.g., ``HttpOnly``, ``Secure`` and ``SameSite``) and ``credentials: true``, if using **CORS**.
 - The **client** (like ``fetch`` or ``axios``) must explicitly send cookies by using ``credentials: include``.
+
+> **CORS (Cross-Origin Resource Sharing)** is a mechanism that allows web applications running on one domain to request resources from another domain. To allow cookies in such requests, the server must explicitly set ``Access-Control-Allow-Credentials: true`` and respond with the appropriate headers
+
+> Additionally, the ``credentials`` option must be set on both the server and the client:
+> - On the server, ``credentials: true`` (along with the ``Access-Control-Allow-Credentials: true`` header) allows cookies to be accepted in cross-origin requests.
+> - On the client (e.g., with ``fetch`` or ``axios``), ``credentials: 'include'`` ensures cookies are sent with the request, even when calling a different origin.
 
 Otherwise, the cookie might not be sent at all, especially in cross-origin requests.
 
 ### **6. Server reads the session ID from the cookie**
 
-The backend extracts the session ID from the request, finds the matching session stored on the server, and identifies the user.
+The backend extracts the session ID from the request, finds the matching session stored on the server and identifies the user.
 
 ### **7. Access granted**
 
@@ -83,7 +93,7 @@ When that happens, the cookie points to a non-existent session and the user is n
 
 ### Pros:
 - 🔐 Easy to revoke sessions. Just delete the session on the server,
-- ✅ Secure by default. Data stays on the server,
+- ✅ Secure by default. User data stays on the server,
 - 🧹 Simple cleanup. You control the data lifecycle.
 
 ### Cons:
@@ -93,7 +103,7 @@ When that happens, the cookie points to a non-existent session and the user is n
 ---
 
 # What is token-based authentication?
-JWT or JSON Web Token it's a self-contained piece of data, signed with a secret (or private key), and sent to the client after login. The client includes it with each request, usually in the `Authorization` header.
+JWT or JSON Web Token it's a self-contained piece of data, signed with a secret (or private key) and sent to the client after login. The client includes it with each request, usually in the `Authorization` header.
 
 > **TIP!** You can visit [**jwt.io online debugger**](https://jwt.io/) to see how JWT work
 
@@ -181,7 +191,7 @@ Here are the most common approaches:
 
 ### 🔁 **Short expiration time + refresh tokens**
 
-Instead of trying to revoke tokens, you make them expire quickly (e.g. in 15 minutes), and issue a long-lived **refresh token** that can request a new access token.
+Instead of trying to revoke tokens, you make them expire quickly (e.g. in 15 minutes) and issue a long-lived **refresh token** that can request a new access token.
 
 - Access tokens: short-lived and safe to discard  
 - Refresh tokens: stored securely (preferably in an `HttpOnly` cookie)  
@@ -241,7 +251,7 @@ Let's compare both authentication methods side-by-side:
 # Final Thoughts
 
 There's no one-size-fits-all solution - both sessions and JWT have their strengths and trade-offs.  
-Sessions are simple, secure, and great for most traditional web apps. JWT offer flexibility and scalability, but require more careful design, especially around security and token revocation.
+Sessions are simple, secure by default and great for most traditional web apps. JWT offer flexibility and scalability, but require more careful design, especially around security and token revocation.
 
 If you decide to go with JWT, here are some good practices to follow:
 
@@ -255,7 +265,7 @@ If you decide to go with JWT, here are some good practices to follow:
 - 🚫 **Don't rely on JWT alone for critical permissions** - always check user state server-side if needed.
 
 > ⚠️ **That said...**  
-For many apps - especially traditional server-rendered ones - **sessions are still the safer and simpler choice**. They're easier to manage, revoke, and secure out of the box.
+For many apps - especially traditional server-rendered ones - **sessions are still the safer and simpler choice**. They're easier to manage, revoke and secure out of the box.
 
 Use JWT **only when they genuinely solve a problem in your architecture — not just because they're trendy**.
 
