@@ -18,14 +18,19 @@ const About: React.FC = () => {
 							Who am I?
 						</h2>
 						<p className='text-justify'>
-							I'm Witold Zawada. Self-taught software developer
-							from Poland. I'm constantly expanding my skills in
-							both backend and frontend development to understand
-							both domains and create complete, secure, and
-							user-friendly applications using technologies such
-							as TypeScript, React, Go and PostgreSQL. In my free
-							time I like to do so-called "selfhosting" and learn
-							how do enterprise servers operate.
+							I'm a self-taught developer from Poland,
+							consistently growing toward a fullstack role. I
+							build modern web applications with a focus on
+							security, clean code and great user experience. I
+							primarily work with Node.js, TypeScript and Go,
+							using technologies such as Next.js, Hono and
+							PostgreSQL.
+						</p>
+						<p className='text-justify'>
+							I'm interested in selfhosting, programming,
+							exploring new technologies and tech news. Outside of
+							IT, I enjoy skiing, history, karaoke, video games,
+							cooking and spending time with animals.
 						</p>
 						<p className='gap-2 text-justify'>
 							Want to see more? Be sure to visit my{' '}
@@ -46,11 +51,6 @@ const About: React.FC = () => {
 							>
 								Linkedin
 							</a>
-						</p>
-						<p className='text-justify'>
-							In addition to programming, Computer Science and
-							other IT stuff, I enjoy video games, skiing,
-							history, and spending time with my beloved pets.
 						</p>
 					</div>
 					<div className='flex'>
@@ -128,7 +128,7 @@ const About: React.FC = () => {
 						<span className='gap-4 font-bold text-3xl'>
 							Witold Zawada
 						</span>
-						<span className='italic flex flex-row items-center'>
+						<span className='italic flex flex-row items-center gap-2 text-lg'>
 							Download my CV in
 							<Link
 								href='/resources/Witold_Zawada_CV-en-public.pdf'
@@ -136,7 +136,7 @@ const About: React.FC = () => {
 								rel='noopener noreferrer'
 							>
 								<button
-									className='underline mx-1 font-bold italic btn btn-link p-0 m-0'
+									className='btn btn-lg btn-link p-0 m-0'
 									type='button'
 								>
 									English
@@ -149,7 +149,7 @@ const About: React.FC = () => {
 								rel='noopener noreferrer'
 							>
 								<button
-									className='underline mx-1 font-bold italic btn btn-link p-0 m-0'
+									className='btn btn-lg btn-link p-0 m-0'
 									type='button'
 								>
 									Polish
