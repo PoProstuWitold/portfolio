@@ -92,7 +92,7 @@ export const projects = [
 			'TailwindCSS',
 			'CRON'
 		],
-		repo: 'https://github.com/PoProstuWitold/homster'
+		repo: 'https://github.com/PoProstuWitold/nuntius-feed'
 	},
 	{
 		name: 'Sayuna',
@@ -107,8 +107,6 @@ export const projects = [
 			'Discordx',
 			'Distube',
 			'ESM',
-			'Music Streaming',
-			'Moderation',
 			'Docker'
 		],
 		repo: 'https://github.com/PoProstuWitold/Sayuna'

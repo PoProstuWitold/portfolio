@@ -1,11 +1,13 @@
 import { graphql } from '@octokit/graphql'
+import type { Metadata } from 'next'
 import type { ReactElement } from 'react'
 import { AiFillGithub, AiOutlineStar } from 'react-icons/ai'
 import { TbGitFork, TbLicense, TbLicenseOff } from 'react-icons/tb'
 
 import type { Repository } from '@/types'
-import { caseStudies, owner, repoQuery } from '@/utils/constans'
-import type { Metadata } from 'next'
+import { caseStudies, owner, projects, repoQuery } from '@/utils/constans'
+import { getContrastTextColor } from '@/utils/functions'
+import { getSkillData } from '@/utils/skillData'
 
 const graphqlWithAuth = graphql.defaults({
 	headers: {
@@ -21,13 +23,16 @@ interface Props {
 	params: Promise<{ project: string }>
 }
 
+function getProjectInfo(name: string) {
+	return projects.find((p) => p.name === name)
+}
+
 async function fetchData(project: string): Promise<Data | null> {
 	try {
 		const data = (await graphqlWithAuth(repoQuery, {
 			repo: project,
 			owner
 		})) as Data
-
 		return data
 	} catch (err) {
 		console.error(err)
@@ -43,10 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		return {
 			title: 'Project Not Found | Witold Zawada',
 			description: 'This GitHub project could not be found.',
-			robots: {
-				index: false,
-				follow: false
-			}
+			robots: { index: false, follow: false }
 		}
 	}
 
@@ -86,99 +88,111 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProjectPage({
 	params
-}: {
-	params: Promise<{ project: string }>
-}): Promise<ReactElement> {
+}: { params: Promise<{ project: string }> }): Promise<ReactElement> {
 	const { project } = await params
 	const data = await fetchData(project)
 
-	if (!data) {
-		return <div>Data not found</div>
-	}
+	if (!data) return <div>Data not found</div>
 	const { repository } = data
+	if (!repository) return <div>Repository not found</div>
 
-	if (!repository) {
-		return <div>Repository not found</div>
-	}
+	const localProject = getProjectInfo(repository.name)
 
 	return (
-		<section className='min-h-screen flex flex-col gap-2 lg:gap-10 pt-14 lg:pt-28'>
-			<div className='flex flex-col lg:flex-row justify-start mx-2 lg:mx-20 lg:gap-10'>
-				<div className='flex flex-col flex-grow lg:w-[50%] lg:bg-base-200 p-5 rounded-2xl'>
-					<div className='flex flex-col gap-[0.5rem]'>
-						<div className='flex flex-row gap-3 items-center'>
-							<h2 className='text-3xl font-bold text-left'>
-								{repository.name}
-							</h2>
-							<a
-								className='link'
-								target='_blank'
-								rel='noreferrer'
-								title={`${repository.name} GitHub link`}
-								href={`https://github.com/${repository.owner.login}/${repository.name}`}
-							>
-								<AiFillGithub className='transition-all active:scale-90 hover:scale-125 duration-300 hover:text-primary ease-in-out w-10 h-10' />
-							</a>
-						</div>
-						<p>{repository.description}</p>
+		<section className='min-h-screen flex flex-col gap-8 pt-28 px-4 lg:px-20'>
+			<div className='flex flex-col lg:flex-row gap-10'>
+				<div className='flex flex-col flex-grow lg:w-1/2 bg-base-200 p-6 rounded-2xl gap-4'>
+					<div className='flex items-center gap-3'>
+						<h2 className='text-3xl font-bold'>
+							{repository.name}
+						</h2>
+						<a
+							className='link'
+							target='_blank'
+							rel='noreferrer'
+							href={`https://github.com/${repository.owner.login}/${repository.name}`}
+							title='GitHub link'
+						>
+							<AiFillGithub className='w-8 h-8 hover:text-primary transition-transform hover:scale-110' />
+						</a>
+					</div>
+					<p className='text-lg text-justify'>
+						{repository.description}
+					</p>
+					<div className='divider'>Languages</div>
+					<div className='flex flex-wrap gap-2'>
+						{repository.languages.nodes.length ? (
+							repository.languages.nodes.map((lang) => (
+								<span
+									key={lang.name}
+									className='badge p-3 font-semibold badge-outline'
+									style={{
+										backgroundColor: lang.color || '#ccc',
+										color: getContrastTextColor(
+											lang.color || '#ccc'
+										)
+									}}
+								>
+									{lang.name}
+								</span>
+							))
+						) : (
+							<span>No languages found.</span>
+						)}
 					</div>
 				</div>
 
-				<div className='flex flex-col flex-grow lg:w-[50%] mx-0 gap-8 lg:bg-base-200 p-5 rounded-2xl'>
-					<div className='flex flex-col gap-1'>
-						<h3 className='text-2xl font-bold'>Stats</h3>
-						<div className='flex flex-col md:flex-row gap-2 md:gap-10 justify-between md:text-lg text-md lg:gap-4'>
-							<span className='flex items-center text-center gap-1'>
-								{repository.licenseInfo ? (
-									<>
-										<TbLicense />{' '}
-										{repository.licenseInfo.name}
-									</>
-								) : (
-									<>
-										<TbLicenseOff /> No licence
-									</>
-								)}
-							</span>
-							<span className='flex items-center text-center gap-1'>
-								<AiOutlineStar className='w-5 h-5' />
-								<p>{repository.stargazers.totalCount} stars</p>
-							</span>
-							<span className='flex items-center text-center gap-1'>
-								<TbGitFork />
-								<p>{repository.forks.totalCount} forks</p>
-							</span>
-						</div>
-					</div>
-
-					<div className='flex flex-col'>
-						<h3 className='text-2xl font-bold'>Languages</h3>
-						<div className='flex flex-row gap-2 flex-wrap'>
-							{repository.languages.nodes.map(
-								(lang: Repository['languages']['nodes'][0]) => (
-									<span
-										className='px-1 max-w-fit border-4 font-semibold border-transparent'
-										key={`${repository.name}:${lang.name}`}
-										style={{
-											borderBottomColor: `${lang.color}`
-										}}
-									>
-										{lang.name}
-									</span>
-								)
+				<div className='flex flex-col flex-grow lg:w-1/2 bg-base-200 p-6 rounded-2xl gap-4'>
+					<h3 className='text-2xl font-bold'>Stats</h3>
+					<div className='flex md:flex-row flex-wrap gap-1 text-lg flex-col'>
+						<span className='flex items-center gap-2'>
+							{repository.licenseInfo ? (
+								<TbLicense />
+							) : (
+								<TbLicenseOff />
 							)}
-							{!repository.languages.nodes.length &&
-								'No languages, huh?'}
-						</div>
+							{repository.licenseInfo?.name || 'No license'}
+						</span>
+						<div className='divider divider-horizontal m-0 p-0' />
+						<span className='flex items-center gap-2'>
+							<AiOutlineStar /> {repository.stargazers.totalCount}{' '}
+							stars
+						</span>
+						<div className='divider divider-horizontal m-0 p-0' />
+						<span className='flex items-center gap-2'>
+							<TbGitFork /> {repository.forks.totalCount} forks
+						</span>
+					</div>
+					<div className='divider'>Technologies</div>
+					<div className='flex flex-wrap gap-2'>
+						{localProject?.skills.length ? (
+							localProject.skills.map((skill) => {
+								const { icon, url } = getSkillData(skill)
+								return (
+									<a
+										key={skill}
+										href={url}
+										target='_blank'
+										rel='noopener noreferrer'
+										className='badge badge-outline hover:bg-primary hover:text-primary-content flex items-center gap-2 p-3'
+									>
+										{icon}
+										{skill}
+									</a>
+								)
+							})
+						) : (
+							<span>No technologies found.</span>
+						)}
 					</div>
 				</div>
 			</div>
 
-			<div className='flex flex-col text-justify mx-2 lg:mx-20 gap-2 mb-20 lg:bg-base-200 p-5 rounded-2xl'>
-				<h2 className='text-3xl font-bold text-left'>Case study</h2>
-				<p>
+			<div className='bg-base-200 p-6 rounded-2xl'>
+				<h2 className='text-3xl font-bold mb-2'>Case study</h2>
+				<p className='text-justify'>
 					{caseStudies.get(repository.name) ||
-						'Congrats! You found easter egg!'}
+						'Congrats! You found an easter egg!'}
 				</p>
 			</div>
 		</section>

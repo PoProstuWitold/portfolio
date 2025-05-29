@@ -1,5 +1,5 @@
 import './global.css'
-import { LazyMotion, domAnimation } from 'framer-motion'
+import { LazyMotion, domAnimation } from 'motion/react'
 import type { Metadata } from 'next'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/NavBar'

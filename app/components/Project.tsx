@@ -1,5 +1,6 @@
 import { AiFillGithub, AiOutlineArrowRight } from 'react-icons/ai'
 
+import Link from 'next/link'
 import Skill from './Skill'
 
 interface ProjectProps {
@@ -52,14 +53,14 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 						</a>
 					</div>
 					<div className='flex group'>
-						<a
+						<Link
 							href={`/projects/${project.name}`}
-							className='btn btn-ghost font-extrabold hover:text-primary hover:bg-transparent'
+							className='btn btn-ghost font-extrabold btn-secondary'
 							rel='noopener noreferrer'
 						>
 							Case study{' '}
 							<AiOutlineArrowRight className='ml-3 w-6 h-6 font-extrabold group-hover:animate-bounce-right' />
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>

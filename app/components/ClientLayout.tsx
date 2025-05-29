@@ -1,6 +1,6 @@
 'use client'
 
-import { LazyMotion, domAnimation } from 'framer-motion'
+import { LazyMotion, domAnimation } from 'motion/react'
 import { Footer } from './Footer'
 import { Navbar } from './NavBar'
 import { ScrollProgress } from './ScrollProgress'

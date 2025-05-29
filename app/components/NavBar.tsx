@@ -1,20 +1,16 @@
 'use client'
 
-import { useScroll } from 'framer-motion'
+import { useScroll } from 'motion/react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { type Theme, useTheme } from '@/context/ThemeContext'
-import { themes } from 'app/utils/constans'
-import MobileMenu from './MobileMenu'
 import { setThemeScript } from '@/utils/functions'
+import { AiFillBook, AiOutlineInfoCircle, AiOutlineMail } from 'react-icons/ai'
+import { MdComputer } from 'react-icons/md'
+import MobileMenu from './MobileMenu'
+import { ThemeSwitcher } from './ThemeSwitcher'
 
 export const Navbar: React.FC = () => {
-	const { theme, setTheme } = useTheme()
-	const pathname = usePathname()
-
-	const [mounted, setMounted] = useState<boolean>(false)
 	const [Y, setY] = useState<number>(0)
 	const { scrollY } = useScroll()
 
@@ -23,7 +19,6 @@ export const Navbar: React.FC = () => {
 			if (y > 100) setY(y)
 			else setY(0)
 		})
-		setMounted(true)
 		return () => {
 			unsubscribeScroll()
 		}
@@ -40,55 +35,44 @@ export const Navbar: React.FC = () => {
 					</div>
 					<Link
 						href='/'
-						className={`text-xl normal-case transition-all ease-in-out delay-[50ms] btn btn-ghost ${Y > 650 || pathname !== '/' ? '' : 'hidden'}`}
+						className={
+							'text-xl normal-case ease-in-out delay-[50ms] btn btn-ghost hover:text-secondary transition-all duration-150'
+						}
 					>
 						Witold Zawada
 					</Link>
 				</div>
 				<div className='hidden navbar-center lg:flex h-full'>
-					<ul className='p-0 font-semibold menu menu-horizontal menu-lg'>
-						<li className='active:bg-primary rounded-lg active:text-neutral-content'>
-							<a href='/#about'>ABOUT</a>
+					<ul className='p-0 font-semibold menu menu-horizontal menu-lg gap-2'>
+						<li className='hover:text-secondary transition-all duration-150'>
+							<Link href='/#about'>
+								<AiOutlineInfoCircle className='w-7 h-7' />{' '}
+								About
+							</Link>
 						</li>
-						<li className='active:bg-primary rounded-lg active:text-neutral-content'>
-							<a href='/#projects'>PROJECTS</a>
+						<li className='hover:text-secondary transition-all duration-150'>
+							<Link href='/#projects'>
+								<MdComputer className='w-7 h-7' /> Projects
+							</Link>
 						</li>
-						<li className='active:bg-primary rounded-lg active:text-neutral-content'>
-							<a href='/#contact'>CONTACT</a>
+						<li className='hover:text-secondary transition-all duration-150'>
+							<Link href='/#contact'>
+								<AiOutlineMail className='w-7 h-7' /> Contact
+							</Link>
 						</li>
-						<li className='active:bg-primary rounded-lg active:text-neutral-content'>
-							<a href='/blog'>BLOG</a>
+						<li className='hover:text-secondary transition-all duration-150'>
+							<Link href='/blog'>
+								<AiFillBook className='w-7 h-7' /> Blog
+							</Link>
 						</li>
 					</ul>
 				</div>
 				<div className='navbar-end'>
-					{mounted && (
-						<div className='max-w-[40rem]'>
-							<label htmlFor='Themes' className='sr-only'>
-								Choose a theme
-							</label>
-							<select
-								id='Themes'
-								value={theme}
-								className='max-w-xs select select-ghost font-semibold'
-								onChange={(e): void =>
-									setTheme(e.currentTarget.value as Theme)
-								}
-							>
-								{themes.map((theme, index) => (
-									<option
-										key={`${index}:${theme.name}`}
-										value={theme.name.toLowerCase()}
-									>
-										{theme.name}
-									</option>
-								))}
-							</select>
-						</div>
-					)}
+					<ThemeSwitcher />
 				</div>
 			</nav>
 			{/* Inline script to load theme instantly server-side */}
+			{/* biome-ignore lint: Shhhh, it's okay */}
 			<script dangerouslySetInnerHTML={{ __html: setThemeScript }} />
 		</>
 	)

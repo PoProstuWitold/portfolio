@@ -54,7 +54,7 @@ export default async function BlogPage() {
 	const tags = getTags(posts)
 
 	return (
-		<Suspense fallback={<p>Loading blog...</p>}>
+		<Suspense fallback={<p className='h-screen'>Loading blog...</p>}>
 			<BlogClient posts={posts} tags={tags} />
 		</Suspense>
 	)
