@@ -18,6 +18,7 @@ export default function BlogPost({
 	content,
 	readingTime
 }: {
+	// biome-ignore lint: Irrelevant
 	data: any
 	content: string
 	readingTime: string
@@ -25,6 +26,7 @@ export default function BlogPost({
 }) {
 	const url = typeof window !== 'undefined' ? window.location.href : ''
 
+	// biome-ignore lint: Irrelevant
 	const CodeBlock = (_props: any) => {
 		const [visible, setVisible] = useState(false)
 		const [value, copy] = useCopyToClipboard()
@@ -58,6 +60,7 @@ export default function BlogPost({
 				<button
 					className='absolute top-0 right-0 group cursor-pointer'
 					onClick={copyAndConfirm}
+					type='button'
 				>
 					<AiOutlineCopy className='absolute top-0 right-0 transition-all group-hover:opacity-0 duration-300 ease-in-out w-5 h-5' />
 					<AiFillCopy className='absolute top-0 right-0 transition-all opacity-0 group-hover:scale-125 group-hover:opacity-100 duration-300 hover:text-primary ease-in-out w-5 h-5 group-active:scale-75' />
@@ -76,6 +79,7 @@ export default function BlogPost({
 		)
 	}
 
+	// biome-ignore lint: Irrelevant
 	const ParagraphBlock = ({ paragraph }: { paragraph: any }) => {
 		const { node } = paragraph
 		if (node.children[0].tagName === 'img') {
@@ -170,18 +174,26 @@ export default function BlogPost({
 				</div>
 
 				<RWebShare
-						data={{
-							text: data.description,
-							url,
-							title: `Blog | ${data.title}`
-						}}
-						sites={[
-							'facebook', 'twitter', 'linkedin', 'reddit', 'whatsapp', 'copy', 'mail'
-						]}
-						// disableNative
-						onClick={() => console.log('shared successfully!')}
-					>
-						<button type='button' className='btn btn-outline'>Share this article 🔗</button>
+					data={{
+						text: data.description,
+						url,
+						title: `Blog | ${data.title}`
+					}}
+					sites={[
+						'facebook',
+						'twitter',
+						'linkedin',
+						'reddit',
+						'whatsapp',
+						'copy',
+						'mail'
+					]}
+					// disableNative
+					onClick={() => console.log('shared successfully!')}
+				>
+					<button type='button' className='btn btn-outline'>
+						Share this article 🔗
+					</button>
 				</RWebShare>
 
 				<div className='prose prose-pre:leading-none lg:max-w-[100ch] md:max-w-[90ch]'>

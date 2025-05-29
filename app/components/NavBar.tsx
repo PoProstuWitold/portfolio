@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 
 import { setThemeScript } from '@/utils/functions'
 import { AiFillBook, AiOutlineInfoCircle, AiOutlineMail } from 'react-icons/ai'
+import { FaTerminal } from 'react-icons/fa'
 import { MdComputer } from 'react-icons/md'
 import MobileMenu from './MobileMenu'
 import { ThemeSwitcher } from './ThemeSwitcher'
@@ -35,11 +36,12 @@ export const Navbar: React.FC = () => {
 					</div>
 					<Link
 						href='/'
-						className={
-							'text-xl normal-case ease-in-out delay-[50ms] btn btn-ghost hover:text-secondary transition-all duration-150'
-						}
+						className='btn btn-ghost text-xl normal-case flex items-center gap-2 hover:text-secondary transition-all duration-150'
 					>
-						Witold Zawada
+						<span className='text-primary'>
+							<FaTerminal size={22} />
+						</span>
+						<span className='font-bold'>Witold Zawada</span>
 					</Link>
 				</div>
 				<div className='hidden navbar-center lg:flex h-full'>

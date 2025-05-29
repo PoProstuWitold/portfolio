@@ -99,7 +99,7 @@ export default async function ProjectPage({
 	const localProject = getProjectInfo(repository.name)
 
 	return (
-		<section className='min-h-screen flex flex-col gap-8 pt-28 px-4 lg:px-20'>
+		<section className='min-h-screen flex flex-col gap-8 py-28 px-4 lg:px-20'>
 			<div className='flex flex-col lg:flex-row gap-10'>
 				<div className='flex flex-col flex-grow lg:w-1/2 bg-base-200 p-6 rounded-2xl gap-4'>
 					<div className='flex items-center gap-3'>

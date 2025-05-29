@@ -40,7 +40,6 @@
 	},
 	"files": {
 		"ignore": [
-			"BlogPost.tsx",
 			"global.css"
 		]
 	}
