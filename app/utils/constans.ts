@@ -40,6 +40,7 @@ export const themes = [
 export const projects = [
 	{
 		name: 'nest-next-boilerplate',
+		formattedName: 'Nest Next Boilerplate',
 		description:
 			'Boilerplate for Nest.js, Next.js, TypeScript stack. Includes social logins, account verification, password change & recover, real-time chats and more.',
 		application: 'Fullstack REST app',
@@ -58,6 +59,7 @@ export const projects = [
 	},
 	{
 		name: 'homeserver',
+		formattedName: 'Homeserver',
 		description: `My two personal, opinionated home server setups. One using Port Forwarding and the other using Cloudflare Tunnels. Both with detailed "to-do like" instructions, explanations as well as links to various resources.`,
 		application: 'Guide/Tutorial',
 		skills: [
@@ -73,25 +75,28 @@ export const projects = [
 		repo: 'https://github.com/PoProstuWitold/homeserver'
 	},
 	{
-		name: 'Homster',
+		name: 'nuntius-feed',
+		formattedName: 'Nuntius Feed',
 		description:
-			'Fullstack game library app written in GraphQL that let you buy and browse games and engage in many communities in similar way like Steam.',
-		application: 'Fullstack GraphQL app',
+			'Your personal herald for the digital age. A lightweight web application for subscribing to and reading RSS and Atom feeds. Parses feeds from all RSS and Atom specifications.',
+		application: 'Fullstack REST app with RPC',
 		skills: [
 			'Node.js',
 			'TypeScript',
-			'Nest.js',
-			'PostgreSQL',
 			'Next.js',
-			'GraphQL',
+			'Hono',
+			'MongoDB',
+			'RPC',
+			'JWT',
+			'Docker',
 			'TailwindCSS',
-			'Stripe payments',
-			'File upload'
+			'CRON'
 		],
 		repo: 'https://github.com/PoProstuWitold/homster'
 	},
 	{
 		name: 'Sayuna',
+		formattedName: 'Sayuna',
 		description:
 			'Easily extensible and customizable all-in-one Discord bot. Moderation, music & fun! Built around dependency injection pattern. Includes real-time dashboard with controls and Docker image for easy deployment and monitoring',
 		application: 'Discord bot',
@@ -101,7 +106,10 @@ export const projects = [
 			'Discord.js',
 			'Discordx',
 			'Distube',
-			'ESM'
+			'ESM',
+			'Music Streaming',
+			'Moderation',
+			'Docker'
 		],
 		repo: 'https://github.com/PoProstuWitold/Sayuna'
 	}
@@ -152,8 +160,8 @@ export const caseStudies = new Map<string, string>([
 		After some time, I decided to create a guide on how to set up a home server using two different methods: Port Forwarding and Cloudflare Tunnels. The guide provides detailed instructions on setting up a server, installing Docker, configuring Caddy, and establishing a VPN. I developed this project to assist people who want to create their own home servers but lack guidance. The community has responded positively, with many users finding the guide helpful. I've received feedback from individuals and my colleagues who successfully set up their own home servers using my instructions.`
 	],
 	[
-		'Homster',
-		'After realizing that building a big e-commerce app was not as fulfilling, I pivoted to the idea of creating a game library similar to Steam. To achieve this, I opted to use GraphQL as it perfectly fit the requirements of this type of application. During the project building, I made various design decisions such as choosing GraphQL client for API and web, which helped me gain valuable insights into its practical implementation. Moreover, Homster was my first attempt at implementing cursor-based pagination simultaneously on both the frontend and backend. Overall, the experience of building Homster was highly educational and helped me improve my skills as a developer.'
+		'nuntius-feed',
+		'Nuntius Feed is a personal project that I developed to create a lightweight web application for subscribing to and reading RSS and Atom feeds. The name "Nuntius" comes from the Latin word for "herald," which reflects the purpose of the application as a herald for digital content. The application is designed to be simple, fast, and easy to use, with a focus on providing a clean and intuitive user interface. It supports all RSS and Atom specifications, allowing users to subscribe to any feed they want. Nuntius Feed is written in TypeScript, Next.js as fullstack framework with Hono as API Routes. It uses MongoDB as the database. It also uses dual-token authentication with JWT with all best practices, has admin panel, refreshes feeds in the background using CRON jobs.'
 	],
 	[
 		'Sayuna',

@@ -5,6 +5,7 @@ import Skill from './Skill'
 interface ProjectProps {
 	project: {
 		name: string
+		formattedName: string
 		description: string
 		application: string
 		repo: string
@@ -18,7 +19,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 			<div className='flex flex-col justify-between my-10 bg-base-300 p-6 lg:w-[47%] rounded-2xl shadow-md hover:shadow-2xl hover:cursor-pointer transition-all'>
 				<div className='flex flex-col'>
 					<h2 className='my-3 text-3xl font-bold text-center'>
-						{project.name}
+						{project.formattedName}
 					</h2>
 					<span className='pl-2 mx-1 my-3 font-mono font-bold border-l-4 text-secondary border-secondary'>
 						{project.application}
