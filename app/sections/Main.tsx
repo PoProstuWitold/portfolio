@@ -1,9 +1,9 @@
 'use client'
 
-import { Socials } from '@/components/Socials'
 import { m } from 'motion/react'
 /* eslint-disable react/no-unescaped-entities */
 import { BsArrowDownCircleFill } from 'react-icons/bs'
+import { Socials } from '@/components/Socials'
 
 const Main: React.FC = () => {
 	return (

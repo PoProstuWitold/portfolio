@@ -1,7 +1,7 @@
 import './global.css'
-import { LazyMotion, domAnimation } from 'motion/react'
 import type { Metadata } from 'next'
 import { Footer } from './components/Footer'
+import { MotionProvider } from './components/MotionProvider'
 import { Navbar } from './components/NavBar'
 import { ScrollProgress } from './components/ScrollProgress'
 import { ThemeProvider } from './context/ThemeContext'
@@ -13,17 +13,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children
-}: { children: React.ReactNode }) {
+}: {
+	children: React.ReactNode
+}) {
 	return (
 		<html lang='en' suppressHydrationWarning>
 			<body>
 				<ThemeProvider defaultTheme='system'>
-					<LazyMotion features={domAnimation}>
+					<MotionProvider>
 						<ScrollProgress />
 						<Navbar />
 						{children}
 						<Footer />
-					</LazyMotion>
+					</MotionProvider>
 				</ThemeProvider>
 			</body>
 		</html>

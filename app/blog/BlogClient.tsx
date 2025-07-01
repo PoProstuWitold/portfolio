@@ -1,9 +1,9 @@
 'use client'
 
-import { BlogCard } from '@/content/BlogCard'
-import type { IPost } from '@/content/blog-utils'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { BlogCard } from '@/content/BlogCard'
+import type { IPost } from '@/content/blog-utils'
 
 interface Props {
 	posts: IPost[]

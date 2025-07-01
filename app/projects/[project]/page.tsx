@@ -3,11 +3,10 @@ import type { Metadata } from 'next'
 import type { ReactElement } from 'react'
 import { AiFillGithub, AiOutlineStar } from 'react-icons/ai'
 import { TbGitFork, TbLicense, TbLicenseOff } from 'react-icons/tb'
-
+import Skill from '@/components/Skill'
 import type { Repository } from '@/types'
 import { caseStudies, owner, projects, repoQuery } from '@/utils/constans'
 import { getContrastTextColor } from '@/utils/functions'
-import { getSkillData } from '@/utils/skillData'
 
 const graphqlWithAuth = graphql.defaults({
 	headers: {
@@ -88,7 +87,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProjectPage({
 	params
-}: { params: Promise<{ project: string }> }): Promise<ReactElement> {
+}: {
+	params: Promise<{ project: string }>
+}): Promise<ReactElement> {
 	const { project } = await params
 	const data = await fetchData(project)
 
@@ -104,7 +105,7 @@ export default async function ProjectPage({
 				<div className='flex flex-col flex-grow lg:w-1/2 bg-base-200 p-6 rounded-2xl gap-4'>
 					<div className='flex items-center gap-3'>
 						<h2 className='text-3xl font-bold'>
-							{repository.name}
+							{localProject?.formattedName || repository.name}
 						</h2>
 						<a
 							className='link'
@@ -164,21 +165,14 @@ export default async function ProjectPage({
 						</span>
 					</div>
 					<div className='divider'>Technologies</div>
-					<div className='flex flex-wrap gap-2'>
+					<div className='flex flex-wrap'>
 						{localProject?.skills.length ? (
-							localProject.skills.map((skill) => {
-								const { icon, url } = getSkillData(skill)
+							localProject.skills.map((skill, index) => {
 								return (
-									<a
-										key={skill}
-										href={url}
-										target='_blank'
-										rel='noopener noreferrer'
-										className='badge badge-outline hover:bg-primary hover:text-primary-content flex items-center gap-2 p-3'
-									>
-										{icon}
-										{skill}
-									</a>
+									<Skill
+										key={`${index}:${skill}`}
+										title={skill}
+									/>
 								)
 							})
 						) : (

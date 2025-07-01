@@ -1,7 +1,7 @@
-import { type IPost, getFiles, getPost } from '@/content/blog-utils'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import readingTime from 'reading-time'
+import { getFiles, getPost, type IPost } from '@/content/blog-utils'
 import BlogPost from './BlogPost'
 
 interface Props {

@@ -1,6 +1,6 @@
-import { getPosts, getTags } from '@/content/blog-utils'
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
+import { getPosts, getTags } from '@/content/blog-utils'
 import BlogClient from './BlogClient'
 
 export const metadata: Metadata = {

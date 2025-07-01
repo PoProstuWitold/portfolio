@@ -1,5 +1,11 @@
 'use client'
-import { createContext, useContext, useEffect, useState } from 'react'
+import {
+	createContext,
+	useCallback,
+	useContext,
+	useEffect,
+	useState
+} from 'react'
 
 const themes = [
 	'system',
@@ -33,14 +39,7 @@ export const ThemeProvider = ({
 }) => {
 	const [theme, setTheme] = useState<Theme>(defaultTheme)
 
-	useEffect(() => {
-		const savedTheme =
-			(localStorage.getItem('theme') as Theme) || defaultTheme
-		setTheme(savedTheme)
-		applyTheme(savedTheme)
-	}, [defaultTheme])
-
-	const applyTheme = (newTheme: Theme) => {
+	const applyTheme = useCallback((newTheme: Theme) => {
 		const root = document.documentElement
 		const actualTheme =
 			newTheme === 'system'
@@ -51,7 +50,14 @@ export const ThemeProvider = ({
 
 		root.setAttribute('data-theme', actualTheme)
 		localStorage.setItem('theme', newTheme)
-	}
+	}, [])
+
+	useEffect(() => {
+		const savedTheme =
+			(localStorage.getItem('theme') as Theme) || defaultTheme
+		setTheme(savedTheme)
+		applyTheme(savedTheme)
+	}, [defaultTheme, applyTheme])
 
 	const changeTheme = (newTheme: Theme) => {
 		setTheme(newTheme)

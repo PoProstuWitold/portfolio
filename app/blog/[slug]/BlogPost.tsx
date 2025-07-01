@@ -1,9 +1,5 @@
 'use client'
 
-import { Socials } from '@/components/Socials'
-import { BlogInfo } from '@/content/BlogInfo'
-import useCopyToClipboard from '@/hooks/useCopyToClipboard'
-import { shimmer, toBase64 } from '@/utils/functions'
 import Image from 'next/image'
 import { useState } from 'react'
 import { AiFillCopy, AiOutlineCheck, AiOutlineCopy } from 'react-icons/ai'
@@ -12,6 +8,10 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import darkSyntax from 'react-syntax-highlighter/dist/cjs/styles/prism/coldark-dark'
 import { RWebShare } from 'react-web-share'
 import remarkGfm from 'remark-gfm'
+import { Socials } from '@/components/Socials'
+import { BlogInfo } from '@/content/BlogInfo'
+import useCopyToClipboard from '@/hooks/useCopyToClipboard'
+import { shimmer, toBase64 } from '@/utils/functions'
 
 export default function BlogPost({
 	data,
@@ -108,7 +108,7 @@ export default function BlogPost({
 						style={{ width: '100%', objectFit: 'cover' }}
 					/>
 					{hasCaption && (
-						<div
+						<section
 							className='font-bold px-5 py-3 mb-10 bg-neutral text-neutral-content italic rounded-b-2xl'
 							aria-label={caption}
 						>
@@ -124,7 +124,7 @@ export default function BlogPost({
 							) : (
 								caption
 							)}
-						</div>
+						</section>
 					)}
 				</div>
 			)

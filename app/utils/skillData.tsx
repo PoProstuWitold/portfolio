@@ -2,24 +2,6 @@ import type { JSX } from 'react'
 import { BiLogoMongodb, BiLogoPostgresql, BiTransferAlt } from 'react-icons/bi'
 import { DiRedis } from 'react-icons/di'
 import {
-	SiCaddy,
-	SiCloudflare,
-	SiDiscord,
-	SiDocker,
-	SiHono,
-	SiJavascript,
-	SiJsonwebtokens,
-	SiLinux,
-	SiMongodb,
-	SiNestjs,
-	SiNextdotjs,
-	SiReact,
-	SiTailwindcss,
-	SiTypescript,
-	SiWireguard
-} from 'react-icons/si'
-
-import {
 	FaClock,
 	FaCode,
 	FaEnvelope,
@@ -28,6 +10,22 @@ import {
 	FaRobot,
 	FaShieldAlt
 } from 'react-icons/fa'
+import {
+	SiCaddy,
+	SiCloudflare,
+	SiDiscord,
+	SiDocker,
+	SiHono,
+	SiJavascript,
+	SiJsonwebtokens,
+	SiLinux,
+	SiNestjs,
+	SiNextdotjs,
+	SiReact,
+	SiTailwindcss,
+	SiTypescript,
+	SiWireguard
+} from 'react-icons/si'
 import { TbBoxMultiple, TbRoute } from 'react-icons/tb'
 
 type SkillInfo = {

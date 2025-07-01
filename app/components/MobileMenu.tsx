@@ -4,9 +4,13 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { useScroll } from 'motion/react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { AiFillBook, AiOutlineMenu } from 'react-icons/ai'
-import { AiOutlineInfoCircle } from 'react-icons/ai'
-import { AiOutlineClose, AiOutlineMail } from 'react-icons/ai'
+import {
+	AiFillBook,
+	AiOutlineClose,
+	AiOutlineInfoCircle,
+	AiOutlineMail,
+	AiOutlineMenu
+} from 'react-icons/ai'
 import { MdComputer } from 'react-icons/md'
 import { Socials } from './Socials'
 

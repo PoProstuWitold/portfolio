@@ -3,11 +3,10 @@
 import { useScroll } from 'motion/react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-
-import { setThemeScript } from '@/utils/functions'
 import { AiFillBook, AiOutlineInfoCircle, AiOutlineMail } from 'react-icons/ai'
 import { FaTerminal } from 'react-icons/fa'
 import { MdComputer } from 'react-icons/md'
+import { setThemeScript } from '@/utils/functions'
 import MobileMenu from './MobileMenu'
 import { ThemeSwitcher } from './ThemeSwitcher'
 

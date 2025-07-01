@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-import Project from '@/components/Project'
+
 import { projects } from 'app/utils/constans'
+import Project from '@/components/Project'
 
 const Projects: React.FC = () => {
 	return (
