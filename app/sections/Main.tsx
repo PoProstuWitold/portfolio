@@ -5,7 +5,7 @@ import { m } from 'motion/react'
 import { BsArrowDownCircleFill } from 'react-icons/bs'
 import { Socials } from '@/components/Socials'
 
-const Main: React.FC = () => {
+export const Main: React.FC = () => {
 	return (
 		<section
 			id='main'
@@ -67,7 +67,7 @@ const Main: React.FC = () => {
 						>
 							<a
 								className='animate-bounce'
-								href='/#projects'
+								href='/#featured'
 								title='scroll to projects'
 							>
 								<BsArrowDownCircleFill className='w-14 h-14 text-secondary' />
@@ -79,5 +79,3 @@ const Main: React.FC = () => {
 		</section>
 	)
 }
-
-export default Main

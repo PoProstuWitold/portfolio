@@ -11,26 +11,23 @@ import {
 	AiOutlineMail,
 	AiOutlineMenu
 } from 'react-icons/ai'
-import { MdComputer } from 'react-icons/md'
+import { ProjectsDropdown } from './ProjectsDropdown'
 import { Socials } from './Socials'
 
-export default function MobileMenu() {
+export function MobileMenu() {
 	const [Y, setY] = useState<number>(0)
 	const { scrollY } = useScroll()
 
 	useEffect(() => {
 		const unsubscribeScroll = scrollY.on('change', (y) => {
-			if (y > 100) setY(y)
-			else setY(0)
+			setY(y > 100 ? y : 0)
 		})
-		return () => {
-			unsubscribeScroll()
-		}
+		return () => unsubscribeScroll()
 	}, [scrollY])
 
 	return (
 		<Menu as='div' className='z-50'>
-			{({ open }) => (
+			{({ open, close }) => (
 				<>
 					<MenuButton
 						className='justify-center btn btn-ghost'
@@ -52,34 +49,39 @@ export default function MobileMenu() {
 							</h2>
 						</MenuItem>
 						<MenuItem>
-							<li className='hover:text-secondary transition-all duration-150'>
-								<Link href='/#about'>
+							{() => (
+								<Link
+									href='/#about'
+									className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2 justify-start'
+								>
 									<AiOutlineInfoCircle className='w-7 h-7' />
 									About
 								</Link>
-							</li>
+							)}
 						</MenuItem>
 						<MenuItem>
-							<li className='hover:text-secondary transition-all duration-150'>
-								<Link href='/#projects'>
-									<MdComputer className='w-7 h-7' /> Projects
-								</Link>
-							</li>
+							{() => <ProjectsDropdown onClose={close} />}
 						</MenuItem>
 						<MenuItem>
-							<li className='hover:text-secondary transition-all duration-150'>
-								<Link href='/#contact'>
+							{() => (
+								<Link
+									href='/#contact'
+									className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2 justify-start'
+								>
 									<AiOutlineMail className='w-7 h-7' />{' '}
 									Contact
 								</Link>
-							</li>
+							)}
 						</MenuItem>
 						<MenuItem>
-							<li className='hover:text-secondary transition-all duration-150'>
-								<Link href='/blog'>
+							{() => (
+								<Link
+									href='/blog'
+									className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2 justify-start'
+								>
 									<AiFillBook className='w-7 h-7' /> Blog
 								</Link>
-							</li>
+							)}
 						</MenuItem>
 						<MenuItem>
 							<h2 className='font-bold cursor-pointer text-xl'>

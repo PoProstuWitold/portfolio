@@ -5,9 +5,9 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { AiFillBook, AiOutlineInfoCircle, AiOutlineMail } from 'react-icons/ai'
 import { FaTerminal } from 'react-icons/fa'
-import { MdComputer } from 'react-icons/md'
 import { setThemeScript } from '@/utils/functions'
-import MobileMenu from './MobileMenu'
+import { MobileMenu } from './MobileMenu'
+import { ProjectsDropdown } from './ProjectsDropdown'
 import { ThemeSwitcher } from './ThemeSwitcher'
 
 export const Navbar: React.FC = () => {
@@ -44,25 +44,32 @@ export const Navbar: React.FC = () => {
 					</Link>
 				</div>
 				<div className='hidden navbar-center lg:flex h-full'>
-					<ul className='p-0 font-semibold menu menu-horizontal menu-lg gap-2'>
-						<li className='hover:text-secondary transition-all duration-150'>
-							<Link href='/#about'>
+					<ul className='p-0 font-semibold gap-2 flex items-center'>
+						<li>
+							<Link
+								href='/#about'
+								className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2'
+							>
 								<AiOutlineInfoCircle className='w-7 h-7' />{' '}
 								About
 							</Link>
 						</li>
-						<li className='hover:text-secondary transition-all duration-150'>
-							<Link href='/#projects'>
-								<MdComputer className='w-7 h-7' /> Projects
-							</Link>
+						<li>
+							<ProjectsDropdown />
 						</li>
-						<li className='hover:text-secondary transition-all duration-150'>
-							<Link href='/#contact'>
+						<li>
+							<Link
+								href='/#contact'
+								className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2'
+							>
 								<AiOutlineMail className='w-7 h-7' /> Contact
 							</Link>
 						</li>
-						<li className='hover:text-secondary transition-all duration-150'>
-							<Link href='/blog'>
+						<li>
+							<Link
+								href='/blog'
+								className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2'
+							>
 								<AiFillBook className='w-7 h-7' /> Blog
 							</Link>
 						</li>

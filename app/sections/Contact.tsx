@@ -5,7 +5,7 @@ import { FormSettings } from '@/components/FormSettings'
 /* eslint-disable react/no-unescaped-entities */
 import { Socials } from '@/components/Socials'
 
-const Contact: React.FC = () => {
+export const Contact: React.FC = () => {
 	return (
 		<section
 			id='contact'
@@ -161,5 +161,3 @@ const Contact: React.FC = () => {
 		</section>
 	)
 }
-
-export default Contact

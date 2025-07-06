@@ -1,8 +1,8 @@
-import About from 'app/sections/About'
-import Contact from 'app/sections/Contact'
-import Main from 'app/sections/Main'
-import Projects from 'app/sections/Projects'
 import type { Metadata } from 'next'
+import { About } from '@/sections/About'
+import { Contact } from '@/sections/Contact'
+import { FeaturedProjects } from '@/sections/FeaturedProjects'
+import { Main } from '@/sections/Main'
 
 export const metadata: Metadata = {
 	title: 'Witold Zawada | Junior TypeScript & Go Developer',
@@ -45,7 +45,7 @@ const IndexPage: React.FC = () => {
 		<>
 			<Main />
 			<About />
-			<Projects />
+			<FeaturedProjects />
 			<Contact />
 		</>
 	)

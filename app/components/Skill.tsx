@@ -4,7 +4,7 @@ interface SkillProps {
 	title: string
 }
 
-const Skill: React.FC<SkillProps> = ({ title }) => {
+export const Skill: React.FC<SkillProps> = ({ title }) => {
 	const { icon, url } = getSkillData(title)
 
 	return (
@@ -19,5 +19,3 @@ const Skill: React.FC<SkillProps> = ({ title }) => {
 		</a>
 	)
 }
-
-export default Skill

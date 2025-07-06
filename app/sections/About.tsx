@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const About: React.FC = () => {
+export const About: React.FC = () => {
 	return (
 		<section
 			id='about'
@@ -62,59 +62,6 @@ const About: React.FC = () => {
 						</a>
 					</div>
 				</div>
-				{/* SKILLS */}
-				{/* <div className="flex-grow mt-10 lg:mt-0 lg:max-w-[50%] mx-0">
-					<h2 className="mx-1 text-3xl font-bold text-left">Skills</h2>
-					<br />
-					{languages && languages.length > 0 && <>
-						<h2 className="mx-1 text-2xl font-bold text-left">Languages & Runtimes</h2>
-						<div className="flex flex-wrap mb-4">
-							{languages.map((skill, index) => {
-								return <Skill key={index} title={skill} />
-							})}
-						</div>
-					</>}
-					{libsAndFrameworks && libsAndFrameworks.length > 0 && <>
-						<h2 className="mx-1 text-2xl font-bold text-left">
-							Frameworks & Libraries
-						</h2>
-						<div className="flex flex-wrap mb-4">
-							{libsAndFrameworks.map((skill, index) => {
-								return <Skill key={index} title={skill} />
-							})}
-						</div>
-					</>}
-					{dbsAndDevOps && dbsAndDevOps.length > 0 && <>
-						<h2 className="mx-1 text-2xl font-bold text-left">
-							Databases & DevOps
-						</h2>
-						<div className="flex flex-wrap mb-4">
-							{dbsAndDevOps.map((skill, index) => {
-								return <Skill key={index} title={skill} />
-							})}
-						</div>
-					</>}
-					{others && others.length > 0 && <>
-						<h2 className="mx-1 text-2xl font-bold text-left">
-							Others
-						</h2>
-						<div className="flex flex-wrap mb-4">
-							{others.map((skill, index) => {
-								return <Skill key={index} title={skill} />
-							})}
-						</div>
-					</>}
-					{learning && learning.length > 0 && <>
-						<h2 className="mx-1 text-2xl font-bold text-left">
-							Currently learning
-						</h2>
-						<div className="flex flex-wrap mb-4">
-							{learning.map((skill, index) => {
-								return <Skill key={index} title={skill} />
-							})}
-						</div>
-					</>}
-				</div> */}
 				{/* MY PHOTO & CVs */}
 				<div className='flex flex-col flex-grow mt-10 lg:mt-0 lg:max-w-[50%] mx-0 items-center gap-6'>
 					<Image
@@ -162,5 +109,3 @@ const About: React.FC = () => {
 		</section>
 	)
 }
-
-export default About
