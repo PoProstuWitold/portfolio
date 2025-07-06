@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-
 import { projects } from 'app/utils/constans'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import { Project } from '@/components/Project'

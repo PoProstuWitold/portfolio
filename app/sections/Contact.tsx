@@ -2,7 +2,6 @@ import { myInfo } from 'app/utils/constans'
 import { AiOutlineMail } from 'react-icons/ai'
 import { RxDiscordLogo } from 'react-icons/rx'
 import { FormSettings } from '@/components/FormSettings'
-/* eslint-disable react/no-unescaped-entities */
 import { Socials } from '@/components/Socials'
 
 export const Contact: React.FC = () => {

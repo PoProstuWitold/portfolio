@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -62,7 +61,6 @@ export const About: React.FC = () => {
 						</a>
 					</div>
 				</div>
-				{/* MY PHOTO & CVs */}
 				<div className='flex flex-col flex-grow mt-10 lg:mt-0 lg:max-w-[50%] mx-0 items-center gap-6'>
 					<Image
 						src={'/images/witold-512.png'}
