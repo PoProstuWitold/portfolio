@@ -40,7 +40,7 @@ export function ProjectsDropdown({ onClose }: { onClose?: () => void }) {
 					open ? 'bg-secondary text-secondary-content' : ''
 				}`}
 			>
-				<MdComputer className='w-5 h-5' />
+				<MdComputer className='w-7 h-7' />
 				Projects
 				<AiOutlineDown
 					className={`w-4 h-4 ml-auto transition-transform duration-200 ${
@@ -50,14 +50,14 @@ export function ProjectsDropdown({ onClose }: { onClose?: () => void }) {
 			</button>
 
 			{open && (
-				<ul className='dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm mt-1'>
+				<ul className='dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm gap-1'>
 					<li>
 						<Link
 							href='/#featured'
 							onClick={onClose}
 							className='btn btn-secondary btn-ghost btn-md flex items-center gap-2 justify-start'
 						>
-							<AiFillStar className='w-5 h-5' />
+							<AiFillStar className='w-7 h-7' />
 							Featured
 						</Link>
 					</li>
@@ -67,7 +67,7 @@ export function ProjectsDropdown({ onClose }: { onClose?: () => void }) {
 							onClick={onClose}
 							className='btn btn-secondary btn-ghost btn-md flex items-center gap-2 justify-start'
 						>
-							<AiOutlineUnorderedList className='w-5 h-5' />
+							<AiOutlineUnorderedList className='w-7 h-7' />
 							All
 						</Link>
 					</li>

@@ -1,6 +1,6 @@
 import { strictEqual } from 'node:assert'
 import { describe, it } from 'node:test'
-import { projects, themes } from '../app/utils/constans'
+import { featuredProjects, themes } from '../app/utils/constans'
 
 describe('Constans length tests', () => {
 	describe('Themes', () => {
@@ -8,9 +8,9 @@ describe('Constans length tests', () => {
 			strictEqual(themes.length, 10)
 		})
 	})
-	describe('projects', () => {
+	describe('featuredProjects', () => {
 		it('should return array of length 4', async () => {
-			strictEqual(projects.length, 4)
+			strictEqual(featuredProjects.length, 4)
 		})
 	})
 })

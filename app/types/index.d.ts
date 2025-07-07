@@ -22,3 +22,12 @@ export interface LanguageNode {
 	name: string
 	color: string
 }
+
+export interface ProjectDocument {
+	name: string
+	formattedName: string
+	description: string
+	type: string
+	skills: string[]
+	repo: string
+}

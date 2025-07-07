@@ -1,10 +1,11 @@
 import type { JSX } from 'react'
 import { BiLogoMongodb, BiLogoPostgresql, BiTransferAlt } from 'react-icons/bi'
-import { DiRedis } from 'react-icons/di'
+import { DiCss3, DiRedis } from 'react-icons/di'
 import {
 	FaClock,
 	FaCode,
 	FaEnvelope,
+	FaHtml5,
 	FaNetworkWired,
 	FaNodeJs,
 	FaRobot,
@@ -84,6 +85,14 @@ const skillDataMap: Record<string, SkillInfo> = {
 	VPN: {
 		icon: <SiWireguard />,
 		url: 'https://en.wikipedia.org/wiki/Virtual_private_network'
+	},
+	HTML5: {
+		icon: <FaHtml5 />,
+		url: 'https://developer.mozilla.org/en-US/docs/Web/HTML'
+	},
+	CSS3: {
+		icon: <DiCss3 />,
+		url: 'https://developer.mozilla.org/en-US/docs/Web/CSS'
 	}
 }
 

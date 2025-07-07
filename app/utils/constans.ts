@@ -1,3 +1,5 @@
+import type { ProjectDocument } from '@/types'
+
 export const myInfo = {
 	email: 'witoldzawada.dev@gmail.com',
 	randomStringEmail: '34893320013ab23ed74d6d8c8b6552c4',
@@ -37,13 +39,13 @@ export const themes = [
 	}
 ]
 
-export const projects = [
+export const featuredProjects: ProjectDocument[] = [
 	{
 		name: 'nest-next-boilerplate',
 		formattedName: 'Nest Next Boilerplate',
 		description:
 			'Boilerplate for Nest.js, Next.js, TypeScript stack. Includes social logins, account verification, password change & recover, real-time chats and more.',
-		application: 'Fullstack REST app',
+		type: 'Fullstack REST app',
 		skills: [
 			'Node.js',
 			'TypeScript',
@@ -61,7 +63,7 @@ export const projects = [
 		name: 'homeserver',
 		formattedName: 'Homeserver',
 		description: `My two personal, opinionated home server setups. One using Port Forwarding and the other using Cloudflare Tunnels. Both with detailed "to-do like" instructions, explanations as well as links to various resources.`,
-		application: 'Guide/Tutorial',
+		type: 'Guide/Tutorial',
 		skills: [
 			'Linux',
 			'Docker',
@@ -79,7 +81,7 @@ export const projects = [
 		formattedName: 'Nuntius Feed',
 		description:
 			'Your personal herald for the digital age. A lightweight web application for subscribing to and reading RSS and Atom feeds. Parses feeds from all RSS and Atom specifications.',
-		application: 'Fullstack REST app with RPC',
+		type: 'Fullstack REST app with RPC',
 		skills: [
 			'Node.js',
 			'TypeScript',
@@ -99,7 +101,7 @@ export const projects = [
 		formattedName: 'Sayuna',
 		description:
 			'Easily extensible and customizable all-in-one Discord bot. Moderation, music & fun! Built around dependency injection pattern. Includes real-time dashboard with controls and Docker image for easy deployment and monitoring',
-		application: 'Discord bot',
+		type: 'Discord bot',
 		skills: [
 			'Node.js',
 			'TypeScript',
@@ -110,6 +112,28 @@ export const projects = [
 			'Docker'
 		],
 		repo: 'https://github.com/PoProstuWitold/Sayuna'
+	}
+]
+
+export const projects: ProjectDocument[] = [
+	...featuredProjects,
+	{
+		name: 'portfolio',
+		formattedName: 'Portfolio',
+		description:
+			'My personal portfolio website, designed to showcase my skills, projects and blog posts.',
+		type: 'Personal Website',
+		skills: ['Node.js', 'TypeScript', 'Next.js', 'TailwindCSS'],
+		repo: 'https://github.com/PoProstuWitold/portfolio'
+	},
+	{
+		name: 'pizzeria',
+		formattedName: 'Pizzeria',
+		description:
+			'A project implementing a website for a fictional pizzeria in the form of a "Single Page Application" with custom React-like mini-framework and custom Node.js server.',
+		type: 'Vanilla JS SPA with custom server',
+		skills: ['Node.js', 'JavaScript', 'ESM', 'HTML5', 'CSS3', 'Docker'],
+		repo: 'https://github.com/PoProstuWitold/pizzeria'
 	}
 ]
 
@@ -164,5 +188,13 @@ export const caseStudies = new Map<string, string>([
 	[
 		'Sayuna',
 		'Sayuna is a bot built on top of the Discord API using discord.js and discordx, aiming to provide a richer and more sophisticated experience. Discord is an amazing communication app that provides a robust API for developers, including support for nearly all popular languages and runtimes, including Node.js. I decided to use TypeScript and Object-Oriented Programming (OOP) to develop Sayuna, as it allowed me to better structure and organize the codebase. Sayuna provides features such as music playback (with a real-time dashboard featuring interactive buttons), fun activities such as random memes and jokes, moderation tools, and information. Additionally, I implemented pagination with GUI controls for long command outputs, such as music queue or command information.'
+	],
+	[
+		'portfolio',
+		'Portfolio is my personal website, designed to showcase my skills, projects, and blog posts. It is built using Next.js and TailwindCSS, with a focus on performance and user experience. The website features a clean and modern design, with easy navigation and responsive layout. It includes sections for my projects, skills, blog posts, and contact information. The website is also optimized for search engines and accessibility.'
+	],
+	[
+		'pizzeria',
+		'Pizzeria is a project that implements a website for a fictional pizzeria in the form of a "Single Page Application" (SPA) using vanilla JavaScript. The project includes a custom React-like mini-framework and a custom Node.js server. The goal of the project was to create a simple and lightweight SPA that can be easily deployed and maintained. The project is designed to be easy to understand and modify, with a focus on simplicity and performance.'
 	]
 ])

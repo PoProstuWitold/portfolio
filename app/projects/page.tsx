@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import { Project } from '@/components/Project'
-import { projects } from '@/utils/constans'
+import { featuredProjects, projects } from '@/utils/constans'
 
 export const metadata: Metadata = {
 	title: 'All Projects | Witold Zawada',
@@ -65,6 +65,7 @@ const ProjectsPage: React.FC = () => {
 						<Project
 							key={`${index}:${project.name}`}
 							project={project}
+							featured={featuredProjects.includes(project)}
 						/>
 					)
 				})}

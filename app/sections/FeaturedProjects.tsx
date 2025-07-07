@@ -1,4 +1,4 @@
-import { projects } from 'app/utils/constans'
+import { featuredProjects } from 'app/utils/constans'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import { Project } from '@/components/Project'
 
@@ -19,7 +19,7 @@ export const FeaturedProjects: React.FC = () => {
 				videos, and engaging in various courses.
 			</p>
 			<div className='flex flex-col flex-wrap justify-between mx-5 my-10 lg:flex-row lg:mt-0 lg:mx-20'>
-				{projects.map((project, index) => {
+				{featuredProjects.map((project, index) => {
 					return (
 						<Project
 							key={`${index}:${project.name}`}
