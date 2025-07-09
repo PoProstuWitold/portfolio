@@ -19,8 +19,8 @@ export const Project: React.FC<ProjectProps> = ({ project, featured }) => {
 				</div>
 			)}
 
-			<div className='flex flex-col'>
-				<h2 className='my-3 text-3xl font-bold text-center'>
+			<div className='flex flex-col mt-5 md:mt-0'>
+				<h2 className='my-3 text-3xl font-bold text-left'>
 					{project.formattedName}
 				</h2>
 				<span className='pl-2 mx-1 my-3 font-mono font-bold border-l-4 text-secondary border-secondary'>
