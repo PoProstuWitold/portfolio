@@ -157,7 +157,7 @@ export const projects: ProjectDocument[] = [
 			'Markdown'
 		],
 		repo: 'https://github.com/PoProstuWitold/portfolio',
-		badges: ['featured', 'personal']
+		badges: ['personal']
 	},
 	{
 		name: 'pizzeria',
@@ -167,7 +167,7 @@ export const projects: ProjectDocument[] = [
 		type: 'HTML5/CSS3/JS Website',
 		skills: ['Node.js', 'JavaScript', 'ESM', 'HTML5', 'CSS3', 'Docker'],
 		repo: 'https://github.com/PoProstuWitold/pizzeria',
-		badges: ['featured', 'education']
+		badges: ['education']
 	}
 ]
 
