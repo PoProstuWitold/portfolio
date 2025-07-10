@@ -30,4 +30,15 @@ export interface ProjectDocument {
 	type: string
 	skills: string[]
 	repo: string
+	badges: Array<
+		| 'featured'
+		| 'new'
+		| 'inProgress'
+		| 'deprecated'
+		| 'collaboration'
+		| 'personal'
+		| 'docs'
+		| 'selfhosted'
+		| 'education'
+	>
 }

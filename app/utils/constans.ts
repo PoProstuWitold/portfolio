@@ -45,7 +45,7 @@ export const featuredProjects: ProjectDocument[] = [
 		formattedName: 'Nest Next Boilerplate',
 		description:
 			'Boilerplate for Nest.js, Next.js, TypeScript stack. Includes social logins, account verification, password change & recover, real-time chats and more.',
-		type: 'Fullstack REST app',
+		type: 'Fullstack REST App',
 		skills: [
 			'Node.js',
 			'TypeScript',
@@ -57,7 +57,8 @@ export const featuredProjects: ProjectDocument[] = [
 			'TailwindCSS',
 			'Nodemailer'
 		],
-		repo: 'https://github.com/PoProstuWitold/nest-next-boilerplate'
+		repo: 'https://github.com/PoProstuWitold/nest-next-boilerplate',
+		badges: ['featured']
 	},
 	{
 		name: 'homeserver',
@@ -74,14 +75,15 @@ export const featuredProjects: ProjectDocument[] = [
 			'Caddy',
 			'VPN'
 		],
-		repo: 'https://github.com/PoProstuWitold/homeserver'
+		repo: 'https://github.com/PoProstuWitold/homeserver',
+		badges: ['featured', 'selfhosted', 'docs']
 	},
 	{
 		name: 'nuntius-feed',
 		formattedName: 'Nuntius Feed',
 		description:
 			'Your personal herald for the digital age. A lightweight web application for subscribing to and reading RSS and Atom feeds. Parses feeds from all RSS and Atom specifications.',
-		type: 'Fullstack REST app with RPC',
+		type: 'Fullstack REST App with RPC',
 		skills: [
 			'Node.js',
 			'TypeScript',
@@ -94,14 +96,15 @@ export const featuredProjects: ProjectDocument[] = [
 			'TailwindCSS',
 			'CRON'
 		],
-		repo: 'https://github.com/PoProstuWitold/nuntius-feed'
+		repo: 'https://github.com/PoProstuWitold/nuntius-feed',
+		badges: ['featured', 'selfhosted', 'education']
 	},
 	{
 		name: 'Sayuna',
 		formattedName: 'Sayuna',
 		description:
 			'Easily extensible and customizable all-in-one Discord bot. Moderation, music & fun! Built around dependency injection pattern. Includes real-time dashboard with controls and Docker image for easy deployment and monitoring',
-		type: 'Discord bot',
+		type: 'Discord Bot',
 		skills: [
 			'Node.js',
 			'TypeScript',
@@ -111,29 +114,60 @@ export const featuredProjects: ProjectDocument[] = [
 			'ESM',
 			'Docker'
 		],
-		repo: 'https://github.com/PoProstuWitold/Sayuna'
+		repo: 'https://github.com/PoProstuWitold/Sayuna',
+		badges: ['featured', 'selfhosted']
 	}
 ]
 
 export const projects: ProjectDocument[] = [
 	...featuredProjects,
 	{
+		name: 'doggopaste',
+		formattedName: 'DoggoPaste',
+		description: `
+		A hybrid of Pastebin and CodeShare - a simple yet powerful way to share code snippets, collaborate in real time, and keep your pastes accessible. It's fully free, open-source, and selfhostable. Designed with privacy, collaboration, and permanence in mind.
+		`,
+		type: 'Fullstack REST App',
+		skills: [
+			'Node.js',
+			'TypeScript',
+			'Hono',
+			'Next.js',
+			'PostgreSQL',
+			'Docker',
+			'TailwindCSS',
+			'WebSockets',
+			'Turborepo'
+		],
+		repo: 'https://github.com/PoProstuWitold/doggopaste',
+		badges: ['inProgress', 'selfhosted', 'education', 'collaboration']
+	},
+	{
 		name: 'portfolio',
 		formattedName: 'Portfolio',
-		description:
-			'My personal portfolio website, designed to showcase my skills, projects and blog posts.',
+		description: `My personal portfolio website showcases my development skills, selected projects and technical blog posts. It's designed as a central place to present my work and share insights. Clean, responsive, and built with modern tools.`,
 		type: 'Personal Website',
-		skills: ['Node.js', 'TypeScript', 'Next.js', 'TailwindCSS'],
-		repo: 'https://github.com/PoProstuWitold/portfolio'
+		skills: [
+			'Node.js',
+			'TypeScript',
+			'Next.js',
+			'TailwindCSS',
+			'GraphQL',
+			'GitHub API',
+			'Markdown'
+		],
+		repo: 'https://github.com/PoProstuWitold/portfolio',
+		badges: ['featured', 'personal']
 	},
 	{
 		name: 'pizzeria',
 		formattedName: 'Pizzeria',
 		description:
 			'A project implementing a website for a fictional pizzeria in the form of a "Single Page Application" with custom React-like mini-framework and custom Node.js server.',
-		type: 'Vanilla JS SPA with custom server',
+		type: 'HTML5/CSS3/JS Website',
 		skills: ['Node.js', 'JavaScript', 'ESM', 'HTML5', 'CSS3', 'Docker'],
-		repo: 'https://github.com/PoProstuWitold/pizzeria'
+		repo: 'https://github.com/PoProstuWitold/pizzeria',
+		badges: ['featured', 'education']
 	}
 ]
 

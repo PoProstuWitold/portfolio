@@ -24,6 +24,7 @@ export const FeaturedProjects: React.FC = () => {
 						<Project
 							key={`${index}:${project.name}`}
 							project={project}
+							badges
 						/>
 					)
 				})}

@@ -1,5 +1,11 @@
 import type { JSX } from 'react'
-import { BiLogoMongodb, BiLogoPostgresql, BiTransferAlt } from 'react-icons/bi'
+import {
+	BiLogoMongodb,
+	BiLogoPostgresql,
+	BiPlug,
+	BiTransferAlt
+} from 'react-icons/bi'
+import { BsGithub, BsMarkdownFill } from 'react-icons/bs'
 import { DiCss3, DiRedis } from 'react-icons/di'
 import {
 	FaClock,
@@ -16,6 +22,7 @@ import {
 	SiCloudflare,
 	SiDiscord,
 	SiDocker,
+	SiGraphql,
 	SiHono,
 	SiJavascript,
 	SiJsonwebtokens,
@@ -24,6 +31,7 @@ import {
 	SiNextdotjs,
 	SiReact,
 	SiTailwindcss,
+	SiTurborepo,
 	SiTypescript,
 	SiWireguard
 } from 'react-icons/si'
@@ -93,6 +101,26 @@ const skillDataMap: Record<string, SkillInfo> = {
 	CSS3: {
 		icon: <DiCss3 />,
 		url: 'https://developer.mozilla.org/en-US/docs/Web/CSS'
+	},
+	GraphQL: {
+		icon: <SiGraphql />,
+		url: 'https://graphql.org/'
+	},
+	'GitHub API': {
+		icon: <BsGithub />,
+		url: 'https://docs.github.com/en'
+	},
+	Markdown: {
+		icon: <BsMarkdownFill />,
+		url: 'https://www.markdownguide.org/'
+	},
+	Turborepo: {
+		icon: <SiTurborepo />,
+		url: 'https://turborepo.com/'
+	},
+	WebSockets: {
+		icon: <BiPlug />,
+		url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API'
 	}
 }
 
