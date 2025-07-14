@@ -11,6 +11,7 @@ import {
 	AiOutlineMail,
 	AiOutlineMenu
 } from 'react-icons/ai'
+import { MdRssFeed } from 'react-icons/md'
 import { ProjectsDropdown } from './ProjectsDropdown'
 import { Socials } from './Socials'
 
@@ -81,6 +82,18 @@ export function MobileMenu() {
 								>
 									<AiFillBook className='w-7 h-7' /> Blog
 								</Link>
+							)}
+						</MenuItem>
+						<MenuItem>
+							{() => (
+								<a
+									href='/feed'
+									className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2 justify-start'
+									target='_blank'
+									rel='noopener noreferrer'
+								>
+									<MdRssFeed className='w-6 h-6' /> Feed
+								</a>
 							)}
 						</MenuItem>
 						<MenuItem>

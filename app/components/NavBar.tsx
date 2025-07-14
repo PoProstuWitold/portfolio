@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { AiFillBook, AiOutlineInfoCircle, AiOutlineMail } from 'react-icons/ai'
 import { FaTerminal } from 'react-icons/fa'
+import { MdRssFeed } from 'react-icons/md'
 import { setThemeScript } from '@/utils/functions'
 import { MobileMenu } from './MobileMenu'
 import { ProjectsDropdown } from './ProjectsDropdown'
@@ -72,6 +73,17 @@ export const Navbar: React.FC = () => {
 							>
 								<AiFillBook className='w-7 h-7' /> Blog
 							</Link>
+						</li>
+
+						<li>
+							<a
+								href='/feed'
+								className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2'
+								target='_blank'
+								rel='noopener noreferrer'
+							>
+								<MdRssFeed className='w-6 h-6' /> Feed
+							</a>
 						</li>
 					</ul>
 				</div>
