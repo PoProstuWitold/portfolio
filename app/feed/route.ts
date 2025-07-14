@@ -1,9 +1,10 @@
+import { join } from 'node:path'
 import { Feed } from 'feed'
 import { NextResponse } from 'next/server'
 import { getPosts } from '@/content/blog-utils'
 
 export async function GET() {
-	const posts = await getPosts('app/content/posts')
+	const posts = await getPosts(join(process.cwd(), 'app/content/posts'))
 	const siteUrl = 'https://witoldzawada.dev'
 
 	const esc = (str: string) =>
