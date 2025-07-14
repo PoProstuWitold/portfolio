@@ -7,6 +7,14 @@ export async function GET() {
 	const posts = await getPosts(join(process.cwd(), 'app/content/posts'))
 	const siteUrl = 'https://witoldzawada.dev'
 
+	const author = {
+		name: 'Witold Zawada',
+		link: siteUrl,
+		email: 'witoldzawada.dev@gmail.com'
+	}
+
+	const copyright = `Copyright © ${new Date().getFullYear()} Witold Zawada`
+
 	const esc = (str: string) =>
 		str
 			.replace(/&/g, '&amp;')
@@ -23,13 +31,10 @@ export async function GET() {
 		link: `${siteUrl}/`,
 		language: 'en-US',
 		favicon: `${siteUrl}/favicon.ico`,
-		copyright: `Copyright © ${new Date().getFullYear()} Witold Zawada`,
+		copyright,
 		updated: new Date(),
 		generator: 'Custom Feed Generator',
-		author: {
-			name: 'Witold Zawada',
-			link: siteUrl
-		},
+		author,
 		category: 'Technology',
 		docs: 'https://www.rssboard.org/rss-specification',
 		// XML parsing error: <unknown>:14:0: unbound prefix
@@ -46,11 +51,31 @@ export async function GET() {
 			id: `${siteUrl}/blog/${post.slug}`.trim(),
 			link: `${siteUrl}/blog/${post.slug}`.trim(),
 			description: esc(post.data.description || ''),
-			date: new Date(post.data.date)
+			date: new Date(post.data.date),
+			author: [author],
+			category: post.data.tags.map((tag) => ({
+				name: tag,
+				slug: tag,
+				term: tag
+			})),
+			guid: post.data.title,
+			image: `${siteUrl}/${post.data.socialImage}`,
+			copyright,
+			published: new Date(post.data.date),
+			enclosure: {
+				url: `${siteUrl}/${post.data.socialImage}`,
+				type: 'image/webp',
+				title: post.data.title
+			}
 		})
 	})
 
-	const finalXml = feed.rss2()
+	const finalXml = feed
+		.rss2()
+		.replace(
+			'</channel>',
+			'<managingEditor>witoldzawada.dev@gmail.com (Witold Zawada)</managingEditor>\n</channel>'
+		)
 
 	return new NextResponse(finalXml, {
 		headers: {
