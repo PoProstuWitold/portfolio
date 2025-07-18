@@ -90,6 +90,7 @@ export function MobileMenu() {
 								</button>
 								<Link
 									href='/'
+									onClick={() => close()}
 									className='btn btn-ghost text-xl normal-case flex items-center gap-2 hover:text-secondary transition-all duration-150'
 								>
 									<span className='text-primary'>
