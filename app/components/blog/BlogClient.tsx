@@ -2,8 +2,8 @@
 
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { BlogCard } from '@/content/BlogCard'
-import type { IPost } from '@/content/blog-utils'
+import type { IPost } from '@/utils/blog-utils'
+import { BlogCard } from './BlogCard'
 
 interface Props {
 	posts: IPost[]

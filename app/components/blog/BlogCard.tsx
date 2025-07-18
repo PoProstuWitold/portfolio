@@ -1,8 +1,8 @@
 import { shimmer, toBase64 } from 'app/utils/functions'
 import Image from 'next/image'
 import type React from 'react'
+import type { IPost } from '../../utils/blog-utils'
 import { BlogInfo } from './BlogInfo'
-import type { IPost } from './blog-utils'
 
 interface BlogCardProps {
 	post: IPost

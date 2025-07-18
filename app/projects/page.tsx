@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { AiOutlineArrowRight } from 'react-icons/ai'
-import { Project } from '@/components/Project'
+import { Project } from '@/components/core/Project'
 import { projects } from '@/utils/constans'
 
 export const metadata: Metadata = {

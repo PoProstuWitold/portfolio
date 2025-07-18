@@ -2,8 +2,8 @@ import dayjs from 'dayjs'
 import Image from 'next/image'
 import type React from 'react'
 import { RxDotFilled } from 'react-icons/rx'
-import Witold from '../../public/images/witold-512.png'
-import type { IPost } from './blog-utils'
+import Witold from '../../../public/images/witold-512.png'
+import type { IPost } from '../../utils/blog-utils'
 
 interface BlogInfoProps {
 	data: IPost['data']

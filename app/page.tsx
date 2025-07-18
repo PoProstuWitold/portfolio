@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { About } from '@/sections/About'
-import { Contact } from '@/sections/Contact'
-import { FeaturedProjects } from '@/sections/FeaturedProjects'
-import { Main } from '@/sections/Main'
+import { About } from '@/components/sections/About'
+import { Contact } from '@/components/sections/Contact'
+import { FeaturedProjects } from '@/components/sections/FeaturedProjects'
+import { Main } from '@/components/sections/Main'
 
 export const metadata: Metadata = {
 	title: 'Witold Zawada | Junior TypeScript & Go Developer',

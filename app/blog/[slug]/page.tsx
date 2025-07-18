@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import readingTime from 'reading-time'
-import { getFiles, getPost, type IPost } from '@/content/blog-utils'
-import BlogPost from './BlogPost'
+import { getFiles, getPost, type IPost } from '@/utils/blog-utils'
+import BlogPost from '../../components/blog/BlogPost'
 
 interface Props {
 	params: Promise<{ slug: string }>

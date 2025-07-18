@@ -1,8 +1,8 @@
 import { myInfo } from 'app/utils/constans'
 import { AiOutlineMail } from 'react-icons/ai'
 import { RxDiscordLogo } from 'react-icons/rx'
-import { FormSettings } from '@/components/FormSettings'
-import { Socials } from '@/components/Socials'
+import { FormSettings } from '@/components/core/FormSettings'
+import { Socials } from '@/components/core/Socials'
 
 export const Contact: React.FC = () => {
 	return (

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
-import { getPosts, getTags } from '@/content/blog-utils'
-import BlogClient from './BlogClient'
+import { getPosts, getTags } from '@/utils/blog-utils'
+import BlogClient from '../components/blog/BlogClient'
 
 export const metadata: Metadata = {
 	title: 'Blog | Witold Zawada',

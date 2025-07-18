@@ -1,6 +1,6 @@
 import { featuredProjects } from 'app/utils/constans'
 import { AiOutlineArrowRight } from 'react-icons/ai'
-import { Project } from '@/components/Project'
+import { Project } from '@/components/core/Project'
 
 export const FeaturedProjects: React.FC = () => {
 	return (

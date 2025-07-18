@@ -1,9 +1,9 @@
 import './global.css'
 import type { Metadata } from 'next'
-import { Footer } from './components/Footer'
-import { MotionProvider } from './components/MotionProvider'
-import { Navbar } from './components/NavBar'
-import { ScrollProgress } from './components/ScrollProgress'
+import { Footer } from './components/core/Footer'
+import { MotionProvider } from './components/core/MotionProvider'
+import { Navbar } from './components/core/NavBar'
+import { ScrollProgress } from './components/core/ScrollProgress'
 import { ThemeProvider } from './context/ThemeContext'
 
 export const metadata: Metadata = {

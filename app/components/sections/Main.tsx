@@ -2,7 +2,7 @@
 
 import { m } from 'motion/react'
 import { BsArrowDownCircleFill } from 'react-icons/bs'
-import { Socials } from '@/components/Socials'
+import { Socials } from '@/components/core/Socials'
 
 export const Main: React.FC = () => {
 	return (
