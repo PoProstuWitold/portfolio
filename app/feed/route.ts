@@ -1,7 +1,13 @@
 import { join } from 'node:path'
 import { Feed } from 'feed'
+import { DateTime } from 'luxon'
 import { NextResponse } from 'next/server'
 import { getPosts } from '@/utils/blog-utils'
+
+const toUTC = (localDateStr: string) =>
+	DateTime.fromFormat(localDateStr, 'yyyy-MM-dd HH:mm', {
+		zone: 'Europe/Warsaw'
+	}).toUTC().toJSDate()
 
 export async function GET() {
 	const posts = await getPosts(join(process.cwd(), 'app/content/posts'))
@@ -51,7 +57,7 @@ export async function GET() {
 			id: `${siteUrl}/blog/${post.slug}`.trim(),
 			link: `${siteUrl}/blog/${post.slug}`.trim(),
 			description: esc(post.data.description || ''),
-			date: new Date(post.data.date),
+			date: toUTC(post.data.updated || post.data.date),
 			author: [author],
 			category: post.data.tags.map((tag) => ({
 				name: tag,
@@ -61,7 +67,7 @@ export async function GET() {
 			guid: post.data.title,
 			image: `${siteUrl}/${post.data.socialImage}`,
 			copyright,
-			published: new Date(post.data.date),
+			published: toUTC(post.data.updated || post.data.date),
 			enclosure: {
 				url: `${siteUrl}/${post.data.socialImage}`,
 				type: 'image/webp',
