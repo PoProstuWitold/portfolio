@@ -7,7 +7,9 @@ import { getPosts } from '@/utils/blog-utils'
 const toUTC = (localDateStr: string) =>
 	DateTime.fromFormat(localDateStr, 'yyyy-MM-dd HH:mm', {
 		zone: 'Europe/Warsaw'
-	}).toUTC().toJSDate()
+	})
+		.toUTC()
+		.toJSDate()
 
 export async function GET() {
 	const posts = await getPosts(join(process.cwd(), 'app/content/posts'))
