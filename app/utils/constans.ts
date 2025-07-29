@@ -41,24 +41,15 @@ export const themes = [
 
 export const featuredProjects: ProjectDocument[] = [
 	{
-		name: 'nest-next-boilerplate',
-		formattedName: 'Nest Next Boilerplate',
-		description:
-			'Boilerplate for Nest.js, Next.js, TypeScript stack. Includes social logins, account verification, password change & recover, real-time chats and more.',
-		type: 'Fullstack REST App',
-		skills: [
-			'Node.js',
-			'TypeScript',
-			'Nest.js',
-			'Redis',
-			'PostgreSQL',
-			'Docker',
-			'Next.js',
-			'TailwindCSS',
-			'Nodemailer'
-		],
-		repo: 'https://github.com/PoProstuWitold/nest-next-boilerplate',
-		badges: ['featured']
+		name: 'dove-dashboard',
+		formattedName: 'The Dove Dashboard',
+		description: `
+		Essential system stats, peacefully simple. A lightweight, simple and peaceful web-based system monitor - written in Go, with no external dependencies and a minimal UI.
+		`,
+		type: 'System Monitoring Dashboard',
+		skills: ['Go', 'Docker', 'Linux', 'JavaScript', 'HTML5', 'CSS3'],
+		repo: 'https://github.com/PoProstuWitold/dove-dashboard',
+		badges: ['featured', 'selfhosted', 'new']
 	},
 	{
 		name: 'homeserver',
@@ -168,6 +159,26 @@ export const projects: ProjectDocument[] = [
 		skills: ['Node.js', 'JavaScript', 'ESM', 'HTML5', 'CSS3', 'Docker'],
 		repo: 'https://github.com/PoProstuWitold/pizzeria',
 		badges: ['education']
+	},
+	{
+		name: 'nest-next-boilerplate',
+		formattedName: 'Nest Next Boilerplate',
+		description:
+			'Boilerplate for Nest.js, Next.js, TypeScript stack. Includes social logins, account verification, password change & recover, real-time chats and more.',
+		type: 'Fullstack REST App',
+		skills: [
+			'Node.js',
+			'TypeScript',
+			'Nest.js',
+			'Redis',
+			'PostgreSQL',
+			'Docker',
+			'Next.js',
+			'TailwindCSS',
+			'Nodemailer'
+		],
+		repo: 'https://github.com/PoProstuWitold/nest-next-boilerplate',
+		badges: ['deprecated']
 	}
 ]
 
@@ -230,5 +241,11 @@ export const caseStudies = new Map<string, string>([
 	[
 		'pizzeria',
 		'Pizzeria is a project that implements a website for a fictional pizzeria in the form of a "Single Page Application" (SPA) using vanilla JavaScript. The project includes a custom React-like mini-framework and a custom Node.js server. The goal of the project was to create a simple and lightweight SPA that can be easily deployed and maintained. The project is designed to be easy to understand and modify, with a focus on simplicity and performance.'
+	],
+	[
+		'dove-dashboard',
+		`
+		The Dove Dashboard is a lightweight, selfhosted system monitoring application written in Go and pure JavaScript, with no external dependencies. It provides real-time insights into key system metrics such as the operating system (architecture, kernel, uptime, hostname), CPU (name, cores, threads, frequency), storage (disk type, file system, usage), network (interfaces, benchmarks), and hardware sensors (temperature, voltage). Designed with a minimal and peaceful user interface (hence the name - "dove" dashboard), it automatically refreshes and runs as a fully self-contained binary. The project is distributed as a very lightweight, rootless Docker image (~18MB) with extremely low memory usage (~25MB), making deployment straightforward with a single "docker-compose" command. Why? I wanted a simple, secure, and lightweight web interface to check my system's temperatures, and I decided to expand it to include other essential system statistics as well.
+		`
 	]
 ])

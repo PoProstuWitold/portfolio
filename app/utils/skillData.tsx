@@ -1,5 +1,6 @@
 import type { JSX } from 'react'
 import {
+	BiLogoGoLang,
 	BiLogoMongodb,
 	BiLogoPostgresql,
 	BiPlug,
@@ -121,6 +122,10 @@ const skillDataMap: Record<string, SkillInfo> = {
 	WebSockets: {
 		icon: <BiPlug />,
 		url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API'
+	},
+	Go: {
+		icon: <BiLogoGoLang />,
+		url: 'https://go.dev/'
 	}
 }
 
