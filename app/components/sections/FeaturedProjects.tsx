@@ -4,6 +4,7 @@ import { Project } from '@/components/core/Project'
 
 export const FeaturedProjects: React.FC = () => {
 	return (
+		// biome-ignore lint: hardcoded id is essential for navigation
 		<section
 			id='featured'
 			className='min-h-screen pt-20 flex flex-col gap-8 py-10 text-xl cursor-default bg-base-200'

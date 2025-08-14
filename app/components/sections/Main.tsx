@@ -6,6 +6,7 @@ import { Socials } from '@/components/core/Socials'
 
 export const Main: React.FC = () => {
 	return (
+		// biome-ignore lint: hardcoded id is essential for navigation
 		<section
 			id='main'
 			className='min-h-screen text-3xl text-center cursor-default bg-base-200'
