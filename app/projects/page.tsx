@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { AiOutlineArrowRight } from 'react-icons/ai'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { Project } from '@/components/core/Project'
 import { projects } from '@/utils/constans'
 
@@ -71,13 +71,10 @@ const ProjectsPage: React.FC = () => {
 					)
 				})}
 			</div>
-			<div className='flex hover:underline justify-end mx-5 lg:mx-20'>
-				<a
-					href='/'
-					className='flex items-center gap-2 text-primary text-lg transition-all duration-200'
-				>
+			<div className='flex justify-start mx-5 lg:mx-20'>
+				<a href='/' className='btn btn-lg btn-link'>
+					<AiOutlineArrowLeft className='w-5 h-5' />
 					Go back to home page
-					<AiOutlineArrowRight className='w-5 h-5' />
 				</a>
 			</div>
 		</section>

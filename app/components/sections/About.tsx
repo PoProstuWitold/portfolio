@@ -74,7 +74,7 @@ export const About: React.FC = () => {
 						<span className='gap-4 font-bold text-3xl'>
 							Witold Zawada
 						</span>
-						<span className='italic flex flex-row items-center gap-2 text-lg'>
+						<span className='italic flex flex-row items-center gap-1 text-lg'>
 							Download my CV in
 							<Link
 								href='/resources/Witold_Zawada_CV-en-public.pdf'

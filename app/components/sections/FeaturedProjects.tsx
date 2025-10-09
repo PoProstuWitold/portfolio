@@ -30,11 +30,8 @@ export const FeaturedProjects: React.FC = () => {
 					)
 				})}
 			</div>
-			<div className='flex hover:underline justify-end mx-5 lg:mx-20'>
-				<a
-					href='/projects'
-					className='flex items-center gap-2 text-primary text-lg transition-all duration-200'
-				>
+			<div className='flex justify-end mx-5 lg:mx-20'>
+				<a href='/projects' className='btn btn-lg btn-link'>
 					See all projects
 					<AiOutlineArrowRight className='w-5 h-5' />
 				</a>
