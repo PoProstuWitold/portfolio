@@ -3,13 +3,17 @@ import matter from 'gray-matter'
 import readingTime from 'reading-time'
 
 export const getPost = async (slug: string) => {
-	const fileName = await readFile(`app/content/posts/${slug}.md`, 'utf-8')
+	try {
+		const fileName = await readFile(`app/content/posts/${slug}.md`, 'utf-8')
 
-	const { data, content } = matter(fileName)
+		const { data, content } = matter(fileName)
 
-	return {
-		data,
-		content
+		return {
+			data,
+			content
+		}
+	} catch (_err) {
+		return null
 	}
 }
 
