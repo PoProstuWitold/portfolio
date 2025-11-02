@@ -82,7 +82,7 @@ export const Navbar: React.FC = () => {
 								target='_blank'
 								rel='noopener noreferrer'
 							>
-								<MdRssFeed className='w-6 h-6' /> Feed
+								<MdRssFeed className='w-7 h-7' /> Feed
 							</a>
 						</li>
 					</ul>

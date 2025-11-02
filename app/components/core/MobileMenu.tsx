@@ -18,7 +18,7 @@ import {
 	AiOutlineMenu
 } from 'react-icons/ai'
 import { FaTerminal } from 'react-icons/fa'
-import { MdRssFeed } from 'react-icons/md'
+import { MdOutlineConnectWithoutContact, MdRssFeed } from 'react-icons/md'
 import { ProjectsDropdown } from './ProjectsDropdown'
 import { Socials } from './Socials'
 
@@ -142,14 +142,13 @@ export function MobileMenu() {
 									rel='noopener noreferrer'
 									className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2 justify-start'
 								>
-									<MdRssFeed className='w-6 h-6' />
+									<MdRssFeed className='w-7 h-7' />
 									Feed
 								</a>
 							</MenuItem>
 
-							<hr className='my-2' />
-							<h2 className='font-bold text-xl'>Links</h2>
-							<div className='mx-2'>
+							<div className='divider m-0 p-0' />
+							<div className='flex justify-center'>
 								<Socials text size='big' />
 							</div>
 						</MenuItems>

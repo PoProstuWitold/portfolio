@@ -6,7 +6,6 @@ import { Socials } from '@/components/core/Socials'
 
 export const Contact: React.FC = () => {
 	return (
-		// biome-ignore lint: hardcoded id is essential for navigation
 		<section
 			id='contact'
 			className='min-h-screen pt-20 flex flex-col gap-8 py-10 cursor-default bg-base-100'
