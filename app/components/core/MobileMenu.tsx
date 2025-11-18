@@ -18,7 +18,7 @@ import {
 	AiOutlineMenu
 } from 'react-icons/ai'
 import { FaTerminal } from 'react-icons/fa'
-import { MdOutlineConnectWithoutContact, MdRssFeed } from 'react-icons/md'
+import { MdRssFeed } from 'react-icons/md'
 import { ProjectsDropdown } from './ProjectsDropdown'
 import { Socials } from './Socials'
 
