@@ -36,7 +36,7 @@ export function ProjectsDropdown({ onClose }: { onClose?: () => void }) {
 			<button
 				tabIndex={0}
 				type='button'
-				className={`btn btn-secondary btn-ghost btn-lg flex items-center gap-2 justify-start w-full ${
+				className={`btn btn-ghost btn-lg flex items-center gap-2 justify-start w-full ${
 					open ? 'bg-secondary text-secondary-content' : ''
 				}`}
 			>
@@ -55,7 +55,7 @@ export function ProjectsDropdown({ onClose }: { onClose?: () => void }) {
 						<Link
 							href='/#featured'
 							onClick={onClose}
-							className='btn btn-secondary btn-ghost btn-md flex items-center gap-2 justify-start'
+							className='btn btn-ghost btn-md flex items-center gap-2 justify-start'
 						>
 							<AiFillStar className='w-7 h-7' />
 							Featured
@@ -65,7 +65,7 @@ export function ProjectsDropdown({ onClose }: { onClose?: () => void }) {
 						<Link
 							href='/projects'
 							onClick={onClose}
-							className='btn btn-secondary btn-ghost btn-md flex items-center gap-2 justify-start'
+							className='btn btn-ghost btn-md flex items-center gap-2 justify-start'
 						>
 							<AiOutlineUnorderedList className='w-7 h-7' />
 							All

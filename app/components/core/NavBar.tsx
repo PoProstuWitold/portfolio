@@ -28,7 +28,7 @@ export const Navbar: React.FC = () => {
 	return (
 		<>
 			<nav
-				className={`lg:bg-clip-padding lg:backdrop-filter lg:backdrop-blur-sm lg:bg-opacity-90 fixed z-50 navbar transition ease-in-out delay-[50ms] bg-base-200 ${Y > 5 ? 'shadow-2xl bg-base-300' : ''}`}
+				className={`lg:bg-clip-padding lg:backdrop-filter lg:backdrop-blur-sm lg:bg-opacity-90 fixed z-50 navbar transition ease-in-out delay-50 bg-base-200 ${Y > 5 ? 'shadow-2xl bg-base-300' : ''}`}
 			>
 				<div className='navbar-start'>
 					<div className='lg:hidden'>
@@ -49,7 +49,7 @@ export const Navbar: React.FC = () => {
 						<li>
 							<Link
 								href='/#about'
-								className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2'
+								className='btn btn-ghost btn-lg flex items-center gap-2'
 							>
 								<AiOutlineInfoCircle className='w-7 h-7' />{' '}
 								About
@@ -61,7 +61,7 @@ export const Navbar: React.FC = () => {
 						<li>
 							<Link
 								href='/#contact'
-								className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2'
+								className='btn btn-ghost btn-lg flex items-center gap-2'
 							>
 								<AiOutlineMail className='w-7 h-7' /> Contact
 							</Link>
@@ -69,7 +69,7 @@ export const Navbar: React.FC = () => {
 						<li>
 							<Link
 								href='/blog'
-								className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2'
+								className='btn btn-ghost btn-lg flex items-center gap-2'
 							>
 								<AiFillBook className='w-7 h-7' /> Blog
 							</Link>
@@ -78,7 +78,7 @@ export const Navbar: React.FC = () => {
 						<li>
 							<a
 								href='/feed'
-								className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2'
+								className='btn btn-ghost btn-lg flex items-center gap-2'
 								target='_blank'
 								rel='noopener noreferrer'
 							>

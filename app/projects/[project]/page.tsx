@@ -8,7 +8,8 @@ import { TbGitFork, TbLicense, TbLicenseOff } from 'react-icons/tb'
 import { Badge } from '@/components/core/Badge'
 import { Skill } from '@/components/core/Skill'
 import type { Repository } from '@/types'
-import { caseStudies, owner, projects, repoQuery } from '@/utils/constans'
+import { caseStudies } from '@/utils/caseStudies'
+import { owner, projects, repoQuery } from '@/utils/constans'
 import { getContrastTextColor } from '@/utils/functions'
 
 const graphqlWithAuth = graphql.defaults({
@@ -137,7 +138,7 @@ export default async function ProjectPage({
 					</div>
 				</div>
 				<div className='flex flex-col lg:flex-row gap-10'>
-					<div className='flex flex-col flex-grow lg:w-1/2 bg-base-200 p-6 rounded-2xl gap-4'>
+					<div className='flex flex-col grow lg:w-1/2 bg-base-200 p-6 rounded-2xl gap-4'>
 						<div className='flex flex-col mt-5 md:mt-0 gap-4'>
 							<h2 className='text-3xl font-bold text-left'>
 								{localProject.formattedName}
@@ -161,7 +162,7 @@ export default async function ProjectPage({
 						</p>
 					</div>
 
-					<div className='flex flex-col flex-grow lg:w-1/2 bg-base-200 p-6 rounded-2xl gap-4'>
+					<div className='flex flex-col grow lg:w-1/2 bg-base-200 p-6 rounded-2xl gap-4'>
 						<h3 className='text-2xl font-bold'>Stats</h3>
 						<div className='divider'>Technologies</div>
 						<div className='flex flex-wrap'>
@@ -192,7 +193,7 @@ export default async function ProjectPage({
 	return (
 		<section className='min-h-screen flex flex-col gap-8 py-28 px-4 lg:px-20'>
 			<div className='flex flex-col lg:flex-row gap-10'>
-				<div className='flex flex-col flex-grow lg:w-1/2 bg-base-200 p-6 rounded-2xl gap-4'>
+				<div className='flex flex-col grow lg:w-1/2 bg-base-200 p-6 rounded-2xl gap-4'>
 					<div className='flex flex-col mt-5 md:mt-0 gap-4'>
 						<div className='flex flex-row items-center gap-2'>
 							<h2 className='text-3xl font-bold text-left'>
@@ -248,7 +249,7 @@ export default async function ProjectPage({
 					</div>
 				</div>
 
-				<div className='flex flex-col flex-grow lg:w-1/2 bg-base-200 p-6 rounded-2xl gap-4'>
+				<div className='flex flex-col grow lg:w-1/2 bg-base-200 p-6 rounded-2xl gap-4'>
 					<h3 className='text-2xl font-bold'>Stats</h3>
 					<div className='flex md:flex-row flex-wrap gap-1 text-lg flex-col'>
 						<span className='flex items-center gap-2'>
@@ -289,10 +290,10 @@ export default async function ProjectPage({
 
 			<div className='bg-base-200 p-6 rounded-2xl'>
 				<h2 className='text-3xl font-bold mb-2'>Case study</h2>
-				<p className='text-justify'>
+				<div className='text-justify'>
 					{caseStudies.get(repository.name) ||
 						'Congrats! You found an easter egg!'}
-				</p>
+				</div>
 			</div>
 		</section>
 	)

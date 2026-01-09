@@ -106,7 +106,7 @@ export function MobileMenu() {
 								<Link
 									href='/#about'
 									onClick={() => close()}
-									className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2 justify-start'
+									className='btn btn-ghost btn-lg flex items-center gap-2 justify-start'
 								>
 									<AiOutlineInfoCircle className='w-7 h-7' />
 									About
@@ -119,7 +119,7 @@ export function MobileMenu() {
 								<Link
 									href='/#contact'
 									onClick={() => close()}
-									className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2 justify-start'
+									className='btn btn-ghost btn-lg flex items-center gap-2 justify-start'
 								>
 									<AiOutlineMail className='w-7 h-7' />
 									Contact
@@ -129,7 +129,7 @@ export function MobileMenu() {
 								<Link
 									href='/blog'
 									onClick={() => close()}
-									className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2 justify-start'
+									className='btn btn-ghost btn-lg flex items-center gap-2 justify-start'
 								>
 									<AiFillBook className='w-7 h-7' />
 									Blog
@@ -140,7 +140,7 @@ export function MobileMenu() {
 									href='/feed'
 									target='_blank'
 									rel='noopener noreferrer'
-									className='btn btn-secondary btn-ghost btn-lg flex items-center gap-2 justify-start'
+									className='btn btn-ghost btn-lg flex items-center gap-2 justify-start'
 								>
 									<MdRssFeed className='w-7 h-7' />
 									Feed
