@@ -12,7 +12,7 @@ export const Footer: React.FC<FooterProps> = () => {
 					<span className='mb-1 font-bold uppercase'>
 						Witold Zawada
 					</span>
-					<p>Junior TypeScript & Go developer</p>
+					<p>Software Engineer (TypeScript & Go)</p>
 				</div>
 				<div>
 					<span className='mb-1 font-bold uppercase'>Social</span>

@@ -5,7 +5,7 @@ import { FeaturedProjects } from '@/components/sections/FeaturedProjects'
 import { Main } from '@/components/sections/Main'
 
 export const metadata: Metadata = {
-	title: 'Witold Zawada | Junior TypeScript & Go Developer',
+	title: 'Witold Zawada | Software Engineer (TypeScript & Go)',
 	description:
 		'Developer portfolio website of Witold Zawada (PoProstuWitold)',
 	classification: 'Developer Portfolio',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 		'Selfhosting'
 	],
 	openGraph: {
-		title: 'Witold Zawada | Junior TypeScript & Go Developer',
+		title: 'Witold Zawada | Software Engineer (TypeScript & Go)',
 		description:
 			'Developer portfolio website of Witold Zawada (PoProstuWitold)',
 		url: 'https://witoldzawada.dev/',

@@ -40,7 +40,7 @@ export const Main: React.FC = () => {
 								ease: 'easeOut'
 							}}
 						>
-							Junior TypeScript & Go developer
+							Software Engineer (TypeScript & Go)
 						</m.p>
 						<m.span
 							className='flex flex-row items-center justify-center ml-2 gap-2 mb-10'

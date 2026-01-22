@@ -17,19 +17,20 @@ export const About: React.FC = () => {
 							Who am I?
 						</h2>
 						<p className='text-justify'>
-							I'm a self-taught developer from Poland,
-							consistently growing toward a fullstack role. I
-							build modern web applications with a focus on
-							security, clean code and great user experience. I
-							primarily work with Node.js, TypeScript and Go,
-							using technologies such as Next.js, Hono and
-							PostgreSQL.
+							I'm a computer science engineer and self-taught
+							software developer from Poland, steadily growing
+							into a full-stack role. I build modern web
+							applications with a strong focus on security, clean,
+							maintainable code and a great user experience. I
+							mainly work with Node.js, TypeScript and Go, using
+							technologies such as Next.js, Hono and PostgreSQL.
 						</p>
 						<p className='text-justify'>
-							I'm interested in selfhosting, programming,
-							exploring new technologies and tech news. Outside of
-							IT, I enjoy skiing, history, karaoke, video games,
-							cooking and spending time with animals.
+							I'm passionate about self-hosting, programming,
+							exploring new technologies and staying up to date
+							with tech news. Outside of IT, I enjoy skiing,
+							history, karaoke, video games, cooking and spending
+							time with animals.
 						</p>
 						<p className='gap-2 text-justify'>
 							Want to see more? Be sure to visit my{' '}
@@ -48,7 +49,7 @@ export const About: React.FC = () => {
 								target='_blank'
 								rel='noreferrer'
 							>
-								Linkedin
+								LinkedIn
 							</a>
 						</p>
 					</div>
