@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { slug } = await params
 	const post: IPost = (await getPost(slug)) as unknown as IPost
 
-	if (!post || !post.data) {
+	if (!post?.data) {
 		return {
 			title: 'Post Not Found | Witold Zawada',
 			description: 'This blog post could not be found.',
