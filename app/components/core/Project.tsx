@@ -13,42 +13,49 @@ export const Project: React.FC<ProjectProps> = ({ project, badges }) => {
 	const isInProgress = project.badges?.includes('inProgress')
 
 	return (
-		<div className='relative flex flex-col justify-between my-10 bg-base-300 p-6 lg:w-[47%] rounded-2xl shadow-md hover:shadow-2xl hover:cursor-pointer transition-all'>
-			<div className='flex flex-col mt-5 md:mt-0 gap-4'>
-				<h2 className='text-3xl font-bold text-left'>
-					{project.formattedName}
-				</h2>
-				<span className='pl-2 mx-1 font-mono font-bold border-l-4 text-secondary border-secondary'>
-					{project.type}
-				</span>
-				{badges && project.badges?.length > 0 && (
-					<div className='flex flex-wrap gap-2'>
-						{project.badges.map((badge, id) => (
-							<Badge key={`${id}:${badge}`} type={badge} />
+		<article className='relative flex h-full w-full flex-col justify-between rounded-2xl border border-base-content/10 bg-base-200 p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl'>
+			<div className='flex flex-col gap-5'>
+				<div className='flex flex-col gap-4'>
+					<h2 className='text-left text-3xl font-bold'>
+						{project.formattedName}
+					</h2>
+
+					<span className='border-l-4 border-secondary pl-3 font-mono font-bold text-secondary'>
+						{project.type}
+					</span>
+
+					{badges && project.badges?.length > 0 && (
+						<div className='flex flex-wrap gap-2'>
+							{project.badges.map((badge, id) => (
+								<Badge key={`${id}:${badge}`} type={badge} />
+							))}
+						</div>
+					)}
+				</div>
+
+				<div className='flex flex-col gap-4'>
+					<p className='text-lg leading-relaxed text-base-content/85 lg:line-clamp-3'>
+						{project.description}
+					</p>
+
+					<div className='flex max-h-32 flex-wrap gap-2 overflow-hidden'>
+						{project.skills.map((skill, index) => (
+							<Skill key={`${index}:${skill}`} title={skill} />
 						))}
 					</div>
-				)}
-			</div>
-
-			<div>
-				<p className='mx-1 my-3 text-lg text-justify lg:line-clamp-3'>
-					{project.description}
-				</p>
-				<div className='flex flex-wrap'>
-					{project.skills.map((skill, index) => (
-						<Skill key={`${index}:${skill}`} title={skill} />
-					))}
 				</div>
 			</div>
 
-			<div className='flex flex-row justify-between items-center mt-5'>
+			<div className='mt-6 flex items-center justify-between border-t border-base-content/10 pt-5'>
 				<div className='flex'>
 					{isInProgress ? (
 						<div
 							className='tooltip tooltip-bottom tooltip-info'
 							data-tip='In progress - repo not available'
 						>
-							<AiFillGithub className='w-10 h-10 opacity-25 line-through' />
+							<div className='flex h-11 w-11 items-center justify-center rounded-xl border border-base-content/10 text-base-content/25'>
+								<AiFillGithub className='h-7 w-7 line-through' />
+							</div>
 						</div>
 					) : (
 						<a
@@ -56,23 +63,24 @@ export const Project: React.FC<ProjectProps> = ({ project, badges }) => {
 							target='_blank'
 							rel='noreferrer'
 							title={`${project.name} GitHub link`}
+							aria-label={`${project.name} GitHub link`}
+							className='flex h-11 w-11 items-center justify-center rounded-xl border border-base-content/10 transition-all duration-300 hover:scale-105 hover:border-primary/30 hover:text-primary'
 						>
-							<AiFillGithub className='transition-all active:scale-90 hover:scale-125 duration-300 hover:text-primary ease-in-out w-10 h-10' />
+							<AiFillGithub className='h-7 w-7' />
 						</a>
 					)}
 				</div>
 
-				<div className='flex group'>
+				<div className='group flex'>
 					<Link
 						href={`/projects/${project.name}`}
-						className='btn btn-ghost font-extrabold btn-secondary'
-						rel='noopener noreferrer'
+						className='btn btn-secondary font-extrabold'
 					>
 						Case study
-						<AiOutlineArrowRight className='ml-3 w-6 h-6 font-extrabold group-hover:animate-bounce-right' />
+						<AiOutlineArrowRight className='ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1' />
 					</Link>
 				</div>
 			</div>
-		</div>
+		</article>
 	)
 }

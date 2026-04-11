@@ -1,148 +1,321 @@
-import { FaLock } from 'react-icons/fa'
+import {
+	FaCode,
+	FaLock,
+	FaMemory,
+	FaPizzaSlice,
+	FaRobot,
+	FaSatelliteDish,
+	FaServer
+} from 'react-icons/fa'
 
 export const caseStudies = new Map<string, React.ReactNode>([
 	[
-		'nest-next-boilerplate',
-		'This is a full-stack web application boilerplate developed using Nest.js and Next.js, both of which are using TypeScript. It was my first major attempt to build a complete full-stack app. The project includes a RESTful API, real-time chat functionality with rooms, conversation for two users, local, Google, and Facebook authentication, password change and recovery, updating user profile, account confirmation, and more. The entire project is dockerized for development, which means instead of running api, web client, workers, databases separately, you just need to run the docker-compose file. The project has received positive feedback, gaining plenty of stars and forks on GitHub.'
-	],
-	[
 		'homeserver',
-		`After a quick chat with my friend from university, during which I learned about their private server, I became very excited and decided to set up my own. Initially, I struggled to find a comprehensive guide on where to begin. I had to gather information from various sources, including official documentation, YouTube videos, platforms like Reddit and StackOverflow, and blog posts.
-        
-        After some time, I decided to create a guide on how to set up a home server using two different methods: Port Forwarding and Cloudflare Tunnels. The guide provides detailed instructions on setting up a server, installing Docker, configuring Caddy, and establishing a VPN. I developed this project to assist people who want to create their own home servers but lack guidance. The community has responded positively, with many users finding the guide helpful. I've received feedback from individuals and my colleagues who successfully set up their own home servers using my instructions.`
+		<div key='homeserver' className='flex flex-col gap-8 leading-relaxed'>
+			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
+				<FaServer className='shrink-0' /> Self-Hosted Infrastructure
+				Setup
+			</h3>
+
+			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
+				<li>
+					Built and documented self-hosted server environments for
+					running multiple services with Docker.
+				</li>
+				<li>
+					Configured reverse proxying, dynamic DNS, and external
+					access with Caddy, Cloudflare Tunnels, and port forwarding.
+				</li>
+				<li>
+					Secured public exposure with VPN access, stricter routing
+					rules, and credential management.
+				</li>
+			</ul>
+
+			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
+				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
+					Tech Stack
+				</h4>
+
+				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-2'>
+					<p>
+						<strong className='text-primary'>
+							Routing/Security:
+						</strong>{' '}
+						Caddy, Cloudflare Tunnels, VPN
+					</p>
+					<p>
+						<strong className='text-secondary'>Infra:</strong>{' '}
+						Linux, Docker, Networking
+					</p>
+				</div>
+			</div>
+		</div>
 	],
 	[
 		'nuntius-feed',
-		'Nuntius Feed is a personal project that I developed to create a lightweight web application for subscribing to and reading RSS and Atom feeds. The name "Nuntius" comes from the Latin word for "herald," which reflects the purpose of the application as a herald for digital content. The application is designed to be simple, fast, and easy to use, with a focus on providing a clean and intuitive user interface. It supports all RSS and Atom specifications, allowing users to subscribe to any feed they want. Nuntius Feed is written in TypeScript, Next.js as fullstack framework with Hono as API Routes. It uses MongoDB as the database. It also uses dual-token authentication with JWT with all best practices, has admin panel, refreshes feeds in the background using CRON jobs.'
-	],
-	[
-		'Sayuna',
-		'Sayuna is a bot built on top of the Discord API using discord.js and discordx, aiming to provide a richer and more sophisticated experience. Discord is an amazing communication app that provides a robust API for developers, including support for nearly all popular languages and runtimes, including Node.js. I decided to use TypeScript and Object-Oriented Programming (OOP) to develop Sayuna, as it allowed me to better structure and organize the codebase. Sayuna provides features such as music playback (with a real-time dashboard featuring interactive buttons), fun activities such as random memes and jokes, moderation tools, and information. Additionally, I implemented pagination with GUI controls for long command outputs, such as music queue or command information.'
-	],
-	[
-		'portfolio',
-		'Portfolio is my personal website, designed to showcase my skills, projects, and blog posts. It is built using Next.js and TailwindCSS, with a focus on performance and user experience. The website features a clean and modern design, with easy navigation and responsive layout. It includes sections for my projects, skills, blog posts, and contact information. The website is also optimized for search engines and accessibility.'
-	],
-	[
-		'pizzeria',
-		'Pizzeria is a project that implements a website for a fictional pizzeria in the form of a "Single Page Application" (SPA) using vanilla JavaScript. The project includes a custom React-like mini-framework and a custom Node.js server. The goal of the project was to create a simple and lightweight SPA that can be easily deployed and maintained. The project is designed to be easy to understand and modify, with a focus on simplicity and performance.'
+		<div key='nuntius-feed' className='flex flex-col gap-8 leading-relaxed'>
+			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
+				<FaSatelliteDish className='shrink-0' /> RSS and Atom
+				Aggregation Platform
+			</h3>
+
+			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
+				<li>
+					Built an XML parsing pipeline that normalizes RSS and Atom
+					feeds into a consistent database model.
+				</li>
+				<li>
+					Added background jobs for scheduled feed syncing and reduced
+					delays in content updates.
+				</li>
+				<li>
+					Implemented JWT-based authentication with access and refresh
+					token flows.
+				</li>
+			</ul>
+
+			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
+				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
+					Tech Stack
+				</h4>
+
+				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-3'>
+					<p>
+						<strong className='text-primary'>Backend:</strong>{' '}
+						Node.js, Hono, JWT, RPC
+					</p>
+					<p>
+						<strong className='text-secondary'>Frontend:</strong>{' '}
+						Next.js, TailwindCSS
+					</p>
+					<p>
+						<strong className='text-accent'>Infra:</strong> MongoDB,
+						Docker, Cron
+					</p>
+				</div>
+			</div>
+		</div>
 	],
 	[
 		'dove-dashboard',
-		`
-        The Dove Dashboard is a lightweight, selfhosted system monitoring application written in Go and pure JavaScript, with no external dependencies. It provides real-time insights into key system metrics such as the operating system (architecture, kernel, uptime, hostname), CPU (name, cores, threads, frequency), storage (disk type, file system, usage), network (interfaces, benchmarks), and hardware sensors (temperature, voltage). Designed with a minimal and peaceful user interface (hence the name - "dove" dashboard), it automatically refreshes and runs as a fully self-contained binary. The project is distributed as a very lightweight, rootless Docker image (~18MB) with extremely low memory usage (~25MB), making deployment straightforward with a single "docker-compose" command. Why? I wanted a simple, secure, and lightweight web interface to check my system's temperatures, and I decided to expand it to include other essential system statistics as well.
-        `
+		<div
+			key='dove-dashboard'
+			className='flex flex-col gap-8 leading-relaxed'
+		>
+			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
+				<FaMemory className='shrink-0' /> System Monitoring Dashboard
+			</h3>
+
+			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
+				<li>
+					Built a lightweight monitoring daemon in Go for collecting
+					CPU, RAM, and other system metrics.
+				</li>
+				<li>
+					Kept runtime memory usage below 25 MB and shipped the app as
+					a small rootless Docker image.
+				</li>
+				<li>
+					Used plain JavaScript, HTML, and CSS for real-time data
+					visualization without heavy frontend frameworks.
+				</li>
+			</ul>
+
+			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
+				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
+					Tech Stack
+				</h4>
+
+				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-3'>
+					<p>
+						<strong className='text-primary'>Backend:</strong> Go
+					</p>
+					<p>
+						<strong className='text-secondary'>Frontend:</strong>{' '}
+						JavaScript, HTML5, CSS3
+					</p>
+					<p>
+						<strong className='text-accent'>Infra:</strong> Linux,
+						Docker
+					</p>
+				</div>
+			</div>
+		</div>
 	],
 	[
 		'doggopaste',
-		<div key='doggopaste' className='flex flex-col gap-10 leading-relaxed'>
-			<div className='flex flex-col gap-6'>
-				<p className='text-xl text-base-content'>
-					DoggoPaste is a comprehensive web application designed to
-					bridge the gap between static code storage (Pastebin-style)
-					and real-time collaborative editing (Codeshare-style).
-				</p>
-			</div>
+		<div key='doggopaste' className='flex flex-col gap-8 leading-relaxed'>
+			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
+				<FaLock className='shrink-0' /> Real-Time Code Collaboration
+				Platform
+			</h3>
 
-			<div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
-				<section className='flex flex-col gap-4'>
-					<h3 className='text-2xl font-bold text-secondary flex items-center gap-2 underline underline-offset-8 decoration-2'>
-						The Challenge
-					</h3>
-					<p className='text-base-content opacity-90 text-lg'>
-						Modern developers often fluctuate between two needs:
-						archiving code snippets for the long term and
-						collaborating live with peers. Most platforms specialize
-						in only one area, forcing users to switch tools.
-						Furthermore, storing sensitive code in plain text on
-						central servers remains a major security concern for
-						many teams.
+			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
+				<li>
+					Synchronized live editor state across multiple clients with
+					WebSockets.
+				</li>
+				<li>
+					Added client-side AES-GCM encryption using the Web Crypto
+					API.
+				</li>
+				<li>
+					Built REST and WebSocket backends with Hono and a custom
+					proxy layer.
+				</li>
+				<li>
+					Packaged the application for self-hosted deployment with
+					Docker.
+				</li>
+			</ul>
+
+			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
+				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
+					Tech Stack
+				</h4>
+
+				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-3'>
+					<p>
+						<strong className='text-primary'>Backend:</strong>{' '}
+						Node.js, Hono, WebSockets
 					</p>
-				</section>
-
-				<section className='flex flex-col gap-4'>
-					<h3 className='text-2xl font-bold text-success flex items-center gap-2 underline underline-offset-8 decoration-2'>
-						The Solution
-					</h3>
-					<p className='text-base-content opacity-90 text-lg'>
-						DoggoPaste provides a hybrid "best of both worlds"
-						approach. It allows users to create immutable static
-						records organized in a hierarchical folder system or
-						launch instant, collaborative real-time sessions. Every
-						feature is underpinned by client-side encryption,
-						ensuring that only the intended recipients can read the
-						content.
+					<p>
+						<strong className='text-secondary'>Frontend:</strong>{' '}
+						Next.js, TailwindCSS
 					</p>
-				</section>
-			</div>
-
-			<div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-				<div className='card bg-base-200 shadow-sm border border-base-300'>
-					<div className='card-body gap-4'>
-						<h4 className='card-title text-primary font-mono text-2xl'>
-							/api
-						</h4>
-						<p className='text-base-content opacity-80'>
-							REST API and WebSocket server built with{' '}
-							<strong>Hono</strong>.
-						</p>
-					</div>
-				</div>
-				<div className='card bg-base-200 shadow-sm border border-base-300'>
-					<div className='card-body gap-4'>
-						<h4 className='card-title text-secondary font-mono text-2xl'>
-							/web
-						</h4>
-						<p className='text-base-content opacity-80'>
-							Client app built with <strong>Next.js</strong>.
-						</p>
-					</div>
-				</div>
-				<div className='card bg-base-200 shadow-sm border border-base-300'>
-					<div className='card-body gap-4'>
-						<h4 className='card-title text-accent font-mono text-2xl'>
-							/proxy
-						</h4>
-						<p className='text-base-content opacity-80'>
-							A custom proxy server for deploying app on single
-							port.
-						</p>
-					</div>
+					<p>
+						<strong className='text-accent'>Infra:</strong>{' '}
+						PostgreSQL, Docker, Turborepo
+					</p>
 				</div>
 			</div>
+		</div>
+	],
+	[
+		'Sayuna',
+		<div key='Sayuna' className='flex flex-col gap-8 leading-relaxed'>
+			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
+				<FaRobot className='shrink-0' /> Discord Bot and Service
+				Platform
+			</h3>
 
-			<section className='bg-base-200 border-l-8 border-info rounded-r-box p-8 shadow-inner'>
-				<div className='flex flex-col gap-6'>
-					<h3 className='text-2xl font-bold text-info flex items-center gap-4'>
-						<FaLock className='h-10 w-10' />
-						Zero-Knowledge Encryption
-					</h3>
-					<div className='flex flex-col gap-4'>
-						<p>
-							Static pastes can be encrypted via the{' '}
-							<span className='font-bold underline decoration-info/40'>
-								Web Crypto API
-							</span>
-							. All data is encrypted using{' '}
-							<span className='font-bold underline decoration-info/40'>
-								AES-GCM
-							</span>{' '}
-							directly in the user's browser.
-						</p>
-						<p>
-							No password or its hash is ever sent to the server.
-						</p>
-					</div>
+			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
+				<li>
+					Built a modular bot architecture with dependency injection
+					for music, moderation, and logging features.
+				</li>
+				<li>
+					Added a web dashboard for configuration, control, and easier
+					debugging.
+				</li>
+				<li>
+					Used multi-stage Docker builds and environment-based
+					configuration for deployment.
+				</li>
+			</ul>
+
+			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
+				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
+					Tech Stack
+				</h4>
+
+				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-2'>
+					<p>
+						<strong className='text-primary'>Backend:</strong>{' '}
+						TypeScript, Node.js, discord.js, discordx
+					</p>
+					<p>
+						<strong className='text-secondary'>Infra:</strong>{' '}
+						Docker
+					</p>
 				</div>
-			</section>
+			</div>
+		</div>
+	],
+	[
+		'portfolio',
+		<div key='portfolio' className='flex flex-col gap-8 leading-relaxed'>
+			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
+				<FaCode className='shrink-0' /> Static Developer Portfolio
+			</h3>
 
-			<div className='flex flex-wrap justify-between items-center py-6 border-t border-base-300 gap-4'>
-				<p className='font-bold text-primary italic text-2xl tracking-tighter'>
-					DoggoPaste
-				</p>
-				<p className='text-lg italic opacity-60'>
-					Drop your code, let Doggo fetch it!
-				</p>
+			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
+				<li>
+					Built a static portfolio with Next.js App Router and strong
+					Lighthouse scores.
+				</li>
+				<li>
+					Added a Markdown-based blog with syntax highlighting for
+					technical posts.
+				</li>
+				<li>
+					Fetched GitHub project data at build time using the GraphQL
+					API.
+				</li>
+			</ul>
+
+			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
+				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
+					Tech Stack
+				</h4>
+
+				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-3'>
+					<p>
+						<strong className='text-primary'>Frontend:</strong>{' '}
+						Next.js, React
+					</p>
+					<p>
+						<strong className='text-secondary'>UI/Style:</strong>{' '}
+						TailwindCSS, daisyUI
+					</p>
+					<p>
+						<strong className='text-accent'>Data/API:</strong>{' '}
+						GraphQL, Markdown
+					</p>
+				</div>
+			</div>
+		</div>
+	],
+	[
+		'pizzeria',
+		<div key='pizzeria' className='flex flex-col gap-8 leading-relaxed'>
+			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
+				<FaPizzaSlice className='shrink-0' /> Vanilla JavaScript SPA
+			</h3>
+
+			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
+				<li>
+					Built a single-page application from scratch in vanilla
+					JavaScript without frontend frameworks.
+				</li>
+				<li>
+					Created a custom HTTP server in Node.js for routing and
+					static asset handling.
+				</li>
+				<li>
+					Implemented client-side navigation with the History API to
+					avoid full page reloads.
+				</li>
+			</ul>
+
+			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
+				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
+					Tech Stack
+				</h4>
+
+				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-2'>
+					<p>
+						<strong className='text-primary'>Frontend:</strong>{' '}
+						Vanilla JavaScript, HTML5, CSS3
+					</p>
+					<p>
+						<strong className='text-secondary'>
+							Backend/Infra:
+						</strong>{' '}
+						Node.js, Docker
+					</p>
+				</div>
 			</div>
 		</div>
 	]

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { Breadcrumbs } from '@/components/core/Breadcrumbs'
+import { NavigationButton } from '@/components/core/NavigationButton'
 import { Project } from '@/components/core/Project'
 import { projects } from '@/utils/constans'
 
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 		title: 'All Projects | Witold Zawada',
 		description: `
 			Explore all of Witold Zawada's projects — from small ideas to full-featured applications built with Go, TypeScript, and more.
-			`,
+`,
 		url: 'https://witoldzawada.dev/projects',
 		siteName: 'Witold Zawada',
 		locale: 'en_US',
@@ -45,38 +46,56 @@ export const metadata: Metadata = {
 
 const ProjectsPage: React.FC = () => {
 	return (
-		<section
-			id='featured'
-			className='min-h-screen pt-20 flex flex-col gap-8 py-10 text-xl cursor-default bg-base-200'
-		>
-			<h1 className='text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary'>
-				All Projects
-			</h1>
-			<p className='lg:mx-[5rem] text-justify mx-6'>
-				Here you can find all of my projects - from small experiments
-				and learning exercises to more advanced applications. Each one
-				represents a step in my development journey, where I applied new
-				technologies, deepened my understanding, and explored creative
-				solutions.
-			</p>
-			<div className='flex flex-col flex-wrap justify-between mx-5 my-10 lg:flex-row lg:mt-0 lg:mx-20'>
-				{projects.map((project, index) => {
-					return (
+		<main className='flex min-h-screen flex-col items-center bg-base-200 py-24 cursor-default'>
+			<div className='flex w-full max-w-6xl flex-col gap-10 px-6 lg:px-12 xl:px-0'>
+				<div className='flex flex-col gap-4'>
+					{/* Breadcrumbs for navigation context */}
+					<Breadcrumbs
+						items={[
+							{ label: 'Home', href: '/' },
+							{ label: 'All Projects' }
+						]}
+					/>
+
+					{/* Section Header */}
+					<div className='mt-2 flex items-center justify-between'>
+						<h1 className='whitespace-nowrap text-4xl font-extrabold tracking-tight text-base-content md:text-5xl'>
+							All Projects
+						</h1>
+						<div className='ml-8 hidden h-px w-full bg-base-content/10 sm:block' />
+					</div>
+
+					{/* Professional Copy */}
+					<p className='mb-6 mt-4 text-lg leading-relaxed text-base-content/70'>
+						A complete archive of my services, tools, and fullstack
+						applications. While the featured section highlights my
+						core systems, this collection includes everything from
+						exploratory microservices to deep dives into new
+						technologies, reflecting my continuous technical growth.
+					</p>
+				</div>
+
+				{/* Projects Grid */}
+				<div className='grid gap-10 md:grid-cols-2'>
+					{projects.map((project, index) => (
 						<Project
-							key={`${index}:${project.name}`}
+							key={`${project.name}-${index}`}
 							project={project}
 							badges
 						/>
-					)
-				})}
+					))}
+				</div>
+
+				{/* Back Navigation */}
+				<div className='mt-8 flex justify-start'>
+					<NavigationButton
+						href='/'
+						label='Back to Home'
+						direction='left'
+					/>
+				</div>
 			</div>
-			<div className='flex justify-start mx-5 lg:mx-20'>
-				<a href='/' className='btn btn-lg btn-link'>
-					<AiOutlineArrowLeft className='w-5 h-5' />
-					Go back to home page
-				</a>
-			</div>
-		</section>
+		</main>
 	)
 }
 

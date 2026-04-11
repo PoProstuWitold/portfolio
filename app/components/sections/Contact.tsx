@@ -1,159 +1,82 @@
 import { myInfo } from 'app/utils/constans'
-import { AiOutlineMail } from 'react-icons/ai'
-import { RxDiscordLogo } from 'react-icons/rx'
-import { FormSettings } from '@/components/core/FormSettings'
-import { Socials } from '@/components/core/Socials'
+import { AiFillGithub, AiFillLinkedin, AiOutlineMail } from 'react-icons/ai'
+import { FaDiscord } from 'react-icons/fa'
 
 export const Contact: React.FC = () => {
 	return (
-		<section
-			id='contact'
-			className='min-h-screen pt-20 flex flex-col gap-8 py-10 cursor-default bg-base-100'
-		>
-			<h1 className='text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary'>
-				Contact me
-			</h1>
-			<div className='lg:mx-[5rem] flex flex-col lg:flex-row mx-6 gap-6'>
-				<div className='text-left lg:w-1/3 flex flex-col gap-6'>
-					<h2 className='text-3xl font-semibold'>Get in touch</h2>
-					<p className='text-xl text-justify'>
-						If you have any questions feel free to contact me using
-						informations below or contact form
-					</p>
-					<div className='flex flex-col text-2xl gap-10 h-full'>
-						<div>
-							<div className='flex flex-row items-center font-semibold gap-2'>
-								<RxDiscordLogo className='w-6 h-6' />
-								<span>Want to call me?</span>
-							</div>
-							<span>
-								<a
-									className='underline'
-									target='_blank'
-									rel='noreferrer'
-									href={
-										'https://discord.com/users/460167435471945748'
-									}
-								>
-									Shedule call with me
-								</a>
-							</span>
-						</div>
-						<div>
-							<div className='flex flex-row items-center font-semibold gap-2'>
-								<AiOutlineMail className='w-6 h-6' />
-								<span>Want to mail me?</span>
-							</div>
-							<span>
-								<a
-									className='underline'
-									target='_blank'
-									rel='noreferrer'
-									href={'mailto:witoldzawada.dev@gmail.com'}
-								>
-									witoldzawada.dev@gmail.com
-								</a>
-							</span>
-						</div>
-						<div>
-							<div className='flex'>
-								<Socials size='big' />
-							</div>
-						</div>
-					</div>
+		<section id='contact' className='bg-base-100 px-6 py-24 md:py-32'>
+			<div className='mx-auto flex max-w-4xl flex-col items-center text-center'>
+				<div className='mb-8 inline-flex items-center gap-3 rounded-full border border-success/20 bg-success/10 px-4 py-2 text-success shadow-sm'>
+					<span className='relative flex h-2.5 w-2.5'>
+						<span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-success/60' />
+						<span className='relative inline-flex h-full w-full rounded-full bg-success' />
+					</span>
+					<span className='text-xs font-bold uppercase tracking-[0.2em]'>
+						Open to work
+					</span>
 				</div>
-				<div className='lg:w-2/3 rounded-2xl bg-base-200'>
-					<div className='p-6 rounded-2xl shadow-md'>
-						<form
-							className='flex flex-col gap-6'
-							method='POST'
-							action={`https://formsubmit.co/${myInfo.randomStringEmail}`}
+
+				<h2 className='mb-6 text-4xl font-extrabold text-base-content md:text-6xl'>
+					Get In Touch
+				</h2>
+
+				<p className='mb-10 max-w-3xl text-lg leading-relaxed text-base-content/75 md:text-xl'>
+					I'm currently exploring full-stack, systems, and software
+					engineering opportunities.
+					<br />
+					If you have an open role, an interesting project, or want to
+					connect, I'd be glad to hear from you.
+				</p>
+
+				<div className='flex w-full flex-col items-center justify-center gap-4 sm:flex-row'>
+					<a
+						href={`mailto:${myInfo.email}`}
+						className='btn btn-primary btn-lg min-w-55 gap-2'
+					>
+						<AiOutlineMail className='h-6 w-6' />
+						<span>Email me</span>
+					</a>
+
+					<a
+						href='https://www.linkedin.com/in/witoldzawada/'
+						target='_blank'
+						rel='noreferrer'
+						className='btn btn-outline btn-lg min-w-55 gap-2'
+					>
+						<AiFillLinkedin className='h-6 w-6' />
+						<span>Connect on LinkedIn</span>
+					</a>
+				</div>
+
+				<div className='mt-12 flex w-full flex-col items-center gap-6'>
+					<div className='flex items-center gap-4 text-base-content/60'>
+						<div className='h-px w-16 bg-base-content/20' />
+						<span className='text-sm font-semibold uppercase tracking-wider'>
+							Find me elsewhere
+						</span>
+						<div className='h-px w-16 bg-base-content/20' />
+					</div>
+
+					<div className='flex flex-wrap items-center justify-center gap-4 sm:gap-6'>
+						<a
+							href='https://github.com/PoProstuWitold'
+							target='_blank'
+							rel='noreferrer'
+							className='btn btn-ghost btn-md gap-3'
 						>
-							<FormSettings />
-							<div className='flex flex-col justify-between gap-6 lg:flex-row'>
-								<div className='w-full form-control'>
-									<label
-										className='label py-1'
-										htmlFor='name'
-									>
-										<span className='label-text font-semibold'>
-											Name
-										</span>
-										<span className='italic label-text-alt'>
-											e.g. Witold
-										</span>
-									</label>
-									<input
-										placeholder='Your name'
-										className='w-full input input-bordered'
-										type='text'
-										name='name'
-										required
-									/>
-								</div>
-								<div className='w-full form-control'>
-									<label
-										className='label py-1'
-										htmlFor='email'
-									>
-										<span className='label-text font-semibold'>
-											Email
-										</span>
-										<span className='italic label-text-alt'>
-											e.g. witold@email.com
-										</span>
-									</label>
-									<input
-										placeholder='Your email'
-										className='w-full input input-bordered'
-										type='email'
-										name='email'
-										required
-									/>
-								</div>
-							</div>
-							<div className='form-control'>
-								<label className='label py-1' htmlFor='title'>
-									<span className='label-text font-semibold'>
-										Title
-									</span>
-									<span className='italic label-text-alt'>
-										e.g. New amazing project..
-									</span>
-								</label>
-								<input
-									placeholder='Title of your message'
-									className='w-full input input-bordered'
-									type='text'
-									name='title'
-									required
-								/>
-							</div>
-							<div className='form-control mb-6'>
-								<label className='label py-1' htmlFor='content'>
-									<span className='label-text font-semibold'>
-										Content
-									</span>
-									<span className='italic label-text-alt'>
-										e.g. Hello Witold, I'm writing to ask...
-									</span>
-								</label>
-								<textarea
-									placeholder='Content of your message'
-									className='textarea textarea-md textarea-bordered w-full'
-									name='content'
-									required
-								/>
-							</div>
-							<div className='flex justify-center'>
-								<button
-									type='submit'
-									className='btn btn-lg btn-outline md:w-full w-60'
-								>
-									Send
-								</button>
-							</div>
-						</form>
+							<AiFillGithub className='h-7 w-7' />
+							<span className='text-base'>GitHub</span>
+						</a>
+
+						<a
+							href='https://discord.com/users/460167435471945748'
+							target='_blank'
+							rel='noreferrer'
+							className='btn btn-ghost btn-md gap-3 hover:bg-[#5865F2]/10 hover:text-[#5865F2]'
+						>
+							<FaDiscord className='h-7 w-7' />
+							<span className='text-base'>Discord</span>
+						</a>
 					</div>
 				</div>
 			</div>

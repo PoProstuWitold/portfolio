@@ -59,7 +59,7 @@ export const featuredProjects: ProjectDocument[] = [
 			'Turborepo'
 		],
 		repo: 'https://github.com/PoProstuWitold/doggopaste',
-		badges: ['featured', 'selfhosted', 'education', 'collaboration', 'new']
+		badges: ['featured', 'selfhosted', 'education', 'collaboration']
 	},
 	{
 		name: 'homeserver',
@@ -159,26 +159,6 @@ export const projects: ProjectDocument[] = [
 		skills: ['Node.js', 'JavaScript', 'ESM', 'HTML5', 'CSS3', 'Docker'],
 		repo: 'https://github.com/PoProstuWitold/pizzeria',
 		badges: ['education']
-	},
-	{
-		name: 'nest-next-boilerplate',
-		formattedName: 'Nest Next Boilerplate',
-		description:
-			'Boilerplate for Nest.js, Next.js, TypeScript stack. Includes social logins, account verification, password change & recover, real-time chats and more.',
-		type: 'Fullstack REST App',
-		skills: [
-			'Node.js',
-			'TypeScript',
-			'Nest.js',
-			'Redis',
-			'PostgreSQL',
-			'Docker',
-			'Next.js',
-			'TailwindCSS',
-			'Nodemailer'
-		],
-		repo: 'https://github.com/PoProstuWitold/nest-next-boilerplate',
-		badges: ['deprecated']
 	}
 ]
 

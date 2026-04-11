@@ -7,9 +7,8 @@ import {
 	MenuItems,
 	Transition
 } from '@headlessui/react'
-import { useScroll } from 'motion/react'
 import Link from 'next/link'
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment } from 'react'
 import {
 	AiFillBook,
 	AiOutlineClose,
@@ -23,25 +22,15 @@ import { ProjectsDropdown } from './ProjectsDropdown'
 import { Socials } from './Socials'
 
 export function MobileMenu() {
-	const [Y, setY] = useState<number>(0)
-	const { scrollY } = useScroll()
-
-	useEffect(() => {
-		const unsubscribeScroll = scrollY.on('change', (y) => {
-			setY(y > 100 ? y : 0)
-		})
-		return () => unsubscribeScroll()
-	}, [scrollY])
-
 	return (
 		<Menu as='div' className='relative z-50'>
 			{({ open, close }) => (
 				<>
 					<MenuButton
-						className='btn btn-ghost focus:outline-none'
+						className='btn btn-ghost hover:bg-base-content/5 focus:outline-none transition-colors px-3'
 						title='Mobile Menu'
 					>
-						<AiOutlineMenu className='w-7 h-7 transition-all duration-200' />
+						<AiOutlineMenu className='w-6 h-6 text-base-content transition-all duration-200' />
 					</MenuButton>
 
 					{/* Overlay */}
@@ -56,7 +45,7 @@ export function MobileMenu() {
 						leaveTo='opacity-0'
 					>
 						<button
-							className='fixed inset-0 bg-black/20 z-40'
+							className='fixed inset-0 bg-base-content/20 backdrop-blur-sm z-40'
 							onClick={() => close()}
 							type='button'
 						/>
@@ -75,81 +64,91 @@ export function MobileMenu() {
 					>
 						<MenuItems
 							static
-							className={`fixed top-0 left-0 z-50 w-4/5 max-w-xs h-full p-3 flex flex-col gap-4 font-semibold shadow-lg focus:outline-none transition-colors bg-base-200 ${
-								Y > 5 ? 'bg-base-300' : ''
-							}`}
+							className='fixed top-0 left-0 z-50 w-[85%] max-w-[320px] h-full p-6 flex flex-col gap-2 font-medium shadow-2xl focus:outline-none transition-transform bg-base-100 border-r border-base-content/10'
 						>
-							<div className='navbar-start'>
-								<button
-									onClick={() => close()}
-									className='justify-center btn btn-ghost'
-									title='Mobile Menu'
-									type='button'
-								>
-									<AiOutlineClose className='w-7 h-7' />
-								</button>
+							{/* Header area of mobile menu */}
+							<div className='flex items-center justify-between mb-6 pb-4 border-b border-base-content/10'>
 								<Link
 									href='/'
 									onClick={() => close()}
-									className='btn btn-ghost text-xl normal-case flex items-center gap-2 hover:text-secondary transition-all duration-150'
+									className='flex items-center gap-3 transition-opacity hover:opacity-80'
 								>
 									<span className='text-primary'>
-										<FaTerminal size={22} />
+										<FaTerminal size={20} />
 									</span>
-									<span className='font-bold'>
+									<span className='font-bold tracking-tight text-base-content text-lg'>
 										Witold Zawada
 									</span>
 								</Link>
+								<button
+									onClick={() => close()}
+									className='btn btn-ghost btn-sm btn-circle text-base-content/70 hover:text-base-content'
+									title='Close Menu'
+									type='button'
+								>
+									<AiOutlineClose className='w-5 h-5' />
+								</button>
 							</div>
 
-							<MenuItem>
-								<Link
-									href='/#about'
-									onClick={() => close()}
-									className='btn btn-ghost btn-lg flex items-center gap-2 justify-start'
-								>
-									<AiOutlineInfoCircle className='w-7 h-7' />
-									About
-								</Link>
-							</MenuItem>
-							<MenuItem>
-								<ProjectsDropdown onClose={close} />
-							</MenuItem>
-							<MenuItem>
-								<Link
-									href='/#contact'
-									onClick={() => close()}
-									className='btn btn-ghost btn-lg flex items-center gap-2 justify-start'
-								>
-									<AiOutlineMail className='w-7 h-7' />
-									Contact
-								</Link>
-							</MenuItem>
-							<MenuItem>
-								<Link
-									href='/blog'
-									onClick={() => close()}
-									className='btn btn-ghost btn-lg flex items-center gap-2 justify-start'
-								>
-									<AiFillBook className='w-7 h-7' />
-									Blog
-								</Link>
-							</MenuItem>
-							<MenuItem>
-								<a
-									href='/feed'
-									target='_blank'
-									rel='noopener noreferrer'
-									className='btn btn-ghost btn-lg flex items-center gap-2 justify-start'
-								>
-									<MdRssFeed className='w-7 h-7' />
-									Feed
-								</a>
-							</MenuItem>
+							{/* Navigation Links */}
+							<div className='flex flex-col gap-2'>
+								<MenuItem>
+									<Link
+										href='/#about'
+										onClick={() => close()}
+										className='btn btn-ghost justify-start flex items-center gap-3 text-base-content/80 hover:text-base-content hover:bg-base-content/5 w-full text-base font-medium'
+									>
+										<AiOutlineInfoCircle className='w-5 h-5 opacity-70' />
+										About
+									</Link>
+								</MenuItem>
 
-							<div className='divider m-0 p-0' />
-							<div className='flex justify-center'>
-								<Socials text size='big' />
+								<MenuItem>
+									<ProjectsDropdown onClose={close} />
+								</MenuItem>
+
+								<MenuItem>
+									<Link
+										href='/blog'
+										onClick={() => close()}
+										className='btn btn-ghost justify-start flex items-center gap-3 text-base-content/80 hover:text-base-content hover:bg-base-content/5 w-full text-base font-medium'
+									>
+										<AiFillBook className='w-5 h-5 opacity-70' />
+										Blog
+									</Link>
+								</MenuItem>
+
+								<MenuItem>
+									<Link
+										href='/#contact'
+										onClick={() => close()}
+										className='btn btn-ghost justify-start flex items-center gap-3 text-base-content/80 hover:text-base-content hover:bg-base-content/5 w-full text-base font-medium'
+									>
+										<AiOutlineMail className='w-5 h-5 opacity-70' />
+										Contact
+									</Link>
+								</MenuItem>
+
+								<MenuItem>
+									<a
+										href='/feed'
+										target='_blank'
+										rel='noopener noreferrer'
+										className='btn btn-ghost justify-start flex items-center gap-3 text-base-content/80 hover:text-base-content hover:bg-base-content/5 w-full text-base font-medium'
+									>
+										<MdRssFeed className='w-5 h-5 opacity-70' />
+										Feed
+									</a>
+								</MenuItem>
+							</div>
+
+							<div className='flex-1' />
+
+							{/* Footer / Socials inside mobile menu */}
+							<div className='pt-6 border-t border-base-content/10'>
+								<div className='flex justify-center'>
+									<Socials text size='small' />
+								</div>
 							</div>
 						</MenuItems>
 					</Transition>

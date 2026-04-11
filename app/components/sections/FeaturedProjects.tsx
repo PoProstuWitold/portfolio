@@ -1,39 +1,50 @@
 import { featuredProjects } from 'app/utils/constans'
-import { AiOutlineArrowRight } from 'react-icons/ai'
+import { NavigationButton } from '@/components/core/NavigationButton'
 import { Project } from '@/components/core/Project'
 
 export const FeaturedProjects: React.FC = () => {
 	return (
 		<section
 			id='featured'
-			className='min-h-screen pt-20 flex flex-col gap-8 py-10 text-xl cursor-default bg-base-200'
+			className='flex flex-col items-center justify-center min-h-screen py-24 bg-base-200 cursor-default'
 		>
-			<h1 className='text-4xl font-bold border-b-[5px] w-fit mx-auto pb-2 border-primary'>
-				Featured Projects
-			</h1>
-			<p className='lg:mx-[5rem] text-justify mx-6'>
-				Below are some of my projects that I have developed with great
-				fervor and motivation. With every endeavor, I have strived to
-				gain a comprehensive understanding of the underlying
-				technologies by thoroughly researching documentation, articles,
-				videos, and engaging in various courses.
-			</p>
-			<div className='flex flex-col flex-wrap justify-between mx-5 my-10 lg:flex-row lg:mt-0 lg:mx-20'>
-				{featuredProjects.map((project, index) => {
-					return (
+			<div className='w-full max-w-6xl px-6 lg:px-12 xl:px-0'>
+				{/* Section Header */}
+				<div className='flex items-center justify-between mb-12'>
+					<h2 className='text-4xl font-extrabold tracking-tight md:text-6xl text-base-content whitespace-nowrap'>
+						Featured Works
+					</h2>
+					<div className='hidden w-full h-px ml-8 bg-base-content/10 sm:block' />
+				</div>
+
+				{/* Professional Copy */}
+				<p className='mb-16 text-lg leading-relaxed text-base-content/70'>
+					A curated selection of systems, backend architectures, and
+					fullstack applications I have engineered. Each project
+					reflects my commitment to writing clean, maintainable code
+					and solving complex problems through robust, scalable
+					technologies.
+				</p>
+
+				{/* Projects Grid */}
+				<div className='grid gap-10 md:grid-cols-2'>
+					{featuredProjects.map((project, index) => (
 						<Project
-							key={`${index}:${project.name}`}
+							key={`${project.name}-${index}`}
 							project={project}
 							badges
 						/>
-					)
-				})}
-			</div>
-			<div className='flex justify-end mx-5 lg:mx-20'>
-				<a href='/projects' className='btn btn-lg btn-link'>
-					See all projects
-					<AiOutlineArrowRight className='w-5 h-5' />
-				</a>
+					))}
+				</div>
+
+				{/* Call to Action */}
+				<div className='flex justify-end mt-16'>
+					<NavigationButton
+						href='/projects'
+						label='Explore all projects'
+						direction='right'
+					/>
+				</div>
 			</div>
 		</section>
 	)
