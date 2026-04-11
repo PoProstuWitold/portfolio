@@ -13,65 +13,47 @@ export const Main: React.FC = () => {
 			<div className='pt-4 lg:pt-20 hero'>
 				<div className='justify-between my-auto mt-40 hero-content'>
 					<div className='flex flex-col gap-4'>
-						<m.h1
-							className='md:text-6xl text-5xl font-bold flex md:flex-row flex-col'
-							initial={{ opacity: 0, y: 40 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{
-								duration: 0.6,
-								ease: 'easeOut'
-							}}
-						>
+						<h1 className='md:text-6xl text-5xl font-bold flex md:flex-row flex-col'>
 							<span className='mr-3'>Hello, I'm </span>
 							<span>
-								<span className='text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text'>
+								<span className='text-transparent bg-linear-to-r from-primary to-secondary bg-clip-text'>
 									Witold Zawada
 								</span>
 								.
 							</span>
-						</m.h1>
-						<m.p
-							className='font-semibold md:text-2xl text-xl'
-							initial={{ opacity: 0, y: 40 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{
-								duration: 0.6,
-								delay: 0.2,
-								ease: 'easeOut'
-							}}
-						>
+						</h1>
+						<p className='font-semibold md:text-2xl text-xl'>
 							Software Engineer (TypeScript & Go)
-						</m.p>
-						<m.span
-							className='flex flex-row items-center justify-center ml-2 gap-2 mb-10'
-							initial={{ opacity: 0, y: 40 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{
-								duration: 0.6,
-								delay: 0.4,
-								ease: 'easeOut'
-							}}
-						>
+						</p>
+						<span className='flex flex-row items-center justify-center ml-2 gap-2 mb-10'>
 							<Socials size='big' />
-						</m.span>
-						<m.span
-							className='flex items-center self-center justify-center text-center'
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{
-								duration: 0.2,
-								delay: 1.0,
-								ease: 'easeOut'
-							}}
-						>
+						</span>
+						<span className='flex items-center self-center justify-center text-center'>
 							<a
 								className='animate-bounce'
 								href='/#featured'
 								title='scroll to projects'
 							>
-								<BsArrowDownCircleFill className='w-14 h-14 text-secondary' />
+								<m.div
+									initial={{
+										opacity: 0,
+										scale: 0,
+										rotate: -180
+									}}
+									animate={{
+										opacity: 1,
+										scale: 1,
+										rotate: 0
+									}}
+									transition={{
+										duration: 0.5,
+										ease: 'easeOut'
+									}}
+								>
+									<BsArrowDownCircleFill className='w-14 h-14 text-secondary' />
+								</m.div>
 							</a>
-						</m.span>
+						</span>
 					</div>
 				</div>
 			</div>

@@ -5,7 +5,7 @@ interface SkillProps {
 }
 
 export const Skill: React.FC<SkillProps> = ({ title }) => {
-	const { icon, url } = getSkillData(title)
+	const { icon, url, linkDescription } = getSkillData(title)
 
 	return (
 		<a
@@ -15,7 +15,7 @@ export const Skill: React.FC<SkillProps> = ({ title }) => {
 			className='p-4 m-1 font-bold rounded cursor-pointer badge badge-outline min-w-fit hover:bg-primary transition-all duration-300 flex items-center gap-2'
 		>
 			{icon}
-			{title}
+			{linkDescription || title}
 		</a>
 	)
 }

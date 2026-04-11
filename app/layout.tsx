@@ -23,7 +23,7 @@ export default function RootLayout({
 					<MotionProvider>
 						<ScrollProgress />
 						<Navbar />
-						{children}
+						<main>{children}</main>
 						<Footer />
 					</MotionProvider>
 				</ThemeProvider>

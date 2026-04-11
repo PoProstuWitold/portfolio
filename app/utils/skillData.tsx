@@ -41,6 +41,7 @@ import { TbBoxMultiple, TbRoute } from 'react-icons/tb'
 type SkillInfo = {
 	icon: JSX.Element
 	url: string
+	linkDescription?: string
 }
 
 const skillDataMap: Record<string, SkillInfo> = {
@@ -125,7 +126,8 @@ const skillDataMap: Record<string, SkillInfo> = {
 	},
 	Go: {
 		icon: <BiLogoGoLang />,
-		url: 'https://go.dev/'
+		url: 'https://go.dev/',
+		linkDescription: 'Go Programming Language'
 	}
 }
 
