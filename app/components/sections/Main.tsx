@@ -29,7 +29,7 @@ export const Main: React.FC = () => {
 							<span className='relative inline-flex h-full w-full rounded-full bg-success' />
 						</span>
 
-						<span className='text-xs font-bold uppercase tracking-[0.15em] text-base-content/75'>
+						<span className='text-xs font-bold uppercase tracking-[0.15em] text-base-content/90'>
 							Available for new roles
 						</span>
 					</div>
@@ -48,7 +48,7 @@ export const Main: React.FC = () => {
 						Software Engineer
 					</h2>
 
-					<p className='mt-6 max-w-2xl text-lg leading-relaxed text-base-content/70 sm:text-xl'>
+					<p className='mt-6 max-w-2xl text-lg leading-relaxed text-base-content/90 sm:text-xl'>
 						I build backend systems and fullstack applications with{' '}
 						<span className='font-semibold text-base-content'>
 							TypeScript
@@ -100,7 +100,7 @@ export const Main: React.FC = () => {
 				>
 					<a
 						href='/#featured'
-						className='flex animate-bounce flex-col items-center gap-2 text-base-content/40 transition-colors hover:text-base-content/80'
+						className='flex animate-bounce flex-col items-center gap-2 text-base-content/80 transition-colors hover:text-base-content'
 						aria-label='Scroll to projects'
 					>
 						<span className='text-xs font-semibold uppercase tracking-[0.2em]'>

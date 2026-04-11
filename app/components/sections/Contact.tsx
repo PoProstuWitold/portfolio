@@ -11,7 +11,7 @@ export const Contact: React.FC = () => {
 						<span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-success/60' />
 						<span className='relative inline-flex h-full w-full rounded-full bg-success' />
 					</span>
-					<span className='text-xs font-bold uppercase tracking-[0.2em]'>
+					<span className='text-xs font-bold uppercase tracking-[0.2em] text-base-content/90'>
 						Open to work
 					</span>
 				</div>
@@ -20,7 +20,7 @@ export const Contact: React.FC = () => {
 					Get In Touch
 				</h2>
 
-				<p className='mb-10 max-w-3xl text-lg leading-relaxed text-base-content/75 md:text-xl'>
+				<p className='mb-10 max-w-3xl text-lg leading-relaxed text-base-content/90 md:text-xl'>
 					I'm currently exploring full-stack, systems, and software
 					engineering opportunities.
 					<br />
@@ -49,7 +49,7 @@ export const Contact: React.FC = () => {
 				</div>
 
 				<div className='mt-12 flex w-full flex-col items-center gap-6'>
-					<div className='flex items-center gap-4 text-base-content/60'>
+					<div className='flex items-center gap-4 text-base-content/80'>
 						<div className='h-px w-16 bg-base-content/20' />
 						<span className='text-sm font-semibold uppercase tracking-wider'>
 							Find me elsewhere

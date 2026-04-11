@@ -127,7 +127,7 @@ const skillDataMap: Record<string, SkillInfo> = {
 	Go: {
 		icon: <BiLogoGoLang />,
 		url: 'https://go.dev/',
-		linkDescription: 'Go Programming Language'
+		linkDescription: 'Golang'
 	}
 }
 

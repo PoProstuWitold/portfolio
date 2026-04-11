@@ -79,7 +79,7 @@ export const About: React.FC = () => {
 						<div className='flex w-full max-w-[320px] flex-col gap-3'>
 							<div className='mb-3 flex items-center gap-4'>
 								<div className='h-px flex-1 bg-base-content/10' />
-								<span className='text-[10px] font-bold uppercase tracking-widest text-base-content/50'>
+								<span className='text-[10px] font-bold uppercase tracking-widest text-base-content/90'>
 									Download Resume
 								</span>
 								<div className='h-px flex-1 bg-base-content/10' />

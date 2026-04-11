@@ -38,7 +38,7 @@ export const Project: React.FC<ProjectProps> = ({ project, badges }) => {
 						{project.description}
 					</p>
 
-					<div className='flex max-h-32 flex-wrap gap-2 overflow-hidden'>
+					<div className='flex flex-wrap gap-2'>
 						{project.skills.map((skill, index) => (
 							<Skill key={`${index}:${skill}`} title={skill} />
 						))}

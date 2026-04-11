@@ -18,7 +18,7 @@ export const FeaturedProjects: React.FC = () => {
 				</div>
 
 				{/* Professional Copy */}
-				<p className='mb-16 text-lg leading-relaxed text-base-content/70'>
+				<p className='mb-16 text-lg leading-relaxed text-base-content/90'>
 					A curated selection of systems, backend architectures, and
 					fullstack applications I have engineered. Each project
 					reflects my commitment to writing clean, maintainable code
