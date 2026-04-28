@@ -1,322 +1,100 @@
-import {
-	FaCode,
-	FaLock,
-	FaMemory,
-	FaPizzaSlice,
-	FaRobot,
-	FaSatelliteDish,
-	FaServer
-} from 'react-icons/fa'
+import type { ReactNode } from 'react'
 
-export const caseStudies = new Map<string, React.ReactNode>([
+type ProjectCaseStudyProps = {
+	problem: string
+	solution: string
+	result: string
+}
+
+function ProjectCaseStudy({
+	problem,
+	solution,
+	result
+}: ProjectCaseStudyProps) {
+	return (
+		<article className='flex flex-col gap-5 leading-relaxed'>
+			<div className='space-y-5 text-lg text-base-content/90'>
+				<p>
+					<strong className='text-base-content'>Problem:</strong>{' '}
+					{problem}
+				</p>
+
+				<p>
+					<strong className='text-base-content'>Solution:</strong>{' '}
+					{solution}
+				</p>
+
+				<p>
+					<strong className='text-base-content'>Result:</strong>{' '}
+					{result}
+				</p>
+			</div>
+		</article>
+	)
+}
+
+export const caseStudies = new Map<string, ReactNode>([
 	[
 		'homeserver',
-		<div key='homeserver' className='flex flex-col gap-8 leading-relaxed'>
-			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
-				<FaServer className='shrink-0' /> Self-Hosted Infrastructure
-				Setup
-			</h3>
-
-			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
-				<li>
-					Built and documented self-hosted server environments for
-					running multiple services with Docker.
-				</li>
-				<li>
-					Configured reverse proxying, dynamic DNS, and external
-					access with Caddy, Cloudflare Tunnels, and port forwarding.
-				</li>
-				<li>
-					Secured public exposure with VPN access, stricter routing
-					rules, and credential management.
-				</li>
-			</ul>
-
-			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
-				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
-					Tech Stack
-				</h4>
-
-				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-2'>
-					<p>
-						<strong className='text-primary'>
-							Routing/Security:
-						</strong>{' '}
-						Caddy, Cloudflare Tunnels, VPN
-					</p>
-					<p>
-						<strong className='text-secondary'>Infra:</strong>{' '}
-						Linux, Docker, Networking
-					</p>
-				</div>
-			</div>
-		</div>
+		<ProjectCaseStudy
+			key='homeserver'
+			problem='Building a personal home server environment is often complex, fragmented across many guides, and requires knowledge of networking, security, and service deployment.'
+			solution='I independently created extensive documentation and a working home server environment based on Linux, Docker, reverse proxy, VPN, and secure service publishing through Port Forwarding and Cloudflare Tunnels. The project includes practical deployments, automation, and infrastructure maintenance.'
+			result='Built a complete, actively used server environment and a practical guide for people starting with selfhosting. The project demonstrated my skills in system administration, networking, and production-grade service deployment.'
+		/>
 	],
 	[
 		'nuntius-feed',
-		<div key='nuntius-feed' className='flex flex-col gap-8 leading-relaxed'>
-			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
-				<FaSatelliteDish className='shrink-0' /> RSS and Atom
-				Aggregation Platform
-			</h3>
-
-			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
-				<li>
-					Built an XML parsing pipeline that normalizes RSS and Atom
-					feeds into a consistent database model.
-				</li>
-				<li>
-					Added background jobs for scheduled feed syncing and reduced
-					delays in content updates.
-				</li>
-				<li>
-					Implemented JWT-based authentication with access and refresh
-					token flows.
-				</li>
-			</ul>
-
-			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
-				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
-					Tech Stack
-				</h4>
-
-				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-3'>
-					<p>
-						<strong className='text-primary'>Backend:</strong>{' '}
-						Node.js, Hono, JWT, RPC
-					</p>
-					<p>
-						<strong className='text-secondary'>Frontend:</strong>{' '}
-						Next.js, TailwindCSS
-					</p>
-					<p>
-						<strong className='text-accent'>Infra:</strong> MongoDB,
-						Docker, Cron
-					</p>
-				</div>
-			</div>
-		</div>
+		<ProjectCaseStudy
+			key='nuntius-feed'
+			problem='Many RSS readers are outdated, unintuitive, or lack convenient subscription management and a modern user interface.'
+			solution='I independently designed a web application for subscribing to and reading RSS and Atom feeds. The system supports source management, favorite articles, OPML import and export, user authentication, and automatic background refresh.'
+			result='Delivered a modern content aggregator built as a full web application with separate frontend and backend layers. The project demonstrated my skills in scalable application development, business logic design, authentication, and data management.'
+		/>
 	],
 	[
 		'dove-dashboard',
-		<div
+		<ProjectCaseStudy
 			key='dove-dashboard'
-			className='flex flex-col gap-8 leading-relaxed'
-		>
-			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
-				<FaMemory className='shrink-0' /> System Monitoring Dashboard
-			</h3>
-
-			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
-				<li>
-					Built a lightweight monitoring daemon in Go for collecting
-					CPU, RAM, and other system metrics.
-				</li>
-				<li>
-					Kept runtime memory usage below 25 MB and shipped the app as
-					a small rootless Docker image.
-				</li>
-				<li>
-					Used plain JavaScript, HTML, and CSS for real-time data
-					visualization without heavy frontend frameworks.
-				</li>
-			</ul>
-
-			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
-				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
-					Tech Stack
-				</h4>
-
-				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-3'>
-					<p>
-						<strong className='text-primary'>Backend:</strong> Go
-					</p>
-					<p>
-						<strong className='text-secondary'>Frontend:</strong>{' '}
-						JavaScript, HTML5, CSS3
-					</p>
-					<p>
-						<strong className='text-accent'>Infra:</strong> Linux,
-						Docker
-					</p>
-				</div>
-			</div>
-		</div>
+			problem='Monitoring a personal server often requires heavy dashboards or fragmented command-line tools, which can be unnecessarily complex for checking essential system health.'
+			solution='I independently built The Dove Dashboard, a lightweight web-based system monitor written in Go. The application provides system overview, CPU, memory, storage, sensor, and network metrics with live updates and a minimal user interface.'
+			result='Delivered a self-contained monitoring application distributed as a single binary with static assets and Docker support. The project demonstrated my skills in Go, Linux systems, lightweight backend design, and practical selfhosted tooling.'
+		/>
 	],
 	[
 		'doggopaste',
-		<div key='doggopaste' className='flex flex-col gap-8 leading-relaxed'>
-			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
-				<FaLock className='shrink-0' /> Real-Time Code Collaboration
-				Platform
-			</h3>
-
-			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
-				<li>
-					Synchronized live editor state across multiple clients with
-					WebSockets.
-				</li>
-				<li>
-					Added client-side AES-GCM encryption using the Web Crypto
-					API.
-				</li>
-				<li>
-					Built REST and WebSocket backends with Hono and a custom
-					proxy layer.
-				</li>
-				<li>
-					Packaged the application for self-hosted deployment with
-					Docker.
-				</li>
-			</ul>
-
-			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
-				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
-					Tech Stack
-				</h4>
-
-				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-3'>
-					<p>
-						<strong className='text-primary'>Backend:</strong>{' '}
-						Node.js, Hono, WebSockets
-					</p>
-					<p>
-						<strong className='text-secondary'>Frontend:</strong>{' '}
-						Next.js, TailwindCSS
-					</p>
-					<p>
-						<strong className='text-accent'>Infra:</strong>{' '}
-						PostgreSQL, Docker, Turborepo
-					</p>
-				</div>
-			</div>
-		</div>
+		<ProjectCaseStudy
+			key='doggopaste'
+			problem='Existing solutions usually offered either simple code sharing via links or collaborative editing. There was no modern platform combining both approaches in one intuitive tool.'
+			solution='As part of a two-person team, I co-developed DoggoPaste, a web application enabling fast code sharing, real-time collaborative editing, private and public pastes, selected client-side encryption, and content management through an admin panel.'
+			result='Delivered a comprehensive engineering thesis project awarded the highest possible grade (5.0/5.0) with distinction. The application was designed as a real product ready for independent deployment, demonstrating my teamwork, software engineering, and end-to-end product delivery skills.'
+		/>
 	],
 	[
 		'Sayuna',
-		<div key='Sayuna' className='flex flex-col gap-8 leading-relaxed'>
-			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
-				<FaRobot className='shrink-0' /> Discord Bot and Service
-				Platform
-			</h3>
-
-			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
-				<li>
-					Built a modular bot architecture with dependency injection
-					for music, moderation, and logging features.
-				</li>
-				<li>
-					Added a web dashboard for configuration, control, and easier
-					debugging.
-				</li>
-				<li>
-					Used multi-stage Docker builds and environment-based
-					configuration for deployment.
-				</li>
-			</ul>
-
-			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
-				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
-					Tech Stack
-				</h4>
-
-				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-2'>
-					<p>
-						<strong className='text-primary'>Backend:</strong>{' '}
-						TypeScript, Node.js, discord.js, discordx
-					</p>
-					<p>
-						<strong className='text-secondary'>Infra:</strong>{' '}
-						Docker
-					</p>
-				</div>
-			</div>
-		</div>
+		<ProjectCaseStudy
+			key='Sayuna'
+			problem='Discord communities often need separate bots for moderation, music, fun commands, and developer tools, which makes management and deployment harder.'
+			solution='I independently developed Sayuna, an extensible Discord bot built with TypeScript, Node.js, discord.js, and discordx. The bot includes moderation, music playback, fun commands, owner-only developer tools, robust logging, global error handling, and Docker-based deployment.'
+			result='Delivered a production-oriented bot platform with modular features and environment-based configuration. The project demonstrated my skills in TypeScript backend development, third-party API integration, automation, and deployment.'
+		/>
 	],
 	[
 		'portfolio',
-		<div key='portfolio' className='flex flex-col gap-8 leading-relaxed'>
-			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
-				<FaCode className='shrink-0' /> Static Developer Portfolio
-			</h3>
-
-			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
-				<li>
-					Built a static portfolio with Next.js App Router and strong
-					Lighthouse scores.
-				</li>
-				<li>
-					Added a Markdown-based blog with syntax highlighting for
-					technical posts.
-				</li>
-				<li>
-					Fetched GitHub project data at build time using the GraphQL
-					API.
-				</li>
-			</ul>
-
-			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
-				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
-					Tech Stack
-				</h4>
-
-				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-3'>
-					<p>
-						<strong className='text-primary'>Frontend:</strong>{' '}
-						Next.js, React
-					</p>
-					<p>
-						<strong className='text-secondary'>UI/Style:</strong>{' '}
-						TailwindCSS, daisyUI
-					</p>
-					<p>
-						<strong className='text-accent'>Data/API:</strong>{' '}
-						GraphQL, Markdown
-					</p>
-				</div>
-			</div>
-		</div>
+		<ProjectCaseStudy
+			key='portfolio'
+			problem='A developer portfolio should present projects, technical writing, skills, and professional context in one clear place, while remaining easy to maintain and extend.'
+			solution='I independently built my personal portfolio website with a custom Markdown-based blog engine, syntax highlighting, responsive design, tag filtering, estimated reading time, copyable code snippets, and GitHub project data fetched through the GraphQL API.'
+			result='Delivered a professional platform for showcasing selected projects, technical articles, skills, and case studies. The project demonstrated my frontend engineering, content architecture, and attention to developer experience.'
+		/>
 	],
 	[
 		'pizzeria',
-		<div key='pizzeria' className='flex flex-col gap-8 leading-relaxed'>
-			<h3 className='flex items-center gap-2 text-2xl font-bold text-secondary'>
-				<FaPizzaSlice className='shrink-0' /> Vanilla JavaScript SPA
-			</h3>
-
-			<ul className='ml-2 list-inside list-disc space-y-2 text-lg opacity-90'>
-				<li>
-					Built a single-page application from scratch in vanilla
-					JavaScript without frontend frameworks.
-				</li>
-				<li>
-					Created a custom HTTP server in Node.js for routing and
-					static asset handling.
-				</li>
-				<li>
-					Implemented client-side navigation with the History API to
-					avoid full page reloads.
-				</li>
-			</ul>
-
-			<div className='rounded-xl border border-base-300 bg-base-200 p-6'>
-				<h4 className='mb-4 border-b border-base-300 pb-2 font-bold'>
-					Tech Stack
-				</h4>
-
-				<div className='grid grid-cols-1 gap-4 text-sm opacity-90 md:grid-cols-2'>
-					<p>
-						<strong className='text-primary'>Frontend:</strong>{' '}
-						Vanilla JavaScript, HTML5, CSS3
-					</p>
-					<p>
-						<strong className='text-secondary'>
-							Backend/Infra:
-						</strong>{' '}
-						Node.js, Docker
-					</p>
-				</div>
-			</div>
-		</div>
+		<ProjectCaseStudy
+			key='pizzeria'
+			problem='Building a Single Page Application without a frontend framework requires manually handling routing, dynamic views, browser APIs, form validation, and state persistence.'
+			solution='I independently built a fictional pizzeria website as a Vanilla JavaScript SPA. The application uses dynamic component imports, the History API, a custom Node.js server, a Pixabay-powered gallery, and a reservation system stored in localStorage.'
+			result='Delivered a complete educational SPA with multiple routes, client-side navigation, validated reservations, editable user data, Docker support, and a custom 404 page. The project demonstrated my understanding of browser APIs and framework-free web development.'
+		/>
 	]
 ])
