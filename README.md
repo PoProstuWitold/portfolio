@@ -1,8 +1,8 @@
 # Personal Portfolio
 
-My personal portfolio website, designed to showcase my skills and projects. 
+My personal portfolio website, built to showcase my projects, technical skills, experience, and articles.
 
-This platform serves as a central hub for potential collaborators, employers, and peers to explore my work and get in touch.
+The website serves as a central hub for recruiters, potential collaborators, and peers to learn more about my work, explore selected projects, and get in touch with me.
 
 ## Features
 
