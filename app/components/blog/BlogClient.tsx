@@ -55,7 +55,7 @@ export default function BlogClient({ posts, tags }: Props) {
 	return (
 		<main className='flex min-h-screen flex-col items-center bg-base-200 py-24 cursor-default'>
 			<div className='flex w-full max-w-6xl flex-col gap-10 px-6 lg:px-12 xl:px-0'>
-				<div className='flex flex-col gap-4'>
+				<div className='flex flex-col'>
 					{/* Breadcrumbs for navigation context */}
 					<Breadcrumbs
 						items={[
@@ -65,15 +65,15 @@ export default function BlogClient({ posts, tags }: Props) {
 					/>
 
 					{/* Section Header */}
-					<div className='mt-2 flex items-center justify-between'>
-						<h1 className='whitespace-nowrap text-4xl font-extrabold tracking-tight text-base-content md:text-5xl'>
+					<div className='flex items-center justify-between mb-6'>
+						<h2 className='text-4xl font-extrabold tracking-tight md:text-6xl text-base-content whitespace-nowrap'>
 							Blog
-						</h1>
-						<div className='ml-8 hidden h-px w-full bg-base-content/10 sm:block' />
+						</h2>
+						<div className='w-full h-px ml-8 bg-base-content/10 sm:block' />
 					</div>
 
 					{/* Professional Copy */}
-					<p className='mb-6 mt-4 text-lg leading-relaxed text-base-content/70'>
+					<p className='text-lg leading-relaxed text-base-content/70'>
 						Technical articles focused on software architecture,
 						modern web development, systems engineering, and
 						self-hosted infrastructure. I share insights from

@@ -28,11 +28,11 @@ Let's create a simple and basic web server using Node.js and Express.
 
 ### 1. Install Node.js
 
-#### Windows: 
+#### Windows:
 1. Visit the [official Node.js website](https://nodejs.org/en) and download the latest LTS version.
 2. Follow the installation wizard instructions.
 
-#### Linux: 
+#### Linux:
 1. Install [Node Version Manager](https://github.com/nvm-sh/nvm) .
 2. Install latest LTS version ("node" is an alias for the latest version).
 ```bash
@@ -131,7 +131,7 @@ Notable drawbacks of Node.js include:
 5. **Legacy callback-based standard library API**: Despite updates to incorporate Promises, Node.js's API still contains legacy callback-based patterns, often leading to complicated code structures and challenges in transitioning to ESM syntax.
 
 
-## My personal toughts 
+## My personal toughts
 In my personal experience, the combination of Node.js and TypeScript has provided the best developer experience among all the languages I've encountered. It offers not only a clear and enjoyable syntax but also an extensive array of packages, libraries, and frameworks, along with seamless integration with VSCode. The straightforward setup of pipelines and Docker images further amplifies its usability. Another significant advantage is the abundance of resources available online. No other technology has given me the same level of professional fulfillment as working with Node.js.
 
 ## Conclusion

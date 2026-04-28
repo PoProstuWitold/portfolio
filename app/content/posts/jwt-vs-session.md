@@ -35,7 +35,7 @@ Well, there are two popular ways to handle that:
 When a user logs in, the server creates a session in a database or in memory and sends back a small cookie with a session ID. That ID is used on each request to find the session data on the server.
 
 ## How session-based authentication works step-by-step?
-### **1. User sends login request** 
+### **1. User sends login request**
 
 The user submits a login request to the server. It can be classic credentials-based `/signup` or `/signin` request, or an ``OAuth2`` login using a provider like GitHub or Google.
 
@@ -109,7 +109,7 @@ JWT or JSON Web Token it's a self-contained piece of data, signed with a secret 
 
 ## How token-based authentication works step-by-step?
 
-### **1. User sends login request** 
+### **1. User sends login request**
 
 The user submits a login request to the server. It can be classic credentials-based `/signup` or `/signin` request, or an ``OAuth2`` login using a provider like GitHub or Google.
 

@@ -10,11 +10,11 @@ export const About: React.FC = () => {
 			className='flex min-h-screen cursor-default flex-col items-center justify-center bg-base-100 py-24'
 		>
 			<div className='w-full max-w-6xl px-6 lg:px-12 xl:px-0'>
-				<div className='mb-16 flex items-center gap-6'>
-					<h2 className='whitespace-nowrap text-4xl font-extrabold tracking-tight text-base-content md:text-5xl'>
+				<div className='flex items-center justify-between mb-6'>
+					<h2 className='text-4xl font-extrabold tracking-tight md:text-6xl text-base-content whitespace-nowrap'>
 						About Me
 					</h2>
-					<div className='h-px flex-1 bg-base-content/10' />
+					<div className='w-full h-px ml-8 bg-base-content/10 sm:block' />
 				</div>
 
 				<div className='grid grid-cols-1 items-start gap-16 lg:grid-cols-12'>

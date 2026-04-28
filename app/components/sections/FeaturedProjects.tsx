@@ -10,15 +10,15 @@ export const FeaturedProjects: React.FC = () => {
 		>
 			<div className='w-full max-w-6xl px-6 lg:px-12 xl:px-0'>
 				{/* Section Header */}
-				<div className='flex items-center justify-between mb-12'>
+				<div className='flex items-center justify-between mb-6'>
 					<h2 className='text-4xl font-extrabold tracking-tight md:text-6xl text-base-content whitespace-nowrap'>
-						Featured Works
+						Featured Projects
 					</h2>
-					<div className='hidden w-full h-px ml-8 bg-base-content/10 sm:block' />
+					<div className='w-full h-px ml-8 bg-base-content/10 sm:block' />
 				</div>
 
 				{/* Professional Copy */}
-				<p className='mb-16 text-lg leading-relaxed text-base-content/90'>
+				<p className='mb-8 text-lg leading-relaxed text-base-content/90'>
 					A curated selection of systems, backend architectures, and
 					fullstack applications I have engineered. Each project
 					reflects my commitment to writing clean, maintainable code
