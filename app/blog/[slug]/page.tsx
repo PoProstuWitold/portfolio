@@ -35,13 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	return {
 		title,
 		description,
-		keywords: [
-			'Blog',
-			'Post',
-			'Witold Zawada',
-			'PoProstuWitold',
-			...(tags || [])
-		],
+		keywords: ['Blog', 'Witold Zawada', 'PoProstuWitold', ...(tags || [])],
 		metadataBase: new URL('https://witoldzawada.dev'),
 		openGraph: {
 			title,
@@ -50,12 +44,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			siteName: 'Witold Zawada',
 			locale: 'en_US',
 			type: 'article',
+			authors: ['Witold Zawada'],
 			images: [
 				{
-					url: '/images/witold-512.png',
-					width: 512,
-					height: 512,
-					alt: 'Witold Zawada'
+					url: `/images/blog/${post.data.socialImage}`,
+					width: 1200,
+					height: 630,
+					alt: `${post.data.title} cover image`
 				}
 			]
 		}
