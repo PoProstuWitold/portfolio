@@ -3,6 +3,7 @@ import Image from 'next/image'
 import type React from 'react'
 import type { IPost } from '../../utils/blog-utils'
 import { BlogInfo } from './BlogInfo'
+import { BlogTags } from './BlogTags'
 
 interface BlogCardProps {
 	post: IPost
@@ -31,18 +32,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
 					/>
 				</div>
 				<div className='px-3 py-2 justify-evenly flex flex-col gap-2'>
-					<div className='flex flex-row flex-wrap gap-1'>
-						{post.data.tags?.map((tag, index) => {
-							return (
-								<span
-									className='bg-secondary text-secondary-content rounded-lg text-xs py-1 px-2 font-semibold'
-									key={`${index}:${tag}`}
-								>
-									{tag}
-								</span>
-							)
-						})}
-					</div>
+					<BlogTags tags={post.data.tags} size='sm' />
 					<div className='prose gap-2 flex flex-col'>
 						<h1
 							className='p-0 line-clamp-1 h-[2.7rem] mb-0 mt-0'

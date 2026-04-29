@@ -11,6 +11,8 @@ tags:
   - Selfhosting
 ---
 
+# Before algorithmic feeds
+
 > **Disclaimer:** You can check out my project related to RSS and Atom - **[Nuntius Feed](https://github.com/PoProstuWitold/nuntius-feed)** - an open-source feed reader and aggregator as well as my own **[feed](../feed)**.
 
 The Internet is full of content! Unfortunately, most of what we see today is chosen for us by algorithms.
@@ -135,7 +137,7 @@ Feed link: ``https://www.vox.com/rss/index.xml``
 
 > Want to check if a feed is valid? Try the **[W3C Feed Validator](https://validator.w3.org/feed/)**. Just paste either of the feed links from above.
 
-### Key Differences:
+Key Differences:
 - **Structure and tags:**
 RSS uses `<channel>` and `<item>`, while Atom uses `<feed>` and `<entry>`. Field names also differ - for example, `pubDate` (RSS) vs `published` and `updated` (Atom).
 

@@ -12,6 +12,8 @@ tags:
   - JWT
 ---
 
+# Why authentication strategy matters?
+
 Keeping users logged in is a key part of almost every web app. But how exactly does that work behind the scenes? Two of the most common approaches are session-based authentication and token-based authentication using JWT (JSON Web Tokens). 
 
 In this post, I will break down how they work, compare their pros and cons and help you decide which one fits your project best.

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import type { IPost } from '@/utils/blog-utils'
 import { Breadcrumbs } from '../core/Breadcrumbs'
 import { BlogCard } from './BlogCard'
+import { BlogTags } from './BlogTags'
 
 interface Props {
 	posts: IPost[]
@@ -54,7 +55,7 @@ export default function BlogClient({ posts, tags }: Props) {
 
 	return (
 		<main className='flex min-h-screen flex-col items-center bg-base-200 py-24 cursor-default'>
-			<div className='flex w-full max-w-6xl flex-col gap-10 px-6 lg:px-12 xl:px-0'>
+			<div className='flex w-full max-w-6xl flex-col gap-4 px-6 lg:px-12 xl:px-0'>
 				<div className='flex flex-col'>
 					{/* Breadcrumbs for navigation context */}
 					<Breadcrumbs
@@ -83,33 +84,13 @@ export default function BlogClient({ posts, tags }: Props) {
 				</div>
 
 				{/* Tags Filter */}
-				<div className='flex gap-2 flex-wrap'>
-					<button
-						className={`cursor-pointer px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-							selectedTags.length === 0
-								? 'bg-primary text-primary-content hover:bg-primary/90'
-								: 'bg-base-300 text-base-content/80 hover:bg-base-content/10'
-						}`}
-						onClick={() => handleTagClick('')}
-						type='button'
-					>
-						All
-					</button>
-					{tags.map((tag) => (
-						<button
-							key={tag}
-							className={`cursor-pointer px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-								selectedTags.includes(tag)
-									? 'bg-primary text-primary-content hover:bg-primary/90'
-									: 'bg-base-300 text-base-content/80 hover:bg-base-content/10'
-							}`}
-							onClick={() => handleTagClick(tag)}
-							type='button'
-						>
-							{tag}
-						</button>
-					))}
-				</div>
+				<BlogTags
+					tags={tags}
+					selectedTags={selectedTags}
+					onTagClick={handleTagClick}
+					showAll
+					size='md'
+				/>
 
 				{/* Posts Grid */}
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>

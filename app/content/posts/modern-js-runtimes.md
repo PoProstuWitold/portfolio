@@ -1,6 +1,6 @@
 ---
 title: 'Modern JavaScript runtimes'
-description: 'Review of current state of JavaScript runtimes and comparison of their features and foreseeable future'
+description: 'Review of current state of JavaScript runtimes and comparison of their features and foreseeable future.'
 socialImage: images/blog/runtimes.webp
 authors: 
   - Witold Zawada
@@ -9,6 +9,8 @@ tags:
   - TypeScript
   - Runtimes
 ---
+
+# Why Node.js is no longer the only option?
 
 The JavaScript world has always been kind of chaotic due to a lack of standardization since the first days of Node.js, which was created on 27th May 2009 by *Ryan Dahl*. Many features that we take for granted nowadays did not exist back then, so JavaScript developers had to do everything they could to make Node.js more functional.
 

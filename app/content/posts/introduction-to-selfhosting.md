@@ -12,11 +12,11 @@ tags:
   - Networks
 ---
 
-> Link to documentation of my [homeserver](https://github.com/PoProstuWitold/homeserver)
+# Getting started with selfhosting
 
-In this guide you will find easy-to-follow steps and explanations that will help you set up your own server at home using **Linux**, **Docker**, and either **[Port Forwarding](https://github.com/PoProstuWitold/homeserver/tree/main/ports)** or **[Cloudflare tunnels](https://github.com/PoProstuWitold/homeserver/tree/main/tunnels)**.
+> **Related documentation:** [PoProstuWitold/homeserver](https://github.com/PoProstuWitold/homeserver)
 
----
+In this guide, you will find easy-to-follow steps and explanations that will help you set up your own home server using **Linux**, **Docker**, and either **[Port Forwarding](https://github.com/PoProstuWitold/homeserver/tree/main/ports)** or **[Cloudflare Tunnels](https://github.com/PoProstuWitold/homeserver/tree/main/tunnels)**.
 
 # What is selfhosting?
 

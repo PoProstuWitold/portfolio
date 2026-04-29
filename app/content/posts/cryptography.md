@@ -1,6 +1,6 @@
 ---
 title: 'Cryptography'
-description: 'Most important cryptography concepts explained using Node.js native crypto module'
+description: 'Most important cryptography concepts explained using Node.js native crypto module.'
 authors: 
   - Witold Zawada
 socialImage: images/blog/cryptography.webp
@@ -12,10 +12,11 @@ tags:
   - Cryptography
 ---
 
+# Before we start
 
-> **Disclaimer**: I was inspired by ***[article](https://fireship.io/lessons/node-crypto-examples/)*** of ***[Jeff Delaney](https://github.com/codediodeio)***, creator of ***[fireship.io](https://fireship.io/)*** 
+> **Disclaimer:** This article was inspired by [Jeff Delaney's article on Fireship](https://fireship.io/lessons/node-crypto-examples/).
 
-> All of code used in this article is availabe on my ***[GitHub](https://github.com/PoProstuWitold/cryptography)***.
+> All code used in this article is available on my [GitHub](https://github.com/PoProstuWitold/cryptography).
 
 # What is cryptography?
 Cryptography is the field of knowledge, with branches both in IT and mathematics, about transmiting information in a way that is protected against unauthorized access.
