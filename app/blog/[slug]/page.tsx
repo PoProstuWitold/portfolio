@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			authors: ['Witold Zawada'],
 			images: [
 				{
-					url: `/images/blog/${post.data.socialImage}`,
+					url: `/${post.data.socialImage}`,
 					width: 1200,
 					height: 630,
 					alt: `${post.data.title} cover image`
