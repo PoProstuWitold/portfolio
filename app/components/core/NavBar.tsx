@@ -61,7 +61,7 @@ export const Navbar: React.FC = () => {
 							<li>
 								<Link
 									href='/#about'
-									className='btn btn-ghost btn-sm rounded-md hover:text-base-content hover:bg-base-content/5 transition-colors px-4'
+									className='btn btn-ghost w-full justify-start flex items-center gap-3 text-base-content/80 hover:text-base-content hover:bg-base-content/5 text-base font-medium lg:justify-center lg:gap-1.5 lg:btn-sm lg:rounded-md lg:px-4 lg:text-sm'
 								>
 									About
 								</Link>
@@ -72,7 +72,7 @@ export const Navbar: React.FC = () => {
 							<li>
 								<Link
 									href='/blog'
-									className='btn btn-ghost btn-sm rounded-md hover:text-base-content hover:bg-base-content/5 transition-colors px-4'
+									className='btn btn-ghost w-full justify-start flex items-center gap-3 text-base-content/80 hover:text-base-content hover:bg-base-content/5 text-base font-medium lg:justify-center lg:gap-1.5 lg:btn-sm lg:rounded-md lg:px-4 lg:text-sm'
 								>
 									Blog
 								</Link>
@@ -80,7 +80,7 @@ export const Navbar: React.FC = () => {
 							<li>
 								<Link
 									href='/#contact'
-									className='btn btn-ghost btn-sm rounded-md hover:text-base-content hover:bg-base-content/5 transition-colors px-4'
+									className='btn btn-ghost w-full justify-start flex items-center gap-3 text-base-content/80 hover:text-base-content hover:bg-base-content/5 text-base font-medium lg:justify-center lg:gap-1.5 lg:btn-sm lg:rounded-md lg:px-4 lg:text-sm'
 								>
 									Contact
 								</Link>
@@ -91,7 +91,7 @@ export const Navbar: React.FC = () => {
 							<li>
 								<a
 									href='/feed'
-									className='btn btn-ghost btn-sm rounded-md hover:text-base-content hover:bg-base-content/5 transition-colors px-3 font-mono text-[11px] tracking-wider uppercase'
+									className='btn btn-ghost w-full justify-start flex items-center gap-3 text-base-content/80 hover:text-base-content hover:bg-base-content/5 text-base font-medium lg:justify-center lg:gap-1.5 lg:btn-sm lg:rounded-md lg:px-4 lg:text-sm'
 									target='_blank'
 									rel='noopener noreferrer'
 									title='Feed'
