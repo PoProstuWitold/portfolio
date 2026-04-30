@@ -122,12 +122,11 @@ export function DownloadPdfButton({
 		<button
 			type='button'
 			onClick={handleDownloadPdf}
-			className='btn btn-outline btn-md w-full flex-1 gap-2 rounded-xl font-semibold sm:btn-ghost sm:btn-square sm:btn-lg sm:w-auto sm:flex-none sm:rounded-lg md:p-4'
+			className='btn btn-ghost btn-md w-full flex-1 gap-2 rounded-xl font-semibold sm:btn-square sm:btn-lg sm:w-auto sm:flex-none sm:rounded-lg md:p-4'
 			aria-label='Download PDF'
 			title={`Download ${fileName}`}
 		>
-			<FaFilePdf className='h-5 w-5 sm:h-7 sm:w-7' />
-			<span className='sm:hidden text-lg'>PDF</span>
+			<FaFilePdf className='h-7 w-7' />
 		</button>
 	)
 }
