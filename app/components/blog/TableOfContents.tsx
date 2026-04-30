@@ -65,9 +65,9 @@ export const TableOfContents = ({
 			className={`self-start overflow-y-auto pr-4 scrollbar-hide text-sm xl:mb-0 ${className}`}
 			aria-label='Table of contents'
 		>
-			<h4 className='mb-4 text-xs font-semibold uppercase tracking-widest text-base-content/50'>
+			<h1 className='mb-4 text-xs font-semibold uppercase tracking-widest text-base-content/50'>
 				On this page
-			</h4>
+			</h1>
 
 			<ul className='border-l border-base-300 space-y-1'>
 				{headings.map((heading, i) => {
@@ -82,7 +82,7 @@ export const TableOfContents = ({
 								}}
 								className={`block border-l py-1.5 pr-2 text-sm leading-5 transition-colors ${
 									isActive
-										? '-ml-px border-primary font-semibold text-primary'
+										? '-ml-px border-primary text-primary'
 										: '-ml-px border-transparent text-base-content/65 hover:text-base-content'
 								}`}
 							>

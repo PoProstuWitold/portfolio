@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect } from 'react'
-import { FaShare } from 'react-icons/fa'
+import { useEffect, useRef, useState } from 'react'
+import { FaChevronRight, FaShare } from 'react-icons/fa'
 
 import ReactMarkdown from 'react-markdown'
 import { RWebShare } from 'react-web-share'
@@ -10,6 +10,8 @@ import remarkGfm from 'remark-gfm'
 import { BlogInfo } from '@/components/blog/BlogInfo'
 import { BlogTags } from './BlogTags'
 import { CodeBlock } from './CodeBlock'
+import { DownloadMarkdownButton } from './DownloadMarkdownButton'
+import { DownloadPdfButton } from './DownloadPdfButton'
 import { ParagraphBlock } from './ParagraphBlock'
 import { TableOfContents } from './TableOfContents'
 
@@ -26,7 +28,8 @@ const shareSites = [
 export default function BlogPost({
 	data,
 	content,
-	readingTime
+	readingTime,
+	slug
 }: {
 	// biome-ignore lint: Irrelevant
 	data: any
@@ -35,6 +38,8 @@ export default function BlogPost({
 	slug: string
 }) {
 	const url = typeof window !== 'undefined' ? window.location.href : ''
+	const articleRef = useRef<HTMLElement | null>(null)
+	const [isTocOpen, setIsTocOpen] = useState(true)
 
 	useEffect(() => {
 		const observer = new IntersectionObserver((entries) => {
@@ -106,26 +111,35 @@ export default function BlogPost({
 							<div className='divider my-0 sm:hidden' />
 
 							<div className='w-full sm:absolute sm:right-6 sm:top-1/2 sm:w-auto sm:-translate-y-1/2'>
-								<RWebShare
-									data={{
-										text: data.description,
-										url,
-										title: `Blog | ${data.title}`
-									}}
-									sites={shareSites}
-								>
-									<button
-										type='button'
-										className='btn btn-outline btn-md w-full gap-2 rounded-xl font-semibold sm:btn-ghost sm:btn-square sm:btn-lg sm:w-auto sm:rounded-lg md:p-4'
-										aria-label='Share article'
-										title='Share article'
+								<div className='flex w-full flex-row flex-nowrap items-center gap-2 sm:w-auto'>
+									<RWebShare
+										data={{
+											text: data.description,
+											url,
+											title: `Blog | ${data.title}`
+										}}
+										sites={shareSites}
 									>
-										<FaShare className='h-5 w-5 sm:h-7 sm:w-7' />
-										<span className='sm:hidden text-lg'>
-											Share
-										</span>
-									</button>
-								</RWebShare>
+										<button
+											type='button'
+											className='btn btn-outline btn-md w-full flex-1 gap-2 rounded-xl font-semibold sm:btn-ghost sm:btn-square sm:btn-lg sm:w-auto sm:flex-none sm:rounded-lg md:p-4'
+											aria-label='Share article'
+											title='Share article'
+										>
+											<FaShare className='h-5 w-5 sm:h-7 sm:w-7' />
+											<span className='sm:hidden text-lg'>
+												Share
+											</span>
+										</button>
+									</RWebShare>
+
+									<DownloadMarkdownButton slug={slug} />
+									<DownloadPdfButton
+										articleRef={articleRef}
+										slug={slug}
+										title={data?.title}
+									/>
+								</div>
 							</div>
 						</div>
 					</section>
@@ -135,7 +149,10 @@ export default function BlogPost({
 					<TableOfContents content={content} className='w-full' />
 				</div>
 
-				<article className='prose prose-pre:leading-none max-w-none prose-img:m-0 w-full pb-20 prose-headings:scroll-mt-20 mt-5'>
+				<article
+					ref={articleRef}
+					className='prose prose-pre:leading-none max-w-none prose-img:m-0 w-full pb-20 prose-headings:scroll-mt-20 mt-5'
+				>
 					<ReactMarkdown
 						remarkPlugins={[remarkGfm]}
 						rehypePlugins={[rehypeSlug]}
@@ -151,10 +168,43 @@ export default function BlogPost({
 				</article>
 			</div>
 
-			<TableOfContents
-				content={content}
-				className='sticky top-32 hidden xl:block w-80 max-h-[calc(100vh-12rem)]'
-			/>
+			<button
+				type='button'
+				onClick={() => setIsTocOpen((prev) => !prev)}
+				className='hidden xl:flex fixed right-8 top-32 z-40 btn btn-outline btn-sm rounded-full font-semibold bg-base-100/80 backdrop-blur border-base-300 shadow-sm p-2 h-10 w-10 items-center justify-center'
+				aria-expanded={isTocOpen}
+				aria-controls='post-toc'
+				aria-label={
+					isTocOpen
+						? 'Hide table of contents'
+						: 'Show table of contents'
+				}
+				title={
+					isTocOpen
+						? 'Hide table of contents'
+						: 'Show table of contents'
+				}
+			>
+				<FaChevronRight
+					className={`h-4 w-4 transition-transform duration-200 ${
+						isTocOpen ? 'rotate-0' : 'rotate-180'
+					}`}
+				/>
+			</button>
+			<div
+				id='post-toc'
+				className={`sticky top-32 hidden xl:flex max-h-[calc(100vh-12rem)] shrink-0 flex-col overflow-hidden transition-all duration-300 ease-out ${
+					isTocOpen
+						? 'w-80 opacity-100 translate-x-0'
+						: 'w-0 opacity-0 translate-x-4 pointer-events-none'
+				}`}
+				aria-hidden={!isTocOpen}
+			>
+				<TableOfContents
+					content={content}
+					className='w-80 max-h-[calc(100vh-12rem)]'
+				/>
+			</div>
 		</main>
 	)
 }

@@ -91,13 +91,13 @@ Remember: it is better to have one reliable service running well than ten broken
 
 ---
 
-### Helpful resources
+## Helpful resources
 
 - [**r/selfhosted**](https://www.reddit.com/r/selfhosted/) – main subreddit for discussions, tutorials, and questions.  
 - [**awesome-selfhosted**](https://github.com/awesome-selfhosted/awesome-selfhosted) – a massive list of selfhostable software.  
 - [**PoProstuWitold/homeserver**](https://github.com/PoProstuWitold/homeserver) – my personal guide and documentation of my setups (Cloudflare tunnels & port forwarding).  
 
-### YouTube channels worth checking
+## YouTube channels worth checking
 
 - [**DB Tech**](https://www.youtube.com/@DBTechYT) – practical tutorials for Docker and selfhosting.  
 - [**TechHut**](https://www.youtube.com/@TechHut) – Linux, hardware, and privacy focused.  

@@ -191,7 +191,7 @@ Here are the most common approaches:
 
 ---
 
-### 🔁 **Short expiration time + refresh tokens**
+### **Short expiration time + refresh tokens**
 
 Instead of trying to revoke tokens, you make them expire quickly (e.g. in 15 minutes) and issue a long-lived **refresh token** that can request a new access token.
 
@@ -203,7 +203,7 @@ This is the most popular and scalable method.
 
 ---
 
-### 🗑️ **Token blacklist**
+### **Token blacklist**
 
 The server keeps a list (in memory or database) of **revoked tokens**.
 
@@ -214,7 +214,7 @@ The server keeps a list (in memory or database) of **revoked tokens**.
 
 ---
 
-### 💡 **Token versioning**
+### **Token versioning**
 
 Store a `tokenVersion` (or similar) field in the user's database record.
 
