@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	productionBrowserSourceMaps: true,
 	experimental: {
-		optimizePackageImports: ['react-icons', 'motion', '@headlessui/react']
+		optimizePackageImports: ['react-icons', 'motion', '@headlessui/react'],
+		useTypeScriptCli: true
 	}
 }
 
