@@ -1,3 +1,7 @@
+'use client'
+
+import { useLayoutEffect, useMemo, useRef, useState } from 'react'
+
 type BlogTagsProps = {
 	tags?: string[]
 	selectedTags?: string[]
@@ -21,22 +25,44 @@ export function BlogTags({
 	size = 'sm',
 	className
 }: BlogTagsProps) {
-	if (tags.length === 0 && !showAll) {
-		return null
-	}
+	const containerRef = useRef<HTMLDivElement>(null)
+	const allTagMeasureRef = useRef<HTMLSpanElement>(null)
+	const overflowMeasureRef = useRef<HTMLSpanElement>(null)
+	const tagMeasureRefs = useRef<Array<HTMLSpanElement | null>>([])
+
+	const [visibleTagCount, setVisibleTagCount] = useState(0)
+	const [measuredKey, setMeasuredKey] = useState<string | null>(null)
+
+	const measurementKey = useMemo(
+		() =>
+			JSON.stringify({
+				tags,
+				showAll,
+				allLabel,
+				size
+			}),
+		[tags, showAll, allLabel, size]
+	)
 
 	const isFilterMode = showAll && Boolean(onTagClick)
+	const isMeasured = size !== 'sm' || measuredKey === measurementKey
 
 	const sizeClasses = {
 		sm: 'px-2.5 py-1 text-xs',
 		md: 'px-3.5 py-1.5 text-sm'
 	}
 
+	const baseTagClassName =
+		'inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md border font-semibold leading-none'
+
 	const staticTagClassName =
 		'border-secondary bg-secondary text-secondary-content'
 
 	const neutralTagClassName =
 		'border-base-300 bg-base-200 text-base-content/80'
+
+	const overflowTagClassName =
+		'border-base-300 bg-base-200 text-base-content/70'
 
 	const getIsSelected = (tag: string) => {
 		if (tag === '') {
@@ -54,7 +80,7 @@ export function BlogTags({
 			: staticTagClassName
 
 		return cn(
-			'inline-flex items-center justify-center rounded-md border font-semibold leading-none',
+			baseTagClassName,
 			'transition-colors duration-150',
 			sizeClasses[size],
 			colorClassName,
@@ -69,18 +95,18 @@ export function BlogTags({
 		)
 	}
 
-	const renderTag = (tag: string, label = tag) => {
+	const renderTag = (tag: string, label = tag, key: string = tag) => {
 		const isSelected = getIsSelected(tag)
 		const tagClassName = getTagClassName(isSelected)
 
 		if (isFilterMode) {
 			return (
 				<button
-					key={tag === '' ? 'all' : tag}
-					className={tagClassName}
-					onClick={() => onTagClick?.(tag)}
+					key={key}
 					type='button'
+					className={tagClassName}
 					aria-pressed={isSelected}
+					onClick={() => onTagClick?.(tag)}
 				>
 					{label}
 				</button>
@@ -88,16 +114,207 @@ export function BlogTags({
 		}
 
 		return (
-			<span key={tag} className={tagClassName}>
+			<span key={key} className={tagClassName}>
 				{label}
 			</span>
 		)
 	}
 
+	useLayoutEffect(() => {
+		if (size !== 'sm') {
+			setVisibleTagCount(tags.length)
+			setMeasuredKey(measurementKey)
+			return
+		}
+
+		const container = containerRef.current
+		const overflowMeasure = overflowMeasureRef.current
+
+		if (!container || !overflowMeasure) {
+			return
+		}
+
+		let isActive = true
+
+		const finishMeasurement = (count: number) => {
+			if (!isActive) {
+				return
+			}
+
+			setVisibleTagCount(count)
+			setMeasuredKey(measurementKey)
+		}
+
+		const calculateVisibleTags = () => {
+			if (!isActive) {
+				return
+			}
+
+			const containerWidth = container.clientWidth
+
+			if (containerWidth === 0) {
+				return
+			}
+
+			const containerStyles = window.getComputedStyle(container)
+			const gap =
+				Number.parseFloat(
+					containerStyles.columnGap || containerStyles.gap
+				) || 0
+
+			const allTagWidth = showAll
+				? (allTagMeasureRef.current?.getBoundingClientRect().width ?? 0)
+				: 0
+
+			const tagWidths = tags.map(
+				(_, index) =>
+					tagMeasureRefs.current[index]?.getBoundingClientRect()
+						.width ?? 0
+			)
+
+			const getRequiredWidth = (
+				tagCount: number,
+				includeOverflowIndicator: boolean
+			) => {
+				const widths: number[] = []
+
+				if (showAll) {
+					widths.push(allTagWidth)
+				}
+
+				widths.push(...tagWidths.slice(0, tagCount))
+
+				if (includeOverflowIndicator) {
+					const hiddenTagCount = tags.length - tagCount
+
+					overflowMeasure.textContent = `+${hiddenTagCount}`
+					widths.push(overflowMeasure.getBoundingClientRect().width)
+				}
+
+				if (widths.length === 0) {
+					return 0
+				}
+
+				const totalItemsWidth = widths.reduce(
+					(total, width) => total + width,
+					0
+				)
+
+				const totalGapWidth = gap * (widths.length - 1)
+
+				return totalItemsWidth + totalGapWidth
+			}
+
+			if (getRequiredWidth(tags.length, false) <= containerWidth) {
+				finishMeasurement(tags.length)
+				return
+			}
+
+			for (let count = tags.length - 1; count >= 0; count -= 1) {
+				if (getRequiredWidth(count, true) <= containerWidth) {
+					finishMeasurement(count)
+					return
+				}
+			}
+
+			finishMeasurement(0)
+		}
+
+		calculateVisibleTags()
+
+		const resizeObserver = new ResizeObserver(calculateVisibleTags)
+
+		resizeObserver.observe(container)
+
+		void document.fonts?.ready.then(() => {
+			if (isActive) {
+				calculateVisibleTags()
+			}
+		})
+
+		return () => {
+			isActive = false
+			resizeObserver.disconnect()
+		}
+	}, [measurementKey, showAll, size, tags])
+
+	if (tags.length === 0 && !showAll) {
+		return null
+	}
+
+	const visibleTags = size === 'sm' ? tags.slice(0, visibleTagCount) : tags
+
+	const hiddenTagCount = size === 'sm' ? tags.length - visibleTagCount : 0
+
 	return (
-		<div className={cn('flex flex-wrap items-center gap-2', className)}>
-			{showAll && renderTag('', allLabel)}
-			{tags.map((tag) => renderTag(tag))}
+		<div
+			className={cn(
+				'relative w-full',
+				size === 'sm' && 'min-h-6',
+				className
+			)}
+		>
+			<div
+				ref={containerRef}
+				aria-hidden={!isMeasured}
+				className={cn(
+					'flex items-center gap-2',
+					size === 'sm' ? 'flex-nowrap overflow-hidden' : 'flex-wrap',
+					isMeasured ? 'visible' : 'invisible'
+				)}
+			>
+				{showAll && renderTag('', allLabel, 'all')}
+
+				{visibleTags.map((tag, index) =>
+					renderTag(tag, tag, `tag-${index}-${tag}`)
+				)}
+
+				{hiddenTagCount > 0 && (
+					<span
+						className={cn(
+							baseTagClassName,
+							sizeClasses[size],
+							overflowTagClassName
+						)}
+						title={tags.slice(visibleTagCount).join(', ')}
+					>
+						+{hiddenTagCount}
+					</span>
+				)}
+			</div>
+
+			<div
+				aria-hidden='true'
+				className='pointer-events-none invisible absolute left-0 top-0 flex h-0 w-0 items-center gap-2 overflow-hidden'
+			>
+				{showAll && (
+					<span
+						ref={allTagMeasureRef}
+						className={cn(baseTagClassName, sizeClasses[size])}
+					>
+						{allLabel}
+					</span>
+				)}
+
+				{tags.map((tag, index) => (
+					<span
+						key={`measure-${index}-${tag}`}
+						ref={(element) => {
+							tagMeasureRefs.current[index] = element
+						}}
+						className={cn(baseTagClassName, sizeClasses[size])}
+					>
+						{tag}
+					</span>
+				))}
+
+				<span
+					ref={overflowMeasureRef}
+					className={cn(baseTagClassName, sizeClasses[size])}
+				>
+					+0
+				</span>
+			</div>
 		</div>
 	)
 }

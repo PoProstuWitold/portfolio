@@ -6,7 +6,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = () => {
 	return (
-		<footer className='p-10 bg-neutral text-neutral-content'>
+		<footer className='p-10 bg-base-300'>
 			<div className='footer grid grid-cols-1 md:grid-cols-2 gap-4'>
 				<div className='mb-6'>
 					<span className='mb-1 font-bold uppercase'>
@@ -21,7 +21,7 @@ export const Footer: React.FC<FooterProps> = () => {
 					</div>
 				</div>
 			</div>
-			<div className='my-10 border-t border-neutral-content' />
+			<div className='my-10 border-t' />
 			<div className='justify-center mx-auto md:text-center'>
 				<p>
 					Copyright © {new Date().getFullYear()} Witold Zawada - All

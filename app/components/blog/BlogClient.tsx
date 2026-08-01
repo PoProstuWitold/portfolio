@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { FiChevronDown } from 'react-icons/fi'
 import type { IPost } from '@/utils/blog-utils'
 import { Breadcrumbs } from '../core/Breadcrumbs'
 import { BlogCard } from './BlogCard'
@@ -120,13 +121,18 @@ export default function BlogClient({ posts, tags }: Props) {
 
 				{/* Load More */}
 				{filteredPosts.length > visiblePosts && (
-					<div className='mt-8 flex justify-center'>
+					<div className='mt-10 flex justify-center'>
 						<button
-							onClick={loadMorePosts}
-							className='cursor-pointer px-6 py-2.5 rounded-lg border border-base-content/10 bg-base-100 font-semibold text-base-content hover:bg-base-200 transition-colors'
 							type='button'
+							onClick={loadMorePosts}
+							className='group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-primary/25 bg-primary/5 px-5 py-2.5 font-semibold text-primary shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary hover:text-primary-content hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 active:translate-y-0'
 						>
-							Load More Posts
+							<span>Load more posts</span>
+
+							<FiChevronDown
+								aria-hidden='true'
+								className='h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5'
+							/>
 						</button>
 					</div>
 				)}

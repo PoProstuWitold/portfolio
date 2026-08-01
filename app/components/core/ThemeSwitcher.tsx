@@ -9,6 +9,7 @@ import {
 	FaHeart,
 	FaLeaf,
 	FaMoon,
+	FaRegCircle,
 	FaSnowflake,
 	FaSun
 } from 'react-icons/fa'
@@ -22,6 +23,7 @@ export function ThemeSwitcher() {
 		{ name: 'system', label: 'System', icon: <FaDesktop size={16} /> },
 		{ name: 'light', label: 'Light', icon: <FaSun size={16} /> },
 		{ name: 'dark', label: 'Dark', icon: <FaMoon size={16} /> },
+		{ name: 'oled', label: 'OLED', icon: <FaRegCircle size={16} /> },
 		{ name: 'emerald', label: 'Emerald', icon: <FaLeaf size={16} /> },
 		{ name: 'valentine', label: 'Valentine', icon: <FaHeart size={16} /> },
 		{ name: 'halloween', label: 'Halloween', icon: <FaGhost size={16} /> },
@@ -42,10 +44,10 @@ export function ThemeSwitcher() {
 			>
 				<span className='flex items-center gap-2'>
 					Theme
-					<HiOutlineColorSwatch size={20} className='mt-[1px]' />
+					<HiOutlineColorSwatch size={20} />
 				</span>
 			</button>
-			<ul className='dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52 mt-2 max-h-96 overflow-y-auto'>
+			<ul className='dropdown-content z-1 menu p-2 shadow bg-base-200 rounded-box w-52 max-h-96 overflow-y-auto'>
 				{themes.map((item) => {
 					const isActive = item.name === theme
 					return (

@@ -45,10 +45,10 @@ export const Main: React.FC = () => {
 					</h1>
 
 					<h2 className='mt-5 text-xl font-semibold tracking-wide sm:text-2xl'>
-						Software Engineer
+						Software Engineer · Selfhoster
 					</h2>
 
-					<p className='mt-6 max-w-2xl text-lg leading-relaxed text-base-content/90 sm:text-xl'>
+					<p className='mt-6 max-w-3xl text-lg leading-relaxed text-base-content/90 sm:text-xl'>
 						I build backend systems and fullstack applications with{' '}
 						<span className='font-semibold text-base-content'>
 							TypeScript
@@ -57,7 +57,7 @@ export const Main: React.FC = () => {
 						<span className='font-semibold text-base-content'>
 							Go
 						</span>
-						, focusing on scalable architectures and{' '}
+						, focusing on secure, maintainable architecture and{' '}
 						<span className='font-semibold text-base-content'>
 							selfhosted infrastructure
 						</span>

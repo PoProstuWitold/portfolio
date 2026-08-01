@@ -1,16 +1,11 @@
 'use client'
-import {
-	createContext,
-	useCallback,
-	useContext,
-	useEffect,
-	useState
-} from 'react'
+import { createContext, useContext, useLayoutEffect, useState } from 'react'
 
 const themes = [
 	'system',
 	'light',
 	'dark',
+	'oled',
 	'emerald',
 	'retro',
 	'cyberpunk',
@@ -22,6 +17,11 @@ const themes = [
 ] as const
 
 export type Theme = (typeof themes)[number]
+
+type SystemTheme = 'light' | 'dark'
+
+const isTheme = (value: string | null): value is Theme =>
+	value !== null && themes.includes(value as Theme)
 
 interface ThemeContextType {
 	theme: Theme
@@ -39,29 +39,37 @@ export const ThemeProvider = ({
 }) => {
 	const [theme, setTheme] = useState<Theme>(defaultTheme)
 
-	const applyTheme = useCallback((newTheme: Theme) => {
-		const root = document.documentElement
-		const actualTheme =
-			newTheme === 'system'
-				? window.matchMedia('(prefers-color-scheme: dark)').matches
-					? 'dark'
-					: 'light'
-				: newTheme
+	useLayoutEffect(() => {
+		const storedTheme = localStorage.getItem('theme')
+		const savedTheme = isTheme(storedTheme) ? storedTheme : defaultTheme
 
-		root.setAttribute('data-theme', actualTheme)
-		localStorage.setItem('theme', newTheme)
-	}, [])
-
-	useEffect(() => {
-		const savedTheme =
-			(localStorage.getItem('theme') as Theme) || defaultTheme
 		setTheme(savedTheme)
-		applyTheme(savedTheme)
-	}, [defaultTheme, applyTheme])
+		if (storedTheme !== savedTheme)
+			localStorage.setItem('theme', savedTheme)
+	}, [defaultTheme])
+
+	useLayoutEffect(() => {
+		const root = document.documentElement
+		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+		const applyTheme = () => {
+			const preferredTheme: SystemTheme = mediaQuery.matches
+				? 'dark'
+				: 'light'
+			root.setAttribute(
+				'data-theme',
+				theme === 'system' ? preferredTheme : theme
+			)
+		}
+
+		applyTheme()
+		mediaQuery.addEventListener('change', applyTheme)
+
+		return () => mediaQuery.removeEventListener('change', applyTheme)
+	}, [theme])
 
 	const changeTheme = (newTheme: Theme) => {
 		setTheme(newTheme)
-		applyTheme(newTheme)
+		localStorage.setItem('theme', newTheme)
 	}
 
 	return (

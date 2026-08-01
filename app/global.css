@@ -29,20 +29,112 @@
 
 @plugin "daisyui/theme" {
 	name: "dark";
-	--color-primary: #2ecc71;
-	--color-secondary: #0450dc;
-	--color-accent: #3498db;
-	--color-neutral: #19222d;
-	--color-neutral-focus: #1c2531;
-	--color-neutral-content: #b2b9c3;
-	--color-base-100: #25303d;
-	--color-base-200: #1e2731;
-	--color-base-300: #1b222c;
-	--color-base-content: #aeb5c0;
-	--color-info: #2980b9;
-	--color-success: #27ae60;
-	--color-warning: #f39c12;
-	--color-error: #c0392b;
+	default: false;
+	prefersdark: true;
+	color-scheme: dark;
+
+	/* Lighter graphite surfaces */
+	--color-base-100: oklch(23% 0.014 260);
+	--color-base-200: oklch(19% 0.013 260);
+	--color-base-300: oklch(15% 0.012 260);
+	--color-base-content: oklch(94% 0.008 160);
+
+	/* Emerald */
+	--color-primary: oklch(72% 0.18 158);
+	--color-primary-content: oklch(13% 0.035 158);
+
+	/* Indigo */
+	--color-secondary: oklch(72% 0.16 268);
+	--color-secondary-content: oklch(14% 0.035 268);
+
+	/* Cyan */
+	--color-accent: oklch(77% 0.14 195);
+	--color-accent-content: oklch(14% 0.035 195);
+
+	/* Neutral */
+	--color-neutral: oklch(28% 0.015 260);
+	--color-neutral-content: oklch(93% 0.008 260);
+
+	/* Semantic */
+	--color-info: oklch(74% 0.15 240);
+	--color-info-content: oklch(14% 0.04 240);
+
+	--color-success: oklch(73% 0.17 150);
+	--color-success-content: oklch(14% 0.04 150);
+
+	--color-warning: oklch(82% 0.17 78);
+	--color-warning-content: oklch(19% 0.05 70);
+
+	--color-error: oklch(70% 0.2 25);
+	--color-error-content: oklch(14% 0.045 25);
+
+	/* Shape */
+	--radius-selector: 0.625rem;
+	--radius-field: 0.75rem;
+	--radius-box: 1rem;
+
+	--size-selector: 0.25rem;
+	--size-field: 0.25rem;
+
+	--border: 1px;
+	--depth: 1;
+	--noise: 0;
+}
+
+@plugin "daisyui/theme" {
+	name: "oled";
+	default: false;
+	prefersdark: false;
+	color-scheme: dark;
+
+	/* True black surfaces */
+	--color-base-100: oklch(0% 0 0);
+	--color-base-200: oklch(6% 0.008 260);
+	--color-base-300: oklch(11% 0.012 260);
+	--color-base-content: oklch(96% 0.008 160);
+
+	/* Same emerald identity as dark */
+	--color-primary: oklch(72% 0.18 158);
+	--color-primary-content: oklch(11% 0.035 158);
+
+	--color-secondary: oklch(72% 0.16 268);
+	--color-secondary-content: oklch(11% 0.035 268);
+
+	--color-accent: oklch(77% 0.14 195);
+	--color-accent-content: oklch(11% 0.035 195);
+
+	/* Neutral */
+	--color-neutral: oklch(14% 0.012 260);
+	--color-neutral-content: oklch(95% 0.008 260);
+
+	/* Semantic */
+	--color-info: oklch(74% 0.15 240);
+	--color-info-content: oklch(11% 0.04 240);
+
+	--color-success: oklch(73% 0.17 150);
+	--color-success-content: oklch(11% 0.04 150);
+
+	--color-warning: oklch(82% 0.17 78);
+	--color-warning-content: oklch(17% 0.05 70);
+
+	--color-error: oklch(70% 0.2 25);
+	--color-error-content: oklch(11% 0.045 25);
+
+	/* Shape */
+	--radius-selector: 0.625rem;
+	--radius-field: 0.75rem;
+	--radius-box: 1rem;
+
+	--size-selector: 0.25rem;
+	--size-field: 0.25rem;
+
+	--border: 1px;
+	--depth: 0;
+	--noise: 0;
+}
+
+@theme {
+	--color-pollub: #bc1d29;
 }
 
 @layer base {

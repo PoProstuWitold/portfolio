@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { AiOutlineFilePdf } from 'react-icons/ai'
-import { FaGraduationCap } from 'react-icons/fa'
 
 export const About: React.FC = () => {
 	return (
@@ -10,56 +9,79 @@ export const About: React.FC = () => {
 			className='flex min-h-screen cursor-default flex-col items-center justify-center bg-base-100 py-24'
 		>
 			<div className='w-full max-w-6xl px-6 lg:px-12 xl:px-0'>
-				<div className='flex items-center justify-between mb-6'>
-					<h2 className='text-4xl font-extrabold tracking-tight md:text-6xl text-base-content whitespace-nowrap'>
-						About Me
+				<div className='mb-6 flex items-center justify-between'>
+					<h2 className='whitespace-nowrap text-4xl font-extrabold tracking-tight text-base-content md:text-6xl'>
+						About
 					</h2>
-					<div className='w-full h-px ml-8 bg-base-content/10 sm:block' />
+
+					<div className='ml-8 h-px w-full bg-base-content/10 sm:block' />
 				</div>
 
 				<div className='grid grid-cols-1 items-start gap-16 lg:grid-cols-12'>
-					<div className='col-span-1 flex flex-col gap-8 text-lg leading-relaxed text-base-content/80 lg:col-span-7'>
-						<p>
-							I am a software engineer focused on backend systems,
-							APIs, and full-stack web applications. I enjoy
-							designing solutions that are secure, maintainable,
-							and built to scale.
+					<div className='col-span-1 flex flex-col gap-7 leading-relaxed lg:col-span-7'>
+						<p className='text-xl text-base-content/85'>
+							I&apos;m a software engineer from Poland working
+							primarily with{' '}
+							<strong className='font-semibold text-base-content'>
+								TypeScript, Node.js, Go, React, Next.js, Hono
+								and PostgreSQL
+							</strong>
+							.
 						</p>
 
-						<div className='flex gap-5 rounded-2xl border border-base-content/10 bg-base-200/50 p-6 shadow-sm'>
-							<div className='mt-1 shrink-0 text-primary'>
-								<FaGraduationCap className='h-8 w-8' />
-							</div>
-
-							<div className='flex flex-col gap-2'>
-								<h3 className='text-lg font-bold text-base-content'>
-									Computer Science Engineering
-								</h3>
-
-								<p className='text-base leading-relaxed text-base-content/80'>
-									I hold an Engineer's degree (B.Eng.) from{' '}
-									<strong>
-										Lublin University of Technology
-									</strong>{' '}
-									and I am currently continuing my education
-									there with a Master's degree in Computer
-									Science.
-								</p>
-							</div>
-						</div>
-
-						<p>
-							My main technologies are <strong>TypeScript</strong>
-							, <strong>Node.js</strong>, and <strong>Go</strong>.
-							I work with tools such as Next.js, Hono, PostgreSQL,
-							and Docker, and I am especially interested in
-							selfhosting, infrastructure, and building software I
-							can fully control and deploy myself.
+						<p className='text-lg text-base-content/75'>
+							I build backend systems and web applications with{' '}
+							<strong className='font-semibold text-base-content'>
+								predictable behavior
+							</strong>
+							,{' '}
+							<strong className='font-semibold text-base-content'>
+								clear boundaries
+							</strong>{' '}
+							and{' '}
+							<strong className='font-semibold text-base-content'>
+								security integrated into the design
+							</strong>
+							.
 						</p>
 
-						<p>
+						<p className='text-lg text-base-content/75'>
+							I design and operate my own{' '}
+							<strong className='font-semibold text-base-content'>
+								selfhosted infrastructure
+							</strong>
+							, giving me practical experience with{' '}
+							<strong className='font-semibold text-base-content'>
+								Linux, Docker, networking, reverse proxies, DNS,
+								monitoring and service administration
+							</strong>
+							.
+						</p>
+
+						<p className='border-l-2 border-pollub pl-5 text-lg text-base-content/75'>
+							I hold a{' '}
+							<strong className='font-semibold text-base-content'>
+								Bachelor of Engineering in Computer Science
+							</strong>{' '}
+							from{' '}
+							<a
+								href='https://pollub.pl/'
+								target='_blank'
+								rel='noopener noreferrer'
+								className='font-semibold text-pollub underline decoration-pollub/35 underline-offset-4 transition-[text-decoration-color] hover:decoration-pollub'
+							>
+								Lublin University of Technology
+							</a>{' '}
+							and I am currently pursuing a{' '}
+							<strong className='font-semibold text-base-content'>
+								Master of Engineering in Computer Science
+							</strong>{' '}
+							at the same university.
+						</p>
+
+						<p className='text-lg text-base-content/75'>
 							Outside of IT, I enjoy skiing, cooking, history,
-							karaoke, and spending time with animals.
+							karaoke, video games and spending time with animals.
 						</p>
 					</div>
 
@@ -79,9 +101,11 @@ export const About: React.FC = () => {
 						<div className='flex w-full max-w-[320px] flex-col gap-3'>
 							<div className='mb-3 flex items-center gap-4'>
 								<div className='h-px flex-1 bg-base-content/10' />
+
 								<span className='text-[10px] font-bold uppercase tracking-widest text-base-content/90'>
-									Download Resume
+									Download CV
 								</span>
+
 								<div className='h-px flex-1 bg-base-content/10' />
 							</div>
 
@@ -92,8 +116,9 @@ export const About: React.FC = () => {
 								className='btn btn-outline flex w-full items-center justify-center gap-3 border-base-content/20 bg-base-100 hover:bg-base-content/5'
 							>
 								<AiOutlineFilePdf className='h-5 w-5 text-error' />
+
 								<span className='font-semibold'>
-									CV (English)
+									CV in English
 								</span>
 							</Link>
 
@@ -104,8 +129,9 @@ export const About: React.FC = () => {
 								className='btn btn-outline flex w-full items-center justify-center gap-3 border-base-content/20 bg-base-100 hover:bg-base-content/5'
 							>
 								<AiOutlineFilePdf className='h-5 w-5 text-error' />
+
 								<span className='font-semibold'>
-									CV (Polish)
+									CV in Polish
 								</span>
 							</Link>
 						</div>
