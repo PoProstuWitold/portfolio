@@ -64,7 +64,9 @@ export const featuredProjects: ProjectDocument[] = [
 	{
 		name: 'homeserver',
 		formattedName: 'Homeserver',
-		description: `My two personal, opinionated home server setups. One using Port Forwarding and the other using Cloudflare Tunnels. Both with detailed "to-do like" instructions, explanations as well as links to various resources.`,
+		description: `
+		A practical, opinionated guide to building and maintaining a self-hosted home server. It documents three generations of my infrastructure - from Cloudflare Tunnels and bare-metal Docker to a modern Proxmox VE environment with virtual machines, LXC containers, and Infrastructure as Code.
+		`,
 		type: 'Guide/Tutorial',
 		skills: [
 			'Linux',
