@@ -1,10 +1,10 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.4.13/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.5.11/schema.json",
 	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true,
+			"preset": "recommended",
 			"suspicious": {
 				"noArrayIndexKey": "off"
 			},
@@ -52,6 +52,6 @@
 		}
 	},
 	"files": {
-		"includes": ["**", "!**/global.css"]
+		"includes": ["**", "!!**/node_modules", "!!**/.next", "!**/global.css"]
 	}
 }
