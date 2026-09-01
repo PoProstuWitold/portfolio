@@ -1,27 +1,34 @@
-﻿name: Tests
+﻿name: CI
 
 on:
-    pull_request:
-    push:
-        branches:
-            - main
-            - master
-            - dev
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+      - dev
+
+permissions:
+  contents: read
 
 jobs:
-    test:
-        name: Running unit tests
-        runs-on: ubuntu-latest
-        steps:
-            - name: Actions Setup
-              uses: actions/checkout@v3
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v3
-              with:
-                  node-version: ${{ matrix.node-version }}
-            - name: Pnpm Setup
-              run: npm install -g pnpm
-            - name: Install
-              run: pnpm install --no-frozen-lockfile
-            - name: Test
-              run: pnpm test
+  ci:
+    name: Check, test, and build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up pnpm and Node.js
+        uses: pnpm/setup@v2
+        with:
+          runtime: node@22
+          cache: true
+          install: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run CI pipeline
+        run: pnpm run ci

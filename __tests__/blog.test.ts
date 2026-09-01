@@ -1,4 +1,6 @@
 import { deepStrictEqual, strictEqual, throws } from 'node:assert'
+import { statSync } from 'node:fs'
+import { join } from 'node:path'
 import { describe, it } from 'node:test'
 import {
 	comparePostsByRecency,
@@ -9,6 +11,18 @@ import {
 	toIsoPostDate,
 	validatePostMetadata
 } from '../app/blog/post-domain'
+import { getBlogTagHref, getSelectedBlogTags } from '../app/blog/tag-query'
+
+const publicDirectory = join(process.cwd(), 'public')
+const validationOptions = {
+	socialImageExists(path: string) {
+		try {
+			return statSync(join(publicDirectory, path)).isFile()
+		} catch {
+			return false
+		}
+	}
+}
 
 const validMetadata = {
 	title: 'A valid post',
@@ -17,13 +31,17 @@ const validMetadata = {
 	date: '2025-01-10 09:00',
 	updated: '2025-01-12 10:30',
 	tags: ['TypeScript'],
-	socialImage: 'images/blog/example.webp'
+	socialImage: 'images/blog/rss-atom.webp'
 }
 
 describe('blog post metadata', () => {
 	it('accepts complete, typed frontmatter', () => {
 		deepStrictEqual(
-			validatePostMetadata(validMetadata, 'valid-post.md'),
+			validatePostMetadata(
+				validMetadata,
+				'valid-post.md',
+				validationOptions
+			),
 			validMetadata
 		)
 	})
@@ -33,7 +51,8 @@ describe('blog post metadata', () => {
 			() =>
 				validatePostMetadata(
 					{ ...validMetadata, date: 'January 10, 2025' },
-					'broken-post.md'
+					'broken-post.md',
+					validationOptions
 				),
 			/Invalid frontmatter in "broken-post\.md"/
 		)
@@ -54,8 +73,65 @@ describe('blog post metadata', () => {
 		throws(() =>
 			validatePostMetadata(
 				{ ...validMetadata, socialImage: '../private.webp' },
-				'unsafe-image.md'
+				'unsafe-image.md',
+				validationOptions
 			)
+		)
+	})
+
+	it('requires updated to be on or after the publication date', () => {
+		throws(
+			() =>
+				validatePostMetadata(
+					{
+						...validMetadata,
+						updated: '2025-01-09 09:00'
+					},
+					'invalid-update.md',
+					validationOptions
+				),
+			/field "updated" must not be earlier than field "date"/
+		)
+	})
+
+	it('trims string values before returning validated metadata', () => {
+		deepStrictEqual(
+			validatePostMetadata(
+				{
+					...validMetadata,
+					title: '  A valid post  ',
+					authors: ['  Witold Zawada  '],
+					tags: [' TypeScript '],
+					socialImage: ' images/blog/rss-atom.webp '
+				},
+				'trimmed-post.md',
+				validationOptions
+			),
+			validMetadata
+		)
+	})
+
+	it('accepts an existing social image and rejects a missing file', () => {
+		strictEqual(
+			validatePostMetadata(
+				validMetadata,
+				'existing-image.md',
+				validationOptions
+			).socialImage,
+			'images/blog/rss-atom.webp'
+		)
+
+		throws(
+			() =>
+				validatePostMetadata(
+					{
+						...validMetadata,
+						socialImage: 'images/blog/does-not-exist.webp'
+					},
+					'missing-image.md',
+					validationOptions
+				),
+			/missing public file: "images\/blog\/does-not-exist\.webp"/
 		)
 	})
 })
@@ -107,5 +183,29 @@ describe('blog post ordering and slugs', () => {
 				{ id: 'details', level: 3, text: 'Details' }
 			]
 		)
+	})
+})
+
+describe('blog tag query', () => {
+	it('uses repeated query parameters without splitting hyphenated tags', () => {
+		const href = getBlogTagHref(['Node.js', 'CI-CD'])
+		const url = new URL(href, 'https://example.com')
+
+		deepStrictEqual(url.searchParams.getAll('tag'), ['Node.js', 'CI-CD'])
+		deepStrictEqual(
+			getSelectedBlogTags(url.searchParams.getAll('tag'), [
+				'Node.js',
+				'CI-CD'
+			]),
+			['Node.js', 'CI-CD']
+		)
+	})
+
+	it('ignores unknown and duplicate tag query values', () => {
+		deepStrictEqual(
+			getSelectedBlogTags(['Node.js', 'unknown', 'Node.js'], ['Node.js']),
+			['Node.js']
+		)
+		strictEqual(getBlogTagHref([]), '/blog')
 	})
 })

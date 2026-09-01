@@ -94,7 +94,7 @@ export const Navbar: React.FC = () => {
 							<a
 								href='/feed'
 								className='btn btn-ghost w-full justify-start flex items-center gap-3 text-base-content/80 hover:text-base-content hover:bg-base-content/5 text-base font-medium lg:justify-center lg:gap-1.5 lg:btn-sm lg:rounded-md lg:px-4 lg:text-sm'
-								aria-label='Open the RSS and Atom feed'
+								aria-label='Open the RSS feed'
 							>
 								Feed
 							</a>

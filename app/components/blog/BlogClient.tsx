@@ -1,46 +1,30 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FiChevronDown } from 'react-icons/fi'
 import type { PostSummary } from '@/blog/post-domain'
+import { getBlogTagHref } from '@/blog/tag-query'
 import { Breadcrumbs } from '../core/Breadcrumbs'
 import { BlogCard } from './BlogCard'
 import { BlogTags } from './BlogTags'
 
 interface Props {
+	initialSelectedTags: string[]
 	posts: PostSummary[]
 	tags: string[]
 }
 
-export default function BlogClient({ posts, tags }: Props) {
-	const [selectedTags, setSelectedTags] = useState<string[]>([])
+export default function BlogClient({
+	initialSelectedTags,
+	posts,
+	tags
+}: Props) {
+	const [selectedTags, setSelectedTags] =
+		useState<string[]>(initialSelectedTags)
 	const [visiblePosts, setVisiblePosts] = useState(3)
 
 	const router = useRouter()
-
-	useEffect(() => {
-		const availableTags = new Set(tags)
-		const syncTagsFromUrl = () => {
-			const raw = new URLSearchParams(window.location.search).get('tags')
-			const tagsFromQuery = raw
-				? Array.from(
-						new Set(
-							raw
-								.split('-')
-								.filter((tag) => availableTags.has(tag))
-						)
-					)
-				: []
-
-			setSelectedTags(tagsFromQuery)
-		}
-
-		syncTagsFromUrl()
-		window.addEventListener('popstate', syncTagsFromUrl)
-
-		return () => window.removeEventListener('popstate', syncTagsFromUrl)
-	}, [tags])
 
 	const handleTagClick = (tag: string) => {
 		if (
@@ -48,7 +32,7 @@ export default function BlogClient({ posts, tags }: Props) {
 			(selectedTags.includes(tag) && selectedTags.length === 1)
 		) {
 			setSelectedTags([])
-			router.push('/blog')
+			router.push(getBlogTagHref([]))
 			return
 		}
 
@@ -57,11 +41,7 @@ export default function BlogClient({ posts, tags }: Props) {
 			: [...selectedTags, tag]
 
 		setSelectedTags(newTags)
-		if (newTags.length > 0) {
-			router.push(`/blog?tags=${encodeURIComponent(newTags.join('-'))}`)
-		} else {
-			router.push('/blog')
-		}
+		router.push(getBlogTagHref(newTags))
 	}
 
 	const filteredPosts = posts.filter((post) =>
@@ -125,7 +105,7 @@ export default function BlogClient({ posts, tags }: Props) {
 							type='button'
 							onClick={() => {
 								setSelectedTags([])
-								router.push('/blog')
+								router.push(getBlogTagHref([]))
 							}}
 							className='mt-4 text-primary hover:underline'
 						>

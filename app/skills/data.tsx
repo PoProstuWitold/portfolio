@@ -18,11 +18,16 @@ import {
 	FaRobot,
 	FaShieldAlt
 } from 'react-icons/fa'
+import { LuContainer } from 'react-icons/lu'
+import { MdHistory, MdMonitorHeart } from 'react-icons/md'
 import {
+	SiBetterauth,
 	SiCaddy,
 	SiCloudflare,
 	SiDiscord,
 	SiDocker,
+	SiDrizzle,
+	SiFfmpeg,
 	SiGraphql,
 	SiHono,
 	SiJavascript,
@@ -30,17 +35,26 @@ import {
 	SiLinux,
 	SiNestjs,
 	SiNextdotjs,
+	SiOpenapiinitiative,
+	SiProxmox,
 	SiReact,
+	SiRss,
+	SiSocketdotio,
 	SiTailwindcss,
 	SiTurborepo,
 	SiTypescript,
 	SiWireguard
 } from 'react-icons/si'
-import { TbBoxMultiple, TbRoute } from 'react-icons/tb'
+import {
+	TbApi,
+	TbBoxMultiple,
+	TbCirclesRelation,
+	TbRoute
+} from 'react-icons/tb'
 
 export type SkillInfo = {
 	icon: JSX.Element
-	url: string
+	url: string | null
 	linkDescription?: string
 }
 
@@ -70,6 +84,22 @@ export const skillDataMap = {
 		linkDescription: 'Tailwind CSS'
 	},
 	Hono: { icon: <SiHono />, url: 'https://hono.dev/' },
+	'Better Auth': {
+		icon: <SiBetterauth />,
+		url: 'https://better-auth.com/'
+	},
+	'Drizzle ORM': {
+		icon: <SiDrizzle />,
+		url: 'https://drizzle.team/docs/orm'
+	},
+	'Socket.IO': {
+		icon: <SiSocketdotio />,
+		url: 'https://socket.io/docs/v4/'
+	},
+	OpenAPI: {
+		icon: <SiOpenapiinitiative />,
+		url: 'https://spec.openapis.org/oas/latest.html'
+	},
 	RPC: {
 		icon: <BiTransferAlt />,
 		url: 'https://en.wikipedia.org/wiki/Remote_procedure_call'
@@ -79,7 +109,15 @@ export const skillDataMap = {
 	Nodemailer: { icon: <FaEnvelope />, url: 'https://nodemailer.com/' },
 	'Discord.js': { icon: <SiDiscord />, url: 'https://discord.js.org/' },
 	Discordx: { icon: <FaRobot />, url: 'https://discordx.js.org/' },
-	Distube: { icon: <FaRobot />, url: 'https://distube.js.org/' },
+	DisTube: { icon: <FaRobot />, url: 'https://distube.js.org/' },
+	'Dependency Injection': {
+		icon: <TbCirclesRelation />,
+		url: 'https://en.wikipedia.org/wiki/Dependency_injection'
+	},
+	FFmpeg: {
+		icon: <SiFfmpeg />,
+		url: 'https://ffmpeg.org/documentation.html'
+	},
 	ESM: {
 		icon: <TbBoxMultiple />,
 		url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules'
@@ -90,6 +128,18 @@ export const skillDataMap = {
 		url: 'https://en.wikipedia.org/wiki/Computer_network'
 	},
 	Cloudflare: { icon: <SiCloudflare />, url: 'https://www.cloudflare.com/' },
+	'Cloudflare Tunnel': {
+		icon: <SiCloudflare />,
+		url: 'https://developers.cloudflare.com/tunnel/'
+	},
+	'Proxmox VE': {
+		icon: <SiProxmox />,
+		url: 'https://pve.proxmox.com/pve-docs/'
+	},
+	LXC: {
+		icon: <LuContainer />,
+		url: 'https://linuxcontainers.org/lxc/introduction/'
+	},
 	'Port Forwarding': {
 		icon: <TbRoute />,
 		url: 'https://en.wikipedia.org/wiki/Port_forwarding'
@@ -99,6 +149,18 @@ export const skillDataMap = {
 	VPN: {
 		icon: <SiWireguard />,
 		url: 'https://en.wikipedia.org/wiki/Virtual_private_network'
+	},
+	WireGuard: {
+		icon: <SiWireguard />,
+		url: 'https://www.wireguard.com/'
+	},
+	'RSS/Atom': {
+		icon: <SiRss />,
+		url: 'https://www.rssboard.org/rss-specification'
+	},
+	'System Monitoring': {
+		icon: <MdMonitorHeart />,
+		url: 'https://en.wikipedia.org/wiki/System_monitor'
 	},
 	HTML5: {
 		icon: <FaHtml5 />,
@@ -128,6 +190,14 @@ export const skillDataMap = {
 		icon: <BiPlug />,
 		url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API'
 	},
+	'History API': {
+		icon: <MdHistory />,
+		url: 'https://developer.mozilla.org/en-US/docs/Web/API/History_API'
+	},
+	'Fetch API': {
+		icon: <TbApi />,
+		url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API'
+	},
 	Go: {
 		icon: <BiLogoGoLang />,
 		url: 'https://go.dev/',
@@ -142,7 +212,7 @@ export const hasSkillMetadata = (skillName: string): skillName is SkillName =>
 
 const fallbackSkillData: SkillInfo = {
 	icon: <FaCode />,
-	url: 'https://github.com/PoProstuWitold'
+	url: null
 }
 
 export const getSkillData = (skillName: string): SkillInfo => {

@@ -5,7 +5,7 @@ The source code for [witoldzawada.dev](https://witoldzawada.dev), my personal po
 ## Features
 
 - A project catalog backed by local, typed data and case studies. GitHub's GraphQL API optionally adds repository statistics, languages, and license details; the project pages still render when that API is unavailable.
-- A file-based blog whose Markdown content is processed with `gray-matter`, `react-markdown`, GitHub Flavored Markdown, and syntax highlighting. It includes tags, reading-time estimates, a table of contents, sharing, Markdown downloads, print or PDF output, and an RSS/Atom feed.
+- A file-based blog whose Markdown content is processed with `gray-matter`, `react-markdown`, GitHub Flavored Markdown, and syntax highlighting. It includes tags, reading-time estimates, a table of contents, sharing, Markdown downloads, print or PDF output, and an RSS feed.
 - Eleven theme choices: the system preference plus light, dark, OLED, Emerald, Cyberpunk, Valentine, Halloween, Winter, Business, and Nord.
 
 ## Stack

@@ -1,5 +1,6 @@
 import 'server-only'
 
+import { statSync } from 'node:fs'
 import { readdir, readFile } from 'node:fs/promises'
 import { basename, extname, join } from 'node:path'
 import matter from 'gray-matter'
@@ -14,6 +15,7 @@ import {
 } from './post-domain'
 
 export const POSTS_DIRECTORY = join(process.cwd(), 'app', 'content', 'posts')
+const PUBLIC_DIRECTORY = join(process.cwd(), 'public')
 
 export const getPost = cache(async (slug: string): Promise<Post | null> => {
 	assertSafePostSlug(slug)
@@ -120,7 +122,17 @@ function parsePostSource(source: string, fileName: string) {
 
 	return {
 		content: parsed.content,
-		metadata: validatePostMetadata(rawMetadata, fileName)
+		metadata: validatePostMetadata(rawMetadata, fileName, {
+			socialImageExists: isPublicFile
+		})
+	}
+}
+
+function isPublicFile(path: string): boolean {
+	try {
+		return statSync(join(PUBLIC_DIRECTORY, path)).isFile()
+	} catch {
+		return false
 	}
 }
 

@@ -70,7 +70,7 @@ export const About: React.FC = () => {
 								href='https://pollub.pl/'
 								target='_blank'
 								rel='noopener noreferrer'
-								className='font-semibold text-pollub underline decoration-pollub/35 underline-offset-4 transition-[text-decoration-color] hover:decoration-pollub'
+								className='font-semibold text-base-content underline decoration-pollub decoration-2 underline-offset-4 transition-opacity hover:opacity-75'
 							>
 								Lublin University of Technology
 							</a>{' '}

@@ -35,7 +35,6 @@ export async function GET() {
 		category: 'Technology',
 		docs: 'https://www.rssboard.org/rss-specification',
 		feedLinks: {
-			atom: feedUrl,
 			rss: feedUrl
 		}
 	})

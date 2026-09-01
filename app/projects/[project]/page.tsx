@@ -27,6 +27,7 @@ type ProjectPageProps = {
 }
 
 export const dynamicParams = false
+export const revalidate = 3600
 
 export function generateStaticParams() {
 	return projectRouteSlugs.map((project) => ({ project }))
@@ -190,28 +191,26 @@ function StatsSection({ repository }: { repository: GitHubRepository }) {
 }
 
 function GitHubStatusNotice({ result }: { result: GitHubRepositoryResult }) {
-	if (result.status === 'success') return null
+	if (
+		result.status === 'success' ||
+		(result.status === 'error' && result.reason === 'missing-token')
+	) {
+		return null
+	}
 
 	let message: string
 
 	if (result.status === 'not-found') {
 		message =
-			'The configured GitHub repository could not be found. Local project details and the repository link remain available.'
-	} else if (result.reason === 'missing-token') {
-		message =
-			'Live GitHub statistics are unavailable because this deployment has no GitHub token configured. Local project details and the repository link remain available.'
+			'The configured GitHub repository could not be found, so repository statistics are unavailable.'
 	} else {
-		message =
-			'GitHub statistics are temporarily unavailable. Local project details and the repository link remain available.'
+		message = 'Repository statistics are temporarily unavailable.'
 	}
 
 	return (
-		<div
-			role='status'
-			className='alert border border-info/20 bg-info/10 text-base-content shadow-sm'
-		>
-			<span>{message}</span>
-		</div>
+		<p role='status' className='text-sm text-base-content/60'>
+			{message}
+		</p>
 	)
 }
 

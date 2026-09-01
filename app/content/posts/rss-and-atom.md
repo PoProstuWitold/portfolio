@@ -13,7 +13,7 @@ tags:
 
 # Before algorithmic feeds
 
-> **Related project:** **[Nuntius Feed](https://github.com/PoProstuWitold/nuntius-feed)** is my open-source RSS and Atom reader and aggregator. This site also publishes its own **[feed](../feed)**.
+> **Related project:** **[Nuntius Feed](https://github.com/PoProstuWitold/nuntius-feed)** is my open-source RSS and Atom reader and aggregator. This site also publishes its own **[RSS feed](/feed)**.
 
 The internet is full of content, and much of what appears in modern apps is selected by recommendation algorithms.
 

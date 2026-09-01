@@ -151,7 +151,7 @@ export function MobileMenu() {
 										</Link>
 
 										<a
-											aria-label='Open the RSS and Atom feed'
+											aria-label='Open the RSS feed'
 											className='btn btn-ghost w-full justify-start gap-3 text-base font-medium text-base-content/80 hover:bg-base-content/5 hover:text-base-content'
 											href='/feed'
 											onClick={closeMenu}

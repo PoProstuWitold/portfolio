@@ -27,6 +27,10 @@ export interface PostHeading {
 	text: string
 }
 
+export interface PostMetadataValidationOptions {
+	socialImageExists: (path: string) => boolean
+}
+
 const POST_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const POST_DATE_PATTERN = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/
 const POST_DATE_FORMAT = 'yyyy-MM-dd HH:mm'
@@ -96,7 +100,8 @@ export function comparePostsByRecency(
 
 export function validatePostMetadata(
 	value: unknown,
-	fileName: string
+	fileName: string,
+	options: PostMetadataValidationOptions
 ): PostMetadata {
 	if (!isRecord(value)) {
 		throw frontmatterError(fileName, 'frontmatter must be an object')
@@ -130,10 +135,28 @@ export function validatePostMetadata(
 		)
 	}
 
+	if (
+		updated &&
+		getValidPostDateTime(updated).toMillis() <
+			getValidPostDateTime(date).toMillis()
+	) {
+		throw frontmatterError(
+			fileName,
+			'field "updated" must not be earlier than field "date"'
+		)
+	}
+
 	if (socialImage && !isSafeSocialImagePath(socialImage)) {
 		throw frontmatterError(
 			fileName,
 			'field "socialImage" must be a safe path below the public directory'
+		)
+	}
+
+	if (socialImage && !options.socialImageExists(socialImage)) {
+		throw frontmatterError(
+			fileName,
+			`field "socialImage" references a missing public file: "${socialImage}"`
 		)
 	}
 
@@ -256,7 +279,7 @@ function readRequiredString(
 		)
 	}
 
-	return fieldValue
+	return fieldValue.trim()
 }
 
 function readOptionalString(
@@ -277,7 +300,7 @@ function readOptionalString(
 		)
 	}
 
-	return fieldValue
+	return fieldValue.trim()
 }
 
 function readStringList(
@@ -300,14 +323,16 @@ function readStringList(
 		)
 	}
 
-	if (new Set(fieldValue).size !== fieldValue.length) {
+	const normalizedValues = fieldValue.map((item) => item.trim())
+
+	if (new Set(normalizedValues).size !== normalizedValues.length) {
 		throw frontmatterError(
 			fileName,
 			`field "${field}" must not contain duplicate values`
 		)
 	}
 
-	return fieldValue
+	return normalizedValues
 }
 
 function isSafeSocialImagePath(value: string): boolean {

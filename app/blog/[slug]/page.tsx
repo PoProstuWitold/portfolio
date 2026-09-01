@@ -7,6 +7,7 @@ import {
 } from '@/blog/post-domain'
 import { getPost, getPostSlugs } from '@/blog/posts'
 import BlogPost from '@/components/blog/BlogPost'
+import { JsonLd } from '@/components/core/JsonLd'
 import { siteConfig } from '@/config/site'
 
 interface Props {
@@ -90,7 +91,43 @@ export default async function Page({ params }: Props) {
 
 	if (!post) notFound()
 
-	return <BlogPost post={post} />
+	const postUrl = new URL(`/blog/${slug}`, siteConfig.url).toString()
+	const socialImage = getPostSocialImagePath(post.metadata)
+	const personId = new URL('/#person', siteConfig.url).toString()
+	const websiteId = new URL('/#website', siteConfig.url).toString()
+	const publishedDate = toIsoPostDate(post.metadata.date)
+	const structuredData = {
+		'@context': 'https://schema.org',
+		'@type': 'BlogPosting',
+		'@id': `${postUrl}#article`,
+		headline: post.metadata.title,
+		description: post.metadata.description,
+		url: postUrl,
+		mainEntityOfPage: postUrl,
+		inLanguage: 'en-US',
+		datePublished: publishedDate,
+		dateModified: post.metadata.updated
+			? toIsoPostDate(post.metadata.updated)
+			: publishedDate,
+		author: post.metadata.authors.map((author) =>
+			author === siteConfig.author.name
+				? { '@id': personId }
+				: { '@type': 'Person', name: author }
+		),
+		publisher: { '@id': personId },
+		isPartOf: { '@id': websiteId },
+		keywords: post.metadata.tags,
+		...(socialImage
+			? { image: new URL(socialImage, siteConfig.url).toString() }
+			: {})
+	}
+
+	return (
+		<>
+			<JsonLd data={structuredData} />
+			<BlogPost post={post} />
+		</>
+	)
 }
 
 function missingPostMetadata(): Metadata {

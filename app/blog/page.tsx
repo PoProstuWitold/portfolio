@@ -1,7 +1,14 @@
 import type { Metadata } from 'next'
 import { getPosts, getPostTags } from '@/blog/posts'
+import { getSelectedBlogTags } from '@/blog/tag-query'
 import BlogClient from '@/components/blog/BlogClient'
 import { siteConfig } from '@/config/site'
+
+interface BlogPageProps {
+	searchParams: Promise<{
+		tag?: string | string[]
+	}>
+}
 
 const title = `Blog | ${siteConfig.name}`
 const description =
@@ -52,9 +59,17 @@ export const metadata: Metadata = {
 	}
 }
 
-export default async function BlogPage() {
-	const posts = await getPosts()
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+	const [posts, query] = await Promise.all([getPosts(), searchParams])
 	const tags = getPostTags(posts)
+	const initialSelectedTags = getSelectedBlogTags(query.tag, tags)
 
-	return <BlogClient posts={posts} tags={tags} />
+	return (
+		<BlogClient
+			key={JSON.stringify(initialSelectedTags)}
+			initialSelectedTags={initialSelectedTags}
+			posts={posts}
+			tags={tags}
+		/>
+	)
 }

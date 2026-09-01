@@ -9,7 +9,7 @@ import {
 	projectRouteSlugs,
 	projects
 } from '../app/projects/data'
-import { hasSkillMetadata } from '../app/skills/data'
+import { getSkillData, hasSkillMetadata } from '../app/skills/data'
 
 const PROJECT_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
@@ -49,6 +49,23 @@ describe('project configuration', () => {
 				strictEqual(isBadgeId(badge), true)
 			}
 		}
+	})
+
+	it('has metadata for every skill referenced by a project', () => {
+		for (const project of projects) {
+			for (const skill of project.skills) {
+				strictEqual(
+					hasSkillMetadata(skill),
+					true,
+					`Missing metadata for skill "${skill}" used by project "${project.slug}"`
+				)
+			}
+		}
+	})
+
+	it('uses a neutral, non-linking fallback for unknown skills', () => {
+		strictEqual(hasSkillMetadata('Unknown skill'), false)
+		strictEqual(getSkillData('Unknown skill').url, null)
 	})
 
 	it('has local case-study data for every configured project', () => {
