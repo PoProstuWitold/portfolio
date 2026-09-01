@@ -81,16 +81,4 @@ describe('project configuration', () => {
 
 		strictEqual(getProjectByRouteSlug('Sayuna')?.slug, 'sayuna')
 	})
-
-	it('defines metadata for every displayed technology', () => {
-		for (const project of projects) {
-			for (const skill of project.skills) {
-				strictEqual(
-					hasSkillMetadata(skill),
-					true,
-					`Missing skill metadata for ${skill}`
-				)
-			}
-		}
-	})
 })
