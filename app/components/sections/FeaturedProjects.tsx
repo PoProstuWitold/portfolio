@@ -1,6 +1,6 @@
-import { featuredProjects } from 'app/utils/constans'
 import { NavigationButton } from '@/components/core/NavigationButton'
 import { Project } from '@/components/core/Project'
+import { featuredProjects } from '@/projects/data'
 
 export const FeaturedProjects: React.FC = () => {
 	return (
@@ -17,22 +17,20 @@ export const FeaturedProjects: React.FC = () => {
 					<div className='w-full h-px ml-8 bg-base-content/10 sm:block' />
 				</div>
 
-				{/* Professional Copy */}
 				<p className='mb-8 text-lg leading-relaxed text-base-content/90'>
-					A curated selection of systems, backend architectures, and
-					fullstack applications I have engineered. Each project
-					reflects my commitment to writing clean, maintainable code
-					and solving complex problems through robust, scalable
-					technologies.
+					A selection of web applications, backend systems, and
+					selfhosted infrastructure. Each project highlights the
+					problem, key technical decisions, implementation, and
+					outcome.
 				</p>
 
 				{/* Projects Grid */}
 				<div className='grid gap-10 md:grid-cols-2'>
-					{featuredProjects.map((project, index) => (
+					{featuredProjects.map((project) => (
 						<Project
-							key={`${project.name}-${index}`}
+							key={project.slug}
 							project={project}
-							badges
+							showBadges
 						/>
 					))}
 				</div>

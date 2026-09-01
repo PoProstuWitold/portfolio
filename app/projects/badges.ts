@@ -1,4 +1,4 @@
-import type { JSX } from 'react'
+import type { IconType } from 'react-icons'
 import { BsMortarboardFill } from 'react-icons/bs'
 import {
 	FaBook,
@@ -11,52 +11,64 @@ import {
 	FaUsers
 } from 'react-icons/fa'
 
-type BadgeInfo = {
+type BadgeDefinition = {
 	label: string
 	className: string
-	icon: JSX.Element
+	icon: IconType
 }
 
-export const badgeDataMap: Record<string, BadgeInfo> = {
+export const badgeDefinitions = {
 	featured: {
 		label: 'Featured',
 		className: 'badge-warning',
-		icon: <FaStar />
+		icon: FaStar
 	},
-	new: { label: 'New', className: 'badge-success', icon: <FaRocket /> },
+	new: {
+		label: 'New',
+		className: 'badge-success',
+		icon: FaRocket
+	},
 	inProgress: {
 		label: 'In Progress',
 		className: 'badge-info',
-		icon: <FaHourglassHalf />
+		icon: FaHourglassHalf
 	},
 	deprecated: {
 		label: 'Deprecated',
 		className: 'badge-error',
-		icon: <FaTrash />
+		icon: FaTrash
 	},
 	collaboration: {
 		label: 'Team Project',
 		className: 'badge-neutral',
-		icon: <FaUsers />
+		icon: FaUsers
 	},
 	personal: {
 		label: 'Personal',
 		className: 'badge-info',
-		icon: <FaUserAlt />
+		icon: FaUserAlt
 	},
 	docs: {
 		label: 'Docs',
 		className: 'badge-neutral',
-		icon: <FaBook />
+		icon: FaBook
 	},
 	selfhosted: {
 		label: 'Selfhosted',
 		className: 'badge-secondary',
-		icon: <FaServer />
+		icon: FaServer
 	},
 	education: {
 		label: 'Education',
 		className: 'badge-accent',
-		icon: <BsMortarboardFill />
+		icon: BsMortarboardFill
 	}
+} as const satisfies Record<string, BadgeDefinition>
+
+export type BadgeId = keyof typeof badgeDefinitions
+
+export const badgeIds = Object.keys(badgeDefinitions) as BadgeId[]
+
+export function isBadgeId(value: string): value is BadgeId {
+	return Object.hasOwn(badgeDefinitions, value)
 }

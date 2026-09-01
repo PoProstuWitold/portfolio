@@ -1,33 +1,15 @@
-import GithubSlugger from 'github-slugger'
-import { useEffect, useMemo, useState } from 'react'
+'use client'
 
-function useHeadings(content: string) {
-	return useMemo(() => {
-		const slugger = new GithubSlugger()
-		const headingRegex = /^(#{1,4})\s+(.*)$/gm
-		const result: { level: number; text: string; id: string }[] = []
-		const matches = content.matchAll(headingRegex)
-
-		for (const match of Array.from(matches)) {
-			const level = match[1].length
-			const text = match[2]
-			const id = slugger.slug(text)
-
-			result.push({ level, text, id })
-		}
-
-		return result
-	}, [content])
-}
+import { useEffect, useState } from 'react'
+import type { PostHeading } from '@/blog/post-domain'
 
 export const TableOfContents = ({
-	content,
+	headings,
 	className = ''
 }: {
-	content: string
+	headings: PostHeading[]
 	className?: string
 }) => {
-	const headings = useHeadings(content)
 	const [activeId, setActiveId] = useState<string>('')
 
 	useEffect(() => {
@@ -65,20 +47,20 @@ export const TableOfContents = ({
 			className={`self-start overflow-y-auto pr-4 scrollbar-hide text-sm xl:mb-0 ${className}`}
 			aria-label='Table of contents'
 		>
-			<h1 className='mb-4 text-xs font-semibold uppercase tracking-widest text-base-content/50'>
+			<p className='mb-4 text-xs font-semibold uppercase tracking-widest text-base-content/50'>
 				On this page
-			</h1>
+			</p>
 
 			<ul className='border-l border-base-300 space-y-1'>
-				{headings.map((heading, i) => {
+				{headings.map((heading) => {
 					const isActive = activeId === heading.id
 
 					return (
-						<li key={`${heading.id}-${i}`}>
+						<li key={heading.id}>
 							<a
 								href={`#${heading.id}`}
 								style={{
-									paddingLeft: `${heading.level * 0.75}rem`
+									paddingLeft: `${(heading.level - 1) * 0.75}rem`
 								}}
 								className={`block border-l py-1.5 pr-2 text-sm leading-5 transition-colors ${
 									isActive
@@ -86,7 +68,7 @@ export const TableOfContents = ({
 										: '-ml-px border-transparent text-base-content/65 hover:text-base-content'
 								}`}
 							>
-								{heading.text.replace(/[*_~`]/g, '')}
+								{heading.text}
 							</a>
 						</li>
 					)

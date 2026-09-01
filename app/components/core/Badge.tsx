@@ -1,20 +1,18 @@
-import type React from 'react'
-import { badgeDataMap } from '@/utils/badge'
+import { type BadgeId, badgeDefinitions } from '@/projects/badges'
 
 interface BadgeProps {
-	type: string
+	id: BadgeId
 }
 
-export const Badge: React.FC<BadgeProps> = ({ type }) => {
-	const badge = badgeDataMap[type]
-	if (!badge) return null
+export function Badge({ id }: BadgeProps) {
+	const { className, icon: Icon, label } = badgeDefinitions[id]
 
 	return (
-		<div
-			className={`badge flex items-center gap-1 rounded-lg px-2 py-1 text-sm ${badge.className}`}
+		<span
+			className={`badge flex items-center gap-1 rounded-lg px-2 py-1 text-sm ${className}`}
 		>
-			{badge.icon}
-			{badge.label}
-		</div>
+			<Icon aria-hidden='true' />
+			{label}
+		</span>
 	)
 }

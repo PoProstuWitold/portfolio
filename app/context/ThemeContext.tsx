@@ -1,27 +1,17 @@
 'use client'
-import { createContext, useContext, useLayoutEffect, useState } from 'react'
-
-const themes = [
-	'system',
-	'light',
-	'dark',
-	'oled',
-	'emerald',
-	'retro',
-	'cyberpunk',
-	'valentine',
-	'halloween',
-	'winter',
-	'business',
-	'nord'
-] as const
-
-export type Theme = (typeof themes)[number]
-
-type SystemTheme = 'light' | 'dark'
-
-const isTheme = (value: string | null): value is Theme =>
-	value !== null && themes.includes(value as Theme)
+import {
+	createContext,
+	type ReactNode,
+	useContext,
+	useLayoutEffect,
+	useState
+} from 'react'
+import {
+	DEFAULT_THEME,
+	isTheme,
+	THEME_STORAGE_KEY,
+	type Theme
+} from '@/config/themes'
 
 interface ThemeContextType {
 	theme: Theme
@@ -30,46 +20,77 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
+function resolveTheme(
+	theme: Theme,
+	prefersDark: boolean
+): Exclude<Theme, 'system'> {
+	if (theme === 'system') return prefersDark ? 'dark' : 'light'
+	return theme
+}
+
 export const ThemeProvider = ({
 	children,
-	defaultTheme = 'system'
+	defaultTheme = DEFAULT_THEME
 }: {
-	children: React.ReactNode
+	children: ReactNode
 	defaultTheme?: Theme
 }) => {
 	const [theme, setTheme] = useState<Theme>(defaultTheme)
+	const [initialized, setInitialized] = useState(false)
 
 	useLayoutEffect(() => {
-		const storedTheme = localStorage.getItem('theme')
-		const savedTheme = isTheme(storedTheme) ? storedTheme : defaultTheme
+		let storedTheme: string | null = null
 
+		try {
+			storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY)
+		} catch {
+			// The selected theme still works when storage is unavailable.
+		}
+
+		const savedTheme = isTheme(storedTheme) ? storedTheme : defaultTheme
+		const prefersDark = window.matchMedia(
+			'(prefers-color-scheme: dark)'
+		).matches
+
+		document.documentElement.dataset.theme = resolveTheme(
+			savedTheme,
+			prefersDark
+		)
 		setTheme(savedTheme)
-		if (storedTheme !== savedTheme)
-			localStorage.setItem('theme', savedTheme)
+		setInitialized(true)
+
+		if (storedTheme !== savedTheme) {
+			try {
+				window.localStorage.setItem(THEME_STORAGE_KEY, savedTheme)
+			} catch {
+				// Persisting a preference is optional.
+			}
+		}
 	}, [defaultTheme])
 
 	useLayoutEffect(() => {
+		if (!initialized) return
+
 		const root = document.documentElement
 		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
 		const applyTheme = () => {
-			const preferredTheme: SystemTheme = mediaQuery.matches
-				? 'dark'
-				: 'light'
-			root.setAttribute(
-				'data-theme',
-				theme === 'system' ? preferredTheme : theme
-			)
+			root.dataset.theme = resolveTheme(theme, mediaQuery.matches)
 		}
 
 		applyTheme()
 		mediaQuery.addEventListener('change', applyTheme)
 
 		return () => mediaQuery.removeEventListener('change', applyTheme)
-	}, [theme])
+	}, [initialized, theme])
 
 	const changeTheme = (newTheme: Theme) => {
 		setTheme(newTheme)
-		localStorage.setItem('theme', newTheme)
+
+		try {
+			window.localStorage.setItem(THEME_STORAGE_KEY, newTheme)
+		} catch {
+			// The selected theme still applies for the current page.
+		}
 	}
 
 	return (

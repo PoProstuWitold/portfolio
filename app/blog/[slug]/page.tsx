@@ -1,76 +1,105 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import readingTime from 'reading-time'
-import { getFiles, getPost, type IPost } from '@/utils/blog-utils'
-import BlogPost from '../../components/blog/BlogPost'
+import {
+	getPostSocialImagePath,
+	isSafePostSlug,
+	toIsoPostDate
+} from '@/blog/post-domain'
+import { getPost, getPostSlugs } from '@/blog/posts'
+import BlogPost from '@/components/blog/BlogPost'
+import { siteConfig } from '@/config/site'
 
 interface Props {
 	params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-	const slugs = await getFiles('app/content/posts')
+	const slugs = await getPostSlugs()
 	return slugs.map((slug) => ({ slug }))
 }
 
+export const dynamicParams = false
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { slug } = await params
-	const post: IPost = (await getPost(slug)) as unknown as IPost
 
-	if (!post?.data) {
-		return {
-			title: 'Post Not Found | Witold Zawada',
-			description: 'This blog post could not be found.',
-			robots: {
-				index: false,
-				follow: false
-			}
-		}
+	if (!isSafePostSlug(slug)) {
+		return missingPostMetadata()
 	}
 
-	const { title: postTitle, description, tags } = post.data
+	const post = await getPost(slug)
+
+	if (!post) {
+		return missingPostMetadata()
+	}
+
+	const { title: postTitle, description, tags } = post.metadata
 	const title = `Blog | ${postTitle}`
-	const url = `https://witoldzawada.dev/blog/${slug}`
+	const url = new URL(`/blog/${slug}`, siteConfig.url).toString()
+	const socialImage =
+		getPostSocialImagePath(post.metadata) ?? siteConfig.openGraphImage.url
 
 	return {
 		title,
 		description,
-		keywords: ['Blog', 'Witold Zawada', 'PoProstuWitold', ...(tags || [])],
-		metadataBase: new URL('https://witoldzawada.dev'),
+		keywords: [
+			'Blog',
+			siteConfig.author.name,
+			siteConfig.author.handle,
+			...tags
+		],
+		alternates: {
+			canonical: url
+		},
 		openGraph: {
 			title,
 			description,
 			url,
-			siteName: 'Witold Zawada',
+			siteName: siteConfig.name,
 			locale: 'en_US',
 			type: 'article',
-			authors: ['Witold Zawada'],
+			authors: post.metadata.authors,
+			publishedTime: toIsoPostDate(post.metadata.date),
+			...(post.metadata.updated
+				? { modifiedTime: toIsoPostDate(post.metadata.updated) }
+				: {}),
 			images: [
 				{
-					url: `/${post.data.socialImage}`,
-					width: 1200,
-					height: 630,
-					alt: `${post.data.title} cover image`
+					url: socialImage,
+					alt: `${post.metadata.title} cover image`
 				}
 			]
+		},
+		twitter: {
+			card: 'summary_large_image',
+			title,
+			description,
+			images: [socialImage]
 		}
 	}
 }
 
 export default async function Page({ params }: Props) {
 	const { slug } = await params
+
+	if (!isSafePostSlug(slug)) {
+		notFound()
+	}
+
 	const post = await getPost(slug)
 
-	if (!post) return notFound()
+	if (!post) notFound()
 
-	const reading = readingTime(post.content).text
+	return <BlogPost post={post} />
+}
 
-	return (
-		<BlogPost
-			data={post.data}
-			content={post.content}
-			readingTime={reading}
-			slug={slug}
-		/>
-	)
+function missingPostMetadata(): Metadata {
+	return {
+		title: `Post Not Found | ${siteConfig.name}`,
+		description: 'This blog post could not be found.',
+		robots: {
+			index: false,
+			follow: false
+		}
+	}
 }

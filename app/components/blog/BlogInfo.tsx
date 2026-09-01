@@ -1,17 +1,22 @@
-import dayjs from 'dayjs'
 import Image from 'next/image'
 import type React from 'react'
 import { RxDotFilled } from 'react-icons/rx'
+import {
+	formatPostDate,
+	type PostMetadata,
+	toIsoPostDate
+} from '@/blog/post-domain'
 import Witold from '../../../public/images/witold-512.png'
-import type { IPost } from '../../utils/blog-utils'
 
 interface BlogInfoProps {
-	data: IPost['data']
-	readingTime: IPost['readingTime']
-	variant?: 'small' | 'normal' | 'big'
+	metadata: PostMetadata
+	readingTime: string
 }
 
-export const BlogInfo: React.FC<BlogInfoProps> = ({ data, readingTime }) => {
+export const BlogInfo: React.FC<BlogInfoProps> = ({
+	metadata,
+	readingTime
+}) => {
 	return (
 		<div className='flex flex-row gap-4 items-center px-1'>
 			<Image
@@ -24,20 +29,20 @@ export const BlogInfo: React.FC<BlogInfoProps> = ({ data, readingTime }) => {
 				alt='Witold Zawada'
 			/>
 			<div className='flex flex-col'>
-				{data.authors.length >= 2 ? (
-					<p className='font-bold'>{`${data.authors.join(', ')}`}</p>
-				) : (
-					<p className='font-bold'>{`${data.authors}`}</p>
-				)}
+				<p className='font-bold'>{metadata.authors.join(', ')}</p>
 				<div className='flex items-center flex-wrap'>
-					<span>{`${dayjs(data.date).format('DD MMMM YYYY, HH:mm')}`}</span>
-					<RxDotFilled className='w-5 h-5' />
+					<time dateTime={toIsoPostDate(metadata.date)}>
+						{formatPostDate(metadata.date)}
+					</time>
+					<RxDotFilled aria-hidden='true' className='w-5 h-5' />
 					<span className='text-sm'>{readingTime}</span>
 				</div>
-				{data.updated && (
+				{metadata.updated && (
 					<span className='italic text-sm'>
 						<span className='font-semibold'>Updated: </span>
-						{`${dayjs(data.updated).format('DD MMMM YYYY, HH:mm')}`}
+						<time dateTime={toIsoPostDate(metadata.updated)}>
+							{formatPostDate(metadata.updated)}
+						</time>
 					</span>
 				)}
 			</div>

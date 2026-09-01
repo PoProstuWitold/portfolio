@@ -20,29 +20,31 @@ export const About: React.FC = () => {
 				<div className='grid grid-cols-1 items-start gap-16 lg:grid-cols-12'>
 					<div className='col-span-1 flex flex-col gap-7 leading-relaxed lg:col-span-7'>
 						<p className='text-xl text-base-content/85'>
-							I&apos;m a software engineer from Poland working
+							I&apos;m a software engineer from Poland. I work
 							primarily with{' '}
 							<strong className='font-semibold text-base-content'>
-								TypeScript, Node.js, Go, React, Next.js, Hono
+								TypeScript, Node.js, Go, React, Next.js, Hono,
 								and PostgreSQL
 							</strong>
 							.
 						</p>
 
 						<p className='text-lg text-base-content/75'>
-							I build backend systems and web applications with{' '}
+							I build backend systems and web applications with an
+							emphasis on{' '}
 							<strong className='font-semibold text-base-content'>
-								predictable behavior
+								clear architecture
 							</strong>
 							,{' '}
 							<strong className='font-semibold text-base-content'>
-								clear boundaries
+								maintainability
 							</strong>{' '}
 							and{' '}
 							<strong className='font-semibold text-base-content'>
-								security integrated into the design
+								security
 							</strong>
-							.
+							. I enjoy working across the stack, from APIs and
+							application logic to deployment and infrastructure.
 						</p>
 
 						<p className='text-lg text-base-content/75'>
@@ -53,7 +55,7 @@ export const About: React.FC = () => {
 							, giving me practical experience with{' '}
 							<strong className='font-semibold text-base-content'>
 								Linux, Docker, networking, reverse proxies, DNS,
-								monitoring and service administration
+								monitoring, and service administration
 							</strong>
 							.
 						</p>
@@ -81,17 +83,21 @@ export const About: React.FC = () => {
 
 						<p className='text-lg text-base-content/75'>
 							Outside of IT, I enjoy skiing, cooking, history,
-							karaoke, video games and spending time with animals.
+							karaoke, video games, and spending time with
+							animals.
 						</p>
 					</div>
 
 					<div className='col-span-1 mt-4 flex flex-col items-center gap-10 lg:col-span-5 lg:mt-0'>
 						<div className='group relative'>
-							<div className='absolute inset-0 rounded-[2.5rem] bg-primary/20 opacity-60 blur-2xl transition-opacity duration-700 group-hover:opacity-100' />
+							<div
+								aria-hidden='true'
+								className='absolute inset-0 rounded-[2.5rem] bg-primary/20 opacity-60 blur-2xl transition-opacity duration-700 group-hover:opacity-100'
+							/>
 
 							<Image
 								src='/images/witold-512.png'
-								alt='Witold Zawada'
+								alt='Portrait of Witold Zawada'
 								width={400}
 								height={400}
 								className='relative z-10 h-72 w-72 rounded-4xl object-cover shadow-2xl ring-1 ring-base-content/10 transition-transform duration-500 group-hover:-translate-y-2 md:h-80 md:w-80'

@@ -18,7 +18,7 @@ export function DownloadMarkdownButton({ slug }: DownloadMarkdownButtonProps) {
 			aria-label='Download Markdown'
 			title={`Download ${fileName}`}
 		>
-			<FaMarkdown className='h-7 w-7' />
+			<FaMarkdown aria-hidden='true' className='h-7 w-7' />
 		</a>
 	)
 }

@@ -1,99 +1,132 @@
-'use client'
-
-import { useEffect, useRef, useState } from 'react'
-import { FaChevronRight, FaShare } from 'react-icons/fa'
-
+import Link from 'next/link'
+import type { ComponentProps } from 'react'
+import type { ExtraProps } from 'react-markdown'
 import ReactMarkdown from 'react-markdown'
-import { RWebShare } from 'react-web-share'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
-import { BlogInfo } from '@/components/blog/BlogInfo'
+import { getPostHeadings, type Post } from '@/blog/post-domain'
+import { siteConfig } from '@/config/site'
+import { ArticleActions } from './ArticleActions'
+import { BlogInfo } from './BlogInfo'
 import { BlogTags } from './BlogTags'
-import { CodeBlock } from './CodeBlock'
-import { DownloadMarkdownButton } from './DownloadMarkdownButton'
-import { DownloadPdfButton } from './DownloadPdfButton'
+import { CodeBlock, PreBlock } from './CodeBlock'
+import { DesktopTableOfContents } from './DesktopTableOfContents'
 import { ParagraphBlock } from './ParagraphBlock'
+import { PostHashReset } from './PostHashReset'
 import { TableOfContents } from './TableOfContents'
 
-const shareSites = [
-	'facebook',
-	'twitter',
-	'linkedin',
-	'reddit',
-	'whatsapp',
-	'copy',
-	'mail'
-]
+interface BlogPostProps {
+	post: Post
+}
 
-export default function BlogPost({
-	data,
-	content,
-	readingTime,
-	slug
-}: {
-	// biome-ignore lint: Irrelevant
-	data: any
-	content: string
-	readingTime: string
-	slug: string
-}) {
-	const url = typeof window !== 'undefined' ? window.location.href : ''
-	const articleRef = useRef<HTMLElement | null>(null)
-	const [isTocOpen, setIsTocOpen] = useState(true)
+type MarkdownHeadingProps = ComponentProps<'h1'> & ExtraProps
 
-	useEffect(() => {
-		const observer = new IntersectionObserver((entries) => {
-			if (entries[0].isIntersecting) {
-				if (window.history.replaceState) {
-					window.history.replaceState(
-						null,
-						'',
-						window.location.pathname
-					)
-				}
-			}
-		})
+function MarkdownH1({
+	node: _node,
+	className = '',
+	...props
+}: MarkdownHeadingProps) {
+	return (
+		<h2
+			{...props}
+			className={`mt-0 mb-8 text-4xl font-extrabold leading-10 ${className}`}
+		/>
+	)
+}
 
-		const topEl = document.getElementById('post-top')
+function MarkdownH2({
+	node: _node,
+	className = '',
+	...props
+}: MarkdownHeadingProps) {
+	return (
+		<h3
+			{...props}
+			className={`mt-12 mb-6 text-2xl font-bold leading-8 ${className}`}
+		/>
+	)
+}
 
-		if (topEl) observer.observe(topEl)
+function MarkdownH3({
+	node: _node,
+	className = '',
+	...props
+}: MarkdownHeadingProps) {
+	return (
+		<h4
+			{...props}
+			className={`mt-8 mb-3 text-xl font-semibold leading-8 ${className}`}
+		/>
+	)
+}
 
-		return () => observer.disconnect()
-	}, [])
+function MarkdownH4({
+	node: _node,
+	className = '',
+	...props
+}: MarkdownHeadingProps) {
+	return (
+		<h5
+			{...props}
+			className={`mt-6 mb-2 text-base font-semibold leading-6 ${className}`}
+		/>
+	)
+}
+
+function MarkdownH5({
+	node: _node,
+	className = '',
+	...props
+}: MarkdownHeadingProps) {
+	return (
+		<h6
+			{...props}
+			className={`mt-6 mb-2 text-sm font-semibold leading-6 ${className}`}
+		/>
+	)
+}
+
+export default function BlogPost({ post }: BlogPostProps) {
+	const { content, metadata, readingTime, slug } = post
+	const headings = getPostHeadings(content)
+	const articleId = 'blog-post-content'
+	const postUrl = new URL(`/blog/${slug}`, siteConfig.url).toString()
 
 	return (
 		<main className='min-h-screen flex justify-center max-w-350 mx-auto px-4 gap-8 xl:gap-16 py-24 md:py-28'>
 			<div className='w-full lg:w-[65%] xl:w-200 flex flex-col'>
-				<div className='md:text-sm text-xs breadcrumbs text-base-content/70'>
+				<nav
+					className='md:text-sm text-xs breadcrumbs text-base-content/70'
+					aria-label='Breadcrumb'
+				>
 					<ul>
 						<li>
-							<a href='/'>Home</a>
+							<Link href='/'>Home</Link>
 						</li>
 						<li>
-							<a href='/blog'>Blog</a>
+							<Link href='/blog'>Blog</Link>
 						</li>
 						<li
 							id='post-top'
 							className='text-primary cursor-default font-semibold'
 						>
-							{data.title}
+							{metadata.title}
 						</li>
 					</ul>
-				</div>
+				</nav>
+				<PostHashReset elementId='post-top' />
+
 				<header className='flex flex-col gap-5 mt-5'>
 					<div className='flex flex-col gap-2'>
-						<BlogTags tags={data.tags} size='md' />
+						<BlogTags tags={metadata.tags} size='md' />
 					</div>
 					<div className='flex flex-col prose prose-pre:leading-none max-w-none'>
 						<h1 className='text-3xl md:text-4xl lg:text-5xl mb-2 scroll-mt-20'>
-							{data.title}
+							{metadata.title}
 						</h1>
-
-						{data.description && (
-							<p className='text-base-content/70 leading-7'>
-								{data.description}
-							</p>
-						)}
+						<p className='text-base-content/70 leading-7'>
+							{metadata.description}
+						</p>
 					</div>
 
 					<section
@@ -103,7 +136,7 @@ export default function BlogPost({
 						<div className='card-body p-5 sm:p-6 sm:pr-20'>
 							<div className='flex min-w-0'>
 								<BlogInfo
-									data={data}
+									metadata={metadata}
 									readingTime={readingTime}
 								/>
 							</div>
@@ -111,53 +144,38 @@ export default function BlogPost({
 							<div className='divider my-0 sm:hidden' />
 
 							<div className='w-full sm:absolute sm:right-6 sm:top-1/2 sm:w-auto sm:-translate-y-1/2'>
-								<div className='flex w-full flex-row flex-nowrap items-center gap-2 sm:w-auto'>
-									<RWebShare
-										data={{
-											text: data.description,
-											url,
-											title: `Blog | ${data.title}`
-										}}
-										sites={shareSites}
-									>
-										<button
-											type='button'
-											className='btn btn-ghost btn-md w-full flex-1 gap-2 rounded-xl font-semibold sm:btn-square sm:btn-lg sm:w-auto sm:flex-none sm:rounded-lg md:p-4'
-											aria-label='Share article'
-											title='Share article'
-										>
-											<FaShare className='h-7 w-7' />
-										</button>
-									</RWebShare>
-
-									<DownloadMarkdownButton slug={slug} />
-									<DownloadPdfButton
-										articleRef={articleRef}
-										slug={slug}
-										title={data?.title}
-									/>
-								</div>
+								<ArticleActions
+									articleId={articleId}
+									description={metadata.description}
+									slug={slug}
+									title={metadata.title}
+									url={postUrl}
+								/>
 							</div>
 						</div>
 					</section>
 				</header>
 
 				<div className='xl:hidden w-full my-6'>
-					<TableOfContents content={content} className='w-full' />
+					<TableOfContents headings={headings} className='w-full' />
 				</div>
 
 				<article
-					ref={articleRef}
+					id={articleId}
 					className='prose prose-pre:leading-none max-w-none prose-img:m-0 w-full pb-20 prose-headings:scroll-mt-20 mt-5'
 				>
 					<ReactMarkdown
 						remarkPlugins={[remarkGfm]}
 						rehypePlugins={[rehypeSlug]}
 						components={{
-							code: (props) => <CodeBlock {...props} />,
-							p: (paragraph) => (
-								<ParagraphBlock paragraph={paragraph} />
-							)
+							code: CodeBlock,
+							h1: MarkdownH1,
+							h2: MarkdownH2,
+							h3: MarkdownH3,
+							h4: MarkdownH4,
+							h5: MarkdownH5,
+							p: ParagraphBlock,
+							pre: PreBlock
 						}}
 					>
 						{content}
@@ -165,43 +183,7 @@ export default function BlogPost({
 				</article>
 			</div>
 
-			<button
-				type='button'
-				onClick={() => setIsTocOpen((prev) => !prev)}
-				className='hidden xl:flex fixed right-8 top-32 z-40 btn btn-outline btn-sm rounded-full font-semibold bg-base-100/80 backdrop-blur border-base-300 shadow-sm p-2 h-10 w-10 items-center justify-center'
-				aria-expanded={isTocOpen}
-				aria-controls='post-toc'
-				aria-label={
-					isTocOpen
-						? 'Hide table of contents'
-						: 'Show table of contents'
-				}
-				title={
-					isTocOpen
-						? 'Hide table of contents'
-						: 'Show table of contents'
-				}
-			>
-				<FaChevronRight
-					className={`h-4 w-4 transition-transform duration-200 ${
-						isTocOpen ? 'rotate-0' : 'rotate-180'
-					}`}
-				/>
-			</button>
-			<div
-				id='post-toc'
-				className={`sticky top-32 hidden xl:flex max-h-[calc(100vh-12rem)] shrink-0 flex-col overflow-hidden transition-all duration-300 ease-out ${
-					isTocOpen
-						? 'w-80 opacity-100 translate-x-0'
-						: 'w-0 opacity-0 translate-x-4 pointer-events-none'
-				}`}
-				aria-hidden={!isTocOpen}
-			>
-				<TableOfContents
-					content={content}
-					className='w-80 max-h-[calc(100vh-12rem)]'
-				/>
-			</div>
+			<DesktopTableOfContents headings={headings} />
 		</main>
 	)
 }

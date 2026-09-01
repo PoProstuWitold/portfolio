@@ -1,16 +1,15 @@
 'use client'
 
-import type { RefObject } from 'react'
 import { FaFilePdf } from 'react-icons/fa'
 
 interface DownloadPdfButtonProps {
-	articleRef: RefObject<HTMLElement | null>
+	articleId: string
 	slug: string
 	title?: string
 }
 
 export function DownloadPdfButton({
-	articleRef,
+	articleId,
 	slug,
 	title
 }: DownloadPdfButtonProps) {
@@ -18,10 +17,13 @@ export function DownloadPdfButton({
 	const fileName = `${slug || 'post'}.pdf`
 
 	const handleDownloadPdf = () => {
-		if (typeof window === 'undefined') return
-		if (!articleRef.current) return
+		const article = document.getElementById(articleId)
 
-		const articleClone = articleRef.current.cloneNode(true) as HTMLElement
+		if (!article) return
+
+		const articleClone = article.cloneNode(true)
+
+		if (!(articleClone instanceof HTMLElement)) return
 		const copyButtons = articleClone.querySelectorAll(
 			'button, [role="button"]'
 		)
@@ -75,12 +77,12 @@ export function DownloadPdfButton({
 			<html lang="en">
 				<head>
 					<meta charset="utf-8" />
-					<title>${fileName}</title>
+					<title>${escapeHtml(fileName)}</title>
 					${styles}
 				</head>
 				<body>
 					<main>
-						<h1>${pdfTitle}</h1>
+						<h1>${escapeHtml(pdfTitle)}</h1>
 						${articleClone.innerHTML}
 					</main>
 				</body>
@@ -126,7 +128,21 @@ export function DownloadPdfButton({
 			aria-label='Download PDF'
 			title={`Download ${fileName}`}
 		>
-			<FaFilePdf className='h-7 w-7' />
+			<FaFilePdf aria-hidden='true' className='h-7 w-7' />
 		</button>
+	)
+}
+
+function escapeHtml(value: string): string {
+	return value.replace(
+		/[&<>'"]/g,
+		(character) =>
+			({
+				'&': '&amp;',
+				'<': '&lt;',
+				'>': '&gt;',
+				"'": '&#39;',
+				'"': '&quot;'
+			})[character] ?? character
 	)
 }

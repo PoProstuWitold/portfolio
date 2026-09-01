@@ -2,15 +2,14 @@ import type { Metadata } from 'next'
 import { Breadcrumbs } from '@/components/core/Breadcrumbs'
 import { NavigationButton } from '@/components/core/NavigationButton'
 import { Project } from '@/components/core/Project'
-import { projects } from '@/utils/constans'
+import { siteConfig } from '@/config/site'
+import { projects } from '@/projects/data'
 
 export const metadata: Metadata = {
-	title: 'All Projects | Witold Zawada',
-	description: `
-		A complete list of projects by Witold Zawada - from quick experiments to advanced fullstack applications. Each project reflects ongoing growth and curiosity in software development.
-		`,
+	title: `All Projects | ${siteConfig.name}`,
+	description:
+		"A complete list of Witold Zawada's software projects, including web applications, selfhosted infrastructure, systems tools, and educational work.",
 	classification: 'Developer Projects',
-	metadataBase: new URL('https://witoldzawada.dev'),
 	keywords: [
 		'Projects',
 		'Developer',
@@ -25,28 +24,28 @@ export const metadata: Metadata = {
 		'Apps'
 	],
 	openGraph: {
-		title: 'All Projects | Witold Zawada',
-		description: `
-			Explore all of Witold Zawada's projects — from small ideas to full-featured applications built with Go, TypeScript, and more.
-`,
-		url: 'https://witoldzawada.dev/projects',
-		siteName: 'Witold Zawada',
+		title: `All Projects | ${siteConfig.name}`,
+		description:
+			"Explore Witold Zawada's web applications, selfhosted infrastructure, systems tools, and educational projects.",
+		url: '/projects',
+		siteName: siteConfig.name,
 		locale: 'en_US',
 		type: 'website',
-		images: [
-			{
-				url: '/images/witold-512.png',
-				width: 512,
-				height: 512,
-				alt: 'Witold Zawada'
-			}
-		]
+		images: [siteConfig.openGraphImage]
+	},
+	alternates: { canonical: '/projects' },
+	twitter: {
+		card: 'summary',
+		title: `All Projects | ${siteConfig.name}`,
+		description:
+			"Explore Witold Zawada's web applications, selfhosted infrastructure, systems tools, and educational projects.",
+		images: [siteConfig.openGraphImage.url]
 	}
 }
 
-const ProjectsPage: React.FC = () => {
+function ProjectsPage() {
 	return (
-		<main className='flex min-h-screen flex-col items-center bg-base-200 py-24 cursor-default'>
+		<main className='flex min-h-screen cursor-default flex-col items-center bg-base-200 py-24'>
 			<div className='flex w-full max-w-6xl flex-col gap-10 px-6 lg:px-12 xl:px-0'>
 				<div className='flex flex-col'>
 					{/* Breadcrumbs for navigation context */}
@@ -57,31 +56,29 @@ const ProjectsPage: React.FC = () => {
 						]}
 					/>
 
-					{/* Section Header */}
 					<div className='flex items-center justify-between mb-6'>
-						<h2 className='text-4xl font-extrabold tracking-tight md:text-6xl text-base-content whitespace-nowrap'>
+						<h1 className='text-4xl font-extrabold tracking-tight md:text-6xl text-base-content whitespace-nowrap'>
 							All Projects
-						</h2>
+						</h1>
 						<div className='w-full h-px ml-8 bg-base-content/10 sm:block' />
 					</div>
 
-					{/* Professional Copy */}
 					<p className='text-lg leading-relaxed text-base-content/70'>
-						A complete archive of my services, tools, and fullstack
-						applications. While the featured section highlights my
-						core systems, this collection includes everything from
-						exploratory microservices to deep dives into new
-						technologies, reflecting my continuous technical growth.
+						A complete archive of my web applications, backend
+						systems, selfhosted infrastructure, and experimental
+						projects. Each entry includes a technical overview, key
+						technologies, repository, and a deeper case study where
+						available.
 					</p>
 				</div>
 
 				{/* Projects Grid */}
 				<div className='grid gap-10 md:grid-cols-2'>
-					{projects.map((project, index) => (
+					{projects.map((project) => (
 						<Project
-							key={`${project.name}-${index}`}
+							key={project.slug}
 							project={project}
-							badges
+							showBadges
 						/>
 					))}
 				</div>

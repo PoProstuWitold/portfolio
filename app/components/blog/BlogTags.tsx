@@ -265,9 +265,7 @@ export function BlogTags({
 			>
 				{showAll && renderTag('', allLabel, 'all')}
 
-				{visibleTags.map((tag, index) =>
-					renderTag(tag, tag, `tag-${index}-${tag}`)
-				)}
+				{visibleTags.map((tag) => renderTag(tag, tag, `tag-${tag}`))}
 
 				{hiddenTagCount > 0 && (
 					<span
@@ -298,7 +296,7 @@ export function BlogTags({
 
 				{tags.map((tag, index) => (
 					<span
-						key={`measure-${index}-${tag}`}
+						key={`measure-${tag}`}
 						ref={(element) => {
 							tagMeasureRefs.current[index] = element
 						}}

@@ -1,6 +1,7 @@
 'use client'
 
 import { m } from 'motion/react'
+import Link from 'next/link'
 import { BsArrowDown } from 'react-icons/bs'
 import { Socials } from '@/components/core/Socials'
 
@@ -10,7 +11,10 @@ export const Main: React.FC = () => {
 			id='main'
 			className='relative flex min-h-screen cursor-default flex-col items-center overflow-hidden bg-base-200 px-4 pt-20'
 		>
-			<div className='pointer-events-none absolute inset-0 z-0 flex justify-center'>
+			<div
+				aria-hidden='true'
+				className='pointer-events-none absolute inset-0 z-0 flex justify-center'
+			>
 				<div className='mt-24 h-80 w-140 rounded-full bg-primary/10 blur-[110px]' />
 			</div>
 
@@ -24,7 +28,10 @@ export const Main: React.FC = () => {
 					className='flex flex-col items-center'
 				>
 					<div className='mb-8 inline-flex items-center gap-3 rounded-full border border-base-content/10 bg-base-200/70 px-5 py-2 shadow-sm backdrop-blur-sm'>
-						<span className='relative flex h-2.5 w-2.5'>
+						<span
+							aria-hidden='true'
+							className='relative flex h-2.5 w-2.5'
+						>
 							<span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75' />
 							<span className='relative inline-flex h-full w-full rounded-full bg-success' />
 						</span>
@@ -57,7 +64,11 @@ export const Main: React.FC = () => {
 						<span className='font-semibold text-base-content'>
 							Go
 						</span>
-						, focusing on secure, maintainable architecture and{' '}
+						, with a strong interest in{' '}
+						<span className='font-semibold text-base-content'>
+							security
+						</span>
+						, maintainable software, and{' '}
 						<span className='font-semibold text-base-content'>
 							selfhosted infrastructure
 						</span>
@@ -65,19 +76,19 @@ export const Main: React.FC = () => {
 					</p>
 
 					<div className='mt-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row'>
-						<a
+						<Link
 							href='/#featured'
 							className='btn btn-primary btn-lg w-full px-8 sm:w-auto sm:min-w-55'
 						>
-							View Projects
-						</a>
+							View projects
+						</Link>
 
-						<a
+						<Link
 							href='/#contact'
 							className='btn btn-outline btn-lg w-full bg-base-100/80 px-8 sm:w-auto sm:min-w-55'
 						>
-							Get in Touch
-						</a>
+							Get in touch
+						</Link>
 					</div>
 				</m.div>
 
@@ -98,7 +109,7 @@ export const Main: React.FC = () => {
 					transition={{ delay: 0.8, duration: 1 }}
 					className='mx-auto'
 				>
-					<a
+					<Link
 						href='/#featured'
 						className='flex animate-bounce flex-col items-center gap-2 text-base-content/80 transition-colors hover:text-base-content'
 						aria-label='Scroll to projects'
@@ -106,8 +117,8 @@ export const Main: React.FC = () => {
 						<span className='text-xs font-semibold uppercase tracking-[0.2em]'>
 							Scroll
 						</span>
-						<BsArrowDown className='h-5 w-5' />
-					</a>
+						<BsArrowDown aria-hidden='true' className='h-5 w-5' />
+					</Link>
 				</m.div>
 			</div>
 		</section>

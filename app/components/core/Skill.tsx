@@ -1,4 +1,4 @@
-import { getSkillData } from '@/utils/skillData'
+import { getSkillData } from '@/skills/data'
 
 interface SkillProps {
 	title: string

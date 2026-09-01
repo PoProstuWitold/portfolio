@@ -10,22 +10,27 @@ export const Breadcrumbs: React.FC<{
 	className?: string
 }> = ({ items, className = '' }) => {
 	return (
-		<div className={`md:text-sm text-xs breadcrumbs ${className}`}>
+		<nav
+			aria-label='Breadcrumb'
+			className={`breadcrumbs text-xs md:text-sm ${className}`}
+		>
 			<ul>
 				{items.map((item, index) => {
 					const isLast = index === items.length - 1
 
 					return (
 						<li
-							key={item.label}
+							key={`${item.href ?? 'current'}:${item.label}`}
 							className={
 								isLast
 									? 'text-primary cursor-default font-semibold'
 									: ''
 							}
 						>
-							{isLast || !item.href ? (
-								item.label
+							{isLast ? (
+								<span aria-current='page'>{item.label}</span>
+							) : !item.href ? (
+								<span>{item.label}</span>
 							) : (
 								<Link href={item.href}>{item.label}</Link>
 							)}
@@ -33,6 +38,6 @@ export const Breadcrumbs: React.FC<{
 					)
 				})}
 			</ul>
-		</div>
+		</nav>
 	)
 }

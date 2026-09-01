@@ -1,6 +1,11 @@
 {
-	"name": "",
-	"short_name": "",
+	"name": "Witold Zawada - Portfolio",
+	"short_name": "Witold Zawada",
+	"description": "Software engineering projects and technical articles by Witold Zawada.",
+	"id": "/",
+	"start_url": "/",
+	"scope": "/",
+	"lang": "en-US",
 	"icons": [
 		{
 			"src": "/android-chrome-192x192.png",
@@ -13,7 +18,7 @@
 			"type": "image/png"
 		}
 	],
-	"theme_color": "#ffffff",
-	"background_color": "#ffffff",
+	"theme_color": "#2ecc71",
+	"background_color": "#e6e6e6",
 	"display": "standalone"
 }

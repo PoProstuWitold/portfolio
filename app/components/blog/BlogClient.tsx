@@ -1,15 +1,15 @@
 'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { FiChevronDown } from 'react-icons/fi'
-import type { IPost } from '@/utils/blog-utils'
+import type { PostSummary } from '@/blog/post-domain'
 import { Breadcrumbs } from '../core/Breadcrumbs'
 import { BlogCard } from './BlogCard'
 import { BlogTags } from './BlogTags'
 
 interface Props {
-	posts: IPost[]
+	posts: PostSummary[]
 	tags: string[]
 }
 
@@ -18,13 +18,29 @@ export default function BlogClient({ posts, tags }: Props) {
 	const [visiblePosts, setVisiblePosts] = useState(3)
 
 	const router = useRouter()
-	const searchParams = useSearchParams()
 
 	useEffect(() => {
-		const raw = searchParams.get('tags')
-		const tagsFromQuery = raw ? raw.split('-') : []
-		setSelectedTags(tagsFromQuery)
-	}, [searchParams])
+		const availableTags = new Set(tags)
+		const syncTagsFromUrl = () => {
+			const raw = new URLSearchParams(window.location.search).get('tags')
+			const tagsFromQuery = raw
+				? Array.from(
+						new Set(
+							raw
+								.split('-')
+								.filter((tag) => availableTags.has(tag))
+						)
+					)
+				: []
+
+			setSelectedTags(tagsFromQuery)
+		}
+
+		syncTagsFromUrl()
+		window.addEventListener('popstate', syncTagsFromUrl)
+
+		return () => window.removeEventListener('popstate', syncTagsFromUrl)
+	}, [tags])
 
 	const handleTagClick = (tag: string) => {
 		if (
@@ -42,14 +58,14 @@ export default function BlogClient({ posts, tags }: Props) {
 
 		setSelectedTags(newTags)
 		if (newTags.length > 0) {
-			router.push(`/blog?tags=${newTags.join('-')}`)
+			router.push(`/blog?tags=${encodeURIComponent(newTags.join('-'))}`)
 		} else {
 			router.push('/blog')
 		}
 	}
 
 	const filteredPosts = posts.filter((post) =>
-		selectedTags.every((tag) => post.data.tags.includes(tag))
+		selectedTags.every((tag) => post.metadata.tags.includes(tag))
 	)
 
 	const loadMorePosts = () => setVisiblePosts((prev) => prev + 6)
@@ -68,19 +84,18 @@ export default function BlogClient({ posts, tags }: Props) {
 
 					{/* Section Header */}
 					<div className='flex items-center justify-between mb-6'>
-						<h2 className='text-4xl font-extrabold tracking-tight md:text-6xl text-base-content whitespace-nowrap'>
+						<h1 className='text-4xl font-extrabold tracking-tight md:text-6xl text-base-content whitespace-nowrap'>
 							Blog
-						</h2>
+						</h1>
 						<div className='w-full h-px ml-8 bg-base-content/10 sm:block' />
 					</div>
 
 					{/* Professional Copy */}
 					<p className='text-lg leading-relaxed text-base-content/70'>
-						Technical articles focused on software architecture,
-						modern web development, systems engineering, and
-						self-hosted infrastructure. I share insights from
-						building scalable applications and exploring complex
-						technical challenges.
+						Articles about web development, authentication, web
+						feeds, selfhosting, and software engineering - including
+						practical guides, technical notes, and lessons from my
+						own projects.
 					</p>
 				</div>
 
@@ -95,8 +110,8 @@ export default function BlogClient({ posts, tags }: Props) {
 
 				{/* Posts Grid */}
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-					{filteredPosts.slice(0, visiblePosts).map((post, index) => (
-						<BlogCard post={post} key={`${post.slug}:${index}`} />
+					{filteredPosts.slice(0, visiblePosts).map((post) => (
+						<BlogCard post={post} key={post.slug} />
 					))}
 				</div>
 

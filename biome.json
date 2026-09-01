@@ -5,9 +5,7 @@
 		"enabled": true,
 		"rules": {
 			"preset": "recommended",
-			"suspicious": {
-				"noArrayIndexKey": "off"
-			},
+			"suspicious": {},
 			"style": {
 				"noParameterAssign": "error",
 				"useAsConstAssertion": "error",
@@ -52,6 +50,12 @@
 		}
 	},
 	"files": {
-		"includes": ["**", "!!**/node_modules", "!!**/.next", "!**/global.css"]
+		"includes": [
+			"**",
+			"!!**/node_modules",
+			"!!**/.next",
+			"!!next-env.d.ts",
+			"!**/global.css"
+		]
 	}
 }

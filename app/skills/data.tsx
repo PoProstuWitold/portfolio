@@ -38,13 +38,13 @@ import {
 } from 'react-icons/si'
 import { TbBoxMultiple, TbRoute } from 'react-icons/tb'
 
-type SkillInfo = {
+export type SkillInfo = {
 	icon: JSX.Element
 	url: string
 	linkDescription?: string
 }
 
-const skillDataMap: Record<string, SkillInfo> = {
+export const skillDataMap = {
 	TypeScript: {
 		icon: <SiTypescript />,
 		url: 'https://www.typescriptlang.org/'
@@ -64,7 +64,11 @@ const skillDataMap: Record<string, SkillInfo> = {
 	},
 	Docker: { icon: <SiDocker />, url: 'https://www.docker.com/' },
 	Redis: { icon: <DiRedis />, url: 'https://redis.io/' },
-	TailwindCSS: { icon: <SiTailwindcss />, url: 'https://tailwindcss.com/' },
+	TailwindCSS: {
+		icon: <SiTailwindcss />,
+		url: 'https://tailwindcss.com/',
+		linkDescription: 'Tailwind CSS'
+	},
 	Hono: { icon: <SiHono />, url: 'https://hono.dev/' },
 	RPC: {
 		icon: <BiTransferAlt />,
@@ -129,13 +133,20 @@ const skillDataMap: Record<string, SkillInfo> = {
 		url: 'https://go.dev/',
 		linkDescription: 'Golang'
 	}
+} satisfies Record<string, SkillInfo>
+
+export type SkillName = keyof typeof skillDataMap
+
+export const hasSkillMetadata = (skillName: string): skillName is SkillName =>
+	Object.hasOwn(skillDataMap, skillName)
+
+const fallbackSkillData: SkillInfo = {
+	icon: <FaCode />,
+	url: 'https://github.com/PoProstuWitold'
 }
 
 export const getSkillData = (skillName: string): SkillInfo => {
-	return (
-		skillDataMap[skillName] ?? {
-			icon: <FaCode />,
-			url: 'https://github.com/PoProstuWitold'
-		}
-	)
+	return hasSkillMetadata(skillName)
+		? skillDataMap[skillName]
+		: fallbackSkillData
 }

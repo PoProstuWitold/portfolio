@@ -1,21 +1,18 @@
+import { siteConfig } from '@/config/site'
 import { Socials } from './Socials'
 
-interface FooterProps {
-	children?: React.ReactNode
-}
-
-export const Footer: React.FC<FooterProps> = () => {
+export const Footer: React.FC = () => {
 	return (
 		<footer className='p-10 bg-base-300'>
 			<div className='footer grid grid-cols-1 md:grid-cols-2 gap-4'>
 				<div className='mb-6'>
-					<span className='mb-1 font-bold uppercase'>
-						Witold Zawada
-					</span>
-					<p>Software Engineer (TypeScript & Go)</p>
+					<p className='mb-1 font-bold uppercase'>
+						{siteConfig.name}
+					</p>
+					<p>Software Engineer</p>
 				</div>
 				<div>
-					<span className='mb-1 font-bold uppercase'>Social</span>
+					<p className='mb-1 font-bold uppercase'>Social</p>
 					<div className='grid grid-flow-col'>
 						<Socials size='big' text />
 					</div>
@@ -24,13 +21,13 @@ export const Footer: React.FC<FooterProps> = () => {
 			<div className='my-10 border-t' />
 			<div className='justify-center mx-auto md:text-center'>
 				<p>
-					Copyright © {new Date().getFullYear()} Witold Zawada - All
-					rights reserved. Check the website
+					Copyright © {new Date().getFullYear()} {siteConfig.name}.
+					All rights reserved. View the website&apos;s{' '}
 					<a
-						href='https://github.com/PoProstuWitold/portfolio'
+						href={siteConfig.links.repository}
 						target='_blank'
-						rel='noreferrer'
-						className='mx-1 link'
+						rel='noopener noreferrer'
+						className='link'
 					>
 						source code
 					</a>

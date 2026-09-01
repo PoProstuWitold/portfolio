@@ -1,5 +1,5 @@
-import { readFile } from 'node:fs/promises'
-import { join } from 'node:path'
+import { isSafePostSlug } from '@/blog/post-domain'
+import { getPostSource } from '@/blog/posts'
 
 interface RouteContext {
 	params: Promise<{
@@ -8,26 +8,24 @@ interface RouteContext {
 }
 
 export async function GET(_request: Request, { params }: RouteContext) {
-	try {
-		const { slug } = await params
-		const filePath = join(
-			process.cwd(),
-			'app',
-			'content',
-			'posts',
-			`${slug}.md`
-		)
-		const fileContents = await readFile(filePath, 'utf-8')
-		const fileName = `${slug || 'post'}.md`
+	const { slug } = await params
 
-		return new Response(fileContents, {
-			status: 200,
-			headers: {
-				'Content-Type': 'text/markdown; charset=utf-8',
-				'Content-Disposition': `attachment; filename="${fileName}"`
-			}
-		})
-	} catch (_error) {
+	if (!isSafePostSlug(slug)) {
 		return new Response('Not found', { status: 404 })
 	}
+
+	const source = await getPostSource(slug)
+
+	if (source === null) {
+		return new Response('Not found', { status: 404 })
+	}
+
+	return new Response(source, {
+		status: 200,
+		headers: {
+			'Content-Type': 'text/markdown; charset=utf-8',
+			'Content-Disposition': `attachment; filename="${slug}.md"`,
+			'X-Content-Type-Options': 'nosniff'
+		}
+	})
 }

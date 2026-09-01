@@ -1,6 +1,8 @@
 'use client'
 
+import type { IconType } from 'react-icons'
 import {
+	FaBolt,
 	FaBriefcase,
 	FaCheck,
 	FaCloud,
@@ -14,45 +16,48 @@ import {
 	FaSun
 } from 'react-icons/fa'
 import { HiOutlineColorSwatch } from 'react-icons/hi'
-import { useTheme } from '../../context/ThemeContext'
+import { type Theme, themeOptions } from '@/config/themes'
+import { useTheme } from '@/context/ThemeContext'
+
+const themeIcons: Record<Theme, IconType> = {
+	system: FaDesktop,
+	light: FaSun,
+	dark: FaMoon,
+	oled: FaRegCircle,
+	emerald: FaLeaf,
+	cyberpunk: FaBolt,
+	valentine: FaHeart,
+	halloween: FaGhost,
+	winter: FaSnowflake,
+	business: FaBriefcase,
+	nord: FaCloud
+}
 
 export function ThemeSwitcher() {
 	const { theme, setTheme } = useTheme()
 
-	const themes = [
-		{ name: 'system', label: 'System', icon: <FaDesktop size={16} /> },
-		{ name: 'light', label: 'Light', icon: <FaSun size={16} /> },
-		{ name: 'dark', label: 'Dark', icon: <FaMoon size={16} /> },
-		{ name: 'oled', label: 'OLED', icon: <FaRegCircle size={16} /> },
-		{ name: 'emerald', label: 'Emerald', icon: <FaLeaf size={16} /> },
-		{ name: 'valentine', label: 'Valentine', icon: <FaHeart size={16} /> },
-		{ name: 'halloween', label: 'Halloween', icon: <FaGhost size={16} /> },
-		{ name: 'winter', label: 'Winter', icon: <FaSnowflake size={16} /> },
-		{
-			name: 'business',
-			label: 'Business',
-			icon: <FaBriefcase size={16} />
-		},
-		{ name: 'nord', label: 'Nord', icon: <FaCloud size={16} /> }
-	] as const
-
 	return (
 		<div className='dropdown dropdown-end'>
 			<button
+				aria-label='Choose a color theme'
 				className='btn btn-ghost w-full justify-between items-center gap-2 text-base'
 				type='button'
 			>
 				<span className='flex items-center gap-2'>
 					Theme
-					<HiOutlineColorSwatch size={20} />
+					<HiOutlineColorSwatch aria-hidden='true' size={20} />
 				</span>
 			</button>
+
 			<ul className='dropdown-content z-1 menu p-2 shadow bg-base-200 rounded-box w-52 max-h-96 overflow-y-auto'>
-				{themes.map((item) => {
+				{themeOptions.map((item) => {
 					const isActive = item.name === theme
+					const Icon = themeIcons[item.name]
+
 					return (
 						<li key={item.name}>
 							<button
+								aria-pressed={isActive}
 								className={`flex items-center gap-2 w-full justify-between rounded ${
 									isActive
 										? 'bg-base-300 font-bold text-primary'
@@ -62,10 +67,18 @@ export function ThemeSwitcher() {
 								type='button'
 							>
 								<span className='flex items-center gap-2'>
-									{item.icon}
+									<Icon aria-hidden='true' size={16} />
 									{item.label}
+									{isActive && (
+										<span className='sr-only'>
+											{' '}
+											(selected)
+										</span>
+									)}
 								</span>
-								{isActive && <FaCheck size={14} />}
+								{isActive && (
+									<FaCheck aria-hidden='true' size={14} />
+								)}
 							</button>
 						</li>
 					)

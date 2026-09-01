@@ -7,6 +7,7 @@ export const ScrollProgress: React.FC = () => {
 
 	return (
 		<m.div
+			aria-hidden='true'
 			className='fixed z-[99] top-0 left-0 right-0 h-1 bg-primary'
 			style={{ scaleX: scrollYProgress, transformOrigin: '0%' }}
 		/>

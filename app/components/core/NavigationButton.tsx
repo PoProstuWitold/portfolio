@@ -16,10 +16,12 @@ export const NavigationButton: React.FC<NavigationButtonProps> = ({
 }) => {
 	return (
 		<Link href={href} className={`btn btn-outline mt-10 ${className}`}>
-			{direction === 'left' && <AiOutlineArrowLeft className='w-5 h-5' />}
+			{direction === 'left' && (
+				<AiOutlineArrowLeft aria-hidden='true' className='w-5 h-5' />
+			)}
 			{label}
 			{direction === 'right' && (
-				<AiOutlineArrowRight className='w-5 h-5' />
+				<AiOutlineArrowRight aria-hidden='true' className='w-5 h-5' />
 			)}
 		</Link>
 	)

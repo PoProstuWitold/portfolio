@@ -1,8 +1,8 @@
 ---
 title: 'What is Node.js?'
-description: 'Brief introduction to Node.js, explaining what it is, how it works, why it is used, and what kind of applications can be built with it.'
+description: 'A brief introduction to Node.js, explaining what it is, how it works, why it is used, and what kinds of applications can be built with it.'
 socialImage: images/blog/nodejs.webp
-authors: 
+authors:
   - Witold Zawada
 date: '2023-05-18 19:00'
 tags:
@@ -11,22 +11,22 @@ tags:
 
 # JavaScript beyond the browser
 
-If you're a web developer, you've probably heard of ***[Node.js](https://nodejs.org/)***. It's a technology that's been gaining a lot of attention over the past few years, and for good reason. 
+If you're a web developer, you've probably heard of ***[Node.js](https://nodejs.org/)***. It has become a common choice for JavaScript applications outside the browser.
 
 Node.js is an ***[open-source](https://github.com/nodejs/node)***, cross-platform JavaScript runtime environment that allows developers to write server-side applications using JavaScript. But what exactly is Node.js, and why is it so popular?
 
 # The origins of Node.js
-Node.js was created by **Ryan Dahl** in 2009, with the aim of developing a technology that would enable developers to write server-side applications using JavaScript. Dahl was frustrated with the limitations of traditional server-side technologies, such as PHP and Ruby on Rails, which relied on synchronous I/O, leading to performance issues and scalability problems. He aimed to create a technology that was fast, efficient, and could handle large amounts of traffic without blocking other requests.
+Node.js was created by **Ryan Dahl** in 2009 to let developers write server-side applications in JavaScript. At the time, many server stacks used blocking I/O or a thread-per-request model. Dahl instead pursued an event-driven runtime that could keep serving other work while I/O operations were pending.
 
-To achieve this, he decided to build Node.js on top of Google's ***[V8 engine](https://v8.dev/)***, the same engine that powers Chromium-based browsers (e.g., Google Chrome, Microsoft Edge, Opera). The V8 engine is known for its speed and efficiency, and by utilizing it for Node.js, Dahl was able to create a technology capable of managing large amounts of traffic in an asynchronous manner.
+To achieve this, he built Node.js on Google's ***[V8 engine](https://v8.dev/)***, the same JavaScript engine used by Chromium-based browsers such as Google Chrome and Microsoft Edge. Node.js pairs V8 with an event loop and asynchronous system APIs suited to server applications.
 
 # How Node.js works
-At its core, Node.js uses an **event-driven**, **non-blocking I/O model**. This means it can handle multiple requests simultaneously without obstructing the execution of other processes. In contrast, traditional server-side technologies create a new thread for each incoming request, which can rapidly consume system resources when faced with a high volume of requests. Node.js, however, utilizes an **event loop** to handle incoming requests and responses, allowing it to process multiple requests concurrently without blocking the execution of other processes.
+At its core, Node.js uses an **event-driven, non-blocking I/O model**. JavaScript callbacks normally execute on one main thread, but the runtime can keep many requests in flight while network, file-system, and other I/O operations complete asynchronously. When an operation finishes, its callback is scheduled through the **event loop**. CPU-intensive JavaScript is different: it can block that main thread unless the work is divided, delegated to worker threads, or moved to another process.
 
-Included in Node.js is a package manager called ***[npm](https://www.npmjs.com/)***, which simplifies the installation and management of third-party packages. This has fostered a large and active community of developers who create, share, and use these packages and modules, making it easy to find solutions to common problems and share your own solutions with others. Now that we've covered enough theory, let's move on to some coding, shall we?
+Most standard Node.js installations include ***[npm](https://www.npmjs.com/)***, a package manager for installing and maintaining third-party packages. Its registry and ecosystem make it easier to reuse libraries and publish your own. Now that we've covered enough theory, let's move on to some code.
 
 # First Node.js app
-Let's create a simple and basic web server using Node.js and Express.
+Let's create a basic web server using Node.js and Express.
 
 ## 1. Install Node.js
 
@@ -35,13 +35,13 @@ Windows:
 2. Follow the installation wizard instructions.
 
 Linux:
-1. Install [Node Version Manager](https://github.com/nvm-sh/nvm) .
-2. Install latest LTS version ("node" is an alias for the latest version).
+1. Install [Node Version Manager](https://github.com/nvm-sh/nvm).
+2. Install the latest LTS version.
 ```bash
-nvm install node
+nvm install --lts
 ```
 
-You can verify that Node and npm are installed by typing ``node -v`` or ``npm -v`` in either PowerShell/CMD (for Windows) or Terminal (for Linux).
+You can verify that Node and npm are installed by entering `node -v` and `npm -v` in PowerShell or Command Prompt on Windows, or in a terminal on Linux.
 
 ## 2. Create a new directory
 Create a new directory for your application and navigate into it:
@@ -56,26 +56,22 @@ cd firstNodeApp
 ```bash
 npm init -y
 ```
-This command will create a ``package.json`` file. This manifest file in Node.js projects includes metadata about the project, such as the project's name, version, description, author, etc. It also lists the project's dependencies and defines scripts that can be run for development or deployment tasks.
+This command creates a `package.json` manifest. It can contain project metadata, dependencies, and scripts that run during development or deployment.
 
-The ``-y`` flag is used to accept the default values such as name, version, author, etc.
+The `-y` flag accepts npm's default values for the generated manifest.
 
 ## 4. Install needed dependencies
-> Fast, unopinionated, minimalist web framework for Node.js 
-> — official [Express.js website](https://expressjs.com/)
+> Fast, unopinionated, minimalist web framework for Node.js
+> - official [Express.js website](https://expressjs.com/)
 
 Install Express by typing the following command in your terminal:
 ```bash
 npm install express
 ```
-The ``dependencies`` property has been added to your ``package.json`` file. This contains information about production dependencies, which are used both in development and production environments. There's also a field named ``devDependencies`` that stores information about dependencies needed only in development.
+The `dependencies` property is now present in `package.json`. It lists packages the application needs at runtime. The separate `devDependencies` field is intended for tools needed only during development or the build process.
 
 ## 5. Create an Express app
-Now, let's create a simple Express app. Create a new file named ``index.js`` in your project directory and add the following code:
-
-``
-index.js
-``
+Now, create a file named `index.js` in your project directory and add the following code:
 ```js
 const express = require('express')
 const app = express()
@@ -96,49 +92,49 @@ node index.js
 
 Now, if you go to http://localhost:3000 in your browser, you should see "*Hello World!*".
 
-Congratulations! You've just created your first Node.js application using Express. Pretty straightforward, isn't it? Ready to see some more complex real-world examples?
+You have now created and run a small Node.js application with Express.
 
-# Famous companies using Node
-Node.js has been a blessing for many companies, including PayPal, Uber, Netflix, and LinkedIn, just to name a few. It has led to decreased costs, increased the number of requests per second, and reduced both file size and the number of required servers (in the case of LinkedIn, [servers were reduced from 30 to just 3!](https://www.linkedin.com/pulse/7-answers-most-frequently-asked-questions-nodejs-ian-j-h-reynolds/)). Many startups also choose Node.js as their go-to technology because it's likely the most cost-effective way to get a business up and running online. This is due to the ability to use the same language for both frontend and backend development.
+# Companies using Node.js
+Node.js has been used by companies including PayPal, Uber, Netflix, and LinkedIn. One frequently cited account of LinkedIn's mobile-server migration [describes reducing the server count from 30 to 3](https://www.linkedin.com/pulse/7-answers-most-frequently-asked-questions-nodejs-ian-j-h-reynolds/). Results from any migration depend on its architecture and workload, but using JavaScript on both the frontend and backend can simplify staffing and code sharing for some teams.
 
 # Pros of Node.js
-Most important advantages about Node.js that may make you consider using it:
-1. **Speed and efficiency**: Built on the V8 engine, Node.js is fast and efficient, making it great for processing large volumes of data swiftly.
+Important advantages that may make you consider Node.js include:
+1. **JavaScript performance**: V8 compiles and optimizes frequently executed JavaScript, which gives Node.js a capable general-purpose runtime.
 
-2. **Scalability**: Due to its event-driven, non-blocking I/O model, Node.js is highly scalable and can handle massive traffic without excessive resource consumption.
+2. **I/O concurrency**: The event loop and non-blocking APIs let one process keep many network operations in flight without assigning a JavaScript thread to every request.
 
-3. **Versatility**: Node.js supports a broad range of applications like web apps, real-time apps, APIs, command-line tools, and IoT applications.
+3. **Versatility**: Node.js supports web applications, APIs, command-line tools, automation, and network services.
 
-4. **Popularity**: With a large, active community of developers, Node.js fosters a dynamic environment for problem-solving and collaborative work.
+4. **Ecosystem**: A large package registry and developer community make many libraries and learning resources available.
 
-5. **Easy to learn**: Since it's based on JavaScript, a widely-used language, developers can quickly adapt to Node.js.
+5. **Familiar language**: Developers who already use JavaScript in the browser can apply the same language on the server while learning Node.js-specific APIs.
 
-6. **Unified Language Stack**: Node.js uses JavaScript for server-side operations, allowing developers to use the same language for both frontend and backend development, streamlining the process and cutting costs.
+6. **Shared language stack**: Frontend and backend code can share types, validation rules, and tooling when both sides use JavaScript or TypeScript.
 
 # Cons of Node.js
-Every technology has its cons and Node isn't an exception here.
+Every technology has trade-offs, and Node.js is no exception.
 
 !["10 things I regret about Node.js" - Ryan Dahl, creator of Node.js {caption: "10 things I regret about Node.js" - Ryan Dahl, creator of Node.js} {url: https://www.youtube.com/watch?v=M3BM9TB-8yA}](/images/blog/10-things-node.webp)
 
 Notable drawbacks of Node.js include:
 
-1. **Single-threaded**: Being single-threaded, Node.js can process only one request at a time. It can handle many concurrent requests, but struggles with heavy computation or processing.
+1. **Main-thread JavaScript execution**: JavaScript callbacks normally run on one main thread, while the event loop and non-blocking I/O keep many requests in flight concurrently. CPU-heavy JavaScript can still block that event loop unless the work is moved to worker threads or separate processes.
 
-2. **Not suitable for CPU-intensive tasks**:  Due to its single-threaded nature, Node.js is not ideal for heavy computation tasks, such as video rendering or scientific calculations.
+2. **CPU-intensive work needs planning**: Heavy computation, such as video processing or scientific calculations, should not run for long periods on the main event-loop thread.
 
-3. **Lack of standardization**: As a relatively new technology, Node.js lacks standardization across its packages and modules, which can lead to compatibility issues.
+3. **Inconsistent ecosystem conventions**: The breadth and age of the package ecosystem mean libraries do not always follow the same APIs, module formats, or maintenance standards.
 
-4. **No built-in TypeScript support**: While you can use TypeScript with Node.js, it requires additional setup and transpilation, adding complexity to the development process.
+4. **No built-in TypeScript support at the time of writing**: In 2023, using TypeScript with Node.js required additional setup and transpilation.
 
-5. **Legacy callback-based standard library API**: Despite updates to incorporate Promises, Node.js's API still contains legacy callback-based patterns, often leading to complicated code structures and challenges in transitioning to ESM syntax.
+5. **Legacy callback APIs**: Some standard-library APIs retain callback forms for compatibility, although Promise-based alternatives are available for many of them.
 
 
-# My personal toughts
-In my personal experience, the combination of Node.js and TypeScript has provided the best developer experience among all the languages I've encountered. It offers not only a clear and enjoyable syntax but also an extensive array of packages, libraries, and frameworks, along with seamless integration with VSCode. The straightforward setup of pipelines and Docker images further amplifies its usability. Another significant advantage is the abundance of resources available online. No other technology has given me the same level of professional fulfillment as working with Node.js.
+# My personal thoughts
+In my experience, Node.js and TypeScript provide an enjoyable development workflow. I value the language syntax, the range of packages and frameworks, the VS Code integration, and the amount of documentation available online. I have also found it straightforward to use this stack in CI pipelines and Docker images.
 
 # Conclusion
-Despite its significant impact and demonstrated efficiency, Node.js does have limitations, many of which stem from its adherence to backward compatibility and the era of its inception. Elements such as native TypeScript support, Promise-based APIs, ECMAScript modules, and more were not yet standardized, leading to certain architectural choices that now seem less than ideal.
+Node.js has limitations, and several come from its long commitment to backward compatibility. TypeScript, standardized ECMAScript modules, and widespread Promise-based APIs did not exist when the runtime was created, so newer approaches have had to coexist with older ones.
 
-However, the emergence of promising technologies like ***[Deno](https://deno.com/runtime)*** and ***[Bun](https://bun.sh/)*** is not a threat but rather a catalyst for Node.js's ongoing evolution and innovation. These competitors are compelling Node.js to elevate its platform and solidify its market stance.
+Newer runtimes such as ***[Deno](https://deno.com/runtime)*** and ***[Bun](https://bun.sh/)*** explore different defaults and integrated tooling. Their ideas also create useful pressure for the Node.js ecosystem to keep improving.
 
-Node.js continues to be a pivotal player in web development, recognized for its comprehensive features, lively community, and an enduring push for innovation. It exemplifies the dynamism and resilience of open-source projects, promising an exciting future journey that the global developer community keenly awaits.
+Node.js remains a widely used option for web development, automation, and tooling. Whether it is the right choice depends on the workload, the surrounding ecosystem, and the team's experience.

@@ -1,83 +1,70 @@
-import { graphql } from '@octokit/graphql'
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import type { ReactElement, ReactNode } from 'react'
+import { notFound, redirect } from 'next/navigation'
+import type { ReactNode } from 'react'
 import { AiFillGithub, AiOutlineStar } from 'react-icons/ai'
-import { FaHourglassHalf } from 'react-icons/fa'
 import { TbGitFork, TbLicense, TbLicenseOff } from 'react-icons/tb'
 import { Badge } from '@/components/core/Badge'
 import { Breadcrumbs } from '@/components/core/Breadcrumbs'
 import { Skill } from '@/components/core/Skill'
-import type { Repository } from '@/types'
-import { caseStudies } from '@/utils/caseStudies'
-import { owner, projects, repoQuery } from '@/utils/constans'
-import { getContrastTextColor } from '@/utils/functions'
+import { siteConfig } from '@/config/site'
+import {
+	type GitHubRepository,
+	type GitHubRepositoryResult,
+	getGitHubRepository
+} from '@/github/client'
+import type { BadgeId } from '@/projects/badges'
+import { getCaseStudyBySlug } from '@/projects/case-studies'
+import { getContrastTextColor } from '@/projects/color'
+import {
+	getProjectByRouteSlug,
+	getRepositoryUrl,
+	projectRouteSlugs
+} from '@/projects/data'
+import { ProjectCaseStudy } from '@/projects/ProjectCaseStudy'
 
-const graphqlWithAuth = graphql.defaults({
-	headers: {
-		authorization: `token ${process.env.NEXT_PUBLIC_GITHUB_AUTH_TOKEN}`
-	}
-})
-
-interface Data {
-	repository: Repository
-}
-
-interface Props {
+type ProjectPageProps = {
 	params: Promise<{ project: string }>
 }
 
-function getProjectInfo(name: string) {
-	return projects.find((project) => project.name === name) ?? null
+export const dynamicParams = false
+
+export function generateStaticParams() {
+	return projectRouteSlugs.map((project) => ({ project }))
 }
 
-async function fetchRepository(project: string): Promise<Repository | null> {
-	try {
-		const data = (await graphqlWithAuth(repoQuery, {
-			repo: project,
-			owner
-		})) as Data
-
-		return data.repository ?? null
-	} catch (error) {
-		console.info(error)
-		return null
-	}
-}
-
-function ProjectType({ type }: { type?: string }) {
-	if (!type) return null
-
+function ProjectCategory({ category }: { category: string }) {
 	return (
 		<span className='mx-1 border-l-4 border-secondary pl-2 font-mono text-lg font-bold text-secondary'>
-			{type}
+			{category}
 		</span>
 	)
 }
 
-function ProjectBadges({ badges }: { badges?: string[] }) {
-	if (!badges?.length) return null
+function ProjectBadges({ badges }: { badges: readonly BadgeId[] }) {
+	if (badges.length === 0) return null
 
 	return (
 		<div className='flex flex-wrap gap-2'>
-			{badges.map((badge, index) => (
-				<Badge key={`${index}:${badge}`} type={badge} />
+			{badges.map((badge) => (
+				<Badge key={badge} id={badge} />
 			))}
 		</div>
 	)
 }
 
-function SkillsSection({ skills }: { skills?: string[] }) {
-	if (!skills?.length) {
+function SkillsSection({ skills }: { skills: readonly string[] }) {
+	if (skills.length === 0) {
 		return (
-			<span className='text-base-content/70'>No technologies found.</span>
+			<span className='text-base-content/70'>
+				No technologies listed.
+			</span>
 		)
 	}
 
 	return (
 		<div className='flex flex-wrap gap-2'>
-			{skills.map((skill, index) => (
-				<Skill key={`${index}:${skill}`} title={skill} />
+			{skills.map((skill) => (
+				<Skill key={skill} title={skill} />
 			))}
 		</div>
 	)
@@ -86,16 +73,18 @@ function SkillsSection({ skills }: { skills?: string[] }) {
 function LanguagesSection({
 	languages
 }: {
-	languages: Repository['languages']['nodes']
+	languages: GitHubRepository['languages']
 }) {
-	if (!languages.length) {
-		return <span className='text-base-content/70'>No languages found.</span>
+	if (languages.length === 0) {
+		return (
+			<span className='text-base-content/70'>No languages reported.</span>
+		)
 	}
 
 	return (
 		<div className='flex flex-wrap gap-2'>
 			{languages.map((language) => {
-				const color = language.color || '#cccccc'
+				const color = language.color ?? '#cccccc'
 
 				return (
 					<span
@@ -117,156 +106,177 @@ function LanguagesSection({
 function InfoCard({
 	title,
 	children,
-	className = ''
+	className = '',
+	headingLevel = 'h2',
+	action
 }: {
 	title: string
 	children: ReactNode
 	className?: string
+	headingLevel?: 'h1' | 'h2'
+	action?: ReactNode
 }) {
+	const Heading = headingLevel
+
 	return (
 		<section
 			className={`flex flex-col gap-4 rounded-2xl bg-base-200 p-6 shadow-sm ${className}`}
 		>
-			<h2 className='text-2xl font-bold'>{title}</h2>
+			<div className='flex flex-wrap items-center gap-3'>
+				<Heading
+					className={
+						headingLevel === 'h1'
+							? 'text-3xl font-bold md:text-4xl'
+							: 'text-2xl font-bold'
+					}
+				>
+					{title}
+				</Heading>
+				{action}
+			</div>
 			{children}
 		</section>
 	)
 }
 
-function InProgressBanner() {
-	return (
-		<div className='alert border border-info/20 bg-info/10 text-info-content shadow-sm'>
-			<div className='flex flex-col gap-2'>
-				<div className='flex items-center gap-2'>
-					<FaHourglassHalf className='h-5 w-5' />
-					<span className='text-lg font-bold'>In Progress</span>
-				</div>
-				<span className='text-base font-medium text-base-content/80'>
-					This project is still under development. Some information
-					may be incomplete or not public yet.
-				</span>
-			</div>
-		</div>
-	)
-}
-
 function GitHubLink({
-	ownerLogin,
-	repositoryName
+	href,
+	projectName
 }: {
-	ownerLogin: string
-	repositoryName: string
+	href: string
+	projectName: string
 }) {
 	return (
 		<a
-			href={`https://github.com/${ownerLogin}/${repositoryName}`}
+			href={href}
 			target='_blank'
-			rel='noreferrer'
-			title='Open GitHub repository'
-			aria-label='Open GitHub repository'
+			rel='noopener noreferrer'
+			title={`Open on GitHub: ${projectName}`}
+			aria-label={`Open on GitHub: ${projectName}`}
 			className='text-base-content/80 transition-all duration-300 hover:scale-110 hover:text-primary'
 		>
-			<AiFillGithub className='h-8 w-8' />
+			<AiFillGithub aria-hidden='true' className='h-8 w-8' />
 		</a>
 	)
 }
 
-function StatsSection({ repository }: { repository: Repository }) {
+function formatCount(count: number, singular: string, plural: string) {
+	return `${count} ${count === 1 ? singular : plural}`
+}
+
+function StatsSection({ repository }: { repository: GitHubRepository }) {
 	return (
 		<div className='flex flex-wrap gap-4 text-base md:text-lg'>
 			<span className='inline-flex items-center gap-2 rounded-full border border-base-content/10 px-4 py-2'>
-				{repository.licenseInfo ? <TbLicense /> : <TbLicenseOff />}
-				{repository.licenseInfo?.name || 'No license'}
+				{repository.licenseName ? (
+					<TbLicense aria-hidden='true' />
+				) : (
+					<TbLicenseOff aria-hidden='true' />
+				)}
+				{repository.licenseName ?? 'No license'}
 			</span>
 
 			<span className='inline-flex items-center gap-2 rounded-full border border-base-content/10 px-4 py-2'>
-				<AiOutlineStar />
-				{repository.stargazers.totalCount} stars
+				<AiOutlineStar aria-hidden='true' />
+				{formatCount(repository.stars, 'star', 'stars')}
 			</span>
 
 			<span className='inline-flex items-center gap-2 rounded-full border border-base-content/10 px-4 py-2'>
-				<TbGitFork />
-				{repository.forks.totalCount} forks
+				<TbGitFork aria-hidden='true' />
+				{formatCount(repository.forks, 'fork', 'forks')}
 			</span>
 		</div>
 	)
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const { project } = await params
-	const repository = await fetchRepository(project)
+function GitHubStatusNotice({ result }: { result: GitHubRepositoryResult }) {
+	if (result.status === 'success') return null
+
+	let message: string
+
+	if (result.status === 'not-found') {
+		message =
+			'The configured GitHub repository could not be found. Local project details and the repository link remain available.'
+	} else if (result.reason === 'missing-token') {
+		message =
+			'Live GitHub statistics are unavailable because this deployment has no GitHub token configured. Local project details and the repository link remain available.'
+	} else {
+		message =
+			'GitHub statistics are temporarily unavailable. Local project details and the repository link remain available.'
+	}
+
+	return (
+		<div
+			role='status'
+			className='alert border border-info/20 bg-info/10 text-base-content shadow-sm'
+		>
+			<span>{message}</span>
+		</div>
+	)
+}
+
+export async function generateMetadata({
+	params
+}: ProjectPageProps): Promise<Metadata> {
+	const { project: routeSlug } = await params
+	const project = getProjectByRouteSlug(routeSlug)
 
 	if (!project) {
 		return {
-			title: 'Project Not Found | Witold Zawada',
+			title: `Project Not Found | ${siteConfig.name}`,
 			description: 'This project could not be found.',
 			robots: { index: false, follow: false }
 		}
 	}
 
-	const title = repository
-		? `${repository.name} | Witold Zawada`
-		: `${project} | Witold Zawada`
-
-	const description =
-		repository?.description ||
-		'Technical project by Witold Zawada, including stack, repository details, and case study.'
+	const title = `${project.displayName} | ${siteConfig.name}`
+	const canonicalPath = `/projects/${project.slug}`
 
 	return {
 		title,
-		description,
+		description: project.description,
 		keywords: [
-			'Witold Zawada',
-			'PoProstuWitold',
-			'Software Engineer',
-			'TypeScript',
-			'Go',
-			'Open Source',
+			siteConfig.author.name,
+			siteConfig.author.handle,
 			'Project',
-			project
+			...project.skills
 		],
-		metadataBase: new URL('https://witoldzawada.dev'),
+		alternates: {
+			canonical: canonicalPath
+		},
 		openGraph: {
 			title,
-			description,
-			url: `https://witoldzawada.dev/projects/${project}`,
-			siteName: 'Witold Zawada',
+			description: project.description,
+			url: canonicalPath,
+			siteName: siteConfig.name,
 			locale: 'en_US',
 			type: 'article',
-			images: [
-				{
-					url: '/images/witold-512.png',
-					width: 512,
-					height: 512,
-					alt: 'Witold Zawada'
-				}
-			]
+			images: [siteConfig.openGraphImage]
+		},
+		twitter: {
+			card: 'summary',
+			title,
+			description: project.description,
+			images: [siteConfig.openGraphImage.url]
 		}
 	}
 }
 
-export default async function ProjectPage({
-	params
-}: Props): Promise<ReactElement> {
-	const { project } = await params
+export default async function ProjectPage({ params }: ProjectPageProps) {
+	const { project: routeSlug } = await params
+	const project = getProjectByRouteSlug(routeSlug)
 
-	const [repository, localProject] = await Promise.all([
-		fetchRepository(project),
-		Promise.resolve(getProjectInfo(project))
-	])
-
-	if (!repository && !localProject) {
+	if (!project) {
 		notFound()
 	}
 
-	const projectName =
-		localProject?.formattedName || repository?.name || project
-	const projectType = localProject?.type
-	const projectDescription =
-		repository?.description || localProject?.description?.trim() || null
-	const projectBadges = localProject?.badges
-	const projectSkills = localProject?.skills || []
-	const isRepositoryAvailable = Boolean(repository)
+	if (routeSlug !== project.slug) {
+		redirect(`/projects/${project.slug}`)
+	}
+
+	const githubResult = await getGitHubRepository(project.repository)
+	const repositoryUrl = getRepositoryUrl(project.repository)
+	const caseStudy = getCaseStudyBySlug(project.slug)
 
 	return (
 		<main className='min-h-screen px-4 py-28 lg:px-20'>
@@ -276,87 +286,57 @@ export default async function ProjectPage({
 						items={[
 							{ label: 'Home', href: '/' },
 							{ label: 'Projects', href: '/projects' },
-							{ label: projectName }
+							{ label: project.displayName }
 						]}
 					/>
 				</div>
-				{!isRepositoryAvailable && localProject && <InProgressBanner />}
+
+				<GitHubStatusNotice result={githubResult} />
 
 				<div className='grid gap-8 xl:grid-cols-[1.2fr_0.8fr]'>
-					<InfoCard title='Overview'>
+					<InfoCard
+						title={project.displayName}
+						headingLevel='h1'
+						action={
+							<GitHubLink
+								href={repositoryUrl}
+								projectName={project.displayName}
+							/>
+						}
+					>
 						<div className='flex flex-col gap-4'>
-							<div className='flex flex-wrap items-center gap-3'>
-								<h1 className='text-3xl font-bold md:text-4xl'>
-									{projectName}
-								</h1>
-
-								{repository && (
-									<GitHubLink
-										ownerLogin={repository.owner.login}
-										repositoryName={repository.name}
-									/>
-								)}
-							</div>
-
-							<ProjectType type={projectType} />
-							<ProjectBadges badges={projectBadges} />
-
-							{projectDescription && (
-								<p className='text-lg leading-relaxed text-base-content/85'>
-									{projectDescription}
-								</p>
-							)}
+							<ProjectCategory category={project.category} />
+							<ProjectBadges badges={project.badges} />
+							<p className='text-lg leading-relaxed text-base-content/85'>
+								{project.description}
+							</p>
 						</div>
 
-						{repository && (
+						{githubResult.status === 'success' && (
 							<>
 								<div className='divider my-1'>Languages</div>
 								<LanguagesSection
-									languages={repository.languages.nodes}
+									languages={
+										githubResult.repository.languages
+									}
 								/>
 							</>
 						)}
 					</InfoCard>
 
 					<InfoCard title='Project Details'>
-						{repository ? (
-							<>
-								<StatsSection repository={repository} />
-								<div className='divider my-1'>Technologies</div>
-								<SkillsSection skills={projectSkills} />
-							</>
-						) : (
-							<>
-								<p className='text-base-content/80'>
-									This repository is not public yet, but the
-									project information below is already
-									available.
-								</p>
-								<div className='divider my-1'>Technologies</div>
-								<SkillsSection skills={projectSkills} />
-							</>
+						{githubResult.status === 'success' && (
+							<StatsSection
+								repository={githubResult.repository}
+							/>
 						)}
+						<div className='divider my-1'>Technologies</div>
+						<SkillsSection skills={project.skills} />
 					</InfoCard>
 				</div>
 
 				<InfoCard title='Case Study'>
-					{repository ? (
-						<div className='leading-relaxed text-base-content/90'>
-							{caseStudies.get(repository.name) || (
-								<p>
-									This project does not have a dedicated case
-									study yet.
-								</p>
-							)}
-						</div>
-					) : (
-						<div className='leading-relaxed text-base-content/80'>
-							<p>
-								This project is currently in progress or not yet
-								publicly available on GitHub.
-							</p>
-						</div>
-					)}
+					<ProjectCaseStudy {...caseStudy} />
 				</InfoCard>
 			</div>
 		</main>

@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
-import { getPosts, getTags } from '@/utils/blog-utils'
-import BlogClient from '../components/blog/BlogClient'
+import { getPosts, getPostTags } from '@/blog/posts'
+import BlogClient from '@/components/blog/BlogClient'
+import { siteConfig } from '@/config/site'
+
+const title = `Blog | ${siteConfig.name}`
+const description =
+	'Technical and beginner-friendly articles about programming, modern web development, technology, and selfhosting.'
 
 export const metadata: Metadata = {
-	title: 'Blog | Witold Zawada',
-	description:
-		'Technical and beginner-friendly articles about programming, especially modern web development, tech and selfhosting. Written by Witold Zawada.',
+	title,
+	description,
 	classification: 'Tech Blog',
-	metadataBase: new URL('https://witoldzawada.dev'),
 	keywords: [
 		'Blog',
 		'Tech Blog',
@@ -31,31 +33,28 @@ export const metadata: Metadata = {
 		'Security'
 	],
 	openGraph: {
-		title: 'Blog | Witold Zawada',
-		description:
-			'Technical and beginner-friendly articles about programming, especially modern web development, tech and selfhosting. Written by Witold Zawada.',
-		url: 'https://witoldzawada.dev/blog',
-		siteName: 'Witold Zawada',
+		title,
+		description,
+		url: '/blog',
+		siteName: siteConfig.name,
 		locale: 'en_US',
 		type: 'website',
-		images: [
-			{
-				url: '/images/witold-512.png',
-				width: 512,
-				height: 512,
-				alt: 'Witold Zawada'
-			}
-		]
+		images: [siteConfig.openGraphImage]
+	},
+	alternates: {
+		canonical: '/blog'
+	},
+	twitter: {
+		card: 'summary',
+		title,
+		description,
+		images: [siteConfig.openGraphImage.url]
 	}
 }
 
 export default async function BlogPage() {
-	const posts = await getPosts('app/content/posts')
-	const tags = getTags(posts)
+	const posts = await getPosts()
+	const tags = getPostTags(posts)
 
-	return (
-		<Suspense fallback={<p className='h-screen'>Loading blog...</p>}>
-			<BlogClient posts={posts} tags={tags} />
-		</Suspense>
-	)
+	return <BlogClient posts={posts} tags={tags} />
 }
