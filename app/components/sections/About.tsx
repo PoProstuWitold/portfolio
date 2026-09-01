@@ -121,7 +121,10 @@ export const About: React.FC = () => {
 								rel='noopener noreferrer'
 								className='btn btn-outline flex w-full items-center justify-center gap-3 border-base-content/20 bg-base-100 hover:bg-base-content/5'
 							>
-								<AiOutlineFilePdf className='h-5 w-5 text-error' />
+								<AiOutlineFilePdf
+									aria-hidden='true'
+									className='h-5 w-5 text-error'
+								/>
 
 								<span className='font-semibold'>
 									CV in English
@@ -134,7 +137,10 @@ export const About: React.FC = () => {
 								rel='noopener noreferrer'
 								className='btn btn-outline flex w-full items-center justify-center gap-3 border-base-content/20 bg-base-100 hover:bg-base-content/5'
 							>
-								<AiOutlineFilePdf className='h-5 w-5 text-error' />
+								<AiOutlineFilePdf
+									aria-hidden='true'
+									className='h-5 w-5 text-error'
+								/>
 
 								<span className='font-semibold'>
 									CV in Polish

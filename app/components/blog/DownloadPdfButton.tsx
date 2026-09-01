@@ -16,7 +16,7 @@ export function DownloadPdfButton({
 	const pdfTitle = title || 'Blog post'
 	const fileName = `${slug || 'post'}.pdf`
 
-	const handleDownloadPdf = () => {
+	const handlePrintPdf = () => {
 		const article = document.getElementById(articleId)
 
 		if (!article) return
@@ -123,10 +123,10 @@ export function DownloadPdfButton({
 	return (
 		<button
 			type='button'
-			onClick={handleDownloadPdf}
+			onClick={handlePrintPdf}
 			className='btn btn-ghost btn-md w-full flex-1 gap-2 rounded-xl font-semibold sm:btn-square sm:btn-lg sm:w-auto sm:flex-none sm:rounded-lg md:p-4'
-			aria-label='Download PDF'
-			title={`Download ${fileName}`}
+			aria-label='Print or save as PDF'
+			title='Print or save as PDF'
 		>
 			<FaFilePdf aria-hidden='true' className='h-7 w-7' />
 		</button>

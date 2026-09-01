@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { notFound, redirect } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { AiFillGithub, AiOutlineStar } from 'react-icons/ai'
 import { TbGitFork, TbLicense, TbLicenseOff } from 'react-icons/tb'
@@ -270,7 +270,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 	}
 
 	if (routeSlug !== project.slug) {
-		redirect(`/projects/${project.slug}`)
+		permanentRedirect(`/projects/${project.slug}`)
 	}
 
 	const githubResult = await getGitHubRepository(project.repository)

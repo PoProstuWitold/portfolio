@@ -27,7 +27,6 @@ export const Skill: React.FC<SkillProps> = ({ title }) => {
 			href={url}
 			target='_blank'
 			rel='noopener noreferrer'
-			aria-label={`${label} official website`}
 			className={className}
 		>
 			{content}
