@@ -55,7 +55,10 @@
 			"!!**/node_modules",
 			"!!**/.next",
 			"!!next-env.d.ts",
-			"!**/global.css"
+			"!**/global.css",
+			"!**/*.md",
+			"!**/*.yml",
+			"!**/*.yaml"
 		]
 	}
 }
